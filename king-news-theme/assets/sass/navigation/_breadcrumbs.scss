@@ -1,0 +1,30 @@
+.breadcrumbs{
+	position: relative;
+	margin: 20px 0;
+		&__title{
+			float: left;
+			margin-right: 30px;
+			padding-right: 30px;
+			border-right: 1px solid #e0e0e8;
+				.page-title{
+					margin: 0;
+				}
+		}
+		&__items{
+			float: left;
+		}
+		&__browse{
+			float: left;
+			margin-right: 10px;
+		}
+		&__wrap{
+			float: left;
+			margin: 9px 0;
+		}
+		&__item{
+			float: left;
+				&-sep{
+					margin: 0 10px;
+				}
+		}
+}

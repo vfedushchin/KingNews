@@ -1,0 +1,17 @@
+.widget {
+	margin: 0 0 10px;
+	@include media-breakpoint-up(lg) {
+		margin-bottom: 30px;
+	}
+	.sidebar-primary &,
+	.sidebar-secondary & {
+		@include card;
+		padding: 10px;
+		@include media-breakpoint-up(lg) {
+			padding: 15px 30px;
+		}
+	}
+	select {
+		max-width: 100%;
+	}
+}

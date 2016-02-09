@@ -1,0 +1,3 @@
+[submodule "cherry-framework"]
+	path = cherry-framework
+	url = https://behaart@bitbucket.org/cherry_team/cherry-framework.git

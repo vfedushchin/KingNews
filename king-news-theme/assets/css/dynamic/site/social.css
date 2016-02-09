@@ -1,0 +1,9 @@
+.social-list a,
+.social-list a:active,
+.social-list a:visited {
+	color: $regular_accent_color_1;
+}
+.social-list a:hover {
+	color: $regular_accent_color_1;
+	background: $regular_accent_color_3;
+}

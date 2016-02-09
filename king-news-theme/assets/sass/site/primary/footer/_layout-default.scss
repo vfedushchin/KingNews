@@ -1,0 +1,40 @@
+.site-footer.default {
+	.social-list {
+		order: 3;
+		flex: 0 1 auto;
+		align-self: center;
+		white-space: nowrap;
+	}
+	.site-info__mid-box {
+		order: 1;
+		flex: 0 1 auto;
+		align-self: center;
+		text-align: center;
+	}
+	.footer-logo {
+		order: 0;
+		flex: 0 1 auto;
+		align-self: center;
+	}
+	.footer-copyright {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.footer-menu {
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+.site-info {
+	&__flex {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+		-ms-flex-line-pack: stretch;
+		align-content: stretch;
+		-ms-flex-align: start;
+		align-items: flex-start;
+	}
+}

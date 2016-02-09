@@ -1,0 +1,53 @@
+.top-panel {
+	padding: 10px 30px;
+	&__wrap {
+		&:after {
+			clear: both;
+			content: "";
+			width: 100%;
+			display: block;
+		}
+	}
+	&__message {
+		float: left;
+		.material-icons {
+			background: #fff;
+			width: 29px;
+			height: 29px;
+			border-radius: 15px;
+			line-height: 29px;
+			text-align: center;
+			@include font-size(1);
+			margin: 0 10px 0 0;
+			vertical-align: middle;
+			&.indent-left {
+				margin-left: 35px;
+			}
+		}
+	}
+	&__search {
+		float: right;
+	}
+	&__menu {
+		float: right;
+		margin: 0;
+		padding: 4px 10px;
+		&-list {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			li {
+				display: inline-block;
+				padding: 0 5px;
+				a {
+					text-decoration: none;
+				}
+				&.current-menu-item,
+				&.current_page_item,
+				a:hover {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}

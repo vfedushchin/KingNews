@@ -1,0 +1,108 @@
+.__tm-smartslider{
+	position: relative;
+	&__instance{
+		.sp-full-screen-button{
+			color: #fff;
+			right: 15px;
+		}
+		.sp-bottom-thumbnails{
+			//position: absolute;
+			//bottom: 60px;
+		}
+		.sp-thumbnail-container{
+			margin-left: 5px;
+			margin-right: 5px;
+			.sp-selected-thumbnail{
+				box-shadow:inset 2px 2px 0 0 rgba(255,255,255,1);
+			}
+		}
+		.sp-arrows{
+			.sp-arrow{
+				width: 50px;
+				height: 50px;
+				background-image: none;
+				background-color: #2b8ffb;
+					&:before{
+
+					}
+					&.sp-previous-arrow{
+						border-radius: 0 4px 4px 0;
+					}
+					&.sp-next-arrow{
+						border-radius: 4px 0 0 4px;
+					}
+			}
+		}
+		&.sp-horizontal{
+			.sp-previous-arrow{
+				left: 0;
+					&:before{
+						content: "insert_link";
+						@include material-icon();
+					}
+			}
+			.sp-next-arrow{
+				right: 0;
+					&:before{
+						content: "insert_link";
+						@include material-icon();
+					}
+			}
+		}
+		&.sp-vertical{
+			.sp-arrows{
+				margin-left: -25px;
+			}
+			.sp-previous-arrow{
+				top: 0;
+			}
+			.sp-next-arrow{
+				bottom: 0;
+			}
+		}
+		.sp-buttons{
+			position: absolute;
+			bottom: 15%;
+				.sp-button{
+					width: 15px;
+					height: 15px;
+					border-color: #fff;
+					margin: 4px 15px;
+						&.sp-selected-button{
+							background-color: #fff;
+						}
+				}
+		}
+		h2.sp-title{
+			font-size: 80px;
+			line-height: 80px;
+			text-align: center;
+				a{
+					color: #fff;
+				}
+		}
+		p.sp-content{
+			text-align: center;
+			color: #fff;
+		}
+		div.sp-more{
+			text-align: center;
+				a{
+					color: #fff;
+				}
+		}
+	}
+
+	&__thumbnails{
+		.sp-thumbnail-container{
+			&.sp-selected-thumbnail{
+
+			}
+		}
+	}
+	&[data-thumbnails="true"]{
+		.sp-buttons{
+			bottom: 20%;
+		}
+	}
+}

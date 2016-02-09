@@ -1,0 +1,7 @@
+.not-found {
+	@include card;
+	padding: 10px;
+	@include media-breakpoint-up(lg) {
+		padding: 30px;
+	}
+}

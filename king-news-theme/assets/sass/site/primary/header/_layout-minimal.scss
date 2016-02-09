@@ -1,0 +1,34 @@
+.site-header.minimal {
+	.social-list {
+		order: 2;
+		flex: 0 1 auto;
+		align-self: center;
+		white-space: nowrap;
+		padding: 0 0 15px;
+	}
+	.main-navigation {
+		order: 1;
+		flex: 0 1 50%;
+		align-self: flex-end;
+		text-align: center;
+	}
+	.site-branding {
+		order: 0;
+		flex: 0 1 auto;
+		align-self: center;
+		padding: 0 0 15px;
+	}
+}
+.header-container {
+	&__flex {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+		-ms-flex-line-pack: stretch;
+		align-content: stretch;
+		-ms-flex-align: start;
+		align-items: flex-start;
+	}
+}
