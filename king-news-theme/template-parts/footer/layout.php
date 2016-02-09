@@ -6,13 +6,13 @@
  */
 
 ?>
-<div class="footer-area-wrap invert">
+<div class="footer-area-wrap">
 	<div class="container">
 		<?php do_action( '__tm_render_widget_area', 'footer-area' ); ?>
 	</div>
 </div>
 
-<div class="footer-container">
+<div class="footer-container container">
 	<div <?php echo __tm_get_container_classes( array( 'site-info' ) ); ?>>
 		<div class="site-info__flex">
 			<?php __tm_footer_logo(); ?>

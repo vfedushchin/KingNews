@@ -124,6 +124,7 @@ a:hover { color: $regular_link_hover_color; }
 	background-attachment: $header_bg_attachment;
 }
 .top-panel {
+	font-family: $h2_font_family;
 	background-color: $top_panel_bg;
 }
 

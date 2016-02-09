@@ -26,16 +26,21 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', '__tm' ); ?></a>
 	<header id="masthead" <?php __tm_header_class(); ?> role="banner">
 		<div class="top-panel">
-			<div <?php echo __tm_get_container_classes( array( 'top-panel__wrap' ) ); ?>><?php
-				__tm_top_message( '<div class="top-panel__message">%s</div>' );
-				__tm_top_search( '<div class="top-panel__search">%s</div>' );
-				__tm_top_menu();
-			?></div>
+			<div class="container">
+				<div <?php echo __tm_get_container_classes( array( 'top-panel__wrap' ) ); ?>><?php
+							__tm_top_message( '<div class="top-panel__message">%s</div>' );
+							__tm_top_search( '<div class="top-panel__search">%s</div>' );
+							__tm_top_menu();
+							__tm_top_sign_register();
+						?></div>
+			</div><!-- .container -->
 		</div><!-- .top-panel -->
 
 		<div class="header-container">
-			<div <?php echo __tm_get_container_classes( array( 'header-container_wrap' ) ); ?>>
-				<?php get_template_part( 'template-parts/header/layout', get_theme_mod( 'header_layout_type' ) ); ?>
+			<div class="container">
+				<div <?php echo __tm_get_container_classes( array( 'header-container_wrap' ) ); ?>>
+					<?php get_template_part( 'template-parts/header/layout', get_theme_mod( 'header_layout_type' ) ); ?>
+				</div>
 			</div>
 		</div><!-- .header-container -->
 	</header><!-- #masthead -->

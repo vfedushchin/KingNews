@@ -72,7 +72,7 @@ function __tm_get_customizer_options() {
 			'header_logo_font_family' => array(
 				'title'           => esc_html__( 'Font Family', '__tm' ),
 				'section'         => 'logo_favicon',
-				'default'         => 'Montserrat',
+				'default'         => 'NotoSans',
 				'field'           => 'fonts',
 				'type'            => 'control',
 				'active_callback' => '__tm_is_header_logo_text',
@@ -177,14 +177,14 @@ function __tm_get_customizer_options() {
 			'regular_accent_color_1' => array(
 				'title'   => esc_html__( 'Accent color (1)', '__tm' ),
 				'section' => 'regular_scheme',
-				'default' => '#418bf5',
+				'default' => '#02afff',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_accent_color_2' => array(
 				'title'   => esc_html__( 'Accent color (2)', '__tm' ),
 				'section' => 'regular_scheme',
-				'default' => '#303043',
+				'default' => '#fff602',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
@@ -198,63 +198,63 @@ function __tm_get_customizer_options() {
 			'regular_text_color' => array(
 				'title'   => esc_html__( 'Text color', '__tm' ),
 				'section' => 'regular_scheme',
-				'default' => '#7e7e90',
+				'default' => '#000000',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_link_color' => array(
 				'title'   => esc_html__( 'Link color', '__tm' ),
 				'section' => 'regular_scheme',
-				'default' => '#298ffc',
+				'default' => '#000000',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_link_hover_color' => array(
 				'title'   => esc_html__( 'Link hover color', '__tm' ),
 				'section' => 'regular_scheme',
-				'default' => '#2f2f42',
+				'default' => '#000000',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_h1_color' => array(
 				'title'   => esc_html__( 'H1 color', '__tm' ),
 				'section' => 'regular_scheme',
-				'default' => '#303043',
+				'default' => '#000000',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_h2_color' => array(
 				'title'   => esc_html__( 'H2 color', '__tm' ),
 				'section' => 'regular_scheme',
-				'default' => '#303043',
+				'default' => '#000000',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_h3_color' => array(
 				'title'   => esc_html__( 'H3 color', '__tm' ),
 				'section' => 'regular_scheme',
-				'default' => '#303043',
+				'default' => '#000000',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_h4_color' => array(
 				'title'   => esc_html__( 'H4 color', '__tm' ),
 				'section' => 'regular_scheme',
-				'default' => '#303043',
+				'default' => '#000000',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_h5_color' => array(
 				'title'   => esc_html__( 'H5 color', '__tm' ),
 				'section' => 'regular_scheme',
-				'default' => '#303043',
+				'default' => '#000000',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_h6_color' => array(
 				'title'   => esc_html__( 'H6 color', '__tm' ),
 				'section' => 'regular_scheme',
-				'default' => '#303043',
+				'default' => '#000000',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
@@ -371,7 +371,7 @@ function __tm_get_customizer_options() {
 			'body_font_family' => array(
 				'title'   => esc_html__( 'Font Family', '__tm' ),
 				'section' => 'body_typography',
-				'default' => 'Montserrat',
+				'default' => 'NotoSans',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
@@ -456,7 +456,7 @@ function __tm_get_customizer_options() {
 			'h1_font_family' => array(
 				'title'   => esc_html__( 'Font Family', '__tm' ),
 				'section' => 'h1_typography',
-				'default' => 'Montserrat',
+				'default' => 'NotoSans',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
@@ -479,7 +479,7 @@ function __tm_get_customizer_options() {
 			'h1_font_size' => array(
 				'title'       => esc_html__( 'Font Size, px', '__tm' ),
 				'section'     => 'h1_typography',
-				'default'     => '80',
+				'default'     => '50',
 				'field'       => 'number',
 				'input_attrs' => array(
 					'min'  => 10,
@@ -541,14 +541,14 @@ function __tm_get_customizer_options() {
 			'h2_font_family' => array(
 				'title'   => esc_html__( 'Font Family', '__tm' ),
 				'section' => 'h2_typography',
-				'default' => 'Montserrat',
+				'default' => 'NotoSans',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
 			'h2_font_style' => array(
 				'title'   => esc_html__( 'Font Style', '__tm' ),
 				'section' => 'h2_typography',
-				'default' => 'normal',
+				'default' => 'italic',
 				'field'   => 'select',
 				'choices' => __tm_get_font_styles(),
 				'type'    => 'control',
@@ -556,7 +556,7 @@ function __tm_get_customizer_options() {
 			'h2_font_weight' => array(
 				'title'   => esc_html__( 'Font Weight', '__tm' ),
 				'section' => 'h2_typography',
-				'default' => '700',
+				'default' => '400',
 				'field'   => 'select',
 				'choices' => __tm_get_font_weight(),
 				'type'    => 'control',
@@ -564,7 +564,7 @@ function __tm_get_customizer_options() {
 			'h2_font_size' => array(
 				'title'       => esc_html__( 'Font Size, px', '__tm' ),
 				'section'     => 'h2_typography',
-				'default'     => '60',
+				'default'     => '40',
 				'field'       => 'number',
 				'input_attrs' => array(
 					'min'  => 10,
@@ -626,7 +626,7 @@ function __tm_get_customizer_options() {
 			'h3_font_family' => array(
 				'title'   => esc_html__( 'Font Family', '__tm' ),
 				'section' => 'h3_typography',
-				'default' => 'Montserrat',
+				'default' => 'NotoSans',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
@@ -649,7 +649,7 @@ function __tm_get_customizer_options() {
 			'h3_font_size' => array(
 				'title'       => esc_html__( 'Font Size, px', '__tm' ),
 				'section'     => 'h3_typography',
-				'default'     => '40',
+				'default'     => '30',
 				'field'       => 'number',
 				'input_attrs' => array(
 					'min'  => 10,
@@ -711,14 +711,14 @@ function __tm_get_customizer_options() {
 			'h4_font_family' => array(
 				'title'   => esc_html__( 'Font Family', '__tm' ),
 				'section' => 'h4_typography',
-				'default' => 'Montserrat',
+				'default' => 'NotoSans',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
 			'h4_font_style' => array(
 				'title'   => esc_html__( 'Font Style', '__tm' ),
 				'section' => 'h4_typography',
-				'default' => 'normal',
+				'default' => 'italic',
 				'field'   => 'select',
 				'choices' => __tm_get_font_styles(),
 				'type'    => 'control',
@@ -726,7 +726,7 @@ function __tm_get_customizer_options() {
 			'h4_font_weight' => array(
 				'title'   => esc_html__( 'Font Weight', '__tm' ),
 				'section' => 'h4_typography',
-				'default' => '700',
+				'default' => '400',
 				'field'   => 'select',
 				'choices' => __tm_get_font_weight(),
 				'type'    => 'control',
@@ -796,7 +796,7 @@ function __tm_get_customizer_options() {
 			'h5_font_family' => array(
 				'title'   => esc_html__( 'Font Family', '__tm' ),
 				'section' => 'h5_typography',
-				'default' => 'Montserrat',
+				'default' => 'NotoSans',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
@@ -881,7 +881,7 @@ function __tm_get_customizer_options() {
 			'h6_font_family' => array(
 				'title'   => esc_html__( 'Font Family', '__tm' ),
 				'section' => 'h6_typography',
-				'default' => 'Montserrat',
+				'default' => 'NotoSans',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
@@ -1131,7 +1131,7 @@ function __tm_get_customizer_options() {
 			'top_panel_bg' => array(
 				'title'   => esc_html__( 'Background color', '__tm' ),
 				'section' => 'header_top_panel',
-				'default' => '#eff4fa',
+				'default' => '#ffffff',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
@@ -1228,14 +1228,14 @@ function __tm_get_customizer_options() {
 			'footer_widgets_bg' => array(
 				'title'   => esc_html__( 'Footer Widgets Area color', '__tm' ),
 				'section' => 'footer_options',
-				'default' => '#298ffc',
+				'default' => '#ffffff',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'footer_bg' => array(
 				'title'   => esc_html__( 'Footer Background color', '__tm' ),
 				'section' => 'footer_options',
-				'default' => '#303043',
+				'default' => '#ffffff',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
@@ -1709,11 +1709,7 @@ function __tm_get_fonts_options() {
  * @return string
  */
 function __tm_get_default_top_panel_text() {
-	return sprintf(
-		__( '%s 25 East 12th Street 16st Floor New York, NY 12222, United States %s 800-2345-6789', '__tm' ),
-		'<i class="material-icons">place</i>',
-		'<i class="material-icons indent-left">call</i>'
-	);
+	return 'Wednesday Jan.20, 2016 %%date%%';
 }
 
 /**
@@ -1723,5 +1719,5 @@ function __tm_get_default_top_panel_text() {
  * @return string
  */
 function __tm_get_default_footer_copyright() {
-	return 'Copyright %%year%% __Tm. All rights reserved.';
+	return '%%year%% News King, Inc. All Rights Reserved.';
 }

@@ -1,4 +1,15 @@
+$line_color: #d2d1d1;
+
 .site-header.minimal {
+	.site-branding {
+		order: 0;
+		flex: 0 1 auto;
+		align-self: center;
+		padding: 0 0 15px;
+		width: 100%;
+		border-bottom: 1px solid $line_color;
+	}
+
 	.social-list {
 		order: 2;
 		flex: 0 1 auto;
@@ -12,18 +23,12 @@
 		align-self: flex-end;
 		text-align: center;
 	}
-	.site-branding {
-		order: 0;
-		flex: 0 1 auto;
-		align-self: center;
-		padding: 0 0 15px;
-	}
 }
 .header-container {
 	&__flex {
 		display: flex;
 		flex-direction: row;
-		flex-wrap: nowrap;
+		flex-wrap: wrap;
 		-ms-flex-pack: justify;
 		justify-content: space-between;
 		-ms-flex-line-pack: stretch;

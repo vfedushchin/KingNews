@@ -1112,6 +1112,16 @@ function __tm_top_menu() {
 }
 
 /**
+ * Show login register buttons in top page menu if active
+ *
+ * @return void
+ */
+function __tm_top_sign_register() {
+	echo "login";
+	wp_register('', '');
+}
+
+/**
  * Print boxed or fullwidth conainer class
  *
  * @return void

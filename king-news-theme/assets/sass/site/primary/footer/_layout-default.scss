@@ -7,9 +7,10 @@
 	}
 	.site-info__mid-box {
 		order: 1;
-		flex: 0 1 auto;
+		flex: 10 1 auto;
 		align-self: center;
-		text-align: center;
+		text-align: left;
+		padding-left: 15px;
 	}
 	.footer-logo {
 		order: 0;

@@ -1,6 +1,10 @@
+$line_color: #d2d1d1;
+
 .top-panel {
-	padding: 10px 30px;
 	&__wrap {
+		padding: 20px 0 10px;
+		border-bottom: 1px solid $line_color;
+
 		&:after {
 			clear: both;
 			content: "";

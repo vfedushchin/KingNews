@@ -3267,6 +3267,14 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   text-align: center;
 }
 
+.site-header.minimal .site-branding {
+  order: 0;
+  flex: 0 1 auto;
+  align-self: center;
+  padding: 0 0 15px;
+  width: 100%;
+  border-bottom: 1px solid #d2d1d1;
+}
 .site-header.minimal .social-list {
   order: 2;
   flex: 0 1 auto;
@@ -3280,17 +3288,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   align-self: flex-end;
   text-align: center;
 }
-.site-header.minimal .site-branding {
-  order: 0;
-  flex: 0 1 auto;
-  align-self: center;
-  padding: 0 0 15px;
-}
 
 .header-container__flex {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   -ms-flex-pack: justify;
   justify-content: space-between;
   -ms-flex-line-pack: stretch;
@@ -3299,8 +3301,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   align-items: flex-start;
 }
 
-.top-panel {
-  padding: 10px 30px;
+.top-panel__wrap {
+  padding: 20px 0 10px;
+  border-bottom: 1px solid #d2d1d1;
 }
 .top-panel__wrap:after {
   clear: both;
@@ -3848,9 +3851,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 .site-footer.default .site-info__mid-box {
   order: 1;
-  flex: 0 1 auto;
+  flex: 10 1 auto;
   align-self: center;
-  text-align: center;
+  text-align: left;
+  padding-left: 15px;
 }
 .site-footer.default .footer-logo {
   order: 0;
