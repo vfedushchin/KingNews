@@ -30,4 +30,11 @@ function _tm_register_image_sizes() {
 	add_image_size( '_tm-post-thumbnail-large', 770, 480, true );
 	add_image_size( '_tm-thumb-l', 1170, 780, true );
 	add_image_size( '_tm-thumb-xl', 1920, 1080, true );
+
+	add_image_size( '_tm-thumb-150-115', 150, 115, true );
+	add_image_size( '_tm-thumb-238-182', 238, 182, true );
+	add_image_size( '_tm-thumb-337-258', 337, 258, true );
+	add_image_size( '_tm-thumb-536-411', 536, 411, true );
+	add_image_size( '_tm-thumb-426-327', 426, 327, true );
+	add_image_size( '_tm-thumb-860-662', 860, 662, true );
 }

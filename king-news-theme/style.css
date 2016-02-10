@@ -3301,6 +3301,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   align-items: flex-start;
 }
 
+.top-panel {
+  font-size: 14px;
+}
 .top-panel__wrap {
   padding: 20px 0 10px;
   border-bottom: 1px solid #d2d1d1;
@@ -3426,7 +3429,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 @media (min-width: 992px) {
   .posts-list--grid-2-cols .sticky .entry-title, .posts-list--grid-3-cols .sticky .entry-title {
-    font-size: 30px;
+    /*font-size: 30px;*/
   }
 }
 
@@ -3469,14 +3472,14 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 .hentry {
   position: relative;
   margin: 0 0 1.5em;
-  padding: 10px;
+  padding: 0px;
   background: #fff;
   box-shadow: none;
   border-radius: 0px;
 }
 @media (min-width: 992px) {
   .hentry {
-    padding: 30px;
+    padding: 0px;
   }
 }
 .single-post .hentry {
@@ -3484,13 +3487,17 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   border-radius: 0;
   padding: 0;
 }
+.hentry + .hentry {
+  padding-top: 30px;
+  border-top: 1px dotted #d2d1d1;
+}
 
 .entry-header .entry-title:first-child {
   margin-top: 0;
 }
 @media (min-width: 992px) {
   .entry-title {
-    font-size: 30px;
+    /*font-size: 30px;*/
   }
 }
 @media (min-width: 992px) {
@@ -3513,17 +3520,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   position: relative;
 }
 .posts-list .entry-footer {
-  margin: 15px -10px 0;
-  padding-right: 10px;
-  padding-left: 10px;
-}
-@media (min-width: 992px) {
-  .posts-list .entry-footer {
-    margin-right: -30px;
-    margin-left: -30px;
-    padding-right: 30px;
-    padding-left: 30px;
-  }
+  margin: 15px 0px 0;
 }
 .entry-footer .btn {
   float: right;
@@ -3573,15 +3570,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 .posts-list .post-thumbnail--fullwidth {
   display: block;
-  margin: -10px -10px 10px;
+  margin: 0;
 }
 .posts-list .post-thumbnail--fullwidth:first-child img {
   border-radius: 0px 0px 0 0;
-}
-@media (min-width: 992px) {
-  .posts-list .post-thumbnail--fullwidth {
-    margin: -30px -30px 30px;
-  }
 }
 .posts-list .post__cats, .single-post .post__cats {
   position: static;
@@ -3604,8 +3596,20 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 @media (min-width: 992px) {
   .has-post-thumbnail .post-thumbnail--fullwidth + .post__cats {
-    top: 30px;
-    left: 30px;
+    top: 10px;
+    left: 10px;
+  }
+}
+.has-post-thumbnail .post-thumbnail--ultra-small + .post__cats {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 99;
+}
+@media (min-width: 992px) {
+  .has-post-thumbnail .post-thumbnail--ultra-small + .post__cats {
+    top: 10px;
+    left: 10px;
   }
 }
 .post-format-wrap .post__cats {

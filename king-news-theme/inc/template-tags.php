@@ -259,7 +259,6 @@ function __tm_top_search( $format = '%s' ) {
 	}
 
 	printf( $format, get_search_form( false ) );
-
 }
 
 /**
@@ -540,6 +539,7 @@ function __tm_post_thumbnail( $linked = false, $sizes = array() ) {
 	}
 
 	$sizes = wp_parse_args( $sizes, array(
+		'ultra-small'     => '_tm-thumb-150-115',
 		'small'     => 'post-thumbnail',
 		'fullwidth' => '_tm-post-thumbnail-large',
 	) );
@@ -571,6 +571,12 @@ function __tm_post_thumbnail( $linked = false, $sizes = array() ) {
 			$size = 'fullwidth';
 		}
 
+		$link_class = sanitize_html_class( 'post-thumbnail--' . $size );
+		$size       = isset( $sizes[ $size ] ) ? esc_attr( $sizes[ $size ] ) : 'post-thumbnail';
+	}
+
+	else {
+		$size = 'ultra-small';
 		$link_class = sanitize_html_class( 'post-thumbnail--' . $size );
 		$size       = isset( $sizes[ $size ] ) ? esc_attr( $sizes[ $size ] ) : 'post-thumbnail';
 	}
@@ -666,6 +672,10 @@ function __tm_meta_date( $context = 'loop', $args = array() ) {
 		esc_html( get_the_date() )
 	);
 
+	// output date for posts for example '2 days ago'
+	// printf( _x( '%s ago', '%s = human-readable time difference', '__tm' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) );
+	$time_string = sprintf( _x( '%s ago', '%s = human-readable time difference', '__tm' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) );
+
 	/**
 	 * Filter post date output format
 	 *
@@ -685,6 +695,7 @@ function __tm_meta_date( $context = 'loop', $args = array() ) {
 		esc_url( get_permalink() ),
 		$time_string
 	);
+
 
 }
 
@@ -1117,8 +1128,10 @@ function __tm_top_menu() {
  * @return void
  */
 function __tm_top_sign_register() {
-	echo "login";
-	wp_register('', '');
+	echo "<span class='register-block'>";
+		wp_register('', '');
+	echo "<a href=' " . wp_login_url() . "' title='Login'>Login</a></span>";
+
 }
 
 /**

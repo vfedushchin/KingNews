@@ -11,8 +11,12 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'posts-list__item card' ); ?>>
 
-	<figure class="post-thumbnail">
-		<?php __tm_post_thumbnail( true ); ?>
+	<figure class="post-thumbnail figure-left">
+		<?php
+			// filter for choising of image size: if return true -> ultra-small
+			add_filter( '__tm_post_thumbail_size', '__return_true' );
+			__tm_post_thumbnail( true, "" ); 
+		?>
 		<?php __tm_meta_categories( 'loop' ); ?>
 		<?php __tm_sticky_label(); ?>
 	</figure><!-- .post-thumbnail -->
@@ -21,18 +25,10 @@
 
 	<header class="entry-header">
 		<?php
-			__tm_meta_author(
-				'loop',
-				array(
-					'before' => esc_html__( 'Posted by', '__tm' ) . ' ',
-				)
-			);
-		?>
-		<?php
 			if ( is_single() ) {
-				the_title( '<h1 class="entry-title">', '</h1>' );
+				the_title( '<h2 class="entry-title">', '</h2>' );
 			} else {
-				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+				the_title( '<h5 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h5>' );
 			}
 		?>
 	</header><!-- .entry-header -->
@@ -45,15 +41,25 @@
 
 		<div class="entry-meta">
 			<?php
+				__tm_meta_author(
+					'loop',
+					array(
+						'before' => esc_html__( 'by', '__tm' ) . ' ',
+					)
+				);
+			?>
+
+			<?php
 				__tm_meta_date( 'loop', array(
-					'before' => '<i class="material-icons">event</i>',
+					'before' => '<i class="material-icons">access_time</i>',
 				) );
 
 				__tm_meta_comments( 'loop', array(
-					'before' => '<i class="material-icons">mode_comment</i>',
+					'before' => '<i class="material-icons">chat_bubble_outline</i>',
+					'after' => '',
 					'zero'   => esc_html__( 'Leave a comment', '__tm' ),
-					'one'    => '1',
-					'plural' => '%',
+					'one'    => '1 comment',
+					'plural' => '% comments',
 				) );
 
 				__tm_meta_tags( 'loop', array(
@@ -66,6 +72,6 @@
 	<?php endif; ?>
 
 	<footer class="entry-footer">
-		<?php __tm_read_more(); ?>
+		<?php /*__tm_read_more();*/ ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

@@ -66,7 +66,7 @@
 		.posts-list--grid-2-cols &,
 		.posts-list--grid-3-cols & {
 			@include media-breakpoint-up(lg) {
-				font-size: 30px;
+				/*font-size: 30px;*/
 			}
 		}
 	}
@@ -121,15 +121,20 @@
 .hentry {
 	position: relative;
 	margin: 0 0 1.5em;
-	padding: 10px;
+	padding: 0px;
 	@include card;
 	@include media-breakpoint-up(lg) {
-		padding: 30px;
+		padding: 0px;
 	}
 	.single-post & {
 		box-shadow: none;
 		border-radius: 0;
 		padding: 0;
+	}
+
+	& + .hentry {
+		padding-top: 30px;
+		border-top: 1px dotted #d2d1d1;
 	}
 }
 
@@ -142,7 +147,7 @@
 			}
 		}
 		@include media-breakpoint-up(lg) {
-			font-size: 30px;
+			/*font-size: 30px;*/
 		}
 		.posts-list--grid-2-cols &,
 		.posts-list--grid-3-cols &,
@@ -171,15 +176,7 @@
 	&-footer {
 		position: relative;
 		.posts-list & {
-			margin: 15px -10px 0;
-			padding-right: 10px;
-			padding-left: 10px;
-			@include media-breakpoint-up(lg) {
-				margin-right: -30px;
-				margin-left: -30px;
-				padding-right: 30px;
-				padding-left: 30px;
-			}
+			margin: 15px 0px 0;
 		}
 		.btn {
 			float: right;
@@ -235,14 +232,14 @@
 		&--fullwidth {
 			.posts-list & {
 				display: block;
-				margin: -10px -10px 10px;
+				margin: 0;
 				&:first-child {
 					img {
 						border-radius: $border__radius $border__radius 0 0;
 					}
 				}
 				@include media-breakpoint-up(lg) {
-					margin: -30px -30px 30px;
+					
 				}
 			}
 		}
@@ -269,8 +266,20 @@
 				left: 10px;
 				z-index: 99;
 				@include media-breakpoint-up(lg) {
-					top: 30px;
-					left: 30px;
+					top: 10px;
+					left: 10px;
+				}
+			}
+		}
+		.post-thumbnail--ultra-small + & {
+			.has-post-thumbnail & {
+				position: absolute;
+				top: 10px;
+				left: 10px;
+				z-index: 99;
+				@include media-breakpoint-up(lg) {
+					top: 10px;
+					left: 10px;
 				}
 			}
 		}
