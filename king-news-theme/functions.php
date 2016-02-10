@@ -449,6 +449,8 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
 
 			// Sticky menu
 			wp_register_script( 'jquery-stickup', __TM_THEME_URI . '/assets/js/jquery.stickup.js', array(), '1.0.0', true );
+
+
 		}
 
 		/**
@@ -496,3 +498,10 @@ function __tm_theme() {
 }
 
 __tm_theme();
+
+
+/**
+ * Load custom functions.
+ */
+require get_template_directory() . '/custom_functions.php';
+

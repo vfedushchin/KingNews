@@ -122,10 +122,15 @@ a:hover { color: $regular_link_hover_color; }
 	background-repeat: $header_bg_repeat;
 	background-position: $header_bg_position_x top;
 	background-attachment: $header_bg_attachment;
+	font-family: $h3_font_family;
 }
 .top-panel {
 	font-family: $h2_font_family;
 	background-color: $top_panel_bg;
+}
+
+.site-footer, .sidebar-primary {
+	font-family: $h2_font_family;
 }
 
 .boxed-wrap {

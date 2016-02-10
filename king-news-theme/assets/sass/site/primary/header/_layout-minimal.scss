@@ -5,7 +5,7 @@ $line_color: #d2d1d1;
 		order: 0;
 		flex: 0 1 auto;
 		align-self: center;
-		padding: 0 0 15px;
+		padding: 0 0 19px;
 		width: 100%;
 		border-bottom: 1px solid $line_color;
 	}
@@ -15,13 +15,16 @@ $line_color: #d2d1d1;
 		flex: 0 1 auto;
 		align-self: center;
 		white-space: nowrap;
-		padding: 0 0 15px;
+		padding: 0;
+		@include media-breakpoint-up(lg) {
+		  
+		}
 	}
 	.main-navigation {
 		order: 1;
-		flex: 0 1 50%;
+		flex: 0 1 80%;
 		align-self: flex-end;
-		text-align: center;
+		text-align: left;
 	}
 }
 .header-container {

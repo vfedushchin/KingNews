@@ -72,7 +72,7 @@ function __tm_get_customizer_options() {
 			'header_logo_font_family' => array(
 				'title'           => esc_html__( 'Font Family', '__tm' ),
 				'section'         => 'logo_favicon',
-				'default'         => 'NotoSans',
+				'default'         => 'Noto Sans',
 				'field'           => 'fonts',
 				'type'            => 'control',
 				'active_callback' => '__tm_is_header_logo_text',
@@ -371,7 +371,7 @@ function __tm_get_customizer_options() {
 			'body_font_family' => array(
 				'title'   => esc_html__( 'Font Family', '__tm' ),
 				'section' => 'body_typography',
-				'default' => 'NotoSans',
+				'default' => 'Noto Sans',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
@@ -456,7 +456,7 @@ function __tm_get_customizer_options() {
 			'h1_font_family' => array(
 				'title'   => esc_html__( 'Font Family', '__tm' ),
 				'section' => 'h1_typography',
-				'default' => 'NotoSans',
+				'default' => 'Noto Sans',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
@@ -541,7 +541,7 @@ function __tm_get_customizer_options() {
 			'h2_font_family' => array(
 				'title'   => esc_html__( 'Font Family', '__tm' ),
 				'section' => 'h2_typography',
-				'default' => 'NotoSans',
+				'default' => 'Noto Serif',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
@@ -626,7 +626,7 @@ function __tm_get_customizer_options() {
 			'h3_font_family' => array(
 				'title'   => esc_html__( 'Font Family', '__tm' ),
 				'section' => 'h3_typography',
-				'default' => 'NotoSans',
+				'default' => 'Noto Sans',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
@@ -711,7 +711,7 @@ function __tm_get_customizer_options() {
 			'h4_font_family' => array(
 				'title'   => esc_html__( 'Font Family', '__tm' ),
 				'section' => 'h4_typography',
-				'default' => 'NotoSans',
+				'default' => 'Noto Serif',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
@@ -796,7 +796,7 @@ function __tm_get_customizer_options() {
 			'h5_font_family' => array(
 				'title'   => esc_html__( 'Font Family', '__tm' ),
 				'section' => 'h5_typography',
-				'default' => 'NotoSans',
+				'default' => 'Noto Sans',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
@@ -881,7 +881,7 @@ function __tm_get_customizer_options() {
 			'h6_font_family' => array(
 				'title'   => esc_html__( 'Font Family', '__tm' ),
 				'section' => 'h6_typography',
-				'default' => 'NotoSans',
+				'default' => 'Noto Sans',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
@@ -1005,7 +1005,7 @@ function __tm_get_customizer_options() {
 			'container_width' => array(
 				'title'       => esc_html__( 'Container width (px)', '__tm' ),
 				'section'     => 'page_layout',
-				'default'     => 1200,
+				'default'     => 1758,
 				'field'       => 'number',
 				'input_attrs' => array(
 					'min'  => 960,
@@ -1299,9 +1299,10 @@ function __tm_get_customizer_options() {
 			'blog_featured_image' => array(
 				'title'   => esc_html__( 'Featured image', '__tm' ),
 				'section' => 'blog',
-				'default' => 'fullwidth',
+				'default' => 'ultra-small',
 				'field'   => 'select',
 				'choices' => array(
+					'ultra-small'     => esc_html__( 'ultra-small', '__tm' ),
 					'small'     => esc_html__( 'Small', '__tm' ),
 					'fullwidth' => esc_html__( 'Fullwidth', '__tm' ),
 				),

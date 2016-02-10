@@ -9,7 +9,7 @@
 	<label>
 		<span class="screen-reader-text"><?php echo _x( 'Search for:', 'label', '__tm' ) ?></span>
 		<input type="search" class="search-form__field"
-			placeholder="<?php echo esc_attr_x( 'Search …', 'placeholder', '__tm' ) ?>"
+			placeholder='<?php echo esc_attr_x( "I'm looking for....", "placeholder", "__tm" ) ?>'
 			value="<?php echo get_search_query() ?>" name="s"
 			title="<?php echo esc_attr_x( 'Search for:', 'label', '__tm' ) ?>" />
 	</label>

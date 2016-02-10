@@ -1,7 +1,8 @@
 .main-navigation ul.menu > li > a,
 .main-navigation ul.menu > li > a:visited,
 .main-navigation ul.menu > li > a:active {
-	color: $regular_accent_color_2;
+	color: $regular_text_color;
+  border-color: $regular_accent_color_1;
 }
 .menu-item_description {
 	color: $regular_text_color;
@@ -14,7 +15,7 @@
 .main-navigation ul.menu > li.current_page_item > a,
 .main-navigation ul.menu > li.current-menu-item > a,
 .main-navigation ul.menu > li.current_page_ancestor > a:hover {
-	color: $regular_accent_color_1;
+	color: $regular_text_color;
 }
 .main-navigation ul ul a {
 	color: $regular_text_color;

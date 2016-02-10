@@ -576,7 +576,7 @@ function __tm_post_thumbnail( $linked = false, $sizes = array() ) {
 	}
 
 	else {
-		$size = 'ultra-small';
+		$size = 'small';
 		$link_class = sanitize_html_class( 'post-thumbnail--' . $size );
 		$size       = isset( $sizes[ $size ] ) ? esc_attr( $sizes[ $size ] ) : 'post-thumbnail';
 	}
@@ -1128,9 +1128,10 @@ function __tm_top_menu() {
  * @return void
  */
 function __tm_top_sign_register() {
-	echo "<span class='register-block'>";
-		wp_register('', '');
-	echo "<a href=' " . wp_login_url() . "' title='Login'>Login</a></span>";
+	echo "<div class='top-panel__register'>";
+	echo "<a href=' " . wp_login_url() . "' title='Login'>Login</a>";
+	wp_register('', '');
+	echo "</div>";
 
 }
 

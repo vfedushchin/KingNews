@@ -29,9 +29,9 @@
 			<div class="container">
 				<div <?php echo __tm_get_container_classes( array( 'top-panel__wrap' ) ); ?>><?php
 							__tm_top_message( '<div class="top-panel__message">%s</div>' );
+							__tm_top_sign_register();
 							__tm_top_search( '<div class="top-panel__search">%s</div>' );
 							__tm_top_menu();
-							__tm_top_sign_register();
 						?></div>
 			</div><!-- .container -->
 		</div><!-- .top-panel -->
