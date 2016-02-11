@@ -120,6 +120,7 @@
 
 .hentry {
 	position: relative;
+	overflow: hidden;
 	margin: 0 0 1.5em;
 	padding: 0px;
 	@include card;
