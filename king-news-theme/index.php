@@ -22,7 +22,13 @@ if ( have_posts() ) :
 	<?php
 	endif; ?>
 
+
+	<!-- title -->
+	<h2 class="title-line">Latest news</h2>
+
 	<div <?php king_news_posts_list_class(); ?>>
+
+
 
 	<?php /* Start the Loop */
 	while ( have_posts() ) : the_post();

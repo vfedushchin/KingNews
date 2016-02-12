@@ -11,11 +11,17 @@
 	.site-info__mid-box {
 		-webkit-order: 1;
 		order: 1;
-		-webkit-flex: 0 1 auto;
-		flex: 0 1 auto;
+		-webkit-flex: 10 1 auto;
+		flex: 10 1 auto;
 		-webkit-align-self: center;
 		align-self: center;
-		text-align: center;
+		text-align: left;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		@media (min-width: 767px) {
+		    margin-top: 23px;
+		    margin-bottom: 0;
+		}
 	}
 	.footer-logo {
 		-webkit-order: 0;
@@ -24,6 +30,7 @@
 		flex: 0 1 auto;
 		-webkit-align-self: center;
 		align-self: center;
+		padding-right: 13px;
 	}
 	.footer-copyright {
 		display: inline-block;

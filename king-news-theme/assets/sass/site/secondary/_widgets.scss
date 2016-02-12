@@ -1,7 +1,11 @@
 .widget {
-	margin: 0 0 10px;
+	margin: 0 0 30px;
 	@include media-breakpoint-up(lg) {
 		margin-bottom: 30px;
+
+		&.widget_search {
+			margin-bottom: 60px;
+		}
 	}
 	.sidebar-primary &,
 	.sidebar-secondary &,
@@ -10,11 +14,43 @@
 	.before-loop-area &,
 	.after-loop-area & {
 		@include card;
-		padding: 10px;
+		padding: 0px;
 		@include media-breakpoint-up(lg) {
-			padding:24px 28px;
+			padding:0;
 		}
+
+		/*search widget styles*/
+		&.widget_search {
+			padding: 10px 14px 5px;
+			@include media-breakpoint-up(lg) {
+				padding: 20px 30px;
+			}
+			background: #000;
+			color: #fff;
+			h4 {
+				color: #fff;
+				margin-bottom: 2px;
+			}
+
+			input {
+				border: none;
+				padding: 0px 20px;
+				font-size: 14px;
+				line-height: 50px;
+			}
+		}
+
+
+		/*subscribe widget styles*/
+		&.widget-subscribe {
+			padding: 20px 30px;
+			h4 {
+				margin-bottom: 8px;
+			}
+		}
+
 	}
+
 	select {
 		max-width: 100%;
 	}
@@ -24,3 +60,8 @@
 .widget.king_news.widget-subscribe {
 	background: $color__plane;
 }
+.site-footer .widget.king_news.widget-subscribe {
+	background: none;
+}
+
+

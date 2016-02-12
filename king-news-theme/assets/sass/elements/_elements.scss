@@ -39,4 +39,10 @@ img {
 	max-width: 100%; /* Adhere to container width. */
 }
 
+.clear {
+	@include clearfix();
+}
+
 @import "tables";
+
+

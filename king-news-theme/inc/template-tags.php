@@ -470,7 +470,7 @@ function king_news_blog_content() {
 			break;
 
 		case 'excerpt':
-			king_news_post_excerpt( array( 'length' => 45, 'more' => '&hellip;' ) );
+			king_news_post_excerpt( array( 'length' => 25, 'more' => '&hellip;' ) );
 			break;
 	}
 
@@ -535,7 +535,7 @@ function king_news_post_thumbnail( $linked = false, $sizes = array() ) {
 	$sizes = wp_parse_args( $sizes, array(
 		'ultra-small'     => '_tm-thumb-150-115',
 		'small'     => 'post-thumbnail',
-		'fullwidth' => '_tm-post-thumbnail-large',
+		'fullwidth' => '_tm-thumb-l',
 	) );
 
 	$linked_format = apply_filters(
@@ -659,6 +659,11 @@ function king_news_meta_date( $context = 'loop', $args = array() ) {
 		esc_attr( get_the_date( 'c' ) ),
 		esc_html( get_the_date() )
 	);
+
+	// output date for posts for example '2 days ago'
+	// printf( _x( '%s ago', '%s = human-readable time difference', '__tm' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) );
+	$time_string = sprintf( _x( '%s ago', '%s = human-readable time difference', '__tm' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) );
+
 
 	/**
 	 * Filter post date output format
@@ -1234,8 +1239,14 @@ function king_news_share_buttons( $context = 'loop', $args = array(), $config = 
 
 	endforeach;
 
-	printf(
+	/*printf(
 		'<div class="share-btns__list %1$s">%2$s</div>',
+		esc_attr( $config['custom_class'] ),
+		$share_buttons
+	);*/
+
+	printf(
+		'<div class="share-btns-main"><div class="share-btns__list %1$s">%2$s</div><i class="material-icons share-main-icon">share</i></div>',
 		esc_attr( $config['custom_class'] ),
 		$share_buttons
 	);

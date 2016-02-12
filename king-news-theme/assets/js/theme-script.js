@@ -364,6 +364,11 @@ $( "#main-menu > li > a" ).each(function( index ) {
 =============================================*/
 
 
+// add/remove class for showing share-list in posts
+$('.share-btns-main').hover(function(){
+    $(this).toggleClass('show-share-list');
+});
+
 
 
 

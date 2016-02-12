@@ -1,0 +1,16 @@
+#toTop {
+	color: $invert_link_color;
+	background: $regular_accent_color_1;
+	background: -webkit-linear-gradient(to right, $regular_accent_color_1 0%, @darken( $regular_accent_color_1, 10% ) 100%);
+	background: linear-gradient(to right, $regular_accent_color_1 0%, @darken( $regular_accent_color_1, 10% ) 100%);
+}
+#toTop:hover {
+	color: $invert_link_color;
+	background: $regular_accent_color_2;
+	background: -webkit-linear-gradient(to right, $regular_accent_color_2 0%, @darken( $regular_accent_color_2, 10% ) 100%);
+	background: linear-gradient(to right, $regular_accent_color_2 0%, @darken( $regular_accent_color_2, 10% ) 100%);
+}
+
+.tm-folding-cube .tm-cube:before {
+	background-color: $regular_accent_color_1;
+}

@@ -51,5 +51,9 @@
 		-ms-flex-align: start;
 		-webkit-align-items: flex-start;
 		align-items: flex-start;
+
+		@media (max-width: 767px) {
+		    flex-wrap: wrap;
+		}
 	}
 }

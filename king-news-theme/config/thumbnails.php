@@ -20,7 +20,7 @@ function _tm_register_image_sizes() {
 		return;
 	}
 
-	set_post_thumbnail_size( 370, 230, true );
+	set_post_thumbnail_size( 238, 182, true );
 
 	// Registers a new image sizes.
 	add_image_size( '_tm-thumb-s', 150, 150, true );

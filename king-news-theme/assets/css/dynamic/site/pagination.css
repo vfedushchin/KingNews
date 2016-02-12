@@ -1,22 +1,23 @@
 .pagination a.page-numbers {
-	color: $regular_accent_color_2;
+	color: $regular_text_color;
+	font-family: $h2_font_family;
 }
 .pagination a.page-numbers:hover,
 .pagination span.page-numbers.current {
-	color: $regular_accent_color_1;
-	background: $regular_accent_color_3;
+	color: $regular_accent_color_2;
+	background: $regular_text_color;
 }
 .pagination .page-numbers.next,
 .pagination .page-numbers.prev {
-	color: $invert_link_color;
-	background: $regular_accent_color_1;
-	background: -webkit-linear-gradient(to right, $regular_accent_color_1 0%, @darken( $regular_accent_color_1, 10% ) 100%);
-	background: linear-gradient(to right, $regular_accent_color_1 0%, @darken( $regular_accent_color_1, 10% ) 100%);
+	color: $regular_text_color;
+	font-family: $h3_font_family;
+}
+
+.pagination .page-numbers.next .material-icons, .pagination .page-numbers.prev .material-icons {
+	color: $regular_accent_color_3;
 }
 .pagination .page-numbers.next:hover,
 .pagination .page-numbers.prev:hover {
-	color: $invert_link_color;
-	background: $regular_accent_color_2;
-	background: -webkit-linear-gradient(to right, $regular_accent_color_2 0%, @darken( $regular_accent_color_2, 10% ) 100%);
-	background: linear-gradient(to right, $regular_accent_color_2 0%, @darken( $regular_accent_color_2, 10% ) 100%);
+	color: $regular_accent_color_2;
+	background: $regular_text_color;
 }

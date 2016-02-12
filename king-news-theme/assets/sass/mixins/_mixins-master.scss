@@ -16,12 +16,14 @@
 	margin-right: auto;
 }
 
+
 // Clearfix
-@mixin clearfix() {
+@mixin clearfix2() {
 	content: "";
 	display: table;
 	table-layout: fixed;
 }
+
 
 // Clear after (not all clearfix need this also)
 @mixin clearfix-after() {
@@ -112,4 +114,97 @@
 @mixin resizable($direction) {
 	resize: $direction; // Options: horizontal, vertical, both
 	overflow: auto; // Per CSS3 UI, `resize` only applies when `overflow` isn't `visible`
+}
+
+
+
+
+
+
+
+
+
+
+// Clearfix
+@mixin clearfix {
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+
+
+// Box Sizing
+@mixin box-sizing($bs) {
+  -moz-box-sizing: $bs;
+  -webkit-box-sizing: $bs;
+  box-sizing: $bs;
+}
+
+// Border Radius
+@mixin border-radius($border-radius) {
+  -webkit-border-radius: $border-radius;
+  -moz-border-radius: $border-radius;
+  border-radius: $border-radius;
+}
+
+
+
+
+// Transform
+@mixin transform($trfm) {
+  -moz-transform: $trfm;
+  -ms-transform: $trfm;
+  -o-transform: $trfm;
+  -webkit-transform: $trfm;
+  transform: $trfm;
+}
+
+// GRADIENTS
+// --------------------------------------------------
+
+@mixin gradient_vertical($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+    background-image: -webkit-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);  // Safari 5.1-6, Chrome 10+
+    background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+    background-repeat: repeat-x;
+}
+
+// Triangle
+@mixin triangle($dir, $w, $h, $clr) {
+  width: 0;
+  height: 0;
+  border-style: solid;
+
+  @if $dir == top {
+    border-width: 0 $w/2 $h $w/2;
+    border-color: transparent transparent $clr transparent;
+  } @else if $dir == bottom {
+    border-width: $h $w/2 0 $w/2;
+    border-color: $clr transparent transparent transparent;
+  } @else if $dir == left {
+    border-width: $h/2 $w $h/2 0;
+    border-color: transparent $clr transparent transparent;
+  } @else if $dir == right {
+    border-width: $h/2 0 $h/2 $w;
+    border-color: transparent transparent transparent $clr;
+  } @else if $dir == top_left {
+    border-width: $w $w 0 0;
+    border-color: $clr transparent transparent transparent;
+  } @else if $dir == top_right {
+    border-width: 0 $w $w 0;
+    border-color: transparent $clr transparent transparent;
+  } @else if $dir == bottom_right {
+    border-width: 0 0 $w $w;
+    border-color: transparent transparent $clr transparent;
+  } @else if $dir == bottom_left {
+    border-width: $w 0 0 $w;
+    border-color: transparent transparent transparent $clr;
+  }
 }

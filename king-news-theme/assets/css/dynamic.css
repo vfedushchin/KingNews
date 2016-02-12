@@ -166,3 +166,15 @@ mark, ins {
 
 a {transition: .4s all ease;}
 *:focus, a:focus {outline: none;}
+
+.footer-area-wrap .widget-title{
+	font-family: $h3_font_family;
+}
+
+.footer-area-wrap .widget-subscribe .widget-title{
+	font-family: $h2_font_family;
+}
+
+.follow-block__message, .subscribe-block__message {
+	font-family: $body_font_family;;
+}

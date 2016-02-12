@@ -1,6 +1,7 @@
 .site {
 	@include hyphens(auto);
 	&-main {
+		overflow: hidden;
 		.single-post &,
 		.page & {
 			padding: 10px;
@@ -48,3 +49,4 @@
 ## screenshort for production
 --------------------------------------------------------------*/
 @import "_screen_preview.scss";
+

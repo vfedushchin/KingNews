@@ -137,7 +137,7 @@
 
 .hentry {
 	position: relative;
-	margin: 0 0 1.5em;
+	margin: 0 0 1.85em;
 	@include card;
 	.single-post &,
 	.page & {
@@ -162,6 +162,7 @@
 		}
 		@include media-breakpoint-up(lg) {
 			/*font-size: 30px;*/
+			margin-bottom: 5px;
 		}
 		.posts-list--grid-2-cols &,
 		.posts-list--grid-3-cols &,
@@ -173,6 +174,7 @@
 		}
 	}
 	&-meta {
+		font-size: 14px;
 		.entry-summary + &,
 		.entry-content + & {
 			margin-top: 15px;
@@ -189,6 +191,7 @@
 	}
 	&-footer {
 		position: relative;
+		display: none;
 		.posts-list & {
 			margin: 5px 0 0;
 		}
@@ -283,9 +286,10 @@
 			}
 		}
 	}
+	&-author,
 	&__date,
 	&__comments {
-		margin-right: 30px;
+		margin-right: 14px;
 	}
 	&__date,
 	&__comments,
@@ -319,7 +323,7 @@
 .page-content,
 .entry-content,
 .entry-summary {
-	margin: 12px 0 0;
+	margin: 5px 0 0;
 }
 
 .page-links {
@@ -344,5 +348,15 @@
 				left: 10px;
 			}
 		}
+	}
+}
+
+
+.entry-meta-sharing {
+	margin-top: 11px;
+}
+.post-body-right {
+	@include media-breakpoint-up(lg) {
+	  margin-top: -7px;
 	}
 }

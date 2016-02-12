@@ -15,7 +15,15 @@
 		vertical-align: top;
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
-		width: calc(100% - 50px);
+		width: calc(100% - 119px);
+		margin-right: 8px;
+
+		@media (min-width: 768px) and (max-width: 1240px) {
+			width: 100%;
+			margin-right: 0;
+			margin-bottom: 10px;
+		}
+
 		box-sizing: border-box;
 		.top-panel & {
 			background: none;
@@ -33,6 +41,17 @@
 		width: 50px;
 		padding-left: 0;
 		padding-right: 0;
+		text-align: center;
+
+		.widget & {
+			width: 111px;
+			&:before {
+				content: 'Search';
+			}
+			i.material-icons {
+				display: none;
+			}
+		}
 		i.material-icons {
 			margin: 0 auto;
 			display: block;
