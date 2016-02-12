@@ -108,6 +108,8 @@
 	background: #fff;
 	/*box-shadow: 0 5px 32px rgba(103,122,141,.17);*/
 	border-radius: $border__radius;
+  position: relative;
+  z-index: 0;
 }
 
 // Resize anything

@@ -1,0 +1,6 @@
+__Tm => King_News
+__tm => king_news
+__TM => KING_NEWS
+
+Files
+tm- => king-news-

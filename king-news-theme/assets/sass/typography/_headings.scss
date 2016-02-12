@@ -2,19 +2,20 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 10px 0;
 }
 
-.title-line {
+.title-line, .widget-area:not(.footer-area) .widget:not(.widget-subscribe) .widget-title {
   position: relative;
-  background: #fff;
+  /*background: red;*/
   display: inline-block;
   padding-right: 11px;
+  
 
-  &:before {
+  &:after {
     position: absolute;
     display: inline-block;
     content: '';
     width: 2000px;
     height: 1px;
-    left: 0;
+    left: 100%;
     bottom: 6px;
     background: #000;
     z-index: -1;
@@ -25,3 +26,4 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h2 + .posts-list { margin-top: 30px; }
+

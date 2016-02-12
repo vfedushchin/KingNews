@@ -153,7 +153,7 @@ function king_news_get_customizer_options() {
 			'breadcrumbs_page_title' => array(
 				'title'   => esc_html__( 'Enable page title in breadcrumbs area', 'king_news' ),
 				'section' => 'breadcrumbs',
-				'default' => true,
+				'default' => false,
 				'field'   => 'checkbox',
 				'type'    => 'control',
 			),
