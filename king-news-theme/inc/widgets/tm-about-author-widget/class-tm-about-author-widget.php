@@ -1,26 +1,26 @@
 <?php
 /**
- * Widget __tm about author
+ * Widget king_news about author
  *
- * @package __tm
+ * @package king_news
  */
 
-class __TM_About_Author_Widget extends Cherry_Abstract_Widget {
+class KING_NEWS_About_Author_Widget extends Cherry_Abstract_Widget {
 
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
 
-		$this->widget_cssclass    = '__tm widget-about-author';
-		$this->widget_description = __( 'Display an information about selected user.', '__tm' );
-		$this->widget_id          = '__tm_widget_about_author';
-		$this->widget_name        = __( '__TM About Author', '__tm' );
+		$this->widget_cssclass    = 'king_news widget-about-author';
+		$this->widget_description = __( 'Display an information about selected user.', 'king_news' );
+		$this->widget_id          = 'king_news_widget_about_author';
+		$this->widget_name        = __( 'KING_NEWS About Author', 'king_news' );
 		$this->settings           = array(
 			'title'  => array(
 				'type'  => 'text',
-				'value' => __( 'About Author', '__tm' ),
-				'label' => __( 'Title', '__tm' ),
+				'value' => __( 'About Author', 'king_news' ),
+				'label' => __( 'Title', 'king_news' ),
 			),
 			'user_id' => array(
 				'type'             => 'select',
@@ -28,7 +28,7 @@ class __TM_About_Author_Widget extends Cherry_Abstract_Widget {
 				'value'            => '',
 				'options_callback' => array( $this, 'get_users_list' ),
 				'options'          => false,
-				'label'            => __( 'Select user to show', '__tm' ),
+				'label'            => __( 'Select user to show', 'king_news' ),
 			),
 			'avatar_size' => array(
 				'type'       => 'slider',
@@ -36,25 +36,25 @@ class __TM_About_Author_Widget extends Cherry_Abstract_Widget {
 				'min_value'  => 0,
 				'value'      => 250,
 				'step_value' => 1,
-				'label'      => __( 'Author avatar size (set 0 to hide avatar, applied only for Gravatar)', '__tm' ),
+				'label'      => __( 'Author avatar size (set 0 to hide avatar, applied only for Gravatar)', 'king_news' ),
 			),
 			'avatar_img' => array(
 				'type'               => 'media',
 				'value'              => '',
 				'multi_upload'       => false,
 				'library_type'       => 'image',
-				'upload_button_text' => __( 'Select image', '__tm' ),
-				'label'              => __( 'Custom avatar image (override default user avatar)', '__tm' ),
+				'upload_button_text' => __( 'Select image', 'king_news' ),
+				'label'              => __( 'Custom avatar image (override default user avatar)', 'king_news' ),
 			),
 			'link' => array(
 				'type'  => 'text',
 				'value' => '',
-				'label' => __( 'Link (leave empty to hide)', '__tm' ),
+				'label' => __( 'Link (leave empty to hide)', 'king_news' ),
 			),
 			'link_text' => array(
 				'type'  => 'text',
-				'value' => __( 'Read More', '__tm' ),
-				'label' => __( 'Link label', '__tm' ),
+				'value' => __( 'Read More', 'king_news' ),
+				'label' => __( 'Link label', 'king_news' ),
 			),
 		);
 
@@ -73,7 +73,7 @@ class __TM_About_Author_Widget extends Cherry_Abstract_Widget {
 
 		$users = get_users();
 
-		$result = array( '0' => __( 'Select a user', '__tm' ) );
+		$result = array( '0' => __( 'Select a user', 'king_news' ) );
 
 		if ( empty( $users ) ) {
 			return array();
@@ -196,7 +196,7 @@ class __TM_About_Author_Widget extends Cherry_Abstract_Widget {
 	}
 }
 
-add_action( 'widgets_init', '__tm_register_about_author_widgets' );
-function __tm_register_about_author_widgets() {
-	register_widget( '__TM_About_Author_Widget' );
+add_action( 'widgets_init', 'king_news_register_about_author_widgets' );
+function king_news_register_about_author_widgets() {
+	register_widget( 'KING_NEWS_About_Author_Widget' );
 }

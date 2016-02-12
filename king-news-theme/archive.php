@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package __tm
+ * @package king_news
  */
 
 if ( have_posts() ) : ?>

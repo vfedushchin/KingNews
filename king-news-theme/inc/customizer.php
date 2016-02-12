@@ -1,8 +1,8 @@
 <?php
 /**
- * __Tm Theme Customizer.
+ * King_News Theme Customizer.
  *
- * @package __tm
+ * @package king_news
  */
 
 /**
@@ -11,92 +11,107 @@
  * @since  1.0.0
  * @return array
  */
-function __tm_get_customizer_options() {
+function king_news_get_customizer_options() {
 	/**
 	 * Filter a holder for Customizer options (for theme/plugin developer customization).
 	 *
 	 * @since 1.0.0
 	 */
-	return apply_filters( '__tm_get_customizer_options' , array(
-		'prefix'     => '__tm',
+	return apply_filters( 'king_news_get_customizer_options' , array(
+		'prefix'     => 'king_news',
 		'capability' => 'edit_theme_options',
 		'type'       => 'theme_mod',
 		'options'    => array(
 
 			/** 'Site Indentity' section */
 			'show_tagline' => array(
-				'title'    => esc_html__( 'Show tagline after logo', '__tm' ),
+				'title'    => esc_html__( 'Show tagline after logo', 'king_news' ),
 				'section'  => 'title_tagline',
 				'priority' => 60,
 				'default'  => false,
 				'field'    => 'checkbox',
 				'type'     => 'control',
 			),
+			'totop_visibility' => array(
+				'title'   => esc_html__( 'Enable topTop button', 'king_news' ),
+				'section' => 'title_tagline',
+				'priority' => 61,
+				'default' => true,
+				'field'   => 'checkbox',
+				'type'    => 'control',
+			),
+			'page_preloader' => array(
+				'title'    => esc_html__( 'Show preloader when open a page', 'king_news' ),
+				'section'  => 'title_tagline',
+				'priority' => 62,
+				'default'  => true,
+				'field'    => 'checkbox',
+				'type'     => 'control',
+			),
 
 			/** `Logo & Favicon` section */
 			'logo_favicon' => array(
-				'title'       => esc_html__( 'Logo &amp; Favicon', '__tm' ),
-				'description' => esc_html__( 'Description', '__tm' ),
+				'title'       => esc_html__( 'Logo &amp; Favicon', 'king_news' ),
+				'description' => esc_html__( 'Description', 'king_news' ),
 				'priority'    => 25,
 				'type'        => 'section',
 			),
 			'header_logo_type' => array(
-				'title'   => esc_html__( 'Logo Type', '__tm' ),
+				'title'   => esc_html__( 'Logo Type', 'king_news' ),
 				'section' => 'logo_favicon',
 				'default' => 'image',
 				'field'   => 'radio',
 				'choices' => array(
-					'image' => esc_html__( 'Image', '__tm' ),
-					'text'  => esc_html__( 'Text', '__tm' ),
+					'image' => esc_html__( 'Image', 'king_news' ),
+					'text'  => esc_html__( 'Text', 'king_news' ),
 				),
 				'type' => 'control',
-
 			),
 			'header_logo_url' => array(
-				'title'           => esc_html__( 'Logo Upload', '__tm' ),
-				'description'     => esc_html__( 'Logo upload description', '__tm' ),
+				'title'           => esc_html__( 'Logo Upload', 'king_news' ),
+				'description'     => esc_html__( 'Logo upload description', 'king_news' ),
 				'section'         => 'logo_favicon',
 				'default'         => get_stylesheet_directory_uri() . '/assets/images/logo.png',
 				'field'           => 'image',
 				'type'            => 'control',
-				'active_callback' => '__tm_is_header_logo_image',
+				'active_callback' => 'king_news_is_header_logo_image',
 			),
 			'retina_header_logo_url' => array(
-				'title'           => esc_html__( 'Retina Logo Upload', '__tm' ),
-				'description'     => esc_html__( 'Upload logo for retina-ready devices', '__tm' ),
+				'title'           => esc_html__( 'Retina Logo Upload', 'king_news' ),
+				'description'     => esc_html__( 'Upload logo for retina-ready devices', 'king_news' ),
 				'section'         => 'logo_favicon',
 				'field'           => 'image',
 				'type'            => 'control',
-				'active_callback' => '__tm_is_header_logo_image',
+				'active_callback' => 'king_news_is_header_logo_image',
 			),
 			'header_logo_font_family' => array(
-				'title'           => esc_html__( 'Font Family', '__tm' ),
+				'title'           => esc_html__( 'Font Family', 'king_news' ),
 				'section'         => 'logo_favicon',
-				'default'         => 'Noto Sans',
+				'default'         => 'Montserrat',
 				'field'           => 'fonts',
 				'type'            => 'control',
-				'active_callback' => '__tm_is_header_logo_text',
+				'active_callback' => 'king_news_is_header_logo_text',
 			),
 			'header_logo_font_style' => array(
-				'title'           => esc_html__( 'Font Style', '__tm' ),
+				'title'           => esc_html__( 'Font Style', 'king_news' ),
 				'section'         => 'logo_favicon',
 				'default'         => 'normal',
 				'field'           => 'select',
-				'choices'         => __tm_get_font_styles(),
+				'choices'         => king_news_get_font_styles(),
 				'type'            => 'control',
-				'active_callback' => '__tm_is_header_logo_text',
+				'active_callback' => 'king_news_is_header_logo_text',
 			),
 			'header_logo_font_weight' => array(
-				'title'           => esc_html__( 'Font Weight', '__tm' ),
+				'title'           => esc_html__( 'Font Weight', 'king_news' ),
 				'section'         => 'logo_favicon',
 				'default'         => '700',
 				'field'           => 'select',
-				'choices'         => __tm_get_font_weight(),
+				'choices'         => king_news_get_font_weight(),
 				'type'            => 'control',
-				'active_callback' => '__tm_is_header_logo_text',
+				'active_callback' => 'king_news_is_header_logo_text',
 			),
 			'header_logo_font_size' => array(
-				'title'           => esc_html__( 'Font Size, px', '__tm' ),
+				'title'           => esc_html__( 'Font Size, px', 'king_news' ),
 				'section'         => 'logo_favicon',
 				'default'         => '26',
 				'field'           => 'number',
@@ -106,153 +121,152 @@ function __tm_get_customizer_options() {
 					'step' => 1,
 				),
 				'type'            => 'control',
-				'active_callback' => '__tm_is_header_logo_text',
+				'active_callback' => 'king_news_is_header_logo_text',
 			),
 			'header_logo_character_set' => array(
-				'title'           => esc_html__( 'Character Set', '__tm' ),
+				'title'           => esc_html__( 'Character Set', 'king_news' ),
 				'section'         => 'logo_favicon',
 				'default'         => 'latin',
 				'field'           => 'select',
-				'choices'         => __tm_get_character_sets(),
+				'choices'         => king_news_get_character_sets(),
 				'type'            => 'control',
-				'active_callback' => '__tm_is_header_logo_text',
-			),
-			'page_preloader' => array(
-				'title'    => esc_html__( 'Show preloader when open a page', '__tm' ),
-				'section'  => 'logo_favicon',
-				'priority' => 75,
-				'default'  => true,
-				'field'    => 'checkbox',
-				'type'     => 'control',
+				'active_callback' => 'king_news_is_header_logo_text',
 			),
 
 			/** `Breadcrumbs` section */
 			'breadcrumbs' => array(
-				'title'    => esc_html__( 'Breadcrumbs', '__tm' ),
+				'title'    => esc_html__( 'Breadcrumbs', 'king_news' ),
 				'priority' => 30,
 				'type'     => 'section',
 			),
 			'breadcrumbs_path_type' => array(
-				'title'   => esc_html__( 'Show full/minified breadcrumbs path', '__tm' ),
+				'title'   => esc_html__( 'Show full/minified breadcrumbs path', 'king_news' ),
 				'section' => 'breadcrumbs',
 				'default' => 'full',
 				'field'   => 'select',
 				'choices' => array(
-					'full'     => esc_html__( 'Full', '__tm' ),
-					'minified' => esc_html__( 'Minified', '__tm' ),
+					'full'     => esc_html__( 'Full', 'king_news' ),
+					'minified' => esc_html__( 'Minified', 'king_news' ),
 				),
 				'type'    => 'control',
 			),
 			'breadcrumbs_page_title' => array(
-				'title'   => esc_html__( 'Enable page title in breadcrumbs area', '__tm' ),
+				'title'   => esc_html__( 'Enable page title in breadcrumbs area', 'king_news' ),
 				'section' => 'breadcrumbs',
 				'default' => true,
 				'field'   => 'checkbox',
 				'type'    => 'control',
 			),
 			'breadcrumbs_visibillity' => array(
-				'title'   => esc_html__( 'Enable Breadcrumbs', '__tm' ),
+				'title'   => esc_html__( 'Enable Breadcrumbs', 'king_news' ),
 				'section' => 'breadcrumbs',
 				'default' => true,
+				'field'   => 'checkbox',
+				'type'    => 'control',
+			),
+			'breadcrumbs_front_visibillity' => array(
+				'title'   => esc_html__( 'Enable Breadcrumbs on front page', 'king_news' ),
+				'section' => 'breadcrumbs',
+				'default' => false,
 				'field'   => 'checkbox',
 				'type'    => 'control',
 			),
 
 			/** `Color Scheme` panel */
 			'color_scheme' => array(
-				'title'       => esc_html__( 'Color Scheme', '__tm' ),
-				'description' => esc_html__( 'Configure Color Scheme', '__tm' ),
+				'title'       => esc_html__( 'Color Scheme', 'king_news' ),
+				'description' => esc_html__( 'Configure Color Scheme', 'king_news' ),
 				'priority'    => 40,
 				'type'        => 'panel',
 			),
 
 			/** `Regular scheme` section */
 			'regular_scheme' => array(
-				'title'       => esc_html__( 'Regular scheme', '__tm' ),
-				'description' => esc_html__( 'Some description for the options in the Regular scheme', '__tm' ),
+				'title'       => esc_html__( 'Regular scheme', 'king_news' ),
+				'description' => esc_html__( 'Some description for the options in the Regular scheme', 'king_news' ),
 				'priority'    => 1,
 				'panel'       => 'color_scheme',
 				'type'        => 'section',
 			),
 			'regular_accent_color_1' => array(
-				'title'   => esc_html__( 'Accent color (1)', '__tm' ),
+				'title'   => esc_html__( 'Accent color (1)', 'king_news' ),
 				'section' => 'regular_scheme',
 				'default' => '#02afff',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_accent_color_2' => array(
-				'title'   => esc_html__( 'Accent color (2)', '__tm' ),
+				'title'   => esc_html__( 'Accent color (2)', 'king_news' ),
 				'section' => 'regular_scheme',
 				'default' => '#fff602',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_accent_color_3' => array(
-				'title'   => esc_html__( 'Accent color (3)', '__tm' ),
+				'title'   => esc_html__( 'Accent color (3)', 'king_news' ),
 				'section' => 'regular_scheme',
-				'default' => '#eef4fa',
+				'default' => '#999999',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_text_color' => array(
-				'title'   => esc_html__( 'Text color', '__tm' ),
+				'title'   => esc_html__( 'Text color', 'king_news' ),
 				'section' => 'regular_scheme',
 				'default' => '#000000',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_link_color' => array(
-				'title'   => esc_html__( 'Link color', '__tm' ),
+				'title'   => esc_html__( 'Link color', 'king_news' ),
 				'section' => 'regular_scheme',
-				'default' => '#000000',
+				'default' => '#02afff',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_link_hover_color' => array(
-				'title'   => esc_html__( 'Link hover color', '__tm' ),
+				'title'   => esc_html__( 'Link hover color', 'king_news' ),
 				'section' => 'regular_scheme',
 				'default' => '#000000',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_h1_color' => array(
-				'title'   => esc_html__( 'H1 color', '__tm' ),
+				'title'   => esc_html__( 'H1 color', 'king_news' ),
 				'section' => 'regular_scheme',
 				'default' => '#000000',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_h2_color' => array(
-				'title'   => esc_html__( 'H2 color', '__tm' ),
+				'title'   => esc_html__( 'H2 color', 'king_news' ),
 				'section' => 'regular_scheme',
 				'default' => '#000000',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_h3_color' => array(
-				'title'   => esc_html__( 'H3 color', '__tm' ),
+				'title'   => esc_html__( 'H3 color', 'king_news' ),
 				'section' => 'regular_scheme',
 				'default' => '#000000',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_h4_color' => array(
-				'title'   => esc_html__( 'H4 color', '__tm' ),
+				'title'   => esc_html__( 'H4 color', 'king_news' ),
 				'section' => 'regular_scheme',
 				'default' => '#000000',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_h5_color' => array(
-				'title'   => esc_html__( 'H5 color', '__tm' ),
+				'title'   => esc_html__( 'H5 color', 'king_news' ),
 				'section' => 'regular_scheme',
 				'default' => '#000000',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'regular_h6_color' => array(
-				'title'   => esc_html__( 'H6 color', '__tm' ),
+				'title'   => esc_html__( 'H6 color', 'king_news' ),
 				'section' => 'regular_scheme',
 				'default' => '#000000',
 				'field'   => 'hex_color',
@@ -261,91 +275,91 @@ function __tm_get_customizer_options() {
 
 			/** `Invert scheme` section */
 			'invert_scheme' => array(
-				'title'       => esc_html__( 'Invert scheme', '__tm' ),
-				'description' => esc_html__( 'Some description for the options in the Invert scheme', '__tm' ),
+				'title'       => esc_html__( 'Invert scheme', 'king_news' ),
+				'description' => esc_html__( 'Some description for the options in the Invert scheme', 'king_news' ),
 				'priority'    => 1,
 				'panel'       => 'color_scheme',
 				'type'        => 'section',
 			),
 			'invert_accent_color_1' => array(
-				'title'   => esc_html__( 'Accent color (1)', '__tm' ),
+				'title'   => esc_html__( 'Accent color (1)', 'king_news' ),
 				'section' => 'invert_scheme',
 				'default' => '',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'invert_accent_color_2' => array(
-				'title'   => esc_html__( 'Accent color (2)', '__tm' ),
+				'title'   => esc_html__( 'Accent color (2)', 'king_news' ),
 				'section' => 'invert_scheme',
 				'default' => '',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'invert_accent_color_3' => array(
-				'title'   => esc_html__( 'Accent color (3)', '__tm' ),
+				'title'   => esc_html__( 'Accent color (3)', 'king_news' ),
 				'section' => 'invert_scheme',
 				'default' => '',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'invert_text_color' => array(
-				'title'   => esc_html__( 'Text color', '__tm' ),
+				'title'   => esc_html__( 'Text color', 'king_news' ),
 				'section' => 'invert_scheme',
 				'default' => '#ffffff',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'invert_link_color' => array(
-				'title'   => esc_html__( 'Link color', '__tm' ),
+				'title'   => esc_html__( 'Link color', 'king_news' ),
 				'section' => 'invert_scheme',
 				'default' => '#ffffff',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'invert_link_hover_color' => array(
-				'title'   => esc_html__( 'Link hover color', '__tm' ),
+				'title'   => esc_html__( 'Link hover color', 'king_news' ),
 				'section' => 'invert_scheme',
 				'default' => '#ffffff',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'invert_h1_color' => array(
-				'title'   => esc_html__( 'H1 color', '__tm' ),
+				'title'   => esc_html__( 'H1 color', 'king_news' ),
 				'section' => 'invert_scheme',
 				'default' => '#ffffff',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'invert_h2_color' => array(
-				'title'   => esc_html__( 'H2 color', '__tm' ),
+				'title'   => esc_html__( 'H2 color', 'king_news' ),
 				'section' => 'invert_scheme',
 				'default' => '#ffffff',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'invert_h3_color' => array(
-				'title'   => esc_html__( 'H3 color', '__tm' ),
+				'title'   => esc_html__( 'H3 color', 'king_news' ),
 				'section' => 'invert_scheme',
 				'default' => '#ffffff',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'invert_h4_color' => array(
-				'title'   => esc_html__( 'H4 color', '__tm' ),
+				'title'   => esc_html__( 'H4 color', 'king_news' ),
 				'section' => 'invert_scheme',
 				'default' => '#ffffff',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'invert_h5_color' => array(
-				'title'   => esc_html__( 'H5 color', '__tm' ),
+				'title'   => esc_html__( 'H5 color', 'king_news' ),
 				'section' => 'invert_scheme',
 				'default' => '#ffffff',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'invert_h6_color' => array(
-				'title'   => esc_html__( 'H6 color', '__tm' ),
+				'title'   => esc_html__( 'H6 color', 'king_news' ),
 				'section' => 'invert_scheme',
 				'default' => '#ffffff',
 				'field'   => 'hex_color',
@@ -354,47 +368,47 @@ function __tm_get_customizer_options() {
 
 			/** `Typography Settings` panel */
 			'typography' => array(
-				'title'       => esc_html__( 'Typography', '__tm' ),
-				'description' => esc_html__( 'Configure typography settings', '__tm' ),
+				'title'       => esc_html__( 'Typography', 'king_news' ),
+				'description' => esc_html__( 'Configure typography settings', 'king_news' ),
 				'priority'    => 45,
 				'type'        => 'panel',
 			),
 
-			/** `Body text` section */
+/** `Body text` section */
 			'body_typography' => array(
-				'title'       => esc_html__( 'Body text', '__tm' ),
-				'description' => esc_html__( 'Some description for the options in the Body text', '__tm' ),
+				'title'       => esc_html__( 'Body text', 'king_news' ),
+				'description' => esc_html__( 'Some description for the options in the Body text', 'king_news' ),
 				'priority'    => 5,
 				'panel'       => 'typography',
 				'type'        => 'section',
 			),
 			'body_font_family' => array(
-				'title'   => esc_html__( 'Font Family', '__tm' ),
+				'title'   => esc_html__( 'Font Family', 'king_news' ),
 				'section' => 'body_typography',
-				'default' => 'Noto Sans',
+				'default' => 'Roboto',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
 			'body_font_style' => array(
-				'title'   => esc_html__( 'Font Style', '__tm' ),
+				'title'   => esc_html__( 'Font Style', 'king_news' ),
 				'section' => 'body_typography',
 				'default' => 'normal',
 				'field'   => 'select',
-				'choices' => __tm_get_font_styles(),
+				'choices' => king_news_get_font_styles(),
 				'type'    => 'control',
 			),
 			'body_font_weight' => array(
-				'title'   => esc_html__( 'Font Weight', '__tm' ),
+				'title'   => esc_html__( 'Font Weight', 'king_news' ),
 				'section' => 'body_typography',
-				'default' => '400',
+				'default' => '300',
 				'field'   => 'select',
-				'choices' => __tm_get_font_weight(),
+				'choices' => king_news_get_font_weight(),
 				'type'    => 'control',
 			),
 			'body_font_size' => array(
-				'title'       => esc_html__( 'Font Size, px', '__tm' ),
+				'title'       => esc_html__( 'Font Size, px', 'king_news' ),
 				'section'     => 'body_typography',
-				'default'     => '14',
+				'default'     => '16',
 				'field'       => 'number',
 				'input_attrs' => array(
 					'min'  => 6,
@@ -404,10 +418,10 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'body_line_height' => array(
-				'title'       => esc_html__( 'Line Height', '__tm' ),
-				'description' => esc_html__( 'Relative to the font-size of the element', '__tm' ),
+				'title'       => esc_html__( 'Line Height', 'king_news' ),
+				'description' => esc_html__( 'Relative to the font-size of the element', 'king_news' ),
 				'section'     => 'body_typography',
-				'default'     => '1.5',
+				'default'     => '1.375',
 				'field'       => 'number',
 				'input_attrs' => array(
 					'min'  => 1.0,
@@ -417,7 +431,7 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'body_letter_spacing' => array(
-				'title'       => esc_html__( 'Letter Spacing, px', '__tm' ),
+				'title'       => esc_html__( 'Letter Spacing, px', 'king_news' ),
 				'section'     => 'body_typography',
 				'default'     => '0',
 				'field'       => 'number',
@@ -429,55 +443,55 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'body_character_set' => array(
-				'title'   => esc_html__( 'Character Set', '__tm' ),
+				'title'   => esc_html__( 'Character Set', 'king_news' ),
 				'section' => 'body_typography',
 				'default' => 'latin',
 				'field'   => 'select',
-				'choices' => __tm_get_character_sets(),
+				'choices' => king_news_get_character_sets(),
 				'type'    => 'control',
 			),
 			'body_text_align' => array(
-				'title'   => esc_html__( 'Text Align', '__tm' ),
+				'title'   => esc_html__( 'Text Align', 'king_news' ),
 				'section' => 'body_typography',
 				'default' => 'left',
 				'field'   => 'select',
-				'choices' => __tm_get_text_aligns(),
+				'choices' => king_news_get_text_aligns(),
 				'type'    => 'control',
 			),
 
 			/** `H1 Heading` section */
 			'h1_typography' => array(
-				'title'       => esc_html__( 'H1 Heading', '__tm' ),
-				'description' => esc_html__( 'Some description for the options in the H1 Heading', '__tm' ),
+				'title'       => esc_html__( 'H1 Heading', 'king_news' ),
+				'description' => esc_html__( 'Some description for the options in the H1 Heading', 'king_news' ),
 				'priority'    => 10,
 				'panel'       => 'typography',
 				'type'        => 'section',
 			),
 			'h1_font_family' => array(
-				'title'   => esc_html__( 'Font Family', '__tm' ),
+				'title'   => esc_html__( 'Font Family', 'king_news' ),
 				'section' => 'h1_typography',
 				'default' => 'Noto Sans',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
 			'h1_font_style' => array(
-				'title'   => esc_html__( 'Font Style', '__tm' ),
+				'title'   => esc_html__( 'Font Style', 'king_news' ),
 				'section' => 'h1_typography',
 				'default' => 'normal',
 				'field'   => 'select',
-				'choices' => __tm_get_font_styles(),
+				'choices' => king_news_get_font_styles(),
 				'type'    => 'control',
 			),
 			'h1_font_weight' => array(
-				'title'   => esc_html__( 'Font Weight', '__tm' ),
+				'title'   => esc_html__( 'Font Weight', 'king_news' ),
 				'section' => 'h1_typography',
 				'default' => '700',
 				'field'   => 'select',
-				'choices' => __tm_get_font_weight(),
+				'choices' => king_news_get_font_weight(),
 				'type'    => 'control',
 			),
 			'h1_font_size' => array(
-				'title'       => esc_html__( 'Font Size, px', '__tm' ),
+				'title'       => esc_html__( 'Font Size, px', 'king_news' ),
 				'section'     => 'h1_typography',
 				'default'     => '50',
 				'field'       => 'number',
@@ -489,8 +503,8 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'h1_line_height' => array(
-				'title'       => esc_html__( 'Line Height', '__tm' ),
-				'description' => esc_html__( 'Relative to the font-size of the element', '__tm' ),
+				'title'       => esc_html__( 'Line Height', 'king_news' ),
+				'description' => esc_html__( 'Relative to the font-size of the element', 'king_news' ),
 				'section'     => 'h1_typography',
 				'default'     => '1.1',
 				'field'       => 'number',
@@ -502,7 +516,7 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'h1_letter_spacing' => array(
-				'title'       => esc_html__( 'Letter Spacing, px', '__tm' ),
+				'title'       => esc_html__( 'Letter Spacing, px', 'king_news' ),
 				'section'     => 'h1_typography',
 				'default'     => '0',
 				'field'       => 'number',
@@ -514,55 +528,55 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'h1_character_set' => array(
-				'title'   => esc_html__( 'Character Set', '__tm' ),
+				'title'   => esc_html__( 'Character Set', 'king_news' ),
 				'section' => 'h1_typography',
 				'default' => 'latin',
 				'field'   => 'select',
-				'choices' => __tm_get_character_sets(),
+				'choices' => king_news_get_character_sets(),
 				'type'    => 'control',
 			),
 			'h1_text_align' => array(
-				'title'   => esc_html__( 'Text Align', '__tm' ),
+				'title'   => esc_html__( 'Text Align', 'king_news' ),
 				'section' => 'h1_typography',
 				'default' => 'inherit',
 				'field'   => 'select',
-				'choices' => __tm_get_text_aligns(),
+				'choices' => king_news_get_text_aligns(),
 				'type'    => 'control',
 			),
 
 			/** `H2 Heading` section */
 			'h2_typography' => array(
-				'title'       => esc_html__( 'H2 Heading', '__tm' ),
-				'description' => esc_html__( 'Some description for the options in the H2 Heading', '__tm' ),
+				'title'       => esc_html__( 'H2 Heading', 'king_news' ),
+				'description' => esc_html__( 'Some description for the options in the H2 Heading', 'king_news' ),
 				'priority'    => 15,
 				'panel'       => 'typography',
 				'type'        => 'section',
 			),
 			'h2_font_family' => array(
-				'title'   => esc_html__( 'Font Family', '__tm' ),
+				'title'   => esc_html__( 'Font Family', 'king_news' ),
 				'section' => 'h2_typography',
 				'default' => 'Noto Serif',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
 			'h2_font_style' => array(
-				'title'   => esc_html__( 'Font Style', '__tm' ),
+				'title'   => esc_html__( 'Font Style', 'king_news' ),
 				'section' => 'h2_typography',
 				'default' => 'italic',
 				'field'   => 'select',
-				'choices' => __tm_get_font_styles(),
+				'choices' => king_news_get_font_styles(),
 				'type'    => 'control',
 			),
 			'h2_font_weight' => array(
-				'title'   => esc_html__( 'Font Weight', '__tm' ),
+				'title'   => esc_html__( 'Font Weight', 'king_news' ),
 				'section' => 'h2_typography',
 				'default' => '400',
 				'field'   => 'select',
-				'choices' => __tm_get_font_weight(),
+				'choices' => king_news_get_font_weight(),
 				'type'    => 'control',
 			),
 			'h2_font_size' => array(
-				'title'       => esc_html__( 'Font Size, px', '__tm' ),
+				'title'       => esc_html__( 'Font Size, px', 'king_news' ),
 				'section'     => 'h2_typography',
 				'default'     => '40',
 				'field'       => 'number',
@@ -574,8 +588,8 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'h2_line_height' => array(
-				'title'       => esc_html__( 'Line Height', '__tm' ),
-				'description' => esc_html__( 'Relative to the font-size of the element', '__tm' ),
+				'title'       => esc_html__( 'Line Height', 'king_news' ),
+				'description' => esc_html__( 'Relative to the font-size of the element', 'king_news' ),
 				'section'     => 'h2_typography',
 				'default'     => '1.1',
 				'field'       => 'number',
@@ -587,7 +601,7 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'h2_letter_spacing' => array(
-				'title'       => esc_html__( 'Letter Spacing, px', '__tm' ),
+				'title'       => esc_html__( 'Letter Spacing, px', 'king_news' ),
 				'section'     => 'h2_typography',
 				'default'     => '0',
 				'field'       => 'number',
@@ -599,55 +613,55 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'h2_character_set' => array(
-				'title'   => esc_html__( 'Character Set', '__tm' ),
+				'title'   => esc_html__( 'Character Set', 'king_news' ),
 				'section' => 'h2_typography',
 				'default' => 'latin',
 				'field'   => 'select',
-				'choices' => __tm_get_character_sets(),
+				'choices' => king_news_get_character_sets(),
 				'type'    => 'control',
 			),
 			'h2_text_align' => array(
-				'title'   => esc_html__( 'Text Align', '__tm' ),
+				'title'   => esc_html__( 'Text Align', 'king_news' ),
 				'section' => 'h2_typography',
 				'default' => 'inherit',
 				'field'   => 'select',
-				'choices' => __tm_get_text_aligns(),
+				'choices' => king_news_get_text_aligns(),
 				'type'    => 'control',
 			),
 
 			/** `H3 Heading` section */
 			'h3_typography' => array(
-				'title'       => esc_html__( 'H3 Heading', '__tm' ),
-				'description' => esc_html__( 'Some description for the options in the H3 Heading', '__tm' ),
+				'title'       => esc_html__( 'H3 Heading', 'king_news' ),
+				'description' => esc_html__( 'Some description for the options in the H3 Heading', 'king_news' ),
 				'priority'    => 20,
 				'panel'       => 'typography',
 				'type'        => 'section',
 			),
 			'h3_font_family' => array(
-				'title'   => esc_html__( 'Font Family', '__tm' ),
+				'title'   => esc_html__( 'Font Family', 'king_news' ),
 				'section' => 'h3_typography',
 				'default' => 'Noto Sans',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
 			'h3_font_style' => array(
-				'title'   => esc_html__( 'Font Style', '__tm' ),
+				'title'   => esc_html__( 'Font Style', 'king_news' ),
 				'section' => 'h3_typography',
 				'default' => 'normal',
 				'field'   => 'select',
-				'choices' => __tm_get_font_styles(),
+				'choices' => king_news_get_font_styles(),
 				'type'    => 'control',
 			),
 			'h3_font_weight' => array(
-				'title'   => esc_html__( 'Font Weight', '__tm' ),
+				'title'   => esc_html__( 'Font Weight', 'king_news' ),
 				'section' => 'h3_typography',
 				'default' => '700',
 				'field'   => 'select',
-				'choices' => __tm_get_font_weight(),
+				'choices' => king_news_get_font_weight(),
 				'type'    => 'control',
 			),
 			'h3_font_size' => array(
-				'title'       => esc_html__( 'Font Size, px', '__tm' ),
+				'title'       => esc_html__( 'Font Size, px', 'king_news' ),
 				'section'     => 'h3_typography',
 				'default'     => '30',
 				'field'       => 'number',
@@ -659,8 +673,8 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'h3_line_height' => array(
-				'title'       => esc_html__( 'Line Height', '__tm' ),
-				'description' => esc_html__( 'Relative to the font-size of the element', '__tm' ),
+				'title'       => esc_html__( 'Line Height', 'king_news' ),
+				'description' => esc_html__( 'Relative to the font-size of the element', 'king_news' ),
 				'section'     => 'h3_typography',
 				'default'     => '1.2',
 				'field'       => 'number',
@@ -672,7 +686,7 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'h3_letter_spacing' => array(
-				'title'       => esc_html__( 'Letter Spacing, px', '__tm' ),
+				'title'       => esc_html__( 'Letter Spacing, px', 'king_news' ),
 				'section'     => 'h3_typography',
 				'default'     => '0',
 				'field'       => 'number',
@@ -684,55 +698,55 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'h3_character_set' => array(
-				'title'   => esc_html__( 'Character Set', '__tm' ),
+				'title'   => esc_html__( 'Character Set', 'king_news' ),
 				'section' => 'h3_typography',
 				'default' => 'latin',
 				'field'   => 'select',
-				'choices' => __tm_get_character_sets(),
+				'choices' => king_news_get_character_sets(),
 				'type'    => 'control',
 			),
 			'h3_text_align' => array(
-				'title'   => esc_html__( 'Text Align', '__tm' ),
+				'title'   => esc_html__( 'Text Align', 'king_news' ),
 				'section' => 'h3_typography',
 				'default' => 'inherit',
 				'field'   => 'select',
-				'choices' => __tm_get_text_aligns(),
+				'choices' => king_news_get_text_aligns(),
 				'type'    => 'control',
 			),
 
 			/** `H4 Heading` section */
 			'h4_typography' => array(
-				'title'       => esc_html__( 'H4 Heading', '__tm' ),
-				'description' => esc_html__( 'Some description for the options in the H4 Heading', '__tm' ),
+				'title'       => esc_html__( 'H4 Heading', 'king_news' ),
+				'description' => esc_html__( 'Some description for the options in the H4 Heading', 'king_news' ),
 				'priority'    => 25,
 				'panel'       => 'typography',
 				'type'        => 'section',
 			),
 			'h4_font_family' => array(
-				'title'   => esc_html__( 'Font Family', '__tm' ),
+				'title'   => esc_html__( 'Font Family', 'king_news' ),
 				'section' => 'h4_typography',
 				'default' => 'Noto Serif',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
 			'h4_font_style' => array(
-				'title'   => esc_html__( 'Font Style', '__tm' ),
+				'title'   => esc_html__( 'Font Style', 'king_news' ),
 				'section' => 'h4_typography',
 				'default' => 'italic',
 				'field'   => 'select',
-				'choices' => __tm_get_font_styles(),
+				'choices' => king_news_get_font_styles(),
 				'type'    => 'control',
 			),
 			'h4_font_weight' => array(
-				'title'   => esc_html__( 'Font Weight', '__tm' ),
+				'title'   => esc_html__( 'Font Weight', 'king_news' ),
 				'section' => 'h4_typography',
 				'default' => '400',
 				'field'   => 'select',
-				'choices' => __tm_get_font_weight(),
+				'choices' => king_news_get_font_weight(),
 				'type'    => 'control',
 			),
 			'h4_font_size' => array(
-				'title'       => esc_html__( 'Font Size, px', '__tm' ),
+				'title'       => esc_html__( 'Font Size, px', 'king_news' ),
 				'section'     => 'h4_typography',
 				'default'     => '30',
 				'field'       => 'number',
@@ -744,8 +758,8 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'h4_line_height' => array(
-				'title'       => esc_html__( 'Line Height', '__tm' ),
-				'description' => esc_html__( 'Relative to the font-size of the element', '__tm' ),
+				'title'       => esc_html__( 'Line Height', 'king_news' ),
+				'description' => esc_html__( 'Relative to the font-size of the element', 'king_news' ),
 				'section'     => 'h4_typography',
 				'default'     => '1.3',
 				'field'       => 'number',
@@ -757,7 +771,7 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'h4_letter_spacing' => array(
-				'title'       => esc_html__( 'Letter Spacing, px', '__tm' ),
+				'title'       => esc_html__( 'Letter Spacing, px', 'king_news' ),
 				'section'     => 'h4_typography',
 				'default'     => '0',
 				'field'       => 'number',
@@ -769,55 +783,55 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'h4_character_set' => array(
-				'title'   => esc_html__( 'Character Set', '__tm' ),
+				'title'   => esc_html__( 'Character Set', 'king_news' ),
 				'section' => 'h4_typography',
 				'default' => 'latin',
 				'field'   => 'select',
-				'choices' => __tm_get_character_sets(),
+				'choices' => king_news_get_character_sets(),
 				'type'    => 'control',
 			),
 			'h4_text_align' => array(
-				'title'   => esc_html__( 'Text Align', '__tm' ),
+				'title'   => esc_html__( 'Text Align', 'king_news' ),
 				'section' => 'h4_typography',
 				'default' => 'inherit',
 				'field'   => 'select',
-				'choices' => __tm_get_text_aligns(),
+				'choices' => king_news_get_text_aligns(),
 				'type'    => 'control',
 			),
 
 			/** `H5 Heading` section */
 			'h5_typography' => array(
-				'title'       => esc_html__( 'H5 Heading', '__tm' ),
-				'description' => esc_html__( 'Some description for the options in the H5 Heading', '__tm' ),
+				'title'       => esc_html__( 'H5 Heading', 'king_news' ),
+				'description' => esc_html__( 'Some description for the options in the H5 Heading', 'king_news' ),
 				'priority'    => 30,
 				'panel'       => 'typography',
 				'type'        => 'section',
 			),
 			'h5_font_family' => array(
-				'title'   => esc_html__( 'Font Family', '__tm' ),
+				'title'   => esc_html__( 'Font Family', 'king_news' ),
 				'section' => 'h5_typography',
 				'default' => 'Noto Sans',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
 			'h5_font_style' => array(
-				'title'   => esc_html__( 'Font Style', '__tm' ),
+				'title'   => esc_html__( 'Font Style', 'king_news' ),
 				'section' => 'h5_typography',
 				'default' => 'normal',
 				'field'   => 'select',
-				'choices' => __tm_get_font_styles(),
+				'choices' => king_news_get_font_styles(),
 				'type'    => 'control',
 			),
 			'h5_font_weight' => array(
-				'title'   => esc_html__( 'Font Weight', '__tm' ),
+				'title'   => esc_html__( 'Font Weight', 'king_news' ),
 				'section' => 'h5_typography',
 				'default' => '700',
 				'field'   => 'select',
-				'choices' => __tm_get_font_weight(),
+				'choices' => king_news_get_font_weight(),
 				'type'    => 'control',
 			),
 			'h5_font_size' => array(
-				'title'       => esc_html__( 'Font Size, px', '__tm' ),
+				'title'       => esc_html__( 'Font Size, px', 'king_news' ),
 				'section'     => 'h5_typography',
 				'default'     => '20',
 				'field'       => 'number',
@@ -829,8 +843,8 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'h5_line_height' => array(
-				'title'       => esc_html__( 'Line Height', '__tm' ),
-				'description' => esc_html__( 'Relative to the font-size of the element', '__tm' ),
+				'title'       => esc_html__( 'Line Height', 'king_news' ),
+				'description' => esc_html__( 'Relative to the font-size of the element', 'king_news' ),
 				'section'     => 'h5_typography',
 				'default'     => '1.4',
 				'field'       => 'number',
@@ -842,7 +856,7 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'h5_letter_spacing' => array(
-				'title'       => esc_html__( 'Letter Spacing, px', '__tm' ),
+				'title'       => esc_html__( 'Letter Spacing, px', 'king_news' ),
 				'section'     => 'h5_typography',
 				'default'     => '0',
 				'field'       => 'number',
@@ -854,55 +868,55 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'h5_character_set' => array(
-				'title'   => esc_html__( 'Character Set', '__tm' ),
+				'title'   => esc_html__( 'Character Set', 'king_news' ),
 				'section' => 'h5_typography',
 				'default' => 'latin',
 				'field'   => 'select',
-				'choices' => __tm_get_character_sets(),
+				'choices' => king_news_get_character_sets(),
 				'type'    => 'control',
 			),
 			'h5_text_align' => array(
-				'title'   => esc_html__( 'Text Align', '__tm' ),
+				'title'   => esc_html__( 'Text Align', 'king_news' ),
 				'section' => 'h5_typography',
 				'default' => 'inherit',
 				'field'   => 'select',
-				'choices' => __tm_get_text_aligns(),
+				'choices' => king_news_get_text_aligns(),
 				'type'    => 'control',
 			),
 
 			/** `H6 Heading` section */
 			'h6_typography' => array(
-				'title'       => esc_html__( 'H6 Heading', '__tm' ),
-				'description' => esc_html__( 'Some description for the options in the H6 Heading', '__tm' ),
+				'title'       => esc_html__( 'H6 Heading', 'king_news' ),
+				'description' => esc_html__( 'Some description for the options in the H6 Heading', 'king_news' ),
 				'priority'    => 35,
 				'panel'       => 'typography',
 				'type'        => 'section',
 			),
 			'h6_font_family' => array(
-				'title'   => esc_html__( 'Font Family', '__tm' ),
+				'title'   => esc_html__( 'Font Family', 'king_news' ),
 				'section' => 'h6_typography',
 				'default' => 'Noto Sans',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
 			'h6_font_style' => array(
-				'title'   => esc_html__( 'Font Style', '__tm' ),
+				'title'   => esc_html__( 'Font Style', 'king_news' ),
 				'section' => 'h6_typography',
 				'default' => 'normal',
 				'field'   => 'select',
-				'choices' => __tm_get_font_styles(),
+				'choices' => king_news_get_font_styles(),
 				'type'    => 'control',
 			),
 			'h6_font_weight' => array(
-				'title'   => esc_html__( 'Font Weight', '__tm' ),
+				'title'   => esc_html__( 'Font Weight', 'king_news' ),
 				'section' => 'h6_typography',
 				'default' => '700',
 				'field'   => 'select',
-				'choices' => __tm_get_font_weight(),
+				'choices' => king_news_get_font_weight(),
 				'type'    => 'control',
 			),
 			'h6_font_size' => array(
-				'title'       => esc_html__( 'Font Size, px', '__tm' ),
+				'title'       => esc_html__( 'Font Size, px', 'king_news' ),
 				'section'     => 'h6_typography',
 				'default'     => '16',
 				'field'       => 'number',
@@ -914,8 +928,8 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'h6_line_height' => array(
-				'title'       => esc_html__( 'Line Height', '__tm' ),
-				'description' => esc_html__( 'Relative to the font-size of the element', '__tm' ),
+				'title'       => esc_html__( 'Line Height', 'king_news' ),
+				'description' => esc_html__( 'Relative to the font-size of the element', 'king_news' ),
 				'section'     => 'h6_typography',
 				'default'     => '1.4',
 				'field'       => 'number',
@@ -927,7 +941,7 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'h6_letter_spacing' => array(
-				'title'       => esc_html__( 'Letter Spacing, px', '__tm' ),
+				'title'       => esc_html__( 'Letter Spacing, px', 'king_news' ),
 				'section'     => 'h6_typography',
 				'default'     => '0',
 				'field'       => 'number',
@@ -939,45 +953,123 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'h6_character_set' => array(
-				'title'   => esc_html__( 'Character Set', '__tm' ),
+				'title'   => esc_html__( 'Character Set', 'king_news' ),
 				'section' => 'h6_typography',
 				'default' => 'latin',
 				'field'   => 'select',
-				'choices' => __tm_get_character_sets(),
+				'choices' => king_news_get_character_sets(),
 				'type'    => 'control',
 			),
 			'h6_text_align' => array(
-				'title'   => esc_html__( 'Text Align', '__tm' ),
+				'title'   => esc_html__( 'Text Align', 'king_news' ),
 				'section' => 'h6_typography',
 				'default' => 'inherit',
 				'field'   => 'select',
-				'choices' => __tm_get_text_aligns(),
+				'choices' => king_news_get_text_aligns(),
+				'type'    => 'control',
+			),
+
+			/** `Body text` section */
+			'breadcrumbs_typography' => array(
+				'title'       => esc_html__( 'Breadcrumbs text', 'king_news' ),
+				'description' => esc_html__( 'Some description for the options in the breadcrumbs text', 'king_news' ),
+				'priority'    => 45,
+				'panel'       => 'typography',
+				'type'        => 'section',
+			),
+			'breadcrumbs_font_family' => array(
+				'title'   => esc_html__( 'Font Family', 'king_news' ),
+				'section' => 'breadcrumbs_typography',
+				'default' => 'Montserrat',
+				'field'   => 'fonts',
+				'type'    => 'control',
+			),
+			'breadcrumbs_font_style' => array(
+				'title'   => esc_html__( 'Font Style', 'king_news' ),
+				'section' => 'breadcrumbs_typography',
+				'default' => 'normal',
+				'field'   => 'select',
+				'choices' => king_news_get_font_styles(),
+				'type'    => 'control',
+			),
+			'breadcrumbs_font_weight' => array(
+				'title'   => esc_html__( 'Font Weight', 'king_news' ),
+				'section' => 'breadcrumbs_typography',
+				'default' => '400',
+				'field'   => 'select',
+				'choices' => king_news_get_font_weight(),
+				'type'    => 'control',
+			),
+			'breadcrumbs_font_size' => array(
+				'title'       => esc_html__( 'Font Size, px', 'king_news' ),
+				'section'     => 'breadcrumbs_typography',
+				'default'     => '14',
+				'field'       => 'number',
+				'input_attrs' => array(
+					'min'  => 6,
+					'max'  => 50,
+					'step' => 1,
+				),
+				'type' => 'control',
+			),
+			'breadcrumbs_line_height' => array(
+				'title'       => esc_html__( 'Line Height', 'king_news' ),
+				'description' => esc_html__( 'Relative to the font-size of the element', 'king_news' ),
+				'section'     => 'breadcrumbs_typography',
+				'default'     => '1.5',
+				'field'       => 'number',
+				'input_attrs' => array(
+					'min'  => 1.0,
+					'max'  => 3.0,
+					'step' => 0.1,
+				),
+				'type' => 'control',
+			),
+			'breadcrumbs_letter_spacing' => array(
+				'title'       => esc_html__( 'Letter Spacing, px', 'king_news' ),
+				'section'     => 'breadcrumbs_typography',
+				'default'     => '0',
+				'field'       => 'number',
+				'input_attrs' => array(
+					'min'  => -10,
+					'max'  => 10,
+					'step' => 1,
+				),
+				'type' => 'control',
+			),
+			'breadcrumbs_character_set' => array(
+				'title'   => esc_html__( 'Character Set', 'king_news' ),
+				'section' => 'breadcrumbs_typography',
+				'default' => 'latin',
+				'field'   => 'select',
+				'choices' => king_news_get_character_sets(),
+				'type'    => 'control',
+			),
+			'breadcrumbs_text_align' => array(
+				'title'   => esc_html__( 'Text Align', 'king_news' ),
+				'section' => 'breadcrumbs_typography',
+				'default' => 'left',
+				'field'   => 'select',
+				'choices' => king_news_get_text_aligns(),
 				'type'    => 'control',
 			),
 
 			/** `Social links` section */
 			'social_links' => array(
-				'title'       => esc_html__( 'Social links', '__tm' ),
-				'description' => esc_html__( 'Some description', '__tm' ),
+				'title'       => esc_html__( 'Social links', 'king_news' ),
+				'description' => esc_html__( 'Some description', 'king_news' ),
 				'priority'    => 50,
 				'type'        => 'section',
 			),
 			'header_social_links' => array(
-				'title'   => esc_html__( 'Show social links in header', '__tm' ),
+				'title'   => esc_html__( 'Show social links in header', 'king_news' ),
 				'section' => 'social_links',
 				'default' => true,
 				'field'   => 'checkbox',
 				'type'    => 'control',
 			),
 			'footer_social_links' => array(
-				'title'   => esc_html__( 'Show social links in footer', '__tm' ),
-				'section' => 'social_links',
-				'default' => true,
-				'field'   => 'checkbox',
-				'type'    => 'control',
-			),
-			'post_share_buttons' => array(
-				'title'   => esc_html__( 'Add social sharing to blog posts', '__tm' ),
+				'title'   => esc_html__( 'Show social links in footer', 'king_news' ),
 				'section' => 'social_links',
 				'default' => true,
 				'field'   => 'checkbox',
@@ -986,26 +1078,26 @@ function __tm_get_customizer_options() {
 
 			/** `Page Layout` section */
 			'page_layout' => array(
-				'title'       => esc_html__( 'Page Layout', '__tm' ),
-				'description' => esc_html__( 'Some description', '__tm' ),
+				'title'       => esc_html__( 'Page Layout', 'king_news' ),
+				'description' => esc_html__( 'Some description', 'king_news' ),
 				'priority'    => 55,
 				'type'        => 'section',
 			),
 			'page_layout_type' => array(
-				'title'   => esc_html__( 'Type', '__tm' ),
+				'title'   => esc_html__( 'Type', 'king_news' ),
 				'section' => 'page_layout',
 				'default' => '',
 				'field'   => 'select',
 				'choices' => array(
-					'boxed'     => esc_html__( 'Boxed', '__tm' ),
-					'fullwidth' => esc_html__( 'Fullwidth', '__tm' ),
+					'boxed'     => esc_html__( 'Boxed', 'king_news' ),
+					'fullwidth' => esc_html__( 'Fullwidth', 'king_news' ),
 				),
 				'type' => 'control',
 			),
 			'container_width' => array(
-				'title'       => esc_html__( 'Container width (px)', '__tm' ),
+				'title'       => esc_html__( 'Container width (px)', 'king_news' ),
 				'section'     => 'page_layout',
-				'default'     => 1758,
+				'default'     => 1788,
 				'field'       => 'number',
 				'input_attrs' => array(
 					'min'  => 960,
@@ -1015,7 +1107,7 @@ function __tm_get_customizer_options() {
 				'type' => 'control',
 			),
 			'sidebar_width' => array(
-				'title'   => esc_html__( 'Sidebar width', '__tm' ),
+				'title'   => esc_html__( 'Sidebar width', 'king_news' ),
 				'section' => 'page_layout',
 				'default' => '1/3',
 				'field'   => 'select',
@@ -1029,107 +1121,107 @@ function __tm_get_customizer_options() {
 
 			/** `Header` panel */
 			'header_options' => array(
-				'title'       => esc_html__( 'Header', '__tm' ),
-				'description' => esc_html__( 'Some description', '__tm' ),
+				'title'       => esc_html__( 'Header', 'king_news' ),
+				'description' => esc_html__( 'Some description', 'king_news' ),
 				'priority'    => 60,
 				'type'        => 'panel',
 			),
 
 			/** `Header styles` section */
 			'header_styles' => array(
-				'title'       => esc_html__( 'Header Styles', '__tm' ),
-				'description' => esc_html__( 'Some description', '__tm' ),
+				'title'       => esc_html__( 'Header Styles', 'king_news' ),
+				'description' => esc_html__( 'Some description', 'king_news' ),
 				'priority'    => 5,
 				'panel'       => 'header_options',
 				'type'        => 'section',
 			),
 			'header_bg_color' => array(
-				'title'   => esc_html__( 'Background Color', '__tm' ),
+				'title'   => esc_html__( 'Background Color', 'king_news' ),
 				'section' => 'header_styles',
 				'field'   => 'hex_color',
 				'default' => '#ffffff',
 				'type'    => 'control',
 			),
 			'header_bg_image' => array(
-				'title'   => esc_html__( 'Background Image', '__tm' ),
+				'title'   => esc_html__( 'Background Image', 'king_news' ),
 				'section' => 'header_styles',
 				'field'   => 'image',
 				'type'    => 'control',
 			),
 			'header_bg_repeat' => array(
-				'title'   => esc_html__( 'Background Repeat', '__tm' ),
+				'title'   => esc_html__( 'Background Repeat', 'king_news' ),
 				'section' => 'header_styles',
 				'default' => 'repeat',
 				'field'   => 'select',
 				'choices' => array(
-					'no-repeat'  => esc_html__( 'No Repeat', '__tm' ),
-					'repeat'     => esc_html__( 'Tile', '__tm' ),
-					'repeat-x'   => esc_html__( 'Tile Horizontally', '__tm' ),
-					'repeat-y'   => esc_html__( 'Tile Vertically', '__tm' ),
+					'no-repeat'  => esc_html__( 'No Repeat', 'king_news' ),
+					'repeat'     => esc_html__( 'Tile', 'king_news' ),
+					'repeat-x'   => esc_html__( 'Tile Horizontally', 'king_news' ),
+					'repeat-y'   => esc_html__( 'Tile Vertically', 'king_news' ),
 				),
 				'type' => 'control',
 			),
 			'header_bg_position_x' => array(
-				'title'   => esc_html__( 'Background Position', '__tm' ),
+				'title'   => esc_html__( 'Background Position', 'king_news' ),
 				'section' => 'header_styles',
 				'default' => 'center',
 				'field'   => 'select',
 				'choices' => array(
-					'left'   => esc_html__( 'Left', '__tm' ),
-					'center' => esc_html__( 'Center', '__tm' ),
-					'right'  => esc_html__( 'Right', '__tm' ),
+					'left'   => esc_html__( 'Left', 'king_news' ),
+					'center' => esc_html__( 'Center', 'king_news' ),
+					'right'  => esc_html__( 'Right', 'king_news' ),
 				),
 				'type' => 'control',
 			),
 			'header_bg_attachment' => array(
-				'title'   => esc_html__( 'Background Attachment', '__tm' ),
+				'title'   => esc_html__( 'Background Attachment', 'king_news' ),
 				'section' => 'header_styles',
 				'default' => 'scroll',
 				'field'   => 'select',
 				'choices' => array(
-					'scroll' => esc_html__( 'Scroll', '__tm' ),
-					'fixed'  => esc_html__( 'Fixed', '__tm' ),
+					'scroll' => esc_html__( 'Scroll', 'king_news' ),
+					'fixed'  => esc_html__( 'Fixed', 'king_news' ),
 				),
 				'type' => 'control',
 			),
 			'header_layout_type' => array(
-				'title'   => esc_html__( 'Layout', '__tm' ),
+				'title'   => esc_html__( 'Layout', 'king_news' ),
 				'section' => 'header_styles',
 				'default' => 'minimal',
 				'field'   => 'select',
 				'choices' => array(
-					'minimal'  => esc_html__( 'Minimal', '__tm' ),
-					'centered' => esc_html__( 'Centered', '__tm' ),
-					'default'  => esc_html__( 'Default', '__tm' ),
+					'minimal'  => esc_html__( 'Minimal', 'king_news' ),
+					'centered' => esc_html__( 'Centered', 'king_news' ),
+					'default'  => esc_html__( 'Default', 'king_news' ),
 				),
 				'type' => 'control',
 			),
 
 			/** `Top Panel` section */
 			'header_top_panel' => array(
-				'title'       => esc_html__( 'Top Panel', '__tm' ),
-				'description' => esc_html__( 'Some description', '__tm' ),
+				'title'       => esc_html__( 'Top Panel', 'king_news' ),
+				'description' => esc_html__( 'Some description', 'king_news' ),
 				'priority'    => 10,
 				'panel'       => 'header_options',
 				'type'        => 'section',
 			),
 			'top_panel_text' => array(
-				'title'       => esc_html__( 'Disclaimer Text', '__tm' ),
-				'description' => esc_html__( 'HTML formatting support', '__tm' ),
+				'title'       => esc_html__( 'Disclaimer Text', 'king_news' ),
+				'description' => esc_html__( 'HTML formatting support', 'king_news' ),
 				'section'     => 'header_top_panel',
-				'default'     => __tm_get_default_top_panel_text(),
+				'default'     => king_news_get_default_top_panel_text(),
 				'field'       => 'textarea',
 				'type'        => 'control',
 			),
 			'top_panel_search' => array(
-				'title'   => esc_html__( 'Enable search', '__tm' ),
+				'title'   => esc_html__( 'Enable search', 'king_news' ),
 				'section' => 'header_top_panel',
 				'default' => true,
 				'field'   => 'checkbox',
 				'type'    => 'control',
 			),
 			'top_panel_bg' => array(
-				'title'   => esc_html__( 'Background color', '__tm' ),
+				'title'   => esc_html__( 'Background color', 'king_news' ),
 				'section' => 'header_top_panel',
 				'default' => '#ffffff',
 				'field'   => 'hex_color',
@@ -1138,21 +1230,21 @@ function __tm_get_customizer_options() {
 
 			/** `Main Menu` section */
 			'header_main_menu' => array(
-				'title'       => esc_html__( 'Main Menu', '__tm' ),
-				'description' => esc_html__( 'Some description', '__tm' ),
+				'title'       => esc_html__( 'Main Menu', 'king_news' ),
+				'description' => esc_html__( 'Some description', 'king_news' ),
 				'priority'    => 15,
 				'panel'       => 'header_options',
 				'type'        => 'section',
 			),
 			'header_menu_sticky' => array(
-				'title'   => esc_html__( 'Enable sticky menu', '__tm' ),
+				'title'   => esc_html__( 'Enable sticky menu', 'king_news' ),
 				'section' => 'header_main_menu',
-				'default' => true,
+				'default' => false,
 				'field'   => 'checkbox',
 				'type'    => 'control',
 			),
 			'header_menu_attributes' => array(
-				'title'   => esc_html__( 'Enable title attributes', '__tm' ),
+				'title'   => esc_html__( 'Enable title attributes', 'king_news' ),
 				'section' => 'header_main_menu',
 				'default' => true,
 				'field'   => 'checkbox',
@@ -1161,49 +1253,49 @@ function __tm_get_customizer_options() {
 
 			/** `Sidebar` section */
 			'sidebar_settings' => array(
-				'title'    => esc_html__( 'Sidebar', '__tm' ),
+				'title'    => esc_html__( 'Sidebar', 'king_news' ),
 				'priority' => 105,
 				'type'     => 'section',
 			),
 			'sidebar_position' => array(
-				'title'   => esc_html__( 'Sidebar Position', '__tm' ),
+				'title'   => esc_html__( 'Sidebar Position', 'king_news' ),
 				'section' => 'sidebar_settings',
 				'default' => 'one-right-sidebar',
 				'field'   => 'select',
 				'choices' => array(
-					'one-left-sidebar'  => esc_html__( 'Sidebar on left side', '__tm' ),
-					'one-right-sidebar' => esc_html__( 'Sidebar on right side', '__tm' ),
-					'two-sidebars'      => esc_html__( '2 sidebars', '__tm' ),
-					'fullwidth'         => esc_html__( 'No sidebars', '__tm' ),
+					'one-left-sidebar'  => esc_html__( 'Sidebar on left side', 'king_news' ),
+					'one-right-sidebar' => esc_html__( 'Sidebar on right side', 'king_news' ),
+					'two-sidebars'      => esc_html__( '2 sidebars', 'king_news' ),
+					'fullwidth'         => esc_html__( 'No sidebars', 'king_news' ),
 				),
 				'type' => 'control',
 			),
 
 			/** `Footer` panel */
 			'footer_options' => array(
-				'title'       => esc_html__( 'Footer', '__tm' ),
-				'description' => esc_html__( 'Some description', '__tm' ),
+				'title'       => esc_html__( 'Footer', 'king_news' ),
+				'description' => esc_html__( 'Some description', 'king_news' ),
 				'priority'    => 110,
 				'type'        => 'section',
 			),
 			'footer_logo_url' => array(
-				'title'   => esc_html__( 'Logo upload', '__tm' ),
+				'title'   => esc_html__( 'Logo upload', 'king_news' ),
 				'section' => 'footer_options',
 				'field'   => 'image',
 				'default' => get_stylesheet_directory_uri() . '/assets/images/footer-logo.png',
 				'type'    => 'control',
 			),
 			'footer_copyright' => array(
-				'title'   => esc_html__( 'Copyright text', '__tm' ),
+				'title'   => esc_html__( 'Copyright text', 'king_news' ),
 				'section' => 'footer_options',
-				'default' => __tm_get_default_footer_copyright(),
+				'default' => king_news_get_default_footer_copyright(),
 				'field'   => 'textarea',
 				'type'    => 'control',
 			),
 			'footer_widget_columns' => array(
-				'title'   => esc_html__( 'Widget Area Columns', '__tm' ),
+				'title'   => esc_html__( 'Widget Area Columns', 'king_news' ),
 				'section' => 'footer_options',
-				'default' => '3',
+				'default' => '4',
 				'field'   => 'select',
 				'choices' => array(
 					'1' => '1',
@@ -1214,26 +1306,26 @@ function __tm_get_customizer_options() {
 				'type' => 'control'
 			),
 			'footer_layout_type' => array(
-				'title'   => esc_html__( 'Layout', '__tm' ),
+				'title'   => esc_html__( 'Layout', 'king_news' ),
 				'section' => 'footer_options',
 				'default' => 'default',
 				'field'   => 'select',
 				'choices' => array(
-					'default'  => esc_html__( 'Default', '__tm' ),
-					'centered' => esc_html__( 'Centered', '__tm' ),
-					'minimal'  => esc_html__( 'Minimal', '__tm' ),
+					'default'  => esc_html__( 'Default', 'king_news' ),
+					'centered' => esc_html__( 'Centered', 'king_news' ),
+					'minimal'  => esc_html__( 'Minimal', 'king_news' ),
 				),
 				'type' => 'control'
 			),
 			'footer_widgets_bg' => array(
-				'title'   => esc_html__( 'Footer Widgets Area color', '__tm' ),
+				'title'   => esc_html__( 'Footer Widgets Area color', 'king_news' ),
 				'section' => 'footer_options',
 				'default' => '#ffffff',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'footer_bg' => array(
-				'title'   => esc_html__( 'Footer Background color', '__tm' ),
+				'title'   => esc_html__( 'Footer Background color', 'king_news' ),
 				'section' => 'footer_options',
 				'default' => '#ffffff',
 				'field'   => 'hex_color',
@@ -1242,109 +1334,116 @@ function __tm_get_customizer_options() {
 
 			/** `Blog Settings` panel */
 			'blog_settings' => array(
-				'title'       => esc_html__( 'Blog Settings', '__tm' ),
-				'description' => esc_html__( 'Some description', '__tm' ),
+				'title'       => esc_html__( 'Blog Settings', 'king_news' ),
+				'description' => esc_html__( 'Some description', 'king_news' ),
 				'priority'    => 115,
 				'type'        => 'panel',
 			),
 
 			/** `Blog` section */
 			'blog' => array(
-				'title'           => esc_html__( 'Blog', '__tm' ),
-				'description'     => esc_html__( 'Some description', '__tm' ),
+				'title'           => esc_html__( 'Blog', 'king_news' ),
+				'description'     => esc_html__( 'Some description', 'king_news' ),
 				'panel'           => 'blog_settings',
 				'priority'        => 10,
 				'type'            => 'section',
 				'active_callback' => 'is_home',
 			),
 			'blog_title' => array(
-				'title'   => __( 'Title', '__tm' ),
+				'title'   => __( 'Title', 'king_news' ),
 				'section' => 'blog',
 				'field'   => 'text',
 				'type'    => 'control',
 			),
 			'blog_layout_type' => array(
-				'title'   => esc_html__( 'Layout', '__tm' ),
+				'title'   => esc_html__( 'Layout', 'king_news' ),
 				'section' => 'blog',
 				'default' => 'default',
 				'field'   => 'select',
 				'choices' => array(
-					'default'        => esc_html__( 'Default', '__tm' ),
-					'grid-2-cols'    => esc_html__( 'Grid (2 Columns)', '__tm' ),
-					'grid-3-cols'    => esc_html__( 'Grid (3 Columns)', '__tm' ),
-					'masonry-2-cols' => esc_html__( 'Masonry (2 Columns)', '__tm' ),
-					'masonry-3-cols' => esc_html__( 'Masonry (3 Columns)', '__tm' ),
+					'default'        => esc_html__( 'Default', 'king_news' ),
+					'grid-2-cols'    => esc_html__( 'Grid (2 Columns)', 'king_news' ),
+					'grid-3-cols'    => esc_html__( 'Grid (3 Columns)', 'king_news' ),
+					'masonry-2-cols' => esc_html__( 'Masonry (2 Columns)', 'king_news' ),
+					'masonry-3-cols' => esc_html__( 'Masonry (3 Columns)', 'king_news' ),
 				),
 				'type' => 'control'
 			),
 			'blog_sticky_label' => array(
-				'title'       => __( 'Featured Post Label', '__tm' ),
-				'description' => __( 'Label for sticky post.', '__tm' ),
+				'title'       => __( 'Featured Post Label', 'king_news' ),
+				'description' => __( 'Label for sticky post.', 'king_news' ),
 				'section'     => 'blog',
 				'default'     => 'icon:material:star_border',
 				'field'       => 'text',
 				'type'        => 'control',
 			),
 			'blog_posts_content' => array(
-				'title'   => esc_html__( 'Post content', '__tm' ),
+				'title'   => esc_html__( 'Post content', 'king_news' ),
 				'section' => 'blog',
 				'default' => 'excerpt',
 				'field'   => 'select',
 				'choices' => array(
-					'excerpt' => esc_html__( 'Only excerpt', '__tm' ),
-					'full'    => esc_html__( 'Full content', '__tm' ),
+					'excerpt' => esc_html__( 'Only excerpt', 'king_news' ),
+					'full'    => esc_html__( 'Full content', 'king_news' ),
 				),
 				'type' => 'control'
 			),
 			'blog_featured_image' => array(
-				'title'   => esc_html__( 'Featured image', '__tm' ),
+				'title'   => esc_html__( 'Featured image', 'king_news' ),
 				'section' => 'blog',
 				'default' => 'ultra-small',
 				'field'   => 'select',
 				'choices' => array(
-					'ultra-small'     => esc_html__( 'ultra-small', '__tm' ),
-					'small'     => esc_html__( 'Small', '__tm' ),
-					'fullwidth' => esc_html__( 'Fullwidth', '__tm' ),
+					'ultra-small'     => esc_html__( 'ultra-small', 'king_news' ),
+					'small'     => esc_html__( 'Small', 'king_news' ),
+					'fullwidth' => esc_html__( 'Fullwidth', 'king_news' ),
 				),
 				'type' => 'control'
 			),
 			'blog_read_more_text' => array(
-				'title'   => __( 'Read More button text', '__tm' ),
+				'title'   => __( 'Read More button text', 'king_news' ),
 				'section' => 'blog',
-				'default' => __( 'Read more', '__tm' ),
+				'default' => __( 'Read more', 'king_news' ),
 				'field'   => 'text',
 				'type'    => 'control',
 			),
 			'blog_post_author' => array(
-				'title'   => __( 'Show post author', '__tm' ),
+				'title'   => __( 'Show post author', 'king_news' ),
 				'section' => 'blog',
 				'default' => true,
 				'field'   => 'checkbox',
 				'type'    => 'control',
 			),
 			'blog_post_publish_date' => array(
-				'title'   => __( 'Show publish date', '__tm' ),
+				'title'   => __( 'Show publish date', 'king_news' ),
 				'section' => 'blog',
 				'default' => true,
 				'field'   => 'checkbox',
 				'type'    => 'control',
 			),
 			'blog_post_categories' => array(
-				'title'   => __( 'Show categories', '__tm' ),
+				'title'   => __( 'Show categories', 'king_news' ),
 				'section' => 'blog',
 				'default' => true,
 				'field'   => 'checkbox',
 				'type'    => 'control',
 			),
 			'blog_post_tags' => array(
-				'title'   => __( 'Show tags', '__tm' ),
+				'title'   => __( 'Show tags', 'king_news' ),
 				'section' => 'blog',
 				'default' => true,
 				'field'   => 'checkbox',
 				'type'    => 'control',
 			),
 			'blog_post_comments' => array(
-				'title'   => __( 'Show comments', '__tm' ),
+				'title'   => __( 'Show comments', 'king_news' ),
+				'section' => 'blog',
+				'default' => true,
+				'field'   => 'checkbox',
+				'type'    => 'control',
+			),
+			'blog_post_share_buttons' => array(
+				'title'   => esc_html__( 'Show social sharing', 'king_news' ),
 				'section' => 'blog',
 				'default' => true,
 				'field'   => 'checkbox',
@@ -1353,69 +1452,76 @@ function __tm_get_customizer_options() {
 
 			/** `Post` section */
 			'blog_post' => array(
-				'title'           => esc_html__( 'Post', '__tm' ),
-				'description'     => esc_html__( 'Some description', '__tm' ),
+				'title'           => esc_html__( 'Post', 'king_news' ),
+				'description'     => esc_html__( 'Some description', 'king_news' ),
 				'panel'           => 'blog_settings',
 				'priority'        => 20,
 				'type'            => 'section',
 				'active_callback' => 'callback_single',
 			),
 			'single_post_author' => array(
-				'title'   => __( 'Show post author', '__tm' ),
+				'title'   => __( 'Show post author', 'king_news' ),
 				'section' => 'blog_post',
 				'default' => true,
 				'field'   => 'checkbox',
 				'type'    => 'control',
 			),
 			'single_post_publish_date' => array(
-				'title'   => __( 'Show publish date', '__tm' ),
+				'title'   => __( 'Show publish date', 'king_news' ),
 				'section' => 'blog_post',
 				'default' => true,
 				'field'   => 'checkbox',
 				'type'    => 'control',
 			),
 			'single_post_categories' => array(
-				'title'   => __( 'Show categories', '__tm' ),
+				'title'   => __( 'Show categories', 'king_news' ),
 				'section' => 'blog_post',
 				'default' => true,
 				'field'   => 'checkbox',
 				'type'    => 'control',
 			),
 			'single_post_tags' => array(
-				'title'   => __( 'Show tags', '__tm' ),
+				'title'   => __( 'Show tags', 'king_news' ),
 				'section' => 'blog_post',
 				'default' => true,
 				'field'   => 'checkbox',
 				'type'    => 'control',
 			),
 			'single_post_comments' => array(
-				'title'   => __( 'Show comments', '__tm' ),
+				'title'   => __( 'Show comments', 'king_news' ),
+				'section' => 'blog_post',
+				'default' => true,
+				'field'   => 'checkbox',
+				'type'    => 'control',
+			),
+			'single_post_share_buttons' => array(
+				'title'   => esc_html__( 'Show social sharing', 'king_news' ),
 				'section' => 'blog_post',
 				'default' => true,
 				'field'   => 'checkbox',
 				'type'    => 'control',
 			),
 			'single_author_block' => array(
-				'title'   => __( 'Enable the author block after each post', '__tm' ),
+				'title'   => __( 'Enable the author block after each post', 'king_news' ),
 				'section' => 'blog_post',
 				'default' => true,
 				'field'   => 'checkbox',
 				'type'    => 'control',
 			),
 			'mailchimp' => array(
-				'title'       => esc_html__( 'MailChimp', '__tm' ),
-				'description' => esc_html__( 'Setup MailChimp settings for subscribe widget', '__tm' ),
+				'title'       => esc_html__( 'MailChimp', 'king_news' ),
+				'description' => esc_html__( 'Setup MailChimp settings for subscribe widget', 'king_news' ),
 				'priority'    => 109,
 				'type'        => 'section',
 			),
 			'mailchimp_api_key' => array(
-				'title'   => __( 'MailChimp API key', '__tm' ),
+				'title'   => __( 'MailChimp API key', 'king_news' ),
 				'section' => 'mailchimp',
 				'field'   => 'text',
 				'type'    => 'control',
 			),
 			'mailchimp_list_id' => array(
-				'title'   => __( 'MailChimp list ID', '__tm' ),
+				'title'   => __( 'MailChimp list ID', 'king_news' ),
 				'section' => 'mailchimp',
 				'field'   => 'text',
 				'type'    => 'control',
@@ -1429,7 +1535,7 @@ function __tm_get_customizer_options() {
  * @param  object $control
  * @return bool
  */
-function __tm_is_header_logo_image( $control ) {
+function king_news_is_header_logo_image( $control ) {
 
 	if ( $control->manager->get_setting( 'header_logo_type' )->value() == 'image' ) {
 		return true;
@@ -1444,7 +1550,7 @@ function __tm_is_header_logo_image( $control ) {
  * @param  object $control
  * @return bool
  */
-function __tm_is_header_logo_text( $control ) {
+function king_news_is_header_logo_text( $control ) {
 
 	if ( $control->manager->get_setting( 'header_logo_type' )->value() == 'text' ) {
 		return true;
@@ -1454,49 +1560,49 @@ function __tm_is_header_logo_text( $control ) {
 }
 
 // Move native `site_icon` control (based on WordPress core) in custom section.
-add_action( 'customize_register', '__tm_customizer_change_core_controls', 20 );
-function __tm_customizer_change_core_controls( $wp_customize ) {
-	$wp_customize->get_control( 'site_icon' )->section = '__tm_logo_favicon';
+add_action( 'customize_register', 'king_news_customizer_change_core_controls', 20 );
+function king_news_customizer_change_core_controls( $wp_customize ) {
+	$wp_customize->get_control( 'site_icon' )->section = 'king_news_logo_favicon';
 }
 
 ////////////////////////////////////
 // Typography utility function    //
 ////////////////////////////////////
-function __tm_get_font_styles() {
-	return apply_filters( '__tm_get_font_styles', array(
-		'normal'  => esc_html__( 'Normal', '__tm' ),
-		'italic'  => esc_html__( 'Italic', '__tm' ),
-		'oblique' => esc_html__( 'Oblique', '__tm' ),
-		'inherit' => esc_html__( 'Inherit', '__tm' ),
+function king_news_get_font_styles() {
+	return apply_filters( 'king_news_get_font_styles', array(
+		'normal'  => esc_html__( 'Normal', 'king_news' ),
+		'italic'  => esc_html__( 'Italic', 'king_news' ),
+		'oblique' => esc_html__( 'Oblique', 'king_news' ),
+		'inherit' => esc_html__( 'Inherit', 'king_news' ),
 	) );
 }
 
-function __tm_get_character_sets() {
-	return apply_filters( '__tm_get_character_sets', array(
-		'latin'        => esc_html__( 'Latin', '__tm' ),
-		'greek'        => esc_html__( 'Greek', '__tm' ),
-		'greek-ext'    => esc_html__( 'Greek Extended', '__tm' ),
-		'vietnamese'   => esc_html__( 'Vietnamese', '__tm' ),
-		'cyrillic-ext' => esc_html__( 'Cyrillic Extended', '__tm' ),
-		'latin-ext'    => esc_html__( 'Latin Extended', '__tm' ),
-		'cyrillic'     => esc_html__( 'Cyrillic', '__tm' ),
+function king_news_get_character_sets() {
+	return apply_filters( 'king_news_get_character_sets', array(
+		'latin'        => esc_html__( 'Latin', 'king_news' ),
+		'greek'        => esc_html__( 'Greek', 'king_news' ),
+		'greek-ext'    => esc_html__( 'Greek Extended', 'king_news' ),
+		'vietnamese'   => esc_html__( 'Vietnamese', 'king_news' ),
+		'cyrillic-ext' => esc_html__( 'Cyrillic Extended', 'king_news' ),
+		'latin-ext'    => esc_html__( 'Latin Extended', 'king_news' ),
+		'cyrillic'     => esc_html__( 'Cyrillic', 'king_news' ),
 	) );
 }
 
-function __tm_get_text_aligns() {
-	return apply_filters( '__tm_get_text_aligns', array(
-		'inherit' => esc_html__( 'Inherit', '__tm' ),
-		'center'  => esc_html__( 'Center', '__tm' ),
-		'justify' => esc_html__( 'Justify', '__tm' ),
-		'left'    => esc_html__( 'Left', '__tm' ),
-		'right'   => esc_html__( 'Right', '__tm' ),
+function king_news_get_text_aligns() {
+	return apply_filters( 'king_news_get_text_aligns', array(
+		'inherit' => esc_html__( 'Inherit', 'king_news' ),
+		'center'  => esc_html__( 'Center', 'king_news' ),
+		'justify' => esc_html__( 'Justify', 'king_news' ),
+		'left'    => esc_html__( 'Left', 'king_news' ),
+		'right'   => esc_html__( 'Right', 'king_news' ),
 	) );
 }
 
-function __tm_get_font_weight() {
-	return apply_filters( '__tm_get_font_weight', array(
-		'normal' => esc_html__( 'Normal', '__tm' ),
-		'bold'   => esc_html__( 'Bold', '__tm' ),
+function king_news_get_font_weight() {
+	return apply_filters( 'king_news_get_font_weight', array(
+		'normal' => esc_html__( 'Normal', 'king_news' ),
+		'bold'   => esc_html__( 'Bold', 'king_news' ),
 		'100'    => '100',
 		'200'    => '200',
 		'300'    => '300',
@@ -1514,27 +1620,31 @@ function __tm_get_font_weight() {
  *
  * @return array
  */
-function __tm_get_dynamic_css_options() {
-	return apply_filters( '__tm_get_dynamic_css_options', array(
-		'prefix'    => '__tm',
+function king_news_get_dynamic_css_options() {
+	return apply_filters( 'king_news_get_dynamic_css_options', array(
+		'prefix'    => 'king_news',
 		'type'      => 'theme_mod',
 		'single'    => true,
 		'css_files' => array(
-			__TM_THEME_DIR . '/assets/css/dynamic.css',
-			__TM_THEME_DIR . '/assets/css/dynamic/widgets/taxonomy-tiles.css',
-			__TM_THEME_DIR . '/assets/css/dynamic/widgets/image-grid.css',
-			__TM_THEME_DIR . '/assets/css/dynamic/widgets/carousel.css',
-			__TM_THEME_DIR . '/assets/css/dynamic/widgets/smart-slider.css',
-			__TM_THEME_DIR . '/assets/css/dynamic/widgets/instagram.css',
-			__TM_THEME_DIR . '/assets/css/dynamic/widgets/track-kickstarter.css',
-			__TM_THEME_DIR . '/assets/css/dynamic/site/top-panel.css',
-			__TM_THEME_DIR . '/assets/css/dynamic/site/search-form.css',
-			__TM_THEME_DIR . '/assets/css/dynamic/site/social.css',
-			__TM_THEME_DIR . '/assets/css/dynamic/site/main-navigation.css',
-			__TM_THEME_DIR . '/assets/css/dynamic/site/footer.css',
-			__TM_THEME_DIR . '/assets/css/dynamic/site/elements.css',
-			__TM_THEME_DIR . '/assets/css/dynamic/site/post.css',
-			__TM_THEME_DIR . '/assets/css/dynamic/site/pagination.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic/widgets/widget-default.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic/widgets/taxonomy-tiles.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic/widgets/image-grid.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic/widgets/carousel.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic/widgets/smart-slider.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic/widgets/instagram.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic/widgets/facebook.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic/widgets/track-kickstarter.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic/widgets/donate.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic/site/top-panel.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic/site/search-form.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic/site/social.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic/site/main-navigation.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic/site/footer.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic/site/elements.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic/site/post.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic/site/pagination.css',
+			KING_NEWS_THEME_DIR . '/assets/css/dynamic/site/misc.css',
 		),
 		'options'   => array(
 			'header_logo_font_style',
@@ -1645,9 +1755,9 @@ function __tm_get_dynamic_css_options() {
  *
  * @return array
  */
-function __tm_get_fonts_options() {
-	return apply_filters( '__tm_get_fonts_options', array(
-		'prefix'  => '__tm',
+function king_news_get_fonts_options() {
+	return apply_filters( 'king_news_get_fonts_options', array(
+		'prefix'  => 'king_news',
 		'type'    => 'theme_mod',
 		'single'  => true,
 		'options' => array(
@@ -1709,7 +1819,12 @@ function __tm_get_fonts_options() {
  * @since  1.0.0
  * @return string
  */
-function __tm_get_default_top_panel_text() {
+function king_news_get_default_top_panel_text() {
+	/*return sprintf(
+		__( '%s 25 East 12th Street 16st Floor New York, NY 12222, United States %s 800-2345-6789', 'king_news' ),
+		'<i class="material-icons">place</i>',
+		'<i class="material-icons indent-left">call</i>'
+	);*/
 	return 'Wednesday Jan.20, 2016 %%date%%';
 }
 
@@ -1719,6 +1834,6 @@ function __tm_get_default_top_panel_text() {
  * @since  1.0.0
  * @return string
  */
-function __tm_get_default_footer_copyright() {
+function king_news_get_default_footer_copyright() {
 	return '%%year%% News King, Inc. All Rights Reserved.';
 }

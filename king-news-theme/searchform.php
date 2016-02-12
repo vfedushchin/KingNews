@@ -2,16 +2,16 @@
 /**
  * The template for displaying search form.
  *
- * @package __tm
+ * @package king_news
  */
 ?>
 <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
 	<label>
-		<span class="screen-reader-text"><?php echo _x( 'Search for:', 'label', '__tm' ) ?></span>
+		<span class="screen-reader-text"><?php echo _x( 'Search for:', 'label', 'king_news' ) ?></span>
 		<input type="search" class="search-form__field"
-			placeholder='<?php echo esc_attr_x( "I'm looking for....", "placeholder", "__tm" ) ?>'
+			placeholder='<?php echo esc_attr_x( "I'm looking for....", "placeholder", "king_news" ) ?>'
 			value="<?php echo get_search_query() ?>" name="s"
-			title="<?php echo esc_attr_x( 'Search for:', 'label', '__tm' ) ?>" />
+			title="<?php echo esc_attr_x( 'Search for:', 'label', 'king_news' ) ?>" />
 	</label>
-	<button type="submit" class="search-form__submit"><i class="material-icons">search</i></button>
+	<button type="submit" class="search-form__submit btn"><i class="material-icons">search</i></button>
 </form>

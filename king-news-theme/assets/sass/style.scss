@@ -7,8 +7,8 @@ Description: Your theme description.
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: __tm
-Tags: tag1
+Text Domain: king_news
+Tags: blue, white, light, one-column, two-columns, three-columns, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-menu, featured-images, post-formats, sticky-post, theme-options, threaded-comments, translation-ready
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -69,6 +69,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 --------------------------------------------------------------*/
 @import "elements/elements";
 @import "elements/page-preloader";
+@import "elements/totop-button";
 
 /*--------------------------------------------------------------
 # Forms
@@ -97,6 +98,21 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 @import "modules/clearings";
 
 /*--------------------------------------------------------------
+# Comments
+--------------------------------------------------------------*/
+@import "modules/comments";
+
+/*--------------------------------------------------------------
+# Author Bio
+--------------------------------------------------------------*/
+@import "modules/author-bio";
+
+/*--------------------------------------------------------------
+# Share Buttons
+--------------------------------------------------------------*/
+@import "modules/share";
+
+/*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
 @import "card/card";
@@ -106,13 +122,15 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 --------------------------------------------------------------*/
 @import "site/secondary/widgets";
 @import "widgets/tm-widget-image-grid";
-@import "widgets/tm-taxonomy-tiles-widget";
+@import "widgets/tm-widget-taxonomy-tiles";
 @import "widgets/tm-widget-carousel-slider";
 @import "widgets/tm-widget-smart-slider";
 @import "widgets/tm-widget-about-author";
 @import "widgets/tm-widget-subscribe";
 @import "widgets/instagram";
 @import "widgets/track-kickstarter-project";
+@import "widgets/facebook-pagelike-widget";
+@import "widgets/widget-default";
 
 /*--------------------------------------------------------------
 # Content

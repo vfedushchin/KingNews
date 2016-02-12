@@ -1,6 +1,6 @@
 <?php
 /**
- * @package		__tm
+ * @package		king_news
  * @subpackage	Widget Class
  * @author		<[email address]>Cherry Team <cherryframework@gmail.com>
  */
@@ -10,12 +10,12 @@ if ( !defined( 'WPINC' ) ) {
 	die;
 }
 
-if ( !class_exists( '__Tm_Image_Grid_Widget' ) ) {
+if ( !class_exists( 'King_News_Image_Grid_Widget' ) ) {
 
 	/**
 	 * Image Grid Widget
 	 */
-	class __Tm_Image_Grid_Widget extends Cherry_Abstract_Widget {
+	class King_News_Image_Grid_Widget extends Cherry_Abstract_Widget {
 
 		/**
 		 * Image grid widget constructor
@@ -23,29 +23,29 @@ if ( !class_exists( '__Tm_Image_Grid_Widget' ) ) {
 		 * @since  1.0.0
 		 */
 		public function __construct() {
-			$this->widget_name			= esc_html__( '__Tm Image Grid Widget', '__tm' );
-			$this->widget_description	= esc_html__( 'This widget displays images from post.', '__tm' );
+			$this->widget_name			= esc_html__( 'King_News Image Grid Widget', 'king_news' );
+			$this->widget_description	= esc_html__( 'This widget displays images from post.', 'king_news' );
 			$this->widget_id			= 'widget-image-grid';
-			$this->widget_cssclass		= 'widget widget-image-grid';
+			$this->widget_cssclass		= 'widget-image-grid';
 
 			$this->settings				= array(
 				'title'	=> array(
 					'type'				=> 'text',
 					'value'				=> '',
-					'label'				=> esc_html__( 'Widget title', '__tm' ),
+					'label'				=> esc_html__( 'Widget title', 'king_news' ),
 				),
 				'terms_type' => array(
 					'type'				=> 'radio',
 					'value'				=> 'category_name',
 					'options'			=> array(
 						'category_name' => array(
-							'label'		=> esc_html__( 'Category', '__tm' ),
+							'label'		=> esc_html__( 'Category', 'king_news' ),
 						),
 						'tag' => array(
-							'label'		=> esc_html__( 'Tag', '__tm' ),
+							'label'		=> esc_html__( 'Tag', 'king_news' ),
 						),
 					),
-					'label'				=> esc_html__( 'Choose taxonomy type', '__tm' ),
+					'label'				=> esc_html__( 'Choose taxonomy type', 'king_news' ),
 				),
 				'category_name' => array(
 					'type'				=> 'select',
@@ -53,7 +53,7 @@ if ( !class_exists( '__Tm_Image_Grid_Widget' ) ) {
 					'value'				=> '',
 					'options'			=> false,
 					'options_callback'	=> array( $this, 'get_terms_list', array('category') ),
-					'label'				=> esc_html__( 'Select categories to show', '__tm' ),
+					'label'				=> esc_html__( 'Select categories to show', 'king_news' ),
 				),
 				'tag' => array(
 					'type'				=> 'select',
@@ -61,17 +61,17 @@ if ( !class_exists( '__Tm_Image_Grid_Widget' ) ) {
 					'value'				=> '',
 					'options'			=> false,
 					'options_callback'	=> array( $this, 'get_terms_list', array('post_tag') ),
-					'label'				=> esc_html__( 'Select tags to show', '__tm' ),
+					'label'				=> esc_html__( 'Select tags to show', 'king_news' ),
 				),
 				'post_sort' => array(
 					'type'				=> 'select',
 					'value'				=> 'date',
 					'options'		=> array(
-						'date' 				=> esc_html__( 'Publish Date', '__tm' ),
-						'title'				=> esc_html__( 'Post Title', '__tm' ),
-						'comment_count'		=> esc_html__( 'Comment Count', '__tm' ),
+						'date' 				=> esc_html__( 'Publish Date', 'king_news' ),
+						'title'				=> esc_html__( 'Post Title', 'king_news' ),
+						'comment_count'		=> esc_html__( 'Comment Count', 'king_news' ),
 					),
-					'label'				=> esc_html__( 'Post sorted', '__tm' ),
+					'label'				=> esc_html__( 'Post sorted', 'king_news' ),
 				),
 				'post_number' => array(
 					'type'				=> 'stepper',
@@ -79,7 +79,7 @@ if ( !class_exists( '__Tm_Image_Grid_Widget' ) ) {
 					'max_value'			=> '100',
 					'min_value'			=> '1',
 					'step_value'		=> '1',
-					'label'				=> esc_html__( 'Posts number', '__tm' ),
+					'label'				=> esc_html__( 'Posts number', 'king_news' ),
 				),
 				'post_offset' => array(
 					'type'				=> 'stepper',
@@ -87,7 +87,7 @@ if ( !class_exists( '__Tm_Image_Grid_Widget' ) ) {
 					'max_value'			=> '10000',
 					'min_value'			=> '0',
 					'step_value'		=> '1',
-					'label'				=> esc_html__( 'Offset post', '__tm' ),
+					'label'				=> esc_html__( 'Offset post', 'king_news' ),
 				),
 				'title_length' => array(
 					'type'				=> 'stepper',
@@ -95,7 +95,7 @@ if ( !class_exists( '__Tm_Image_Grid_Widget' ) ) {
 					'max_value'			=> '500',
 					'min_value'			=> '0',
 					'step_value'		=> '1',
-					'label'				=> esc_html__( 'Title words length ( Set 0 to hide title. )', '__tm' ),
+					'label'				=> esc_html__( 'Title words length ( Set 0 to hide title. )', 'king_news' ),
 				),
 				'columns_number' => array(
 					'type'				=> 'stepper',
@@ -103,15 +103,15 @@ if ( !class_exists( '__Tm_Image_Grid_Widget' ) ) {
 					'max_value'			=> '4',
 					'min_value'			=> '1',
 					'step_value'		=> '1',
-					'label'				=> esc_html__( 'Columns number', '__tm' ),
+					'label'				=> esc_html__( 'Columns number', 'king_news' ),
 				),
 				'items_padding' => array(
 					'type'				=> 'stepper',
-					'value'				=> '0',
+					'value'				=> '5',
 					'max_value'			=> '50',
 					'min_value'			=> '0',
 					'step_value'		=> '1',
-					'label'				=> esc_html__( 'Items padding ( size in pixels )', '__tm' ),
+					'label'				=> esc_html__( 'Items padding ( size in pixels )', 'king_news' ),
 				),
 			);
 
@@ -136,7 +136,7 @@ if ( !class_exists( '__Tm_Image_Grid_Widget' ) ) {
 
 			if ( $terms ){
 				foreach ( $terms as $term ) {
-					$output_terms[ $term->slug ] = $term->name /*. sprintf( _n( ' ( 1 post )', ' ( %s posts )', $term->count, '__tm' ), $term->count )*/;
+					$output_terms[ $term->slug ] = $term->name /*. sprintf( _n( ' ( 1 post )', ' ( %s posts )', $term->count, 'king_news' ), $term->count )*/;
 				}
 			}
 
@@ -153,7 +153,7 @@ if ( !class_exists( '__Tm_Image_Grid_Widget' ) ) {
 			$title = '' ;
 
 			if( '0' !== $instance['title_length'] ){
-				$title = wp_trim_words( $post->post_title, $instance['title_length'], esc_html__( ' ...', '__tm' ) );
+				$title = wp_trim_words( $post->post_title, $instance['title_length'], esc_html__( ' ...', 'king_news' ) );
 			}
 
 			return $title;
@@ -196,7 +196,7 @@ if ( !class_exists( '__Tm_Image_Grid_Widget' ) ) {
 				$size = $_wp_additional_image_sizes[ $image_size ];
 
 				// Place holder defaults attr
-				$placeholder_attr = apply_filters( '__tm_image_grid_widget_placeholder_default_args',
+				$placeholder_attr = apply_filters( 'king_news_image_grid_widget_placeholder_default_args',
 					array(
 						'width'			=> $size['width'],
 						'height'		=> $size['height'],
@@ -225,7 +225,7 @@ if ( !class_exists( '__Tm_Image_Grid_Widget' ) ) {
 		public function widget( $args, $instance ) {
 			global $post;
 
-			$args = apply_filters( '__tm_image_grid_widget_args', $args );
+			$args = apply_filters( 'king_news_image_grid_widget_args', $args );
 
 			if ( $this->get_cached_widget( $args ) ) {
 				return;
@@ -266,12 +266,12 @@ if ( !class_exists( '__Tm_Image_Grid_Widget' ) ) {
 					$inline_style = 'style="margin: 0 0 ' . $items_padding . 'px ' . $items_padding . 'px;"';
 				}
 
-				echo apply_filters( '__tm_image_grid_widget_before', '<div ' . $row_inline_style . '><div class="row">' );
+				echo apply_filters( 'king_news_image_grid_widget_before', '<div class="row columns-number-' . $columns_number . '" ' . $row_inline_style . '>' );
 
 				foreach ( $posts as $post ) {
 					setup_postdata( $post );
 
-					$image = $this->get_post_image( $post, apply_filters( '__tm_image_grid_widget_size', '_tm-thumb-m' ) );
+					$image = $this->get_post_image( $post, apply_filters( 'king_news_image_grid_widget_size', '_tm-thumb-m' ) );
 					$permalink = $this->get_post_permalink();
 					$title = $this->get_post_title( $post, $instance );
 					$date = $this->get_post_date();
@@ -283,7 +283,7 @@ if ( !class_exists( '__Tm_Image_Grid_Widget' ) ) {
 
 				}
 
-				echo apply_filters( '__tm_image_grid_widget_after', '</div></div>' );
+				echo apply_filters( 'king_news_image_grid_widget_after', '</div>' );
 			}
 
 			$this->widget_end( $args );
@@ -294,9 +294,9 @@ if ( !class_exists( '__Tm_Image_Grid_Widget' ) ) {
 		}
 	}
 
-	add_action( 'widgets_init', '__tm_register_image_grid_widget' );
-	function __tm_register_image_grid_widget() {
-		register_widget( '__Tm_Image_Grid_Widget' );
+	add_action( 'widgets_init', 'king_news_register_image_grid_widget' );
+	function king_news_register_image_grid_widget() {
+		register_widget( 'King_News_Image_Grid_Widget' );
 	}
 
 }

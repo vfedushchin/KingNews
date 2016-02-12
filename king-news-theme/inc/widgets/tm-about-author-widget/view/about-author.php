@@ -2,7 +2,7 @@
 /**
  * Template part to display about author widget content
  *
- * @package __tm/widgets
+ * @package king_news/widgets
  */
 ?>
 <div class="about-author"><?php

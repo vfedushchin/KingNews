@@ -192,7 +192,7 @@ if ( ! class_exists( 'Cherry_Core' ) ) {
 				return false;
 			}
 
-			return $class_name::get_instance( $this, $args );
+			return call_user_func( array( $class_name, 'get_instance' ), $this, $args );
 		}
 
 		/**

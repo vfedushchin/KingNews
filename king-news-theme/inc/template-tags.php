@@ -4,41 +4,41 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package __tm
+ * @package king_news
  */
 
-if ( ! function_exists( '__tm_entry_footer' ) ) :
+if ( ! function_exists( 'king_news_entry_footer' ) ) :
 /**
  * Prints HTML with meta information for the categories, tags and comments.
  *
  * @since 1.0.0
  */
-function __tm_entry_footer() {
+function king_news_entry_footer() {
 	// Hide category and tag text for pages.
 	if ( 'post' === get_post_type() ) {
 		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( esc_html__( ', ', '__tm' ) );
-		if ( $categories_list && __tm_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', '__tm' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+		$categories_list = get_the_category_list( esc_html__( ', ', 'king_news' ) );
+		if ( $categories_list && king_news_categorized_blog() ) {
+			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'king_news' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 		}
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html__( ', ', '__tm' ) );
+		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'king_news' ) );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', '__tm' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'king_news' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 		}
 	}
 
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 		echo '<span class="comments-link">';
-		comments_popup_link( esc_html__( 'Leave a comment', '__tm' ), esc_html__( '1 Comment', '__tm' ), esc_html__( '% Comments', '__tm' ) );
+		comments_popup_link( esc_html__( 'Leave a comment', 'king_news' ), esc_html__( '1 Comment', 'king_news' ), esc_html__( '% Comments', 'king_news' ) );
 		echo '</span>';
 	}
 
 	edit_post_link(
 		sprintf(
 			/* translators: %s: Name of current post */
-			esc_html__( 'Edit %s', '__tm' ),
+			esc_html__( 'Edit %s', 'king_news' ),
 			the_title( '<span class="screen-reader-text">"', '"</span>', false )
 		),
 		'<span class="edit-link">',
@@ -53,8 +53,8 @@ endif;
  * @since  1.0.0
  * @return bool
  */
-function __tm_categorized_blog() {
-	if ( false === ( $all_the_cool_cats = get_transient( '__tm_categories' ) ) ) {
+function king_news_categorized_blog() {
+	if ( false === ( $all_the_cool_cats = get_transient( 'king_news_categories' ) ) ) {
 		// Create an array of all the categories that are attached to posts.
 		$all_the_cool_cats = get_categories( array(
 			'fields'     => 'ids',
@@ -66,14 +66,14 @@ function __tm_categorized_blog() {
 		// Count the number of categories that are attached to the posts.
 		$all_the_cool_cats = count( $all_the_cool_cats );
 
-		set_transient( '__tm_categories', $all_the_cool_cats );
+		set_transient( 'king_news_categories', $all_the_cool_cats );
 	}
 
 	if ( $all_the_cool_cats > 1 ) {
-		// This blog has more than 1 category so __tm_categorized_blog should return true.
+		// This blog has more than 1 category so king_news_categorized_blog should return true.
 		return true;
 	} else {
-		// This blog has only 1 category so __tm_categorized_blog should return false.
+		// This blog has only 1 category so king_news_categorized_blog should return false.
 		return false;
 	}
 }
@@ -85,10 +85,10 @@ function __tm_categorized_blog() {
  * @param  array $classes Additional classes.
  * @return void
  */
-function __tm_header_class( $classes = array() ) {
+function king_news_header_class( $classes = array() ) {
 	$classes[] = 'site-header';
 	$classes[] = get_theme_mod( 'header_layout_type' );
-	echo __tm_get_container_classes( $classes );
+	echo king_news_get_container_classes( $classes );
 }
 
 /**
@@ -98,9 +98,9 @@ function __tm_header_class( $classes = array() ) {
  * @param  array $classes Additional classes.
  * @return void
  */
-function __tm_content_class( $classes = array() ) {
+function king_news_content_class( $classes = array() ) {
 	$classes[] = 'site-content';
-	echo __tm_get_container_classes( $classes );
+	echo king_news_get_container_classes( $classes );
 }
 
 /**
@@ -110,10 +110,10 @@ function __tm_content_class( $classes = array() ) {
  * @param  array $classes Additional classes.
  * @return void
  */
-function __tm_footer_class( $classes = array() ) {
+function king_news_footer_class( $classes = array() ) {
 	$classes[] = 'site-footer';
 	$classes[] = get_theme_mod( 'footer_layout_type', 'default' );
-	echo __tm_get_container_classes( $classes );
+	echo king_news_get_container_classes( $classes );
 }
 
 /**
@@ -123,7 +123,7 @@ function __tm_footer_class( $classes = array() ) {
  * @param  array  $classes Additional classes.
  * @return string
  */
-function __tm_get_container_classes( $classes ) {
+function king_news_get_container_classes( $classes ) {
 	$layout_type = get_theme_mod( 'page_layout_type' );
 
 	if ( 'boxed' == $layout_type ) {
@@ -140,8 +140,8 @@ function __tm_get_container_classes( $classes ) {
  * @param  array $classes Additional classes.
  * @return void
  */
-function __tm_primary_content_class( $classes = array() ) {
-	echo __tm_get_layout_classes( 'content', $classes );
+function king_news_primary_content_class( $classes = array() ) {
+	echo king_news_get_layout_classes( 'content', $classes );
 }
 
 /**
@@ -151,8 +151,8 @@ function __tm_primary_content_class( $classes = array() ) {
  * @param  array  $classes Additional classes.
  * @return void
  */
-function __tm_sidebar_class( $classes = array() ) {
-	echo __tm_get_layout_classes( 'sidebar', $classes );
+function king_news_sidebar_class( $classes = array() ) {
+	echo king_news_get_layout_classes( 'sidebar', $classes );
 }
 
 /**
@@ -163,7 +163,7 @@ function __tm_sidebar_class( $classes = array() ) {
  * @param  array  $classes Additional classes.
  * @return string
  */
-function __tm_get_layout_classes( $layout = 'content', $classes = array() ) {
+function king_news_get_layout_classes( $layout = 'content', $classes = array() ) {
 	$sidebar_position = get_theme_mod( 'sidebar_position' );
 	$sidebar_width    = get_theme_mod( 'sidebar_width' );
 
@@ -171,7 +171,7 @@ function __tm_get_layout_classes( $layout = 'content', $classes = array() ) {
 		$sidebar_width = 0;
 	}
 
-	$layout_classes = ! empty( __tm_theme()->layout[ $sidebar_position ][ $sidebar_width ][ $layout ] ) ? __tm_theme()->layout[ $sidebar_position ][ $sidebar_width ][ $layout ] : array();
+	$layout_classes = ! empty( king_news_theme()->layout[ $sidebar_position ][ $sidebar_width ][ $layout ] ) ? king_news_theme()->layout[ $sidebar_position ][ $sidebar_width ][ $layout ] : array();
 
 	if ( ! empty( $classes ) ) {
 		$layout_classes = array_merge( $layout_classes, $classes );
@@ -181,14 +181,14 @@ function __tm_get_layout_classes( $layout = 'content', $classes = array() ) {
 		return '';
 	}
 
-	$layout_classes = apply_filters( "__tm_{$layout}_classes", $layout_classes );
+	$layout_classes = apply_filters( "king_news_{$layout}_classes", $layout_classes );
 
 	return 'class="' . join( ' ', $layout_classes ) . '"';
 }
 
-function __tm_posts_list_class( $classes = array(), $echo = true ) {
-	$layout_type      = get_theme_mod( 'blog_layout_type', __tm_theme()->customizer->get_default( 'blog_layout_type' ) );
-	$sidebar_position = get_theme_mod( 'sidebar_position', __tm_theme()->customizer->get_default( 'sidebar_position' ) );
+function king_news_posts_list_class( $classes = array(), $echo = true ) {
+	$layout_type      = get_theme_mod( 'blog_layout_type', king_news_theme()->customizer->get_default( 'blog_layout_type' ) );
+	$sidebar_position = get_theme_mod( 'sidebar_position', king_news_theme()->customizer->get_default( 'sidebar_position' ) );
 
 	$classes[] = 'posts-list';
 	$classes[] = 'posts-list--' . sanitize_html_class( $layout_type );
@@ -202,7 +202,7 @@ function __tm_posts_list_class( $classes = array(), $echo = true ) {
 		$classes[] = 'card-columns';
 	}
 
-	$classes = apply_filters( '__tm_posts_list_class', $classes );
+	$classes = apply_filters( 'king_news_posts_list_class', $classes );
 
 	$output = 'class="' . join( ' ', $classes ) . '"';
 
@@ -214,17 +214,17 @@ function __tm_posts_list_class( $classes = array(), $echo = true ) {
 }
 
 /**
- * Flush out the transients used in __tm_categorized_blog.
+ * Flush out the transients used in king_news_categorized_blog.
  */
-function __tm_category_transient_flusher() {
+function king_news_category_transient_flusher() {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
 	}
 	// Like, beat it. Dig?
-	delete_transient( '__tm_categories' );
+	delete_transient( 'king_news_categories' );
 }
-add_action( 'edit_category', '__tm_category_transient_flusher' );
-add_action( 'save_post',     '__tm_category_transient_flusher' );
+add_action( 'edit_category', 'king_news_category_transient_flusher' );
+add_action( 'save_post',     'king_news_category_transient_flusher' );
 
 /**
  * Show top panel message
@@ -232,9 +232,9 @@ add_action( 'save_post',     '__tm_category_transient_flusher' );
  * @param  string $format Output formatting.
  * @return void
  */
-function __tm_top_message( $format = '%s' ) {
+function king_news_top_message( $format = '%s' ) {
 
-	$message = get_theme_mod( 'top_panel_text', __tm_theme()->customizer->get_default( 'top_panel_text' ) );
+	$message = get_theme_mod( 'top_panel_text', king_news_theme()->customizer->get_default( 'top_panel_text' ) );
 
 	if ( ! $message ) {
 		return;
@@ -250,15 +250,16 @@ function __tm_top_message( $format = '%s' ) {
  * @param  string $format Output formatting.
  * @return void
  */
-function __tm_top_search( $format = '%s' ) {
+function king_news_top_search( $format = '%s' ) {
 
-	$is_enabled = get_theme_mod( 'top_panel_search', __tm_theme()->customizer->get_default( 'top_panel_search' ) );
+	$is_enabled = get_theme_mod( 'top_panel_search', king_news_theme()->customizer->get_default( 'top_panel_search' ) );
 
 	if ( ! $is_enabled ) {
 		return;
 	}
 
 	printf( $format, get_search_form( false ) );
+
 }
 
 /**
@@ -266,7 +267,7 @@ function __tm_top_search( $format = '%s' ) {
  *
  * @return void
  */
-function __tm_footer_logo() {
+function king_news_footer_logo() {
 
 	$logo_url = get_theme_mod( 'footer_logo_url' );
 
@@ -279,7 +280,7 @@ function __tm_footer_logo() {
 	$logo_url = esc_url( $logo_url );
 
 	$logo_format = apply_filters(
-		'__tm_footer_logo_format',
+		'king_news_footer_logo_format',
 		'<div class="footer-logo"><a href="%2$s" class="footer-logo_link"><img src="%1$s" alt="%3$s" class="footer-logo_img"></a></div>'
 	);
 
@@ -292,13 +293,13 @@ function __tm_footer_logo() {
  *
  * @return void
  */
-function __tm_footer_copyright() {
+function king_news_footer_copyright() {
 
-	$copyright = get_theme_mod( 'footer_copyright', __tm_theme()->customizer->get_default( 'footer_copyright' ) );
+	$copyright = get_theme_mod( 'footer_copyright', king_news_theme()->customizer->get_default( 'footer_copyright' ) );
 	$format    = '<div class="footer-copyright">%s</div>';
 
 	if ( ! empty( $copyright ) ) {
-		printf( $format, wp_kses( __tm_render_macros( $copyright ), wp_kses_allowed_html( 'post' ) ) );
+		printf( $format, wp_kses( king_news_render_macros( $copyright ), wp_kses_allowed_html( 'post' ) ) );
 		return;
 	}
 }
@@ -308,19 +309,17 @@ function __tm_footer_copyright() {
  *
  * @return void
  */
-function __tm_main_menu() {
+function king_news_main_menu() {
 	?>
 	<nav id="site-navigation" class="main-navigation" role="navigation">
-		<button class="menu-toggle" aria-controls="main-menu" aria-expanded="false"><?php
-			esc_html_e( 'Main Menu', '__tm' );
-		?></button>
+		<button class="menu-toggle" aria-controls="main-menu" aria-expanded="false"><i class="material-icons">subject</i></button>
 		<?php
-			$args = apply_filters( '__tm_main_menu_args', array(
+			$args = apply_filters( 'king_news_main_menu_args', array(
 				'theme_location'   => 'main',
 				'container'        => '',
 				'menu_id'          => 'main-menu',
-				'fallback_cb'      => '__tm_set_nav_menu',
-				'fallback_message' => __( 'Set main menu', '__tm' ),
+				'fallback_cb'      => 'king_news_set_nav_menu',
+				'fallback_message' => __( 'Set main menu', 'king_news' ),
 			) );
 
 			wp_nav_menu( $args );
@@ -334,17 +333,17 @@ function __tm_main_menu() {
  *
  * @return void
  */
-function __tm_footer_menu() { ?>
+function king_news_footer_menu() { ?>
 	<nav id="footer-navigation" class="footer-menu" role="navigation">
 	<?php
-		$args = apply_filters( '__tm_footer_menu_args', array(
+		$args = apply_filters( 'king_news_footer_menu_args', array(
 			'theme_location'   => 'footer',
 			'container'        => '',
 			'menu_id'          => 'footer-menu-items',
 			'menu_class'       => 'footer-menu__items inline-list',
 			'depth'            => 1,
 			'fallback_cb'      => '__return_empty_string',
-			'fallback_message' => __( 'Set footer menu', '__tm' ),
+			'fallback_message' => __( 'Set footer menu', 'king_news' ),
 		) );
 
 		wp_nav_menu( $args );
@@ -358,10 +357,9 @@ function __tm_footer_menu() { ?>
  *
  * @return void
  */
-function __tm_social_list( $context = '' ) {
-	$visibility_in_header = get_theme_mod( 'header_social_links', __tm_theme()->customizer->get_default( 'header_social_links' ) );
-	$visibility_in_footer = get_theme_mod( 'footer_social_links', __tm_theme()->customizer->get_default( 'footer_social_links' ) );
-	$visibility_in_blog_post = get_theme_mod( 'post_share_buttons', __tm_theme()->customizer->get_default( 'post_share_buttons' ) );
+function king_news_social_list( $context = '' ) {
+	$visibility_in_header = get_theme_mod( 'header_social_links', king_news_theme()->customizer->get_default( 'header_social_links' ) );
+	$visibility_in_footer = get_theme_mod( 'footer_social_links', king_news_theme()->customizer->get_default( 'footer_social_links' ) );
 
 	if ( ! $visibility_in_header && ( 'header' === $context ) ) {
 		return;
@@ -371,11 +369,7 @@ function __tm_social_list( $context = '' ) {
 		return;
 	}
 
-	if ( ! $visibility_in_blog_post && ( 'post' === $context ) ) {
-		return;
-	}
-
-	echo __tm_get_social_list( $context );
+	echo king_news_get_social_list( $context );
 
 }
 
@@ -385,7 +379,7 @@ function __tm_social_list( $context = '' ) {
  * @since  1.0.0
  * @return string
  */
-function __tm_get_social_list( $context = '' ) {
+function king_news_get_social_list( $context = '' ) {
 
 	static $instance = 0;
 	$instance++;
@@ -396,7 +390,7 @@ function __tm_get_social_list( $context = '' ) {
 		$container_class[] = sprintf( 'social-list--%s', sanitize_html_class( $context ) );
 	}
 
-	$args = apply_filters( '__tm_social_list_args', array(
+	$args = apply_filters( 'king_news_social_list_args', array(
 		'theme_location'   => 'social',
 		'container'        => 'div',
 		'container_class'  => join( ' ', $container_class ),
@@ -406,8 +400,8 @@ function __tm_get_social_list( $context = '' ) {
 		'link_before'      => '<span class="screen-reader-text">',
 		'link_after'       => '</span>',
 		'echo'             => false,
-		'fallback_cb'      => '__tm_set_nav_menu',
-		'fallback_message' => __( 'Set social menu', '__tm' ),
+		'fallback_cb'      => 'king_news_set_nav_menu',
+		'fallback_message' => __( 'Set social menu', 'king_news' ),
 	) );
 
 	return wp_nav_menu( $args );
@@ -420,7 +414,7 @@ function __tm_get_social_list( $context = '' ) {
  * @param  array $args Nav menu arguments.
  * @return void
  */
-function __tm_set_nav_menu( $args ) {
+function king_news_set_nav_menu( $args ) {
 
 	if ( ! current_user_can( 'edit_theme_options' ) ) {
 		return null;
@@ -439,15 +433,15 @@ function __tm_set_nav_menu( $args ) {
  *
  * @return void
  */
-function __tm_read_more() {
+function king_news_read_more() {
 
-	$button_text = get_theme_mod( 'blog_read_more_text', __tm_theme()->customizer->get_default( 'blog_read_more_text' ) );
+	$button_text = get_theme_mod( 'blog_read_more_text', king_news_theme()->customizer->get_default( 'blog_read_more_text' ) );
 
 	if ( ! $button_text ) {
 		return;
 	}
 
-	$format = apply_filters( '__tm_read_more_button_format', '<a href="%2$s" class="btn"><span class="btn__text">%1$s</span><span class="btn__icon"></span></a>' );
+	$format = apply_filters( 'king_news_read_more_button_format', '<a href="%2$s" class="btn"><span class="btn__text">%1$s</span><span class="btn__icon"></span></a>' );
 
 	printf( $format, wp_kses( $button_text, wp_kses_allowed_html( 'post' ) ), esc_url( get_permalink() ) );
 
@@ -458,13 +452,13 @@ function __tm_read_more() {
  *
  * @return void
  */
-function __tm_blog_content() {
+function king_news_blog_content() {
 
 	if ( ! is_singular() && wp_is_mobile() ) {
 		return;
 	}
 
-	$blog_content = get_theme_mod( 'blog_posts_content', __tm_theme()->customizer->get_default( 'blog_posts_content' ) );
+	$blog_content = get_theme_mod( 'blog_posts_content', king_news_theme()->customizer->get_default( 'blog_posts_content' ) );
 
 	if ( ! in_array( $blog_content, array( 'full', 'excerpt' ) ) ) {
 		$blog_content = 'excerpt';
@@ -472,11 +466,11 @@ function __tm_blog_content() {
 
 	switch ( $blog_content ) {
 		case 'full':
-			__tm_post_content();
+			king_news_post_content();
 			break;
 
 		case 'excerpt':
-			__tm_post_excerpt( array( 'length' => 45, 'more' => '&hellip;' ) );
+			king_news_post_excerpt( array( 'length' => 45, 'more' => '&hellip;' ) );
 			break;
 	}
 
@@ -487,7 +481,7 @@ function __tm_blog_content() {
  *
  * @return void
  */
-function __tm_post_excerpt( $args = array() ) {
+function king_news_post_excerpt( $args = array() ) {
 
 	$args = wp_parse_args( $args, array(
 		'length' => 55,
@@ -512,16 +506,16 @@ function __tm_post_excerpt( $args = array() ) {
  *
  * @return void
  */
-function __tm_post_content() {
+function king_news_post_content() {
 
 	the_content( sprintf(
 		/* translators: %s: Name of current post. */
-		wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', '__tm' ), array( 'span' => array( 'class' => array() ) ) ),
+		wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'king_news' ), array( 'span' => array( 'class' => array() ) ) ),
 		the_title( '<span class="screen-reader-text">"', '"</span>', false )
 	) );
 
 	wp_link_pages( array(
-		'before' => '<div class="page-links">' . esc_html__( 'Pages:', '__tm' ),
+		'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'king_news' ),
 		'after'  => '</div>',
 	) );
 
@@ -532,7 +526,7 @@ function __tm_post_content() {
  *
  * @return void
  */
-function __tm_post_thumbnail( $linked = false, $sizes = array() ) {
+function king_news_post_thumbnail( $linked = false, $sizes = array() ) {
 
 	if ( ! has_post_thumbnail() ) {
 		return;
@@ -545,12 +539,12 @@ function __tm_post_thumbnail( $linked = false, $sizes = array() ) {
 	) );
 
 	$linked_format = apply_filters(
-		'__tm_linked_post_thumbnail_format',
+		'king_news_linked_post_thumbnail_format',
 		'<a href="%2$s" class="post-thumbnail__link %3$s">%1$s</a>'
 	);
 
 	$single_format = apply_filters(
-		'__tm_single_post_thumbnail_format',
+		'king_news_single_post_thumbnail_format',
 		'%1$s'
 	);
 
@@ -558,25 +552,19 @@ function __tm_post_thumbnail( $linked = false, $sizes = array() ) {
 	$extra_classes[] = 'post-thumbnail__img';
 	$link_class      = 'post-thumbnail--fullwidth';
 
-	$size = apply_filters( '__tm_post_thumbail_size', false );
+	$size = apply_filters( 'king_news_post_thumbail_size', false );
 
 	if ( false === $size ) {
 
 		if ( ! is_single() ) {
 			$size = get_theme_mod(
 				'blog_featured_image',
-				__tm_theme()->customizer->get_default( 'blog_featured_image' )
+				king_news_theme()->customizer->get_default( 'blog_featured_image' )
 			);
 		} else {
 			$size = 'fullwidth';
 		}
 
-		$link_class = sanitize_html_class( 'post-thumbnail--' . $size );
-		$size       = isset( $sizes[ $size ] ) ? esc_attr( $sizes[ $size ] ) : 'post-thumbnail';
-	}
-
-	else {
-		$size = 'small';
 		$link_class = sanitize_html_class( 'post-thumbnail--' . $size );
 		$size       = isset( $sizes[ $size ] ) ? esc_attr( $sizes[ $size ] ) : 'post-thumbnail';
 	}
@@ -599,7 +587,7 @@ function __tm_post_thumbnail( $linked = false, $sizes = array() ) {
  * @param  array  $args    arguments array.
  * @return void
  */
-function __tm_meta_author( $context = 'loop', $args = array() ) {
+function king_news_meta_author( $context = 'loop', $args = array() ) {
 
 	if ( 'loop' == $context ) {
 		$meta = 'blog_post_author';
@@ -607,7 +595,7 @@ function __tm_meta_author( $context = 'loop', $args = array() ) {
 		$meta = 'single_post_author';
 	}
 
-	if ( ! __tm_is_meta_visible( $meta, $context ) ) {
+	if ( ! king_news_is_meta_visible( $meta, $context ) ) {
 		return;
 	}
 
@@ -623,7 +611,7 @@ function __tm_meta_author( $context = 'loop', $args = array() ) {
 	 * @var string
 	 */
 	$author_format = apply_filters(
-		'__tm_meta_author_format',
+		'king_news_meta_author_format',
 		'<%1$s class="post-author">%2$s<a class="post-author__link" href="%4$s">%5$s</a>%3$s</%1$s>',
 		$context
 	);
@@ -647,7 +635,7 @@ function __tm_meta_author( $context = 'loop', $args = array() ) {
  * @param  array  $args    arguments array.
  * @return void
  */
-function __tm_meta_date( $context = 'loop', $args = array() ) {
+function king_news_meta_date( $context = 'loop', $args = array() ) {
 
 	if ( 'loop' == $context ) {
 		$meta = 'blog_post_publish_date';
@@ -655,7 +643,7 @@ function __tm_meta_date( $context = 'loop', $args = array() ) {
 		$meta = 'single_post_publish_date';
 	}
 
-	if ( ! __tm_is_meta_visible( $meta, $context ) ) {
+	if ( ! king_news_is_meta_visible( $meta, $context ) ) {
 		return;
 	}
 
@@ -672,17 +660,13 @@ function __tm_meta_date( $context = 'loop', $args = array() ) {
 		esc_html( get_the_date() )
 	);
 
-	// output date for posts for example '2 days ago'
-	// printf( _x( '%s ago', '%s = human-readable time difference', '__tm' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) );
-	$time_string = sprintf( _x( '%s ago', '%s = human-readable time difference', '__tm' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) );
-
 	/**
 	 * Filter post date output format
 	 *
 	 * @var string
 	 */
 	$date_format = apply_filters(
-		'__tm_meta_date_format',
+		'king_news_meta_date_format',
 		'<%1$s class="post__date">%2$s<a class="post-date__link" href="%4$s">%5$s</a>%3$s</%1$s>',
 		$context
 	);
@@ -696,7 +680,6 @@ function __tm_meta_date( $context = 'loop', $args = array() ) {
 		$time_string
 	);
 
-
 }
 
 /**
@@ -707,7 +690,7 @@ function __tm_meta_date( $context = 'loop', $args = array() ) {
  * @param  array  $args    arguments array.
  * @return void
  */
-function __tm_meta_comments( $context = 'loop', $args = array() ) {
+function king_news_meta_comments( $context = 'loop', $args = array() ) {
 
 	if ( post_password_required() || ! comments_open() ) {
 		return;
@@ -719,7 +702,7 @@ function __tm_meta_comments( $context = 'loop', $args = array() ) {
 		$meta = 'single_post_comments';
 	}
 
-	if ( ! __tm_is_meta_visible( $meta, $context ) ) {
+	if ( ! king_news_is_meta_visible( $meta, $context ) ) {
 		return;
 	}
 
@@ -738,7 +721,7 @@ function __tm_meta_comments( $context = 'loop', $args = array() ) {
 	 * @var string
 	 */
 	$comments_format = apply_filters(
-		'__tm_meta_comments_format',
+		'king_news_meta_comments_format',
 		'<%1$s class="post__comments">%2$s%4$s%3$s</%1$s>',
 		$context
 	);
@@ -768,7 +751,7 @@ function __tm_meta_comments( $context = 'loop', $args = array() ) {
  * @param  bool   $echo    If true - prints result, if false - return.
  * @return void
  */
-function __tm_meta_categories( $context = 'loop', $args = array(), $echo = true ) {
+function king_news_meta_categories( $context = 'loop', $args = array(), $echo = true ) {
 
 	if ( 'loop' == $context ) {
 		$meta = 'blog_post_categories';
@@ -776,7 +759,7 @@ function __tm_meta_categories( $context = 'loop', $args = array(), $echo = true 
 		$meta = 'single_post_categories';
 	}
 
-	if ( ! __tm_is_meta_visible( $meta, $context ) ) {
+	if ( ! king_news_is_meta_visible( $meta, $context ) ) {
 		return;
 	}
 
@@ -793,7 +776,7 @@ function __tm_meta_categories( $context = 'loop', $args = array(), $echo = true 
 	 * @var string
 	 */
 	$categories_format = apply_filters(
-		'__tm_meta_categories_format',
+		'king_news_meta_categories_format',
 		'<%1$s class="post__cats">%2$s%4$s%3$s</%1$s>',
 		$context
 	);
@@ -827,7 +810,7 @@ function __tm_meta_categories( $context = 'loop', $args = array(), $echo = true 
  * @param  array  $args    arguments array.
  * @return void
  */
-function __tm_meta_tags( $context = 'loop', $args = array() ) {
+function king_news_meta_tags( $context = 'loop', $args = array() ) {
 
 	if ( 'loop' == $context ) {
 		$meta = 'blog_post_tags';
@@ -835,7 +818,7 @@ function __tm_meta_tags( $context = 'loop', $args = array() ) {
 		$meta = 'single_post_tags';
 	}
 
-	if ( ! __tm_is_meta_visible( $meta, $context ) ) {
+	if ( ! king_news_is_meta_visible( $meta, $context ) ) {
 		return;
 	}
 
@@ -852,7 +835,7 @@ function __tm_meta_tags( $context = 'loop', $args = array() ) {
 	 * @var string
 	 */
 	$tags_format = apply_filters(
-		'__tm_meta_tags_format',
+		'king_news_meta_tags_format',
 		'<%1$s class="post__tags">%2$s</%1$s>',
 		$context
 	);
@@ -876,7 +859,7 @@ function __tm_meta_tags( $context = 'loop', $args = array() ) {
  * @since  1.0.0
  * @return void
  */
-function __tm_sticky_label() {
+function king_news_sticky_label() {
 
 	if ( ! is_sticky() || ! is_home() || is_paged() ) {
 		return;
@@ -888,7 +871,7 @@ function __tm_sticky_label() {
 		return;
 	}
 
-	printf( '<span class="sticky__label">%s</span>', __tm_render_icons( $sticky_label ) );
+	printf( '<span class="sticky__label">%s</span>', king_news_render_icons( $sticky_label ) );
 }
 
 /**
@@ -899,13 +882,13 @@ function __tm_sticky_label() {
  * @param  string $context current post context - 'single' or 'loop'.
  * @return bool
  */
-function __tm_is_meta_visible( $meta, $context = 'loop' ) {
+function king_news_is_meta_visible( $meta, $context = 'loop' ) {
 
 	if ( ! $meta ) {
 		return false;
 	}
 
-	$meta_enabled = get_theme_mod( $meta, __tm_theme()->customizer->get_default( $meta ) );
+	$meta_enabled = get_theme_mod( $meta, king_news_theme()->customizer->get_default( $meta ) );
 
 	switch ( $context ) {
 
@@ -937,8 +920,8 @@ function __tm_is_meta_visible( $meta, $context = 'loop' ) {
  * @since  1.0.0
  * @return void
  */
-function __tm_header_logo() {
-	$logo = __tm_get_site_title_by_type( get_theme_mod( 'header_logo_type', __tm_theme()->customizer->get_default( 'header_logo_type' ) ) );
+function king_news_header_logo() {
+	$logo = king_news_get_site_title_by_type( get_theme_mod( 'header_logo_type', king_news_theme()->customizer->get_default( 'header_logo_type' ) ) );
 
 	if ( is_front_page() && is_home() ) {
 		$tag = 'h1';
@@ -947,7 +930,7 @@ function __tm_header_logo() {
 	}
 
 	$format = apply_filters(
-		'__tm_header_logo_format',
+		'king_news_header_logo_format',
 		'<%1$s class="site-logo"><a class="site-logo__link" href="%2$s" rel="home">%3$s</a></%1$s>'
 	);
 
@@ -960,7 +943,7 @@ function __tm_header_logo() {
  * @since  1.0.0
  * @return string
  */
-function __tm_get_site_title_by_type( $type ) {
+function king_news_get_site_title_by_type( $type ) {
 
 	if ( ! in_array( $type, array( 'text', 'image' ) ) ) {
 		$type = 'text';
@@ -972,7 +955,7 @@ function __tm_get_site_title_by_type( $type ) {
 		return $logo;
 	}
 
-	$logo_url = get_theme_mod( 'header_logo_url', __tm_theme()->customizer->get_default( 'header_logo_url' ) );
+	$logo_url = get_theme_mod( 'header_logo_url', king_news_theme()->customizer->get_default( 'header_logo_url' ) );
 
 	if ( ! $logo_url ) {
 		return $logo;
@@ -985,7 +968,7 @@ function __tm_get_site_title_by_type( $type ) {
 		$retina_logo = sprintf( 'srcset="%s 2x"', esc_url( $retina_logo_url ) );
 	}
 
-	$format_image = apply_filters( '__tm_header_logo_image_format',
+	$format_image = apply_filters( 'king_news_header_logo_image_format',
 		'<img src="%1$s" alt="%2$s" class="site-link__img" %3$s>'
 	);
 
@@ -998,9 +981,9 @@ function __tm_get_site_title_by_type( $type ) {
  * @since  1.0.0
  * @return void
  */
-function __tm_site_description() {
+function king_news_site_description() {
 
-	$show_desc = get_theme_mod( 'show_tagline', __tm_theme()->customizer->get_default( 'show_tagline' ) );
+	$show_desc = get_theme_mod( 'show_tagline', king_news_theme()->customizer->get_default( 'show_tagline' ) );
 
 	if ( ! $show_desc ) {
 		return;
@@ -1012,7 +995,7 @@ function __tm_site_description() {
 		return;
 	}
 
-	$format = apply_filters( '__tm_site_description_format', '<div class="site-description">%s</div>' );
+	$format = apply_filters( 'king_news_site_description_format', '<div class="site-description">%s</div>' );
 
 	printf( $format, $description );
 }
@@ -1022,9 +1005,9 @@ function __tm_site_description() {
  *
  * @return void
  */
-function __tm_post_author_bio() {
+function king_news_post_author_bio() {
 
-	$is_enabled = get_theme_mod( 'single_author_block', __tm_theme()->customizer->get_default( 'single_author_block' ) );
+	$is_enabled = get_theme_mod( 'single_author_block', king_news_theme()->customizer->get_default( 'single_author_block' ) );
 
 	if ( ! $is_enabled ) {
 		return;
@@ -1041,7 +1024,7 @@ function __tm_post_author_bio() {
  * @param  array $args Arguments.
  * @return string      An HTML link to the author page.
  */
-function __tm_get_the_author_posts_link() {
+function king_news_get_the_author_posts_link() {
 	ob_start();
 	the_author_posts_link();
 	$author = ob_get_clean();
@@ -1055,16 +1038,18 @@ function __tm_get_the_author_posts_link() {
  * @since  1.0.0
  * @return void
  */
-function __tm_site_breadcrumbs() {
-	$breadcrumbs_visibillity = get_theme_mod( 'breadcrumbs_visibillity', __tm_theme()->customizer->get_default( 'breadcrumbs_visibillity' ) );
-	$breadcrumbs_page_title = get_theme_mod( 'breadcrumbs_page_title', __tm_theme()->customizer->get_default( 'breadcrumbs_page_title' ) );
-	$breadcrumbs_path_type = get_theme_mod( 'breadcrumbs_path_type', __tm_theme()->customizer->get_default( 'breadcrumbs_path_type' ) );
+function king_news_site_breadcrumbs() {
+	$breadcrumbs_visibillity = get_theme_mod( 'breadcrumbs_visibillity', king_news_theme()->customizer->get_default( 'breadcrumbs_visibillity' ) );
+	$breadcrumbs_page_title = get_theme_mod( 'breadcrumbs_page_title', king_news_theme()->customizer->get_default( 'breadcrumbs_page_title' ) );
+	$breadcrumbs_path_type = get_theme_mod( 'breadcrumbs_path_type', king_news_theme()->customizer->get_default( 'breadcrumbs_path_type' ) );
+	$breadcrumbs_front_visibillity = get_theme_mod( 'breadcrumbs_front_visibillity', king_news_theme()->customizer->get_default( 'breadcrumbs_front_visibillity' ) );
 
-	$breadcrumbs_settings = apply_filters( '__tm_breadcrumbs_settings', array(
+	$breadcrumbs_settings = apply_filters( 'king_news_breadcrumbs_settings', array(
 		'wrapper_format'	=> '<div class="container"><div class="breadcrumbs__title">%1$s</div><div class="breadcrumbs__items">%2$s</div><div class="clear"></div></div>',
 		'page_title_format'	=> '<h4 class="page-title">%s</h4>',
 		'show_title'		=> $breadcrumbs_page_title,
 		'path_type'			=> $breadcrumbs_path_type,
+		'show_on_front'		=> $breadcrumbs_front_visibillity,
 		'labels'			=> array(
 			'browse'		=> '',
 		),
@@ -1081,7 +1066,7 @@ function __tm_site_breadcrumbs() {
 	) );
 
 	if ( $breadcrumbs_visibillity ) {
-		__tm_theme()->get_core()->init_module( 'cherry-breadcrumbs', $breadcrumbs_settings );
+		king_news_theme()->get_core()->init_module( 'cherry-breadcrumbs', $breadcrumbs_settings );
 		do_action('cherry_breadcrumbs_render');
 	}
 
@@ -1093,11 +1078,16 @@ function __tm_site_breadcrumbs() {
  * @since  1.0.0
  * @return void
  */
-function __tm_get_page_preloader() {
-	$page_preloader = get_theme_mod( 'page_preloader', __tm_theme()->customizer->get_default( 'page_preloader' ) );
+function king_news_get_page_preloader() {
+	$page_preloader = get_theme_mod( 'page_preloader', king_news_theme()->customizer->get_default( 'page_preloader' ) );
 
 	if ( $page_preloader ) {
-		echo '<div class="page-preloader-cover"><div class="tm-rotating-plane"></div></div>';
+		echo '<div class="page-preloader-cover"><div class="tm-folding-cube">
+        <div class="tm-cube1 tm-cube"></div>
+        <div class="tm-cube2 tm-cube"></div>
+        <div class="tm-cube4 tm-cube"></div>
+        <div class="tm-cube3 tm-cube"></div>
+      </div></div>';
 	}
 }
 
@@ -1106,7 +1096,7 @@ function __tm_get_page_preloader() {
  *
  * @return void
  */
-function __tm_top_menu() {
+function king_news_top_menu() {
 
 	if ( ! has_nav_menu( 'top' ) ) {
 		return;
@@ -1123,6 +1113,137 @@ function __tm_top_menu() {
 }
 
 /**
+ * Print boxed or fullwidth conainer class
+ *
+ * @return void
+ */
+function king_news_layout_wrap() {
+	$layout = get_theme_mod( 'page_layout_type', king_news_theme()->customizer->get_default( 'page_layout_type' ) );
+	printf( '%s-wrap', esc_attr( $layout ) );
+}
+
+/**
+ * Retrieve a share buttons with settings.
+ *
+ * @since  1.0.0
+ * @return array
+ */
+function king_news_share_buttons( $context = 'loop', $args = array(), $config = array() ) {
+
+	if ( 'loop' == $context ) {
+		$meta = 'blog_post_share_buttons';
+	} else {
+		$meta = 'single_post_share_buttons';
+	}
+
+	if ( ! king_news_is_meta_visible( $meta, $context ) ) {
+		return;
+	}
+
+	/**
+	 * Default social networks.
+	 *
+	 * @since 1.0.0
+	 *
+	 * $1%s - `id`
+	 * $2%s - `type`
+	 * $3%s - `url`
+	 * $4%s - `title`
+	 * $4%s - `summary`
+	 * $6%s - `thumbnail`
+	 */
+	$defaults = apply_filters( 'king_news_default_args_share_buttons', array(
+		'facebook' => array(
+			'icon'      => 'fa fa-facebook',
+			'name'      => esc_html__( 'Facebook', 'king_news' ),
+			'share_url' => 'https://www.facebook.com/sharer/sharer.php?u=%3$s&t=%4$s',
+		),
+		'twitter' => array(
+			'icon'      => 'fa fa-twitter',
+			'name'      => esc_html__( 'Twitter', 'king_news' ),
+			'share_url' => 'https://twitter.com/intent/tweet?url=%3$s&text=%4$s',
+		),
+		'google-plus' => array(
+			'icon'      => 'fa fa-google-plus',
+			'name'      => esc_html__( 'Google+', 'king_news' ),
+			'share_url' => 'https://plus.google.com/share?url=%3$s',
+		),
+		'linkedin' => array(
+			'icon'      => 'fa fa-linkedin',
+			'name'      => esc_html__( 'LinkedIn', 'king_news' ),
+			'share_url' => 'http://www.linkedin.com/shareArticle?mini=true&url=%3$s&title=%4$s&summary=%5$s&source=%3$s',
+		),
+		'pinterest' => array(
+			'icon'      => 'fa fa-pinterest',
+			'name'      => esc_html__( 'Pinterest', 'king_news' ),
+			'share_url' => 'https://www.pinterest.com/pin/create/button/?url=%3$s&description=%4$s&media=%6$s',
+		),
+	) );
+
+	$networks = wp_parse_args( $args, $defaults );
+
+	$default_config = apply_filters( 'king_news_default_config_share_buttons', array(
+		'http'         => is_ssl() ? 'https' : 'http',
+		'custom_class' => '',
+	) );
+
+	$config = wp_parse_args( $config, $default_config );
+
+	// Prepare a data for sharing.
+	$id           = get_the_ID();
+	$type         = get_post_type( $id );
+	$url          = get_permalink( $id );
+	$title        = get_the_title( $id );
+	$summary      = get_the_excerpt();
+	$thumbnail_id = get_post_thumbnail_id( $id );
+	$thumbnail    = '';
+
+	if ( ! empty( $thumbnail_id ) ) {
+		$thumbnail = wp_get_attachment_image_src( $thumbnail_id, 'full' );
+		$thumbnail = $thumbnail[0];
+	}
+
+	$share_item_html = apply_filters( 'king_news_share_button_html',
+		'<div class="share-btns__item %2$s-item"><a class="share-btns__link" href="%1$s" rel="nofollow" target="_blank" rel="nofollow" title="%3$s"><i class="%4$s"></i><span class="share-btns__label screen-reader-text">%5$s</span></a></div>'
+	);
+	$share_buttons = '';
+
+	foreach ( (array) $networks as $id => $network ) :
+
+		if ( empty( $network['share_url'] ) ) {
+			continue;
+		}
+
+		$share_url = sprintf( $network['share_url'],
+			esc_attr( $id ),
+			esc_attr( $type ),
+			esc_url( $url ),
+			esc_attr( $title ),
+			esc_attr( $summary ),
+			esc_url( $thumbnail )
+		);
+
+		$share_buttons .= sprintf(
+			$share_item_html,
+			htmlspecialchars( $share_url ),
+			sanitize_html_class( $id ),
+			esc_html__( 'Share on ', 'king_news' ) . $network['name'],
+			esc_attr( $network['icon'] ),
+			esc_attr( $network['name'] )
+		);
+
+	endforeach;
+
+	printf(
+		'<div class="share-btns__list %1$s">%2$s</div>',
+		esc_attr( $config['custom_class'] ),
+		$share_buttons
+	);
+}
+
+
+
+/**
  * Show login register buttons in top page menu if active
  *
  * @return void
@@ -1133,14 +1254,4 @@ function __tm_top_sign_register() {
 	wp_register('', '');
 	echo "</div>";
 
-}
-
-/**
- * Print boxed or fullwidth conainer class
- *
- * @return void
- */
-function __tm_layout_wrap() {
-	$layout = get_theme_mod( 'page_layout_type', __tm_theme()->customizer->get_default( 'page_layout_type' ) );
-	printf( '%s-wrap', esc_attr( $layout ) );
 }

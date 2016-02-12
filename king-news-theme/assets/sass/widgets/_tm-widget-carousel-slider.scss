@@ -1,21 +1,38 @@
-.swiper-carousel-container{
-	position: relative;
-}
-.__tm-carousel{
-	.swiper-wrapper{
-		//display: flex;
-		//flex-direction: row;
-		//align-items: stretch;
-			.swiper-slide{
-				//flex: 0 1 auto;
-				//align-self: auto;
-				//height: auto;
+.sidebar-primary, .sidebar-secondary, .footer-area .col-md-4, .footer-area .col-md-3, .footer-area .col-md-2{
+	.swiper-carousel-container{
+			.swiper-button-next, .swiper-button-prev{
+				width: 30px;
+				height: 30px;
+				top: 22%;
+					i{
+						margin: 3px;
+					}
+			}
+			.swiper-button-next{
+				right: -1px;
 			}
 	}
 }
+.swiper-carousel-container{
+	position: relative;
+
+	.swiper-pagination {
+		position:static;
+	}
+}
+.king_news-carousel{
+	.swiper-wrapper{
+		.swiper-slide{
+			display: flex;
+			height: auto;
+		}
+	}
+}
 .swiper-button-next, .swiper-button-prev{
+	top:38%;
 	width: 50px;
 	height: 50px;
+	margin:0;
 	background-image: none;
 	background-color: #2b8ffb;
 		i{
@@ -31,6 +48,11 @@
 		}
 }
 .swiper-wrapper{
+	.single-post{
+		.post__cats{
+			position: absolute;
+		}
+	}
 	.post{
 		@include box-shadow();
 		padding: 0;
@@ -38,6 +60,10 @@
 			background-color: #fff;
 			overflow: hidden;
 			border-radius: $border__radius;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-self: stretch;
 				&:hover{
 					border-radius: 4px;
 					background-color: #eef4fa;
@@ -65,6 +91,7 @@
 			margin-bottom: 1.3em;
 			display: block;
 			img{
+				width: 100%;
 				display: block;
 				@include scale(1);
 				@include transition(all 1s ease);
@@ -87,7 +114,7 @@
 				font-size: 14px;
 				color: #fff;
 				background-color: #2a8ffc;
-				padding: .25em .5em;
+				padding: .05em .5em;
 				margin-right: 5px;
 					&:last-child{
 						margin-right: 0;

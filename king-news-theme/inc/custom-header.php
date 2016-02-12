@@ -12,38 +12,38 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package __Tm
+ * @package King_News
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses __tm_header_style()
+ * @uses king_news_header_style()
  */
-function __tm_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( '__tm_custom_header_args', array(
+function king_news_custom_header_setup() {
+	add_theme_support( 'custom-header', apply_filters( 'king_news_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
-		'wp-head-callback'       => '__tm_header_style',
+		'wp-head-callback'       => 'king_news_header_style',
 	) ) );
 }
-add_action( 'after_setup_theme', '__tm_custom_header_setup' );
+add_action( 'after_setup_theme', 'king_news_custom_header_setup' );
 
-if ( ! function_exists( '__tm_header_style' ) ) :
+if ( ! function_exists( 'king_news_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog.
  *
- * @see __tm_custom_header_setup().
+ * @see king_news_custom_header_setup().
  */
-function __tm_header_style() {
+function king_news_header_style() {
 	$header_text_color = get_header_textcolor();
 
 	/*
 	 * If no custom options for text are set, let's bail.
-	 * get_header_textcolor() options: Any hex value, '__tm' to hide text. Default: HEADER_TEXTCOLOR.
+	 * get_header_textcolor() options: Any hex value, 'king_news' to hide text. Default: HEADER_TEXTCOLOR.
 	 */
 	if ( HEADER_TEXTCOLOR === $header_text_color ) {
 		return;

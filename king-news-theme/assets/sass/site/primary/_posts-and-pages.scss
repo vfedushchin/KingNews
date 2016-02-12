@@ -24,11 +24,10 @@
 			float: none;
 			position: absolute;
 			top: 10px;
-			right: 10px;
+			right: 0;
 			z-index: 99;
 			@include media-breakpoint-up(lg) {
 				top: 30px;
-				right: 30px;
 			}
 		}
 	}
@@ -40,6 +39,7 @@
 				.posts-list--grid-3-cols & {
 					width: auto;
 					height: auto;
+					padding: $button__indents;
 				}
 			}
 			&__text {
@@ -66,7 +66,7 @@
 		.posts-list--grid-2-cols &,
 		.posts-list--grid-3-cols & {
 			@include media-breakpoint-up(lg) {
-				/*font-size: 30px;*/
+				font-size: 30px;
 			}
 		}
 	}
@@ -81,21 +81,38 @@
 		.posts-list--masonry-3-cols & {
 			margin-top: 1.5em;
 		}
+		.posts-list--grid-2-cols &,
+		.posts-list--grid-3-cols & {
+			-webkit-display: flex;
+			display: flex;
+			-webkit-flex-direction: column;
+			flex-direction: column;
+			-webkit-justify-content: space-between;
+			justify-content: space-between;
+		}
 		a {
 			text-decoration: none;
 		}
-		.btn {
-			width: 50px;
-			height: 50px;
-			padding: 0;
-			text-align: center;
-			&__text {
-				display: none;
-			}
-			&__icon {
-				line-height: 50px;
+		&:not(.sticky ) {
+			.btn {
+				/* width: 50px;
+				height: 50px;
+				padding: 0; */
+				text-align: center;
+				&__text {
+					/*display: none;*/
+				}
+				&__icon {
+					line-height: 50px;
+				}
 			}
 		}
+		/*&-content {
+			.posts-list--grid-2-cols &,
+			.posts-list--grid-3-cols & {
+
+			}
+		}*/
 	}
 	&--default {
 		.btn {
@@ -120,14 +137,10 @@
 
 .hentry {
 	position: relative;
-	overflow: hidden;
 	margin: 0 0 1.5em;
-	padding: 0px;
 	@include card;
-	@include media-breakpoint-up(lg) {
-		padding: 0px;
-	}
-	.single-post & {
+	.single-post &,
+	.page & {
 		box-shadow: none;
 		border-radius: 0;
 		padding: 0;
@@ -135,7 +148,7 @@
 
 	& + .hentry {
 		padding-top: 30px;
-		border-top: 1px dotted #d2d1d1;
+		border-top: 1px dotted $color__line;
 	}
 }
 
@@ -177,7 +190,7 @@
 	&-footer {
 		position: relative;
 		.posts-list & {
-			margin: 15px 0px 0;
+			margin: 5px 0 0;
 		}
 		.btn {
 			float: right;
@@ -185,38 +198,13 @@
 			@include media-breakpoint-up(lg) {
 				margin-top: 30px;
 			}
-			.posts-list & {
-				&:before {
-					position: absolute;
-					top: 0;
-					right: 0;
-					left: 0;
-					display: block;
-					content: '';
-					height: 1px;
-					background-color: $color__background-hr;
-				}
-			}
 		}
 	}
 }
 
 
 .post {
-	.post-thumbnail--left + .post-body-right {
-		overflow: hidden;
-	}
 	&-thumbnail {
-		&.post-thumbnail--left {
-				display: block;
-				margin-bottom: 15px;
-				text-align: center;
-				@include media-breakpoint-up(lg) {
-					float: left;
-					margin-right: 15px;
-					text-align: left;
-				}
-		}
 		&__link {
 			&.post-thumbnail--small {
 				display: block;
@@ -246,14 +234,14 @@
 		&--fullwidth {
 			.posts-list & {
 				display: block;
-				margin: 0;
+				margin: -10px -10px 10px;
 				&:first-child {
 					img {
 						border-radius: $border__radius $border__radius 0 0;
 					}
 				}
 				@include media-breakpoint-up(lg) {
-					
+					margin: -30px -30px 25px;
 				}
 			}
 		}
@@ -277,23 +265,10 @@
 			.has-post-thumbnail & {
 				position: absolute;
 				top: 10px;
-				left: 10px;
+				left: 0;
 				z-index: 99;
 				@include media-breakpoint-up(lg) {
-					top: 10px;
-					left: 10px;
-				}
-			}
-		}
-		.post-thumbnail--ultra-small + & {
-			.has-post-thumbnail & {
-				position: absolute;
-				top: 10px;
-				left: 10px;
-				z-index: 99;
-				@include media-breakpoint-up(lg) {
-					top: 10px;
-					left: 10px;
+					top: 30px;
 				}
 			}
 		}
@@ -312,6 +287,23 @@
 	&__comments {
 		margin-right: 30px;
 	}
+	&__date,
+	&__comments,
+	&__tags {
+		.material-icons {
+			font-size: 16px;
+			margin-right: 10px;
+			vertical-align: middle;
+		}
+	}
+	&__tags {
+		.single-post & {
+			margin-top: 15px;
+			@include media-breakpoint-up(sm) {
+				float: left;
+			}
+		}
+	}
 }
 
 .byline,
@@ -327,10 +319,30 @@
 .page-content,
 .entry-content,
 .entry-summary {
-	margin: 1.5em 0 0;
+	margin: 12px 0 0;
 }
 
 .page-links {
 	clear: both;
-	margin: 0 0 1.5em;
+	margin: 0 0 15px;
+}
+
+
+
+.post-list__item {
+	&-content {
+		display: flex;
+
+		.post-thumbnail {
+			flex-shrink: 0;
+			padding-right: 20px;
+			position: relative;
+
+			.post__cats {
+				position: absolute;
+				top: 10px;
+				left: 10px;
+			}
+		}
+	}
 }

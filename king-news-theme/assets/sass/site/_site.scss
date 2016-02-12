@@ -1,7 +1,8 @@
 .site {
 	@include hyphens(auto);
 	&-main {
-		.single-post & {
+		.single-post &,
+		.page & {
 			padding: 10px;
 			@include card;
 			@include media-breakpoint-up(lg) {
@@ -9,10 +10,6 @@
 			}
 		}
 	}
-}
-
-a {
-	transition: .4s all ease;
 }
 
 @import "../layout/layout";

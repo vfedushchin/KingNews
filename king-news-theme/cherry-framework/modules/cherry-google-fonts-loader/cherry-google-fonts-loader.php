@@ -82,6 +82,7 @@ if ( ! class_exists( 'Cherry_Google_Fonts_Loader' ) ) {
 
 			add_action( 'customize_preview_init', array( $this, 'reset_fonts_cache' ) );
 			add_action( 'customize_save_after', array( $this, 'reset_fonts_cache' ) );
+			add_action( 'switch_theme', array( $this, 'reset_fonts_cache' ) );
 
 			if ( is_admin() ) {
 				return;

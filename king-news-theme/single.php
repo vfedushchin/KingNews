@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package __tm
+ * @package king_news
  */
 
 while ( have_posts() ) : the_post();
@@ -13,7 +13,7 @@ while ( have_posts() ) : the_post();
 
 	the_post_navigation();
 
-	__tm_post_author_bio();
+	king_news_post_author_bio();
 
 	// If comments are open or we have at least one comment, load up the comment template.
 	if ( comments_open() || get_comments_number() ) :

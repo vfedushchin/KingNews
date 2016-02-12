@@ -30,19 +30,19 @@ if ( isset( $instance['bg_image'] ) ) {
 		<?php if ( ! empty( $data['pledged'] ) ) : ?>
 		<div class="tf-tracker-item tf-pledged">
 			<span class="tf-tracker-value">$<?php echo number_format( round( floatval( $data['pledged'] ) ) ); ?></span>
-			<span class="tf-tracker-label"><?php _e( 'pledged', '__tm' ); ?></span>
+			<span class="tf-tracker-label"><?php _e( 'pledged', 'king_news' ); ?></span>
 		</div>
 		<?php endif; ?>
 		<?php if ( $percent ) : ?>
 		<div class="tf-tracker-item tf-percent">
 			<span class="tf-tracker-value"><?php echo $percent; ?>%</span>
-			<span class="tf-tracker-label"><?php _e( 'funded', '__tm' ); ?></span>
+			<span class="tf-tracker-label"><?php _e( 'funded', 'king_news' ); ?></span>
 		</div>
 		<?php endif; ?>
 		<?php if ( ! empty( $data['backers'] ) ) : ?>
 		<div class="tf-tracker-item tf-backers">
 			<span class="tf-tracker-value"><?php echo $data['backers']; ?></span>
-			<span class="tf-tracker-label"><?php _e( 'backers', '__tm' ); ?></span>
+			<span class="tf-tracker-label"><?php _e( 'backers', 'king_news' ); ?></span>
 		</div>
 		<?php endif; ?>
 		<?php if ( ! empty( $data['end_time'] ) ) : ?>
@@ -54,7 +54,7 @@ if ( isset( $instance['bg_image'] ) ) {
 					'd'
 				);
 			?></span>
-			<span class="tf-tracker-label"><?php _e( 'days to go', '__tm' ); ?></span>
+			<span class="tf-tracker-label"><?php _e( 'days to go', 'king_news' ); ?></span>
 		</div>
 		<?php endif; ?>
 		<?php if ( ! empty( $project_button ) ) : ?>

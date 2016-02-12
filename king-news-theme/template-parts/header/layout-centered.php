@@ -4,14 +4,14 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package __tm
+ * @package king_news
  */
 ?>
 
 <div class="site-branding">
-	<?php __tm_header_logo() ?>
-	<?php __tm_site_description(); ?>
+	<?php king_news_header_logo() ?>
+	<?php king_news_site_description(); ?>
 </div>
 
-<?php __tm_social_list( 'header' ); ?>
-<?php __tm_main_menu(); ?>
+<?php king_news_social_list( 'header' ); ?>
+<?php king_news_main_menu(); ?>

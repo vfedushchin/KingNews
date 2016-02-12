@@ -6,14 +6,14 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package __tm
+ * @package king_news
  */
 
 ?>
 
 	</div><!-- #content -->
 
-	<footer id="colophon" <?php __tm_footer_class() ?> role="contentinfo">
+	<footer id="colophon" <?php king_news_footer_class() ?> role="contentinfo">
 		<?php get_template_part( 'template-parts/footer/layout', get_theme_mod( 'footer_layout_type' ) ); ?>
 	</footer><!-- #colophon -->
 </div><!-- #page -->

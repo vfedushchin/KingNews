@@ -1,12 +1,33 @@
+.widget.widget-image-grid.widget{
+	padding: 0;
+	box-shadow: none;
+	border-radius: 0;
+	background: transparent;
+	
+	border-radius:15px;
+}
 .widget-image-grid {
+	.row{
+		margin: 0;
+		line-height: 0;
+	}
 	&__holder {
 		padding : 0;
+		line-height: normal;
+		&:first-child {
+			
+		}
+	}
+	&__holder:first-child &__inner {
+		border-radius: $border__radius 0 0 $border__radius;
+	}
+	&__holder:last-child &__inner {
+		border-radius: 0 $border__radius $border__radius 0;
 	}
 	&__inner {
 		position: relative;
 		display: block;
 		overflow: hidden;
-		border-radius: 5px;
 		@include box-shadow();
 		& img {
 			display: block;

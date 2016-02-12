@@ -137,4 +137,24 @@
 			}
 		}
 	}
+
+	&.format-status {
+		.post__cats {
+			padding: 0 0 10px;
+		}
+	}
+}
+
+.embed-wrapper {
+	.twitter-tweet {
+		margin: 10px auto !important;
+		max-width: 90% !important;
+	}
+}
+
+.fb_iframe_widget {
+	max-width: 100%;
+	> span {
+		max-width: 100%;
+	}
 }

@@ -14,9 +14,9 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-if ( ! class_exists( '__Tm_Widget_Area' ) ) {
+if ( ! class_exists( 'King_News_Widget_Area' ) ) {
 
-	class __Tm_Widget_Area {
+	class King_News_Widget_Area {
 
 		/**
 		 * A reference to an instance of this class.
@@ -43,7 +43,7 @@ if ( ! class_exists( '__Tm_Widget_Area' ) ) {
 
 			$widgets_default_settings = apply_filters( 'tm_widget_area_default_settings', array(
 				'sidebar-primary' => array(
-					'name'           => esc_html__( 'Sidebar Primary', '__tm' ),
+					'name'           => esc_html__( 'Sidebar Primary', 'king_news' ),
 					'description'    => '',
 					'before_widget'  => '<aside id="%1$s" class="widget %2$s">',
 					'after_widget'   => '</aside>',
@@ -55,7 +55,7 @@ if ( ! class_exists( '__Tm_Widget_Area' ) ) {
 					'conditional'    => array(),
 				),
 				'sidebar-secondary' => array(
-					'name'           => esc_html__( 'Sidebar Secondary', '__tm' ),
+					'name'           => esc_html__( 'Sidebar Secondary', 'king_news' ),
 					'description'    => '',
 					'before_widget'  => '<aside id="%1$s" class="widget %2$s">',
 					'after_widget'   => '</aside>',
@@ -67,7 +67,7 @@ if ( ! class_exists( '__Tm_Widget_Area' ) ) {
 					'conditional'    => array(),
 				),
 				'full-width-header-area' => array(
-					'name'           => esc_html__( 'Full width header area', '__tm' ),
+					'name'           => esc_html__( 'Full width header area', 'king_news' ),
 					'description'    => '',
 					'before_widget'  => '<aside id="%1$s" class="widget %2$s">',
 					'after_widget'   => '</aside>',
@@ -79,7 +79,7 @@ if ( ! class_exists( '__Tm_Widget_Area' ) ) {
 					'conditional'    => array( 'is_home', 'is_front_page' ),
 				),
 				'before-content-area' => array(
-					'name'           => esc_html__( 'Before content widget area', '__tm' ),
+					'name'           => esc_html__( 'Before content widget area', 'king_news' ),
 					'description'    => '',
 					'before_widget'  => '<aside id="%1$s" class="widget %2$s">',
 					'after_widget'   => '</aside>',
@@ -91,7 +91,7 @@ if ( ! class_exists( '__Tm_Widget_Area' ) ) {
 					'conditional'    => array( 'is_home', 'is_front_page' ),
 				),
 				'before-loop-area' => array(
-					'name'           => esc_html__( 'Before loop widget area', '__tm' ),
+					'name'           => esc_html__( 'Before loop widget area', 'king_news' ),
 					'description'    => '',
 					'before_widget'  => '<aside id="%1$s" class="widget %2$s">',
 					'after_widget'   => '</aside>',
@@ -103,7 +103,7 @@ if ( ! class_exists( '__Tm_Widget_Area' ) ) {
 					'conditional'    => array( 'is_home', 'is_front_page' ),
 				),
 				'after-loop-area' => array(
-					'name'           => esc_html__( 'After loop widget area', '__tm' ),
+					'name'           => esc_html__( 'After loop widget area', 'king_news' ),
 					'description'    => '',
 					'before_widget'  => '<aside id="%1$s" class="widget %2$s">',
 					'after_widget'   => '</aside>',
@@ -115,7 +115,7 @@ if ( ! class_exists( '__Tm_Widget_Area' ) ) {
 					'conditional'    => array( 'is_home', 'is_front_page' ),
 				),
 				'after-content-area' => array(
-					'name'           => esc_html__( 'After content widget area', '__tm' ),
+					'name'           => esc_html__( 'After content widget area', 'king_news' ),
 					'description'    => '',
 					'before_widget'  => '<aside id="%1$s" class="widget %2$s">',
 					'after_widget'   => '</aside>',
@@ -127,7 +127,7 @@ if ( ! class_exists( '__Tm_Widget_Area' ) ) {
 					'conditional'    => array( 'is_home', 'is_front_page' ),
 				),
 				'after-content-full-width-area' => array(
-					'name'           => esc_html__( 'After content full width widget area', '__tm' ),
+					'name'           => esc_html__( 'After content full width widget area', 'king_news' ),
 					'description'    => '',
 					'before_widget'  => '<aside id="%1$s" class="widget %2$s">',
 					'after_widget'   => '</aside>',
@@ -136,10 +136,10 @@ if ( ! class_exists( '__Tm_Widget_Area' ) ) {
 					'before_wrapper' => '<section id="%1$s" %2$s>',
 					'after_wrapper'  => '</section>',
 					'is_global'      => false,
-					'conditional'    => array( 'is_home', 'is_front' ),
+					'conditional'    => array( 'is_home', 'is_front_page' ),
 				),
 				'footer-area' => array(
-					'name'           => esc_html__( 'Footer widget area', '__tm' ),
+					'name'           => esc_html__( 'Footer widget area', 'king_news' ),
 					'description'    => '',
 					'before_widget'  => '<aside id="%1$s" class="widget %2$s">',
 					'after_widget'   => '</aside>',
@@ -157,7 +157,7 @@ if ( ! class_exists( '__Tm_Widget_Area' ) ) {
 			// Register widget areas.
 			add_action( 'widgets_init', array( $this, 'register_sidebars' ) );
 
-			add_action( '__tm_render_widget_area', array( $this, 'render_widget_area' ) );
+			add_action( 'king_news_render_widget_area', array( $this, 'render_widget_area' ) );
 		}
 
 		/**
@@ -208,12 +208,12 @@ if ( ! class_exists( '__Tm_Widget_Area' ) ) {
 				}
 			}
 
-			$area_id        = apply_filters( '__tm_rendering_current_widget_area', $area_id );
+			$area_id        = apply_filters( 'king_news_rendering_current_widget_area', $area_id );
 			$before_wrapper = isset( $this->widgets_settings[ $area_id ]['before_wrapper'] ) ? $this->widgets_settings[ $area_id ]['before_wrapper'] : '<div id="%1$s" %2$s>';
 			$after_wrapper  = isset( $this->widgets_settings[ $area_id ]['after_wrapper'] ) ? $this->widgets_settings[ $area_id ]['after_wrapper'] : '</div>';
 
 			$classes = array( $area_id, 'widget-area' );
-			$classes = apply_filters( '__tm_widget_area_classes', $classes, $area_id );
+			$classes = apply_filters( 'king_news_widget_area_classes', $classes, $area_id );
 
 			if ( is_array( $classes ) ) {
 				$classes = 'class="' . join( ' ', $classes ) . '"';
@@ -241,9 +241,9 @@ if ( ! class_exists( '__Tm_Widget_Area' ) ) {
 		}
 	}
 
-	function __tm_widget_area() {
-		return __Tm_Widget_Area::get_instance();
+	function king_news_widget_area() {
+		return King_News_Widget_Area::get_instance();
 	}
 
-	__tm_widget_area();
+	king_news_widget_area();
 }

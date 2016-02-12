@@ -1,33 +1,33 @@
 <?php
 
-class __TM_Carousel_Widget extends Cherry_Abstract_Widget {
+class KING_NEWS_Carousel_Widget extends Cherry_Abstract_Widget {
 
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
-		$this->widget_cssclass = '__tm widget_carousel';
-		$this->widget_description = esc_html__( 'Display a list of your posts on your site.', '__tm' );
+		$this->widget_cssclass = 'king_news widget_carousel';
+		$this->widget_description = esc_html__( 'Display a list of your posts on your site.', 'king_news' );
 		$this->widget_id = 'widget_carousel';
-		$this->widget_name = esc_html__( '__TM Carousel Widget', '__tm' );
+		$this->widget_name = esc_html__( 'KING_NEWS Carousel Widget', 'king_news' );
 		$this->settings = array(
 			'title' => array(
 				'type'  => 'text',
-				'value' => esc_html__( 'Carousel', '__tm' ),
-				'label' => esc_html__( 'Title', '__tm' ),
+				'value' => esc_html__( 'Carousel', 'king_news' ),
+				'label' => esc_html__( 'Title', 'king_news' ),
 			),
 			'terms_type' => array(
 				'type'				=> 'radio',
 				'value'				=> 'category',
 				'options'			=> array(
 					'category' => array(
-						'label'		=> esc_html__( 'Category', '__tm' ),
+						'label'		=> esc_html__( 'Category', 'king_news' ),
 					),
 					'post_tag' => array(
-						'label'		=> esc_html__( 'Tag', '__tm' ),
+						'label'		=> esc_html__( 'Tag', 'king_news' ),
 					),
 				),
-				'label'				=> esc_html__( 'Choose taxonomy type', '__tm' ),
+				'label'				=> esc_html__( 'Choose taxonomy type', 'king_news' ),
 			),
 			'categories' => array(
 				'type' => 'select',
@@ -35,9 +35,9 @@ class __TM_Carousel_Widget extends Cherry_Abstract_Widget {
 				'value' => '',
 				'options_callback' => array( $this, 'get_terms_list', array( 'category', 'slug' ) ),
 				'options' => false,
-				'label' => esc_html__( 'Select category', '__tm' ),
+				'label' => esc_html__( 'Select category', 'king_news' ),
 				'multiple' => true,
-				'placeholder' => esc_html__( 'Select category', '__tm' ),
+				'placeholder' => esc_html__( 'Select category', 'king_news' ),
 			),
 			'tags' => array(
 				'type' => 'select',
@@ -45,39 +45,39 @@ class __TM_Carousel_Widget extends Cherry_Abstract_Widget {
 				'value' => '',
 				'options_callback' => array( $this, 'get_terms_list', array( 'post_tag', 'slug' ) ),
 				'options' => false,
-				'label' => esc_html__( 'Select tags', '__tm' ),
+				'label' => esc_html__( 'Select tags', 'king_news' ),
 				'multiple' => true,
-				'placeholder' => esc_html__( 'Select tags', '__tm' ),
+				'placeholder' => esc_html__( 'Select tags', 'king_news' ),
 			),
 			'posts_per_page' => array(
 				'type' => 'stepper',
 				'value' => 10,
 				'max_value' => 20,
 				'min_value' => 1,
-				'label'  => esc_html__( 'Posts count', '__tm' ),
+				'label'  => esc_html__( 'Posts count', 'king_news' ),
 			),
 			'post_title' => array(
 				'type' => 'switcher',
 				'value' => 'true',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
-				'label' => esc_html__( 'Display title', '__tm' ),
+				'label' => esc_html__( 'Display title', 'king_news' ),
 			),
 			'content' => array(
 				'type' => 'switcher',
 				'value' => 'false',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
-				'label' => esc_html__( 'Display content', '__tm' ),
+				'label' => esc_html__( 'Display content', 'king_news' ),
 			),
 			'more_button' => array(
 				'type' => 'switcher',
 				'value' => 'false',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
-				'label' => esc_html__( 'Display more button', '__tm' ),
+				'label' => esc_html__( 'Display more button', 'king_news' ),
 			),
 			'more_button_text' => array(
 				'type'  => 'text',
-				'value' => esc_html__( 'Read more', '__tm' ),
-				'label' => esc_html__( 'More button text', '__tm' ),
+				'value' => esc_html__( 'Read more', 'king_news' ),
+				'label' => esc_html__( 'More button text', 'king_news' ),
 			),
 			'trim_words' => array(
 				'type' => 'slider',
@@ -85,54 +85,54 @@ class __TM_Carousel_Widget extends Cherry_Abstract_Widget {
 				'max_value' => 55,
 				'min_value' => 1,
 				'step_value' => 1,
-				'label'  => esc_html__( 'Content words trimmed count', '__tm' ),
+				'label'  => esc_html__( 'Content words trimmed count', 'king_news' ),
 			),
 			'slides_per_view' => array(
 				'type'		=> 'slider',
 				'max_value'	=> 25,
 				'min_value'	=> 1,
 				'value'		=> 5,
-				'label' 	=> esc_html__( 'Number of slides per view', '__tm' ),
+				'label' 	=> esc_html__( 'Number of slides per view', 'king_news' ),
 			),
 			'slides_per_group' => array(
 				'type'		=> 'slider',
 				'max_value'	=> 25,
 				'min_value'	=> 1,
 				'value'		=> 1,
-				'label' 	=> esc_html__( 'Number slides per group', '__tm' ),
+				'label' 	=> esc_html__( 'Number slides per group', 'king_news' ),
 			),
 			'slides_per_column' => array(
 				'type'		=> 'slider',
 				'max_value'	=> 5,
 				'min_value'	=> 1,
 				'value'		=> 1,
-				'label' 	=> esc_html__( 'Multi Row Slides Layout', '__tm' ),
+				'label' 	=> esc_html__( 'Multi Row Slides Layout', 'king_news' ),
 			),
 			'space_between_slides' => array(
 				'type'		=> 'slider',
 				'max_value'	=> 100,
 				'min_value'	=> 0,
 				'value'		=> 30,
-				'label' 	=> esc_html__( 'Width of the space between slides(px)', '__tm' ),
+				'label' 	=> esc_html__( 'Width of the space between slides(px)', 'king_news' ),
 			),
 			'duration_speed' => array(
 				'type'		=> 'slider',
 				'max_value'	=> 5000,
 				'min_value'	=> 100,
 				'value'		=> 500,
-				'label' 	=> esc_html__( 'Duration of transition between slides (ms)', '__tm' ),
+				'label' 	=> esc_html__( 'Duration of transition between slides (ms)', 'king_news' ),
 			),
 			'navigation' => array(
 				'type'		=> 'switcher',
 				'value'		=> 'true',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
-				'label' 	=> esc_html__( 'Slider navigation', '__tm' ),
+				'label' 	=> esc_html__( 'Slider navigation', 'king_news' ),
 			),
 			'pagination' => array(
 				'type'		=> 'switcher',
 				'value'		=> 'true',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
-				'label' 	=> esc_html__( 'Slider pagination', '__tm' ),
+				'label' 	=> esc_html__( 'Slider pagination', 'king_news' ),
 			),
 		);
 
@@ -151,7 +151,6 @@ class __TM_Carousel_Widget extends Cherry_Abstract_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
-
 		if ( $this->get_cached_widget( $args ) ) {
 			return;
 		}
@@ -168,11 +167,25 @@ class __TM_Carousel_Widget extends Cherry_Abstract_Widget {
 		 * @param array options.
 		 * @param array The 'the_slider_items' function argument.
 		 */
-		$default_settings = apply_filters( '__tm_carousel_default_settings', array() );
+		$default_settings = apply_filters( 'king_news_carousel_default_settings', array() );
+
+		// Widgets area check
+		if ( 'sidebar-primary' == $args['id'] || 'sidebar-secondary' == $args['id'] ) {
+			$this->instance['slides_per_view'] = 1;
+			$this->instance['slides_per_group'] = 1;
+			$this->instance['slides_per_column'] = 1;
+		}
+
+		$footer_widget_columns = get_theme_mod( 'footer_widget_columns', king_news_theme()->customizer->get_default( 'footer_widget_columns' ) );
+		if ( 'footer-area' == $args['id'] && ( '2' == $footer_widget_columns || '3' == $footer_widget_columns || '4' == $footer_widget_columns ) ) {
+			$this->instance['slides_per_view'] = 1;
+			$this->instance['slides_per_group'] = 1;
+			$this->instance['slides_per_column'] = 1;
+		}
 
 		$instance = uniqid();
 
-		$data_attr_line = 'class="__tm-carousel swiper-container"';
+		$data_attr_line = 'class="king_news-carousel swiper-container"';
 		$data_attr_line .= ' data-uniq-id="swiper-carousel-' . $instance . '"';
 		$data_attr_line .= ' data-slides-per-view="' . $this->instance['slides_per_view'] . '"';
 		$data_attr_line .= ' data-slides-per-group="' . $this->instance['slides_per_group'] . '"';
@@ -258,7 +271,7 @@ class __TM_Carousel_Widget extends Cherry_Abstract_Widget {
 	 */
 	public function get_query_slider_items( $query_args = array() ) {
 
-		$defaults_query_args = apply_filters( '__tm_carousel_default_query_args', array(
+		$defaults_query_args = apply_filters( 'king_news_carousel_default_query_args', array(
 			'post_type'      => 'post',
 			'orderby'        => 'date',
 			'order'          => 'DESC',
@@ -296,13 +309,12 @@ class __TM_Carousel_Widget extends Cherry_Abstract_Widget {
 					$title = get_the_title( $post_id );
 					$permalink = get_permalink();
 
-
 					$thumb_id = get_post_thumbnail_id();
 
-					$placeholder_args = apply_filters( '__tm_carousel_placeholder_args',
+					$placeholder_args = apply_filters( 'king_news_carousel_placeholder_args',
 						array(
-							'width'			=> 800,
-							'height'		=> 600,
+							'width'			=> 560,
+							'height'		=> 350,
 							'background'	=> '000',
 							'foreground'	=> 'fff',
 							'title'			=> $title,
@@ -311,14 +323,14 @@ class __TM_Carousel_Widget extends Cherry_Abstract_Widget {
 
 					$view_dir = locate_template( 'inc/widgets/tm-carousel-widget/views/tm-carousel-view.php' );
 
-					$image_size = apply_filters( '__tm_carousel_image_size', '_tm-thumb-560-350' );
+					$image_size = apply_filters( 'king_news_carousel_image_size', '_tm-thumb-560-350' );
 					$image = '<a class="post-thumbnail__link" href="' . $permalink . '">' . $this->get_image( $post_id, $image_size, $placeholder_args ) .'</a>';
 
-					$title = ( 'true' == $this->instance['post_title'] ) ? '<h4>' . $title . '</h4>' : '';
+					$title = ( 'true' == $this->instance['post_title'] ) ? '<h4><a href="' . $permalink . '">' . $title . '</a></h4>' : '';
 					$content = ( 'true' == $this->instance['content'] ) ? '<p class="post__excerpt">' . $this->get_trimed_content( get_the_content(), (int) $this->instance['trim_words'] ) . '</p>' : '';
 					$more_button = ( 'true' == $this->instance['more_button'] ) ? '<a class="btn" href="' . $permalink . '">' . esc_html( $this->instance['more_button_text'] ) . '</a>' : '';
 
-					$date = $this->get_post_date( $post_id );
+					$date = '<a href="' . $permalink . '">' . $this->get_post_date( $post_id ) . '</a>';
 					$comments = $this->get_post_comments( $post_id );
 					$author = $this->get_post_author( $post_id );
 					$terms_line = $this->get_terms_line( $post_id, $this->instance['terms_type'] );
@@ -327,13 +339,13 @@ class __TM_Carousel_Widget extends Cherry_Abstract_Widget {
 						if ( $view_dir ) {
 							require( $view_dir );
 						} else {
-							echo '<h4>' . esc_html__( 'View file not found', '__tm' ) . '</h4>';
+							echo '<h4>' . esc_html__( 'View file not found', 'king_news' ) . '</h4>';
 						}
 					echo '</article>';
 
 				endwhile;
 			} else {
-				echo '<h4>' . esc_html__( 'Posts not found', '__tm' ) . '</h4>';
+				echo '<h4>' . esc_html__( 'Posts not found', 'king_news' ) . '</h4>';
 			}
 		// Reset the query.
 		wp_reset_postdata();
@@ -352,7 +364,7 @@ class __TM_Carousel_Widget extends Cherry_Abstract_Widget {
 	public function get_image( $id, $size, $placeholder_attr, $only_url = false ) {
 
 		// Place holder defaults attr
-		$default_placeholder_attr = apply_filters( '__tm_carousel_placeholder_default_args',
+		$default_placeholder_attr = apply_filters( 'king_news_carousel_placeholder_default_args',
 			array(
 				'width'			=> 900,
 				'height'		=> 500,
@@ -413,8 +425,8 @@ class __TM_Carousel_Widget extends Cherry_Abstract_Widget {
 			$comments = ( comments_open() || get_comments_number() ) ? get_comments_number() : '';
 		}
 
-		$title_comments =  sprintf( _n( '1', '%s', $comments, '__tm' ), $comments );
-		$comments = ( ! empty( $comments ) ) ? sprintf( '<span class="post-comments-link"><a href="%1$s">%2$s</a></span>', esc_url( get_comments_link() ), $title_comments ) : esc_html__( '0', '__tm' );
+		$title_comments =  sprintf( _n( '1', '%s', $comments, 'king_news' ), $comments );
+		$comments = ( ! empty( $comments ) ) ? sprintf( '<span class="post-comments-link"><a href="%1$s">%2$s</a></span>', esc_url( get_comments_link() ), $title_comments ) : esc_html__( '0', 'king_news' );
 
 		return $comments;
 	}
@@ -442,7 +454,7 @@ class __TM_Carousel_Widget extends Cherry_Abstract_Widget {
 		 *
 		 * @var string
 		 */
-		$date_format = apply_filters( '__tm_carousel_post_dateformat', 'M d, Y' );
+		$date_format = apply_filters( 'king_news_carousel_post_dateformat', 'M d, Y' );
 
 		return sprintf( '<time class="post-date" datetime="%1$s">%2$s</time>', esc_attr( get_the_date( 'c' ) ), esc_html( get_the_date( $date_format ) ) );
 	}
@@ -503,5 +515,5 @@ class __TM_Carousel_Widget extends Cherry_Abstract_Widget {
 
 add_action( 'widgets_init', 'tm_register_carosel_widgets' );
 function tm_register_carosel_widgets() {
-	register_widget( '__TM_Carousel_Widget' );
+	register_widget( 'KING_NEWS_Carousel_Widget' );
 }

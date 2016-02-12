@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package __tm
+ * @package king_news
  */
 
 /**
@@ -13,7 +13,7 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function __tm_body_classes( $classes ) {
+function king_news_body_classes( $classes ) {
 	// Adds a class of group-blog to blogs with more than 1 published author.
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
@@ -26,7 +26,7 @@ function __tm_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', '__tm_body_classes' );
+add_filter( 'body_class', 'king_news_body_classes' );
 
 /**
  * Set post specific sidebar position
@@ -34,7 +34,11 @@ add_filter( 'body_class', '__tm_body_classes' );
  * @param  string $position Default sidebar position.
  * @return string
  */
-function __tm_set_sidebar_position( $position ) {
+function king_news_set_sidebar_position( $position ) {
+
+	if ( is_front_page() || ! is_singular() ) {
+		return $position;
+	}
 
 	$post_id = get_the_id();
 
@@ -51,7 +55,7 @@ function __tm_set_sidebar_position( $position ) {
 	return $post_position;
 
 }
-add_filter( 'theme_mod_sidebar_position', '__tm_set_sidebar_position' );
+add_filter( 'theme_mod_sidebar_position', 'king_news_set_sidebar_position' );
 
 /**
  * Render existing macros in passed string.
@@ -60,9 +64,9 @@ add_filter( 'theme_mod_sidebar_position', '__tm_set_sidebar_position' );
  * @param  string $string String to parse.
  * @return string
  */
-function __tm_render_macros( $string ) {
+function king_news_render_macros( $string ) {
 
-	$macros = apply_filters( '__tm_data_macros', array(
+	$macros = apply_filters( 'king_news_data_macros', array(
 		'/%%year%%/' => date( 'Y' ),
 		'/%%date%%/' => date( get_option( 'date_format' ) ),
 	) );
@@ -77,14 +81,14 @@ function __tm_render_macros( $string ) {
  * @param  string $content content to render
  * @return string
  */
-function __tm_render_icons( $content ) {
+function king_news_render_icons( $content ) {
 
-	$icons     = __tm_get_render_icons_set();
+	$icons     = king_news_get_render_icons_set();
 	$icons_set = implode( '|', array_keys( $icons ) );
 
 	$regex = '/icon:(' . $icons_set . ')?:?([a-zA-Z0-9-_]+)/';
 
-	return preg_replace_callback( $regex, '__tm_render_icons_callback', $content );
+	return preg_replace_callback( $regex, 'king_news_render_icons_callback', $content );
 }
 
 /**
@@ -93,7 +97,7 @@ function __tm_render_icons( $content ) {
  * @param  array $matches Search matches array.
  * @return string
  */
-function __tm_render_icons_callback( $matches ) {
+function king_news_render_icons_callback( $matches ) {
 
 	if ( empty( $matches[1] ) && empty( $matches[2] ) ) {
 		return $matches[0];
@@ -103,7 +107,7 @@ function __tm_render_icons_callback( $matches ) {
 		return sprintf( '<i class="fa fa-%s"></i>', $matches[2] );
 	}
 
-	$icons = __tm_get_render_icons_set();
+	$icons = king_news_get_render_icons_set();
 
 	if ( ! isset( $icons[ $matches[1] ] ) ) {
 		return $matches[0];
@@ -117,8 +121,8 @@ function __tm_render_icons_callback( $matches ) {
  *
  * @return array
  */
-function __tm_get_render_icons_set() {
-	return apply_filters( '__tm_render_icons_set', array(
+function king_news_get_render_icons_set() {
+	return apply_filters( 'king_news_render_icons_set', array(
 		'fa'       => '<i class="fa fa-%s"></i>',
 		'material' => '<i class="material-icons">%s</i>',
 	) );

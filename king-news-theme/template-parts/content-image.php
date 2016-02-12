@@ -4,25 +4,26 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package __Tm
+ * @package King_News
  */
 
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'posts-list__item card' ); ?>>
 
+	<div class="post-list__item-content">
 	<div class="post-format-wrap">
 		<?php do_action( 'cherry_post_format_image' ); ?>
-		<?php __tm_meta_categories( 'loop' ); ?>
-		<?php __tm_sticky_label(); ?>
+		<?php king_news_meta_categories( 'loop' ); ?>
+		<?php king_news_sticky_label(); ?>
 	</div>
 
 	<header class="entry-header">
 		<?php
-			__tm_meta_author(
+			king_news_meta_author(
 				'loop',
 				array(
-					'before' => esc_html__( 'Posted by', '__tm' ) . ' ',
+					'before' => esc_html__( 'Posted by', 'king_news' ) . ' ',
 				)
 			);
 		?>
@@ -36,25 +37,25 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
-		<?php __tm_blog_content(); ?>
+		<?php king_news_blog_content(); ?>
 	</div><!-- .entry-content -->
 
 	<?php if ( 'post' === get_post_type() ) : ?>
 
 		<div class="entry-meta">
 			<?php
-				__tm_meta_date( 'loop', array(
+				king_news_meta_date( 'loop', array(
 					'before' => '<i class="material-icons">event</i>',
 				) );
 
-				__tm_meta_comments( 'loop', array(
+				king_news_meta_comments( 'loop', array(
 					'before' => '<i class="material-icons">mode_comment</i>',
-					'zero'   => esc_html__( 'Leave a comment', '__tm' ),
+					'zero'   => esc_html__( 'Leave a comment', 'king_news' ),
 					'one'    => '1',
 					'plural' => '%',
 				) );
 
-				__tm_meta_tags( 'loop', array(
+				king_news_meta_tags( 'loop', array(
 					'before'    => '<i class="material-icons">folder_open</i>',
 					'separator' => ', ',
 				) );
@@ -62,8 +63,9 @@
 		</div><!-- .entry-meta -->
 
 	<?php endif; ?>
-
+	</div>
 	<footer class="entry-footer">
-		<?php __tm_read_more(); ?>
+		<?php king_news_share_buttons( 'loop' ); ?>
+		<?php king_news_read_more(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

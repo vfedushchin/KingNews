@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package __tm
+ * @package king_news
  */
 
 ?><!DOCTYPE html>
@@ -21,28 +21,28 @@
 </head>
 
 <body <?php body_class(); ?>>
-<?php __tm_get_page_preloader(); ?>
+<?php king_news_get_page_preloader(); ?>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', '__tm' ); ?></a>
-	<header id="masthead" <?php __tm_header_class(); ?> role="banner">
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'king_news' ); ?></a>
+	<header id="masthead" <?php king_news_header_class(); ?> role="banner">
 		<div class="top-panel">
 			<div class="container">
-				<div <?php echo __tm_get_container_classes( array( 'top-panel__wrap' ) ); ?>><?php
-							__tm_top_message( '<div class="top-panel__message">%s</div>' );
-							__tm_top_sign_register();
-							__tm_top_search( '<div class="top-panel__search">%s</div>' );
-							__tm_top_menu();
-						?></div>
+				<div <?php echo king_news_get_container_classes( array( 'top-panel__wrap' ) ); ?>><?php
+					king_news_top_message( '<div class="top-panel__message">%s</div>' );
+					__tm_top_sign_register();
+					king_news_top_search( '<div class="top-panel__search">%s</div>' );
+					king_news_top_menu();
+				?></div>
 			</div><!-- .container -->
 		</div><!-- .top-panel -->
 
 		<div class="header-container">
-			<div class="container">
-				<div <?php echo __tm_get_container_classes( array( 'header-container_wrap' ) ); ?>>
+			<div <?php echo king_news_get_container_classes( array( 'header-container_wrap' ) ); ?>>
+				<div class="header-container_inner">
 					<?php get_template_part( 'template-parts/header/layout', get_theme_mod( 'header_layout_type' ) ); ?>
-				</div>
-			</div>
+				</div><!-- .header-container_inner -->
+			</div><!-- .header-container_wrap -->
 		</div><!-- .header-container -->
 	</header><!-- #masthead -->
 
-	<div id="content" <?php __tm_content_class(); ?>>
+	<div id="content" <?php king_news_content_class(); ?>>

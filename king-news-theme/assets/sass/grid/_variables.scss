@@ -17,12 +17,12 @@ $container-max-widths: (
 	sm: 576px,
 	md: 720px,
 	lg: 940px,
-	xl: 1728px
+	xl: 1140px
 ) !default;
 
 // Grid columns
 $grid-columns:      12 !default;
-$grid-gutter-width: 1.875rem !default; // 30px
+$grid-gutter-width: 3.75rem !default; // 60px
 
 // Some configuration
 $need-pull:   true !default;

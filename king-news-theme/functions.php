@@ -1,12 +1,12 @@
 <?php
-if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
+if ( ! class_exists( 'King_News_Theme_Setup' ) ) {
 
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
 	 * @since 1.0.0
 	 */
-	class __Tm_Theme_Setup {
+	class King_News_Theme_Setup {
 
 		/**
 		 * A reference to an instance of this class.
@@ -91,23 +91,30 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
 			 */
 			do_action( 'cherry_constants_before' );
 
+			global $content_width;
+
 			$template  = get_template();
 			$theme_obj = wp_get_theme( $template );
 
 			/** Sets the theme version number. */
-			define( '__TM_THEME_VERSION', $theme_obj->get( 'Version' ) );
+			define( 'KING_NEWS_THEME_VERSION', $theme_obj->get( 'Version' ) );
 
 			/** Sets the path to the theme directory. */
-			define( '__TM_THEME_DIR', get_template_directory() );
+			define( 'KING_NEWS_THEME_DIR', get_template_directory() );
 
 			/** Sets the path to the theme directory URI. */
-			define( '__TM_THEME_URI', get_template_directory_uri() );
+			define( 'KING_NEWS_THEME_URI', get_template_directory_uri() );
 
 			/** Sets the path to the core framework directory. */
-			define( 'CHERRY_DIR', trailingslashit( __TM_THEME_DIR ) . 'cherry-framework' );
+			define( 'CHERRY_DIR', trailingslashit( KING_NEWS_THEME_DIR ) . 'cherry-framework' );
 
 			/** Sets the path to the core framework directory URI. */
-			define( 'CHERRY_URI', trailingslashit( __TM_THEME_URI ) . 'cherry-framework' );
+			define( 'CHERRY_URI', trailingslashit( KING_NEWS_THEME_URI ) . 'cherry-framework' );
+
+			// Sets the content width in pixels, based on the theme's design and stylesheet.
+			if ( ! isset( $content_width ) ) {
+				$content_width = 710;
+			}
 		}
 
 		/**
@@ -212,12 +219,16 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
 		}
 
 		/**
-		 * Loads both the parent and child theme translation files.
+		 * Loads the theme translation file.
 		 *
 		 * @since 1.0.0
 		 */
 		public function l10n() {
-
+			/*
+			 * Make theme available for translation.
+			 * Translations can be filed in the /languages/ directory.
+			 */
+			load_theme_textdomain( 'king_news', KING_NEWS_THEME_DIR . '/languages' );
 		}
 
 		/**
@@ -266,10 +277,10 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
 			);
 
 			register_nav_menus( array(
-				'top'    => __( 'Top', '__tm' ),
-				'main'   => __( 'Main', '__tm' ),
-				'footer' => __( 'Footer', '__tm' ),
-				'social' => __( 'Social', '__tm' ),
+				'top'    => __( 'Top', 'king_news' ),
+				'main'   => __( 'Main', 'king_news' ),
+				'footer' => __( 'Footer', 'king_news' ),
+				'social' => __( 'Social', 'king_news' ),
 			) );
 
 			// Enable support for Post Thumbnails.
@@ -283,15 +294,17 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
 			// Enable default title tag.
 			add_theme_support( 'title-tag' );
 
-			// Enable post formats
+			// Enable post formats.
 			add_theme_support(
 				'post-formats',
-				array( 'aside', 'gallery', 'image', 'link', 'quote', 'video', 'audio' )
+				array( 'aside', 'gallery', 'image', 'link', 'quote', 'video', 'audio', 'status' )
 			);
 
-			// Enable custom BG
+			// Enable custom BG.
 			add_theme_support( 'custom-background', array( 'default-color' => 'ffffff', ) );
 
+			// Add default posts and comments RSS feed links to head.
+			add_theme_support( 'automatic-feed-links' );
 		}
 
 		/**
@@ -300,28 +313,31 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
 		 * @since 1.0.0
 		 */
 		public function includes() {
-			require_once __TM_THEME_DIR . '/config/thumbnails.php';
-			require_once __TM_THEME_DIR . '/inc/template-tags.php';
-			require_once __TM_THEME_DIR . '/inc/extras.php';
-			require_once __TM_THEME_DIR . '/inc/customizer.php';
-			require_once __TM_THEME_DIR . '/inc/hooks.php';
+			require_once KING_NEWS_THEME_DIR . '/config/thumbnails.php';
+			require_once KING_NEWS_THEME_DIR . '/inc/template-tags.php';
+			require_once KING_NEWS_THEME_DIR . '/inc/template-comment.php';
+			require_once KING_NEWS_THEME_DIR . '/inc/extras.php';
+			require_once KING_NEWS_THEME_DIR . '/inc/customizer.php';
+			require_once KING_NEWS_THEME_DIR . '/inc/hooks.php';
+			require_once KING_NEWS_THEME_DIR . '/inc/register-plugins.php';
 
 			/**
 			 * Widgets
 			 */
-			require_once __TM_THEME_DIR . '/inc/widgets/tm-about-author-widget/class-tm-about-author-widget.php';
-			require_once __TM_THEME_DIR . '/inc/widgets/tm-image-grid-widget/class-tm-image-grid-widget.php';
-			require_once __TM_THEME_DIR . '/inc/widgets/tm-taxonomy-tiles-widget/class-tm-taxonomy-tiles-widget.php';
-			require_once __TM_THEME_DIR . '/inc/widgets/tm-carousel-widget/class-tm-carousel-widget.php';
-			require_once __TM_THEME_DIR . '/inc/widgets/tm-smart-slider-widget/class-tm-smart-slider-widget.php';
-			require_once __TM_THEME_DIR . '/inc/widgets/tm-subscribe-follow-widget/class-tm-subscribe-follow-widget.php';
-			require_once __TM_THEME_DIR . '/inc/widgets/tm-instagram-widget/class-tm-instagram-widget.php';
+			require_once KING_NEWS_THEME_DIR . '/inc/widgets/tm-about-author-widget/class-tm-about-author-widget.php';
+			require_once KING_NEWS_THEME_DIR . '/inc/widgets/tm-image-grid-widget/class-tm-image-grid-widget.php';
+			require_once KING_NEWS_THEME_DIR . '/inc/widgets/tm-taxonomy-tiles-widget/class-tm-taxonomy-tiles-widget.php';
+			require_once KING_NEWS_THEME_DIR . '/inc/widgets/tm-carousel-widget/class-tm-carousel-widget.php';
+			require_once KING_NEWS_THEME_DIR . '/inc/widgets/tm-smart-slider-widget/class-tm-smart-slider-widget.php';
+			require_once KING_NEWS_THEME_DIR . '/inc/widgets/tm-subscribe-follow-widget/class-tm-subscribe-follow-widget.php';
+			require_once KING_NEWS_THEME_DIR . '/inc/widgets/tm-instagram-widget/class-tm-instagram-widget.php';
 
 			/**
 			 * Classes
 			 */
-			require_once __TM_THEME_DIR . '/inc/classes/class-tm-wrapping.php';
-			require_once __TM_THEME_DIR . '/inc/classes/class-tm-widget-area.php';
+			require_once KING_NEWS_THEME_DIR . '/inc/classes/class-tm-wrapping.php';
+			require_once KING_NEWS_THEME_DIR . '/inc/classes/class-tm-widget-area.php';
+			require_once KING_NEWS_THEME_DIR . '/inc/classes/class-tgm-plugin-activation.php';
 		}
 
 		/**
@@ -330,9 +346,9 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
 		 * @since 1.0.0
 		 */
 		public function init() {
-			$this->customizer = $this->get_core()->init_module( 'cherry-customizer', __tm_get_customizer_options() );
-			$this->get_core()->init_module( 'cherry-dynamic-css', __tm_get_dynamic_css_options() );
-			$this->get_core()->init_module( 'cherry-google-fonts-loader', __tm_get_fonts_options() );
+			$this->customizer = $this->get_core()->init_module( 'cherry-customizer', king_news_get_customizer_options() );
+			$this->get_core()->init_module( 'cherry-dynamic-css', king_news_get_dynamic_css_options() );
+			$this->get_core()->init_module( 'cherry-google-fonts-loader', king_news_get_fonts_options() );
 			$this->get_core()->init_module( 'cherry-term-meta', array(
 				'tax'      => 'category',
 				'priority' => 10,
@@ -342,8 +358,8 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
 						'value'              => '',
 						'multi_upload'       => false,
 						'library_type'       => 'image',
-						'upload_button_text' => __( 'Set thumbnail', '__tm' ),
-						'label'              => __( 'Category thumbnail', '__tm' ),
+						'upload_button_text' => __( 'Set thumbnail', 'king_news' ),
+						'label'              => __( 'Category thumbnail', 'king_news' ),
 					),
 				),
 			) );
@@ -356,14 +372,14 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
 						'value'              => '',
 						'multi_upload'       => false,
 						'library_type'       => 'image',
-						'upload_button_text' => __( 'Set thumbnail', '__tm' ),
-						'label'              => __( 'Tag thumbnail', '__tm' ),
+						'upload_button_text' => __( 'Set thumbnail', 'king_news' ),
+						'label'              => __( 'Tag thumbnail', 'king_news' ),
 					),
 				),
 			) );
 			$this->get_core()->init_module( 'cherry-post-meta', array(
 				'id'            => 'post-layout',
-				'title'         => __( 'Post Layout', '__tm' ),
+				'title'         => __( 'Post Layout', 'king_news' ),
 				'page'          => array( 'post', 'page' ),
 				'context'       => 'normal',
 				'priority'      => 'high',
@@ -371,29 +387,29 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
 				'fields'        => array(
 					'_tm_sidebar_position' => array(
 						'type'        => 'radio',
-						'title'       => __( 'Layout', '__tm' ),
+						'title'       => __( 'Layout', 'king_news' ),
 						'value'         => 'inherit',
 						'display_input' => false,
 						'options'       => array(
 							'inherit' => array(
-								'label'   => __( 'Inherit', '__tm' ),
-								'img_src' => __TM_THEME_URI . '/assets/images/admin/inherit.svg',
+								'label'   => __( 'Inherit', 'king_news' ),
+								'img_src' => KING_NEWS_THEME_URI . '/assets/images/admin/inherit.svg',
 							),
 							'one-left-sidebar' => array(
-								'label'   => __( 'Sidebar on left side', '__tm' ),
-								'img_src' => __TM_THEME_URI . '/assets/images/admin/page-layout-left-sidebar.svg',
+								'label'   => __( 'Sidebar on left side', 'king_news' ),
+								'img_src' => KING_NEWS_THEME_URI . '/assets/images/admin/page-layout-left-sidebar.svg',
 							),
 							'one-right-sidebar' => array(
-								'label'   => __( 'Sidebar on right side', '__tm' ),
-								'img_src' => __TM_THEME_URI . '/assets/images/admin/page-layout-right-sidebar.svg',
+								'label'   => __( 'Sidebar on right side', 'king_news' ),
+								'img_src' => KING_NEWS_THEME_URI . '/assets/images/admin/page-layout-right-sidebar.svg',
 							),
 							'two-sidebars' => array(
-								'label'   => __( '2 sidebars', '__tm' ),
-								'img_src' => __TM_THEME_URI . '/assets/images/admin/page-layout-both-sidebar.svg',
+								'label'   => __( '2 sidebars', 'king_news' ),
+								'img_src' => KING_NEWS_THEME_URI . '/assets/images/admin/page-layout-both-sidebar.svg',
 							),
 							'fullwidth' => array(
-								'label'   => __( 'No sidebar', '__tm' ),
-								'img_src' => __TM_THEME_URI . '/assets/images/admin/page-layout-fullwidth.svg',
+								'label'   => __( 'No sidebar', 'king_news' ),
+								'img_src' => KING_NEWS_THEME_URI . '/assets/images/admin/page-layout-fullwidth.svg',
 							),
 						)
 					),
@@ -420,7 +436,7 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
 		 * @since 1.0.0
 		 */
 		public function enqueue_admin_assets() {
-			wp_enqueue_script( 'admin_theme_script', __TM_THEME_URI . '/assets/js/admin-theme-script.js', array( 'jquery' ), __TM_THEME_VERSION, true );
+			wp_enqueue_script( 'admin_theme_script', KING_NEWS_THEME_URI . '/assets/js/admin-theme-script.js', array( 'jquery' ), KING_NEWS_THEME_VERSION, true );
 		}
 
 		/**
@@ -432,25 +448,31 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
 		public function register_assets() {
 
 			// SliderPro assets register
-			wp_register_script( 'jquery-slider-pro', __TM_THEME_URI . '/assets/js/jquery.sliderPro.min.js', array( 'jquery' ), '1.2.4', true );
-			wp_register_style( 'jquery-slider-pro', __TM_THEME_URI . '/assets/css/slider-pro.min.css', array(), '1.2.4', 'all');
+			wp_register_script( 'jquery-slider-pro', KING_NEWS_THEME_URI . '/assets/js/jquery.sliderPro.min.js', array( 'jquery' ), '1.2.4', true );
+			wp_register_style( 'jquery-slider-pro', KING_NEWS_THEME_URI . '/assets/css/slider-pro.min.css', array(), '1.2.4', 'all');
 
 			// Swiper assets register
-			wp_register_script( 'jquery-swiper', __TM_THEME_URI . '/assets/js/swiper.jquery.min.js', array( 'jquery' ), '3.3.0', true );
-			wp_register_style( 'jquery-swiper', __TM_THEME_URI . '/assets/css/swiper.min.css', array(), '3.3.0', 'all' );
+			wp_register_script( 'jquery-swiper', KING_NEWS_THEME_URI . '/assets/js/swiper.jquery.min.js', array( 'jquery' ), '3.3.0', true );
+			wp_register_style( 'jquery-swiper', KING_NEWS_THEME_URI . '/assets/css/swiper.min.css', array(), '3.3.0', 'all' );
 
 			// Magnific popup assets
-			wp_register_script( 'magnific-popup', __TM_THEME_URI . '/assets/js/jquery.magnific-popup.min.js', array(), '1.0.1', true );
-			wp_register_style( 'magnific-popup', __TM_THEME_URI . '/assets/css/magnific-popup.css', array(), '1.0.1', 'all' );
+			wp_register_script( 'magnific-popup', KING_NEWS_THEME_URI . '/assets/js/jquery.magnific-popup.min.js', array(), '1.0.1', true );
+			wp_register_style( 'magnific-popup', KING_NEWS_THEME_URI . '/assets/css/magnific-popup.css', array(), '1.0.1', 'all' );
 
 			// Font icons
 			wp_register_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', array(), '4.5.0' );
-			wp_register_style( 'material-icons', __TM_THEME_URI . '/assets/css/material-icons.css', array(), '2.1.0', 'all' );
+			wp_register_style( 'material-icons', KING_NEWS_THEME_URI . '/assets/css/material-icons.css', array(), '2.1.0', 'all' );
 
 			// Sticky menu
-			wp_register_script( 'jquery-stickup', __TM_THEME_URI . '/assets/js/jquery.stickup.js', array(), '1.0.0', true );
+			wp_register_script( 'jquery-stickup', KING_NEWS_THEME_URI . '/assets/js/jquery.stickup.js', array(), '1.0.0', true );
 
+			// To top
+			wp_register_script( 'jquery-totop', KING_NEWS_THEME_URI . '/assets/js/jquery.ui.totop.min.js', array(), '1.0.0', true );
 
+			// Threaded Comments.
+			if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+				wp_enqueue_script( 'comment-reply' );
+			}
 		}
 
 		/**
@@ -460,12 +482,12 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
 		 */
 		public function enqueue_assets() {
 
-			$script_depends = apply_filters( '__tm_theme_script_depends', array( 'jquery', 'hoverIntent' ) );
+			$script_depends = apply_filters( 'king_news_theme_script_depends', array( 'jquery', 'hoverIntent' ) );
 
-			wp_enqueue_style( 'blank-style', get_stylesheet_uri(), array( 'font-awesome', 'material-icons', 'magnific-popup' ), __TM_THEME_VERSION );
-			wp_enqueue_script( '__tm-theme-script', __TM_THEME_URI . '/assets/js/theme-script.js', $script_depends, __TM_THEME_VERSION, true );
+			wp_enqueue_style( 'blank-style', get_stylesheet_uri(), array( 'font-awesome', 'material-icons', 'magnific-popup' ), KING_NEWS_THEME_VERSION );
+			wp_enqueue_script( 'king_news-theme-script', KING_NEWS_THEME_URI . '/assets/js/theme-script.js', $script_depends, KING_NEWS_THEME_VERSION, true );
 
-			wp_localize_script( '__tm-theme-script', '__tm', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+			wp_localize_script( 'king_news-theme-script', 'king_news', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 		}
 
 
@@ -493,15 +515,8 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
  *
  * @return object
  */
-function __tm_theme() {
-	return __Tm_Theme_Setup::get_instance();
+function king_news_theme() {
+	return King_News_Theme_Setup::get_instance();
 }
 
-__tm_theme();
-
-
-/**
- * Load custom functions.
- */
-require get_template_directory() . '/custom_functions.php';
-
+king_news_theme();

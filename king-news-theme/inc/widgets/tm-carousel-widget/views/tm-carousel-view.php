@@ -1,14 +1,15 @@
 <div class="inner">
-	<header class="entry-header">
-		<?php echo $image; ?>
-		<div class="post__cats"><?php echo $terms_line; ?></div>
-
-	</header>
-	<div class="entry-content">
-		<div class="post__author vcard"><span><?php echo esc_html__( 'Posted by ', '__tm' ); ?></span><?php echo $author; ?></div>
-		<?php echo $title; ?>
-		<?php echo $content; ?>
-		<?php echo $more_button; ?>
+	<div class="content-wrapper">
+		<header class="entry-header">
+			<?php echo $image; ?>
+			<div class="post__cats"><?php echo $terms_line; ?></div>
+		</header>
+		<div class="entry-content">
+			<div class="post__author vcard"><span><?php echo esc_html__( 'Posted by ', 'king_news' ); ?></span><?php echo $author; ?></div>
+			<?php echo $title; ?>
+			<?php echo $content; ?>
+			<?php echo $more_button; ?>
+		</div>
 	</div>
 	<footer class="entry-footer">
 		<div class="entry-meta">

@@ -1,6 +1,6 @@
 <?php
 /**
- * @package    __tm
+ * @package    king_news
  * @subpackage Widget Class
  * @author     Cherry Team <cherryframework@gmail.com>
  */
@@ -10,12 +10,12 @@ if ( !defined( 'WPINC' ) ) {
 	die;
 }
 
-if ( !class_exists( '__Tm_Taxonomy_Tiles_Widget' ) ) {
+if ( !class_exists( 'King_News_Taxonomy_Tiles_Widget' ) ) {
 
 	/**
 	 * Taxonomy Tiles Widget
 	 */
-	class __Tm_Taxonomy_Tiles_Widget extends Cherry_Abstract_Widget {
+	class King_News_Taxonomy_Tiles_Widget extends Cherry_Abstract_Widget {
 
 		/**
 		 * Taxonomy Tiles widget constructor
@@ -23,29 +23,29 @@ if ( !class_exists( '__Tm_Taxonomy_Tiles_Widget' ) ) {
 		 * @since  1.0.0
 		 */
 		public function __construct() {
-			$this->widget_name			= esc_html__( '__Tm Taxonomy Tiles Widget', '__tm' );
-			$this->widget_description	= esc_html__( 'This widget displays images from taxonomy.', '__tm' );
+			$this->widget_name			= esc_html__( 'King_News Taxonomy Tiles Widget', 'king_news' );
+			$this->widget_description	= esc_html__( 'This widget displays images from taxonomy.', 'king_news' );
 			$this->widget_id			= 'widget-taxonomy-tiles';
-			$this->widget_cssclass		= 'widget widget-taxonomy-tiles';
+			$this->widget_cssclass		= 'widget-taxonomy-tiles';
 
 			$this->settings = array(
 				'title'	=> array(
 					'type'				=> 'text',
 					'value'				=> '',
-					'label'				=> esc_html__( 'Widget title', '__tm' ),
+					'label'				=> esc_html__( 'Widget title', 'king_news' ),
 				),
 				'terms_type' => array(
 					'type'				=> 'radio',
 					'value'				=> 'category',
 					'options'			=> array(
 						'category' => array(
-							'label'		=> esc_html__( 'Category', '__tm' ),
+							'label'		=> esc_html__( 'Category', 'king_news' ),
 						),
 						'post_tag' => array(
-							'label'		=> esc_html__( 'Tag', '__tm' ),
+							'label'		=> esc_html__( 'Tag', 'king_news' ),
 						),
 					),
-					'label'				=> esc_html__( 'Choose taxonomy type', '__tm' ),
+					'label'				=> esc_html__( 'Choose taxonomy type', 'king_news' ),
 				),
 				'category'=> array(
 					'type'				=> 'select',
@@ -53,7 +53,7 @@ if ( !class_exists( '__Tm_Taxonomy_Tiles_Widget' ) ) {
 					'value'				=> '',
 					'options'			=> false,
 					'options_callback'	=> array( $this, 'get_terms_list' ),
-					'label'				=> esc_html__( 'Select category to show', '__tm' ),
+					'label'				=> esc_html__( 'Select category to show', 'king_news' ),
 				),
 				'post_tag' => array(
 					'type'				=> 'select',
@@ -61,15 +61,15 @@ if ( !class_exists( '__Tm_Taxonomy_Tiles_Widget' ) ) {
 					'value'				=> '',
 					'options'			=> false,
 					'options_callback'	=> array( $this, 'get_terms_list', array('post_tag') ),
-					'label'				=> esc_html__( 'Select tags to show', '__tm' ),
+					'label'				=> esc_html__( 'Select tags to show', 'king_news' ),
 				),
 				'description_length' => array(
 					'type'				=> 'stepper',
-					'value'				=> '10',
+					'value'				=> '0',
 					'max_value'			=> '500',
 					'min_value'			=> '0',
 					'step_value'		=> '1',
-					'label'				=> esc_html__( 'Description words length ( Set 0 to hide description. )', '__tm' ),
+					'label'				=> esc_html__( 'Description words length ( Set 0 to hide description. )', 'king_news' ),
 				),
 				'show_post_count' => array(
 					'type'				=> 'checkbox',
@@ -77,7 +77,7 @@ if ( !class_exists( '__Tm_Taxonomy_Tiles_Widget' ) ) {
 						'show_post_count_check' => 'true',
 					),
 					'options'		=> array(
-						'show_post_count_check' => esc_html__( 'Show post count', '__tm' ),
+						'show_post_count_check' => esc_html__( 'Show post count', 'king_news' ),
 					),
 				),
 				'columns_number' => array(
@@ -86,7 +86,7 @@ if ( !class_exists( '__Tm_Taxonomy_Tiles_Widget' ) ) {
 					'max_value'			=> '4',
 					'min_value'			=> '1',
 					'step_value'		=> '1',
-					'label'				=> esc_html__( 'Columns number', '__tm' ),
+					'label'				=> esc_html__( 'Columns number', 'king_news' ),
 				),
 				'first_item' => array(
 					'type'				=> 'checkbox',
@@ -94,16 +94,16 @@ if ( !class_exists( '__Tm_Taxonomy_Tiles_Widget' ) ) {
 						'first_item_check' => 'false',
 					),
 					'options'		=> array(
-						'first_item_check' => esc_html__( 'Tiles first item', '__tm' ),
+						'first_item_check' => esc_html__( 'Tiles first item', 'king_news' ),
 					),
 				),
 				'items_padding' => array(
 					'type'				=> 'stepper',
-					'value'				=> '0',
+					'value'				=> '5',
 					'max_value'			=> '50',
-					'min_value'			=> '0',
+					'min_value'			=> '2',
 					'step_value'		=> '1',
-					'label'				=> esc_html__( 'Items padding ( size in pixels )', '__tm' ),
+					'label'				=> esc_html__( 'Items padding ( size in pixels )', 'king_news' ),
 				),
 			);
 
@@ -127,7 +127,7 @@ if ( !class_exists( '__Tm_Taxonomy_Tiles_Widget' ) ) {
 
 			if ( $terms ){
 				foreach ( $terms as $term ) {
-					$output_terms[ $term->term_id ] = $term->name . sprintf( _n( ' ( 1 post )', ' ( %s posts )', $term->count, '__tm' ), $term->count );
+					$output_terms[ $term->term_id ] = $term->name . sprintf( _n( ' ( 1 post )', ' ( %s posts )', $term->count, 'king_news' ), $term->count );
 				}
 			}
 
@@ -171,7 +171,7 @@ if ( !class_exists( '__Tm_Taxonomy_Tiles_Widget' ) ) {
 		 * @return string
 		 */
 		public function get_term_post_count( $term, $visible ) {
-			return ( 'false' === $visible ) ? '' : '<span class="post-count">' . sprintf( _n( '1 post', '%s posts', $term->count, '__tm' ), $term->count ) . '</span>';
+			return ( 'false' === $visible ) ? '' : '<span class="post-count">' . sprintf( _n( '1 post', '%s posts', $term->count, 'king_news' ), $term->count ) . '</span>';
 		}
 
 		/**
@@ -182,7 +182,7 @@ if ( !class_exists( '__Tm_Taxonomy_Tiles_Widget' ) ) {
 		 */
 		public function get_term_description( $term, $lenght ) {
 			$lenght = intval( $lenght );
-			return ( 0 === $lenght || !$term->description ) ? '' : '<p class="post-desc">' . wp_trim_words( $term->description, $lenght, esc_html__( ' ...', '__tm' ) ) . '</p>';
+			return ( 0 === $lenght || !$term->description ) ? '' : '<p class="post-desc">' . wp_trim_words( $term->description, $lenght, esc_html__( ' ...', 'king_news' ) ) . '</p>';
 		}
 
 		/**
@@ -201,7 +201,7 @@ if ( !class_exists( '__Tm_Taxonomy_Tiles_Widget' ) ) {
 				$size = $_wp_additional_image_sizes[ $image_size ];
 
 				// Place holder defaults attr
-				$placeholder_attr = apply_filters( '__tm_taxonomy_tiles_widget_placeholder_default_args',
+				$placeholder_attr = apply_filters( 'king_news_taxonomy_tiles_widget_placeholder_default_args',
 					array(
 						'width'			=> $size['width'],
 						'height'		=> $size['height'],
@@ -249,7 +249,7 @@ if ( !class_exists( '__Tm_Taxonomy_Tiles_Widget' ) ) {
 			if ( isset( $terms ) && $terms ) {
 				$columns_class = 4 < $columns_number ? 3 : ( int ) ( 12 / $columns_number ) ;
 				$first_columns_class = 2 < $columns_number ? 12 - $columns_class : 12 ;
-				$tiles_item_number = apply_filters( '__tm_taxonomy_tiles_item_number', 0 );
+				$tiles_item_number = apply_filters( 'king_news_taxonomy_tiles_item_number', 0 );
 				$tiles_item_class = ' tile_item';
 				$row_inline_style = '';
 				$inline_style = '';
@@ -259,7 +259,7 @@ if ( !class_exists( '__Tm_Taxonomy_Tiles_Widget' ) ) {
 					$inline_style = 'style="margin: 0 0 ' . $items_padding . 'px ' . $items_padding . 'px;"';
 				}
 
-				echo apply_filters( '__tm_taxonomy_tiles_widget_before', '<div class="grid-columns columns-number-' . $columns_number . '" ' . $row_inline_style . '><div class="row">' );
+				echo apply_filters( 'king_news_taxonomy_tiles_widget_before', '<div class="row grid-columns columns-number-' . $columns_number . '" ' . $row_inline_style . '>' );
 
 				foreach ( $terms as $term_key => $term ) {
 
@@ -268,7 +268,7 @@ if ( !class_exists( '__Tm_Taxonomy_Tiles_Widget' ) ) {
 					$permalink = $this->get_term_link( $term );
 					$count = $this->get_term_post_count( $term, $show_post_count['show_post_count_check'] );
 					$description = $this->get_term_description( $term, $description_length );
-					$image = $this->get_term_image( $term, apply_filters( '__tm_taxonomy_tiles_widget_size', '_tm-thumb-m' ) );
+					$image = $this->get_term_image( $term, apply_filters( 'king_news_taxonomy_tiles_widget_size', '_tm-thumb-m' ) );
 
 					$view_dir = locate_template( 'inc/widgets/tm-taxonomy-tiles-widget/views/tm-taxonomy-tiles-view.php' );
 					if ( $view_dir ){
@@ -276,7 +276,7 @@ if ( !class_exists( '__Tm_Taxonomy_Tiles_Widget' ) ) {
 					}
 				}
 
-				echo apply_filters( '__tm_taxonomy_tiles_widget_after', '</div></div>' );
+				echo apply_filters( 'king_news_taxonomy_tiles_widget_after', '</div>' );
 			}
 
 			$this->widget_end( $args );
@@ -286,9 +286,9 @@ if ( !class_exists( '__Tm_Taxonomy_Tiles_Widget' ) ) {
 		}
 	}
 
-	add_action( 'widgets_init', '__tm_register_taxonomy_tiles_widget' );
-	function __tm_register_taxonomy_tiles_widget() {
-		register_widget( '__Tm_Taxonomy_Tiles_Widget' );
+	add_action( 'widgets_init', 'king_news_register_taxonomy_tiles_widget' );
+	function king_news_register_taxonomy_tiles_widget() {
+		register_widget( 'King_News_Taxonomy_Tiles_Widget' );
 	}
 
 }

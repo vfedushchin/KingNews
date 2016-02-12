@@ -107,11 +107,16 @@ if ( ! class_exists( 'Cherry_Post_Formats_Api' ) ) {
 				'audio',
 				'link',
 				'quote',
+				'status',
 			);
 
+			// Register default post formats
 			foreach ( $formats as $format ) {
 				add_action( 'cherry_post_format_' . $format, array( $this, 'post_format_' . $format ) );
 			}
+
+			// Register an embed post formats
+			add_filter( 'cherry_get_embed_post_formats', array( $this, 'embed_post_formats' ), 10, 2 );
 
 			if ( true === $this->args['rewrite_default_gallery'] ) {
 				// Replace gallery shortcode
@@ -120,6 +125,81 @@ if ( ! class_exists( 'Cherry_Post_Formats_Api' ) ) {
 
 			add_action( 'wp_enqueue_scripts', array( $this, 'assets' ) );
 
+			$this->includes();
+
+		}
+
+		/**
+		 * Register extra post formats rendering.
+		 * Currently supported - facebook, twitter, soundcloud.
+		 *
+		 * @param  bool $embed Default embed value - false.
+		 * @return string|bool
+		 */
+		public function embed_post_formats( $embed, $args = array() ) {
+
+			$args = wp_parse_args( $args, array(
+				'fields' => array(),
+				'width'  => 350,
+				'height' => 350,
+			) );
+
+			if ( empty( $args['fields'] ) ) {
+				return $embed;
+			}
+
+			$extra_formats = array(
+				'twitter'    => 'https://twitter.com',
+				'facebook'   => 'https://www.facebook.com',
+				'soundcloud' => 'https://soundcloud.com',
+			);
+
+			global $post;
+
+			if ( ! $post ) {
+				return $embed;
+			}
+
+			$excerpt = substr( $post->post_content, 0, 200 );
+
+			foreach ( $args['fields'] as $name ) {
+
+				$trigger = isset( $extra_formats[ $name ] ) ? $extra_formats[ $name ] : '';
+
+				if ( ! $trigger ) {
+					return $embed;
+				}
+
+				if ( false === strpos( $excerpt, $trigger ) ) {
+					continue;
+				}
+
+				$url = $this->get_content_url( $post->post_content );
+
+				if ( ! empty( $url ) ) {
+					return wp_oembed_get( $url, $args );
+				}
+			}
+
+			return $embed;
+
+		}
+
+		/**
+		 * Include required API files
+		 *
+		 * @since  1.0.0
+		 * @return void
+		 */
+		public function includes() {
+
+			$based_dir = $this->core->get_core_dir() . 'modules/' . $this->module_slug;
+			require_once $based_dir . '/inc/class-cherry-facebook-embed.php';
+
+			// Register Facebook Embed.
+			if ( class_exists( 'Cherry_Facebook_Embed' ) ) {
+				Cherry_Facebook_Embed::get_instance();
+			}
 		}
 
 		/**
@@ -134,8 +214,7 @@ if ( ! class_exists( 'Cherry_Post_Formats_Api' ) ) {
 
 			wp_enqueue_script(
 				'cherry-post-formats',
-				//$base_url . '/assets/js/min/cherry-post-formats.min.js', array( 'jquery', 'cherry-api' ),
-				$base_url . '/assets/js/cherry-post-formats.js', array( 'jquery', 'cherry-api' ),
+				$base_url . '/assets/js/min/cherry-post-formats.min.js', array( 'jquery', 'cherry-api' ),
 				$this->module_version,
 				true
 			);

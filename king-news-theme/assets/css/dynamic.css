@@ -77,6 +77,15 @@ h6 {
 		h5 { font-size: $h5_font_size{px}; }
 		h6 { font-size: $h6_font_size{px}; }
 	}
+.breadcrumbs__item a {
+	font-style: $breadcrumbs_font_style;
+	font-weight: $breadcrumbs_font_weight;
+	font-size: $breadcrumbs_font_size{px};
+	line-height: $breadcrumbs_line_height;
+	font-family: $breadcrumbs_font_family;
+	letter-spacing: $breadcrumbs_letter_spacing{px};
+	text-align: $breadcrumbs_text_align;
+}
 
 a,
 h1 a:hover,
@@ -84,8 +93,14 @@ h2 a:hover,
 h3 a:hover,
 h4 a:hover,
 h5 a:hover,
-h6 a:hover { color: $regular_link_color; }
+h6 a:hover,
+.not-found .page-title { color: $regular_link_color; }
 a:hover { color: $regular_link_hover_color; }
+
+mark, ins {
+	color: $invert_text_color;
+	background-color: $regular_link_color;
+}
 
 ::-webkit-input-placeholder { color: $regular_text_color; }
 ::-moz-placeholder          { color: $regular_text_color; }
@@ -125,11 +140,15 @@ a:hover { color: $regular_link_hover_color; }
 	font-family: $h3_font_family;
 }
 .top-panel {
+	background-color: $top_panel_bg;
+}
+
+.top-panel {
 	font-family: $h2_font_family;
 	background-color: $top_panel_bg;
 }
 
-.site-footer, .sidebar-primary {
+.site-footer, .sidebar-primary, .entry-meta {
 	font-family: $h2_font_family;
 }
 
@@ -144,3 +163,6 @@ a:hover { color: $regular_link_hover_color; }
 		max-width: $container_width{px};
 	}
 }
+
+a {transition: .4s all ease;}
+*:focus, a:focus {outline: none;}

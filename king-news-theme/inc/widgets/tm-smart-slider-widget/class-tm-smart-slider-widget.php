@@ -1,6 +1,6 @@
 <?php
 
-class __TM_Smart_Slider_Widget extends Cherry_Abstract_Widget {
+class KING_NEWS_Smart_Slider_Widget extends Cherry_Abstract_Widget {
 
 	/**
 	 * Constructor
@@ -9,27 +9,27 @@ class __TM_Smart_Slider_Widget extends Cherry_Abstract_Widget {
 	 */
 	public function __construct() {
 		$this->widget_cssclass = 'cherry widget_smart_slider';
-		$this->widget_description = esc_html__( 'Display smart slider on your site.', '__tm' );
+		$this->widget_description = esc_html__( 'Display smart slider on your site.', 'king_news' );
 		$this->widget_id = 'widget_smart_slider';
-		$this->widget_name = esc_html__( '__TM Smart Slider Widget', '__tm' );
+		$this->widget_name = esc_html__( 'KING_NEWS Smart Slider Widget', 'king_news' );
 		$this->settings = array(
 			'title' => array(
 				'type'  => 'text',
-				'value' => esc_html__( 'Smart Slider', '__tm' ),
-				'label' => esc_html__( 'Title', '__tm' ),
+				'value' => esc_html__( 'Smart Slider', 'king_news' ),
+				'label' => esc_html__( 'Title', 'king_news' ),
 			),
 			'terms_type' => array(
 				'type'				=> 'radio',
 				'value'				=> 'category',
 				'options'			=> array(
 					'category' => array(
-						'label'		=> esc_html__( 'Category', '__tm' ),
+						'label'		=> esc_html__( 'Category', 'king_news' ),
 					),
 					'post_tag' => array(
-						'label'		=> esc_html__( 'Tag', '__tm' ),
+						'label'		=> esc_html__( 'Tag', 'king_news' ),
 					),
 				),
-				'label'				=> esc_html__( 'Choose taxonomy type', '__tm' ),
+				'label'				=> esc_html__( 'Choose taxonomy type', 'king_news' ),
 			),
 			'categories' => array(
 				'type' => 'select',
@@ -37,9 +37,9 @@ class __TM_Smart_Slider_Widget extends Cherry_Abstract_Widget {
 				'value' => '',
 				'options_callback' => array( $this, 'get_terms_list', array( 'category', 'slug' ) ),
 				'options' => false,
-				'label' => esc_html__( 'Select category', '__tm' ),
+				'label' => esc_html__( 'Select category', 'king_news' ),
 				'multiple' => true,
-				'placeholder' => esc_html__( 'Select category', '__tm' ),
+				'placeholder' => esc_html__( 'Select category', 'king_news' ),
 			),
 			'tags' => array(
 				'type' => 'select',
@@ -47,39 +47,39 @@ class __TM_Smart_Slider_Widget extends Cherry_Abstract_Widget {
 				'value' => '',
 				'options_callback' => array( $this, 'get_terms_list', array( 'post_tag', 'slug' ) ),
 				'options' => false,
-				'label' => esc_html__( 'Select tags', '__tm' ),
+				'label' => esc_html__( 'Select tags', 'king_news' ),
 				'multiple' => true,
-				'placeholder' => esc_html__( 'Select tags', '__tm' ),
+				'placeholder' => esc_html__( 'Select tags', 'king_news' ),
 			),
 			'posts_per_page' => array(
 				'type' => 'stepper',
 				'value' => 3,
 				'max_value' => 50,
 				'min_value' => 1,
-				'label'  => esc_html__( 'Posts count', '__tm' ),
+				'label'  => esc_html__( 'Posts count', 'king_news' ),
 			),
 			'post_title' => array(
 				'type' => 'switcher',
 				'value' => 'true',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
-				'label' => esc_html__( 'Display title', '__tm' ),
+				'label' => esc_html__( 'Display title', 'king_news' ),
 			),
 			'content' => array(
 				'type' => 'switcher',
 				'value' => 'false',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
-				'label' => esc_html__( 'Display content', '__tm' ),
+				'label' => esc_html__( 'Display content', 'king_news' ),
 			),
 			'more_button' => array(
 				'type' => 'switcher',
-				'value' => 'false',
+				'value' => 'true',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
-				'label' => esc_html__( 'Display more button', '__tm' ),
+				'label' => esc_html__( 'Display more button', 'king_news' ),
 			),
 			'more_button_text' => array(
 				'type'  => 'text',
-				'value' => esc_html__( 'Read more', '__tm' ),
-				'label' => esc_html__( 'More button text', '__tm' ),
+				'value' => esc_html__( 'Read more', 'king_news' ),
+				'label' => esc_html__( 'More button text', 'king_news' ),
 			),
 			'trim_words' => array(
 				'type' => 'slider',
@@ -87,34 +87,34 @@ class __TM_Smart_Slider_Widget extends Cherry_Abstract_Widget {
 				'max_value' => 55,
 				'min_value' => 1,
 				'step_value' => 1,
-				'label'  => esc_html__( 'Content words trimmed count', '__tm' ),
+				'label'  => esc_html__( 'Content words trimmed count', 'king_news' ),
 			),
 			'width' => array(
 				'type'  => 'text',
 				'value' => '100%',
-				'label' => esc_html__( 'Slider width', '__tm' ),
+				'label' => esc_html__( 'Slider width', 'king_news' ),
 			),
 			'height' => array(
 				'type' => 'text',
 				'value' => '800',
-				'label' => esc_html__( 'Slider height', '__tm' ),
+				'label' => esc_html__( 'Slider height', 'king_news' ),
 			),
 			'orientation' => array(
 				'type' => 'select',
 				'size' => 1,
 				'value' => 'horizontal',
 				'options' => array(
-					'horizontal' => esc_html__( 'Horizontal', '__tm' ),
-					'vertical' => esc_html__( 'Vertical', '__tm' ),
+					'horizontal' => esc_html__( 'Horizontal', 'king_news' ),
+					'vertical' => esc_html__( 'Vertical', 'king_news' ),
 				),
-				'label' => esc_html__( 'Slider orientation', '__tm' ),
+				'label' => esc_html__( 'Slider orientation', 'king_news' ),
 			),
 			'slide_distance' => array(
 				'type' => 'slider',
 				'value' => 10,
 				'max_value' => 100,
 				'min_value' => 0,
-				'label'  => esc_html__( 'Slide distance(px)', '__tm' ),
+				'label'  => esc_html__( 'Slide distance(px)', 'king_news' ),
 			),
 			'slide_duration' => array(
 				'type' => 'slider',
@@ -122,79 +122,79 @@ class __TM_Smart_Slider_Widget extends Cherry_Abstract_Widget {
 				'max_value' => 3000,
 				'min_value' => 100,
 				'step_value' => 100,
-				'label'  => esc_html__( 'Slide duration(ms)', '__tm' ),
+				'label'  => esc_html__( 'Slide duration(ms)', 'king_news' ),
 			),
 			'slide_fade' => array(
 				'type' => 'switcher',
 				'value' => 'false',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
-				'label' => esc_html__( 'Use fade effect?', '__tm' ),
+				'label' => esc_html__( 'Use fade effect?', 'king_news' ),
 			),
 			'navigation' => array(
 				'type' => 'switcher',
 				'value' => 'true',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
-				'label' => esc_html__( 'Use navigation?', '__tm' ),
+				'label' => esc_html__( 'Use navigation?', 'king_news' ),
 			),
 			'fade_navigation' => array(
 				'type' => 'switcher',
 				'value' => 'true',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
-				'label' => esc_html__( 'Indicates whether the arrows will fade in only on hover', '__tm' ),
+				'label' => esc_html__( 'Indicates whether the arrows will fade in only on hover', 'king_news' ),
 			),
 			'pagination' => array(
 				'type' => 'switcher',
 				'value' => 'true',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
-				'label' => esc_html__( 'Use pagination?', '__tm' ),
+				'label' => esc_html__( 'Use pagination?', 'king_news' ),
 			),
 			'autoplay' => array(
 				'type' => 'switcher',
 				'value' => 'true',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
-				'label' => esc_html__( 'Use autoplay?', '__tm' ),
+				'label' => esc_html__( 'Use autoplay?', 'king_news' ),
 			),
 			'fullScreen' => array(
 				'type' => 'switcher',
 				'value' => 'true',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
-				'label' => esc_html__( 'Display fullScreen button?', '__tm' ),
+				'label' => esc_html__( 'Display fullScreen button?', 'king_news' ),
 			),
 			'shuffle' => array(
 				'type' => 'switcher',
 				'value' => 'false',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
-				'label' => esc_html__( 'Indicates if the slides will be shuffled', '__tm' ),
+				'label' => esc_html__( 'Indicates if the slides will be shuffled', 'king_news' ),
 			),
 			'loop' => array(
 				'type' => 'switcher',
 				'value' => 'true',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
-				'label' => esc_html__( 'Use infinite scrolling?', '__tm' ),
+				'label' => esc_html__( 'Use infinite scrolling?', 'king_news' ),
 			),
 			'thumbnails' => array(
 				'type' => 'switcher',
 				'value' => 'false',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
-				'label' => esc_html__( 'Display thumbnails?', '__tm' ),
+				'label' => esc_html__( 'Display thumbnails?', 'king_news' ),
 			),
 			'thumbnails_arrows' => array(
 				'type' => 'switcher',
 				'value' => 'true',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
-				'label' => esc_html__( 'Display thumbnails arrows?', '__tm' ),
+				'label' => esc_html__( 'Display thumbnails arrows?', 'king_news' ),
 			),
 			'thumbnails_position' => array(
 				'type' => 'select',
 				'size' => 1,
 				'value' => 'bottom',
 				'options' => array(
-					'top' => esc_html__( 'Top', '__tm' ),
-					'bottom' => esc_html__( 'Bottom', '__tm' ),
-					'right' => esc_html__( 'Right', '__tm' ),
-					'left' => esc_html__( 'Left', '__tm' ),
+					'top' => esc_html__( 'Top', 'king_news' ),
+					'bottom' => esc_html__( 'Bottom', 'king_news' ),
+					'right' => esc_html__( 'Right', 'king_news' ),
+					'left' => esc_html__( 'Left', 'king_news' ),
 				),
-				'label' => esc_html__( 'Sets the position of the thumbnail scroller', '__tm' ),
+				'label' => esc_html__( 'Sets the position of the thumbnail scroller', 'king_news' ),
 			),
 		);
 
@@ -295,14 +295,14 @@ class __TM_Smart_Slider_Widget extends Cherry_Abstract_Widget {
 		$slider_html_attr .= ' data-thumbnails-width="240"';
 		$slider_html_attr .= ' data-thumbnails-height="100"';
 
-		$html = '<div class="__tm-smartslider" ' . $slider_html_attr . '>';
-			$html .= '<div id="' . $uniq_id . '" class="__tm-smartslider__instance slider-pro">';
-				$html .= '<div class="__tm-smartslider__slides sp-slides">';
+		$html = '<div class="king_news-smartslider" ' . $slider_html_attr . '>';
+			$html .= '<div id="' . $uniq_id . '" class="king_news-smartslider__instance slider-pro">';
+				$html .= '<div class="king_news-smartslider__slides sp-slides">';
 					$html .= $this->get_slider_loop( $posts_query );
 				$html .= '</div>';
 
 				if ( 'true' == $this->instance['thumbnails'] ) {
-					$html .= '<div class="__tm-smartslider__thumbnails sp-thumbnails">';
+					$html .= '<div class="king_news-smartslider__thumbnails sp-thumbnails">';
 						$html .= $this->get_slider_thumbnails( $posts_query );
 					$html .= '</div>';
 				}
@@ -321,7 +321,7 @@ class __TM_Smart_Slider_Widget extends Cherry_Abstract_Widget {
 	 */
 	public function get_query_slider_items( $query_args = array() ) {
 
-		$defaults_query_args = apply_filters( '__tm_smart_slider_default_query_args', array(
+		$defaults_query_args = apply_filters( 'king_news_smart_slider_default_query_args', array(
 			'post_type'      => 'post',
 			'orderby'        => 'date',
 			'order'          => 'DESC',
@@ -358,11 +358,11 @@ class __TM_Smart_Slider_Widget extends Cherry_Abstract_Widget {
 		 *
 		 * @var array
 		 */
-		$title_settings = apply_filters( '__tm_smart_slider_title_settings', array(
+		$title_settings = apply_filters( 'king_news_smart_slider_title_settings', array(
 			'class'				=> 'sp-title sp-layer',
 			'width'				=> '90%',
 			'horizontal'		=> '5%',
-			'vertical'			=> '40%',
+			'vertical'			=> '38%',
 			'show_transition'	=> 'left',
 			'show_duration'		=> 500,
 			'show_delay'		=> 500,
@@ -378,11 +378,11 @@ class __TM_Smart_Slider_Widget extends Cherry_Abstract_Widget {
 		 *
 		 * @var array
 		 */
-		$content_settings = apply_filters( '__tm_smart_slider_content_settings', array(
+		$content_settings = apply_filters( 'king_news_smart_slider_content_settings', array(
 			'class'				=> 'sp-content sp-layer',
 			'width'				=> '90%',
 			'horizontal'		=> '5%',
-			'vertical'			=> '60%',
+			'vertical'			=> '51%',
 			'show_transition'	=> 'left',
 			'show_duration'		=> 500,
 			'show_delay'		=> 800,
@@ -398,11 +398,11 @@ class __TM_Smart_Slider_Widget extends Cherry_Abstract_Widget {
 		 *
 		 * @var array
 		 */
-		$more_settings = apply_filters( '__tm_smart_slider_more_button_settings', array(
+		$more_settings = apply_filters( 'king_news_smart_slider_more_button_settings', array(
 			'class'				=> 'sp-more sp-layer',
 			'width'				=> '90%',
 			'horizontal'		=> '5%',
-			'vertical'			=> '70%',
+			'vertical'			=> '57%',
 			'show_transition'	=> 'left',
 			'show_duration'		=> 500,
 			'show_delay'		=> 1100,
@@ -427,7 +427,7 @@ class __TM_Smart_Slider_Widget extends Cherry_Abstract_Widget {
 					$format = get_post_format( $post_id );
 					$format = ( empty( $format ) ) ? 'post-format-standart' : 'post-format-' . $format ;
 
-					$placeholder_args = apply_filters( '__tm_smart_slider_placeholder_args',
+					$placeholder_args = apply_filters( 'king_news_smart_slider_placeholder_args',
 						array(
 							'width'			=> 1600,
 							'height'		=> $this->instance['height'],
@@ -456,7 +456,7 @@ class __TM_Smart_Slider_Widget extends Cherry_Abstract_Widget {
 
 				endwhile;
 			} else {
-				echo '<h4>' . esc_html__( 'Posts not found', '__tm' ) . '</h4>';
+				echo '<h4>' . esc_html__( 'Posts not found', 'king_news' ) . '</h4>';
 			}
 
 		// Reset the query.
@@ -488,7 +488,7 @@ class __TM_Smart_Slider_Widget extends Cherry_Abstract_Widget {
 				);
 
 
-				$thumbnail_size = apply_filters( '__tm_smart_slider_thumbnail_size', '_tm-thumb-240-100' );
+				$thumbnail_size = apply_filters( 'king_news_smart_slider_thumbnail_size', '_tm-thumb-240-100' );
 				$image = $this->get_image( $post_id, $thumbnail_size, $placeholder_args );
 
 				$html .= '<div class="sp-thumbnail">';
@@ -539,7 +539,7 @@ class __TM_Smart_Slider_Widget extends Cherry_Abstract_Widget {
 	public function get_image( $id, $size, $placeholder_attr, $only_url = false ) {
 
 		// place holder defaults attr
-		$default_placeholder_attr = apply_filters( '__tm_smart_slider_placeholder_default_args',
+		$default_placeholder_attr = apply_filters( 'king_news_smart_slider_placeholder_default_args',
 			array(
 				'width'			=> 900,
 				'height'		=> 500,
@@ -626,7 +626,7 @@ class __TM_Smart_Slider_Widget extends Cherry_Abstract_Widget {
 	}
 }
 
-add_action( 'widgets_init', '__tm_register_smart_slider_widgets' );
-function __tm_register_smart_slider_widgets() {
-	register_widget( '__TM_Smart_Slider_Widget' );
+add_action( 'widgets_init', 'king_news_register_smart_slider_widgets' );
+function king_news_register_smart_slider_widgets() {
+	register_widget( 'KING_NEWS_Smart_Slider_Widget' );
 }

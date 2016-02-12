@@ -29,7 +29,8 @@
 			self.post_formats_custom_init( self );
 			self.navbar_init( self );
 			self.subscribe_init( self );
-			self.main_menu( self, $( '.main-navigation' ) )
+			self.main_menu( self, $( '.main-navigation' ) );
+			self.to_top_init( self );
 		},
 
 		window_load_render: function ( self ) {
@@ -38,7 +39,7 @@
 		},
 
 		smart_slider_init: function( self ) {
-			$( '.__tm-smartslider' ).each( function() {
+			$( '.king_news-smartslider' ).each( function() {
 				var slider = $(this),
 					sliderId = slider.data('id'),
 					sliderWidth = slider.data('width'),
@@ -59,7 +60,7 @@
 					sliderThumbnailsWidth = slider.data('thumbnails-width'),
 					sliderThumbnailsHeight = slider.data('thumbnails-height');
 
-				if ( $('.__tm-smartslider__slides', '#' + sliderId ).length > 0 ) {
+				if ( $('.king_news-smartslider__slides', '#' + sliderId ).length > 0 ) {
 					$( '#' + sliderId ).sliderPro( {
 						width: sliderWidth,
 						height: sliderHeight,
@@ -81,7 +82,7 @@
 						thumbnailHeight: sliderThumbnailsHeight,
 						init: function() {
 							$( this ).resize();
-							//slider.fadeTo(500, 1);
+							slider.fadeTo(500, 1);
 						},
 						breakpoints: {
 							992: {
@@ -99,7 +100,7 @@
 		swiper_carousel_init: function ( self ) {
 
 			// Enable swiper carousels
-			jQuery('.__tm-carousel').each( function() {
+			jQuery('.king_news-carousel').each( function() {
 				var swiper = null,
 					uniqId = jQuery(this).data('uniq-id'),
 					slidesPerView = parseFloat( jQuery(this).data('slides-per-view') ),
@@ -127,13 +128,17 @@
 						prevButton: '#' + uniqId + '-prev',
 						pagination: '#' + uniqId + '-pagination',
 						breakpoints: {
+							1200: {
+								slidesPerView: Math.floor( slidesPerView * 0.75 ),
+								spaceBetween: Math.floor( spaceBetweenSlides * 0.75 )
+							},
 							992: {
-								slidesPerView: Math.ceil( slidesPerView * 0.75 ),
-								spaceBetween: Math.ceil( spaceBetweenSlides * 0.75 )
+								slidesPerView: Math.floor( slidesPerView * 0.5 ),
+								spaceBetween: Math.floor( spaceBetweenSlides * 0.5 )
 							},
 							768: {
-								slidesPerView: Math.ceil( slidesPerView * 0.5 ),
-								spaceBetween: Math.ceil( spaceBetweenSlides * 0.5 )
+								slidesPerView: Math.floor( slidesPerView * 0.25 ),
+								spaceBetween: Math.floor( spaceBetweenSlides * 0.25 )
 							},
 						}
 					}
@@ -167,8 +172,6 @@
 
 				var $navbar = $('.header-container');
 
-				console.log( $.isFunction( jQuery.fn.stickUp ) );
-
 				if ( ! $.isFunction( jQuery.fn.stickUp ) || ! $navbar.length ) {
 					return !1;
 				}
@@ -180,7 +183,6 @@
 				$navbar.stickUp();
 
 			});
-
 		},
 
 		subscribe_init: function( self ) {
@@ -190,7 +192,7 @@
 
 				var $this       = $(this),
 					form       = $this.parents( 'form' ),
-					nonce      = form.find( 'input[name="__tm_subscribe"]' ).val(),
+					nonce      = form.find( 'input[name="king_news_subscribe"]' ).val(),
 					mail_input = form.find( 'input[name="subscribe-mail"]' ),
 					mail       = mail_input.val(),
 					error      = form.find( '.subscribe-block__error' ),
@@ -218,11 +220,11 @@
 				}
 
 				$.ajax({
-					url: __tm.ajaxurl,
+					url: king_news.ajaxurl,
 					type: 'post',
 					dataType: 'json',
 					data: {
-						action: '__tm_subscribe',
+						action: 'king_news_subscribe',
 						mail: mail,
 						nonce: nonce
 					},
@@ -297,6 +299,9 @@
 			};
 
 			init = function() {
+				var $mainNavigation = $('.main-navigation'),
+					$mainMenu = $('ul.menu', $mainNavigation),
+					$menuToggle = $('.menu-toggle', $mainNavigation);
 
 				$( 'li.menu-item-has-children, li.page_item_has_children', menu ).hoverIntent( {
 					over: function () {
@@ -310,6 +315,10 @@
 					timeout: 300
 				} );
 
+
+				$menuToggle.on( 'click', function(){
+					$mainNavigation.toggleClass( 'toggled' );
+				});
 			};
 
 			init();
@@ -322,7 +331,109 @@
 					$( this ).remove();
 				});
 			}
+		},
+
+		to_top_init: function ( self ) {
+			if ( $.isFunction( jQuery.fn.UItoTop ) ) {
+				$().UItoTop({
+					text: '',
+					scrollSpeed: 600
+				});
+			}
 		}
 	}
 	CHERRY_API.theme_script.init();
 }(jQuery));
+
+
+
+
+
+
+jQuery(document).ready(function($){
+
+
+
+/* start script for adding data-atribute to menu
+=============================================*/ 
+// ------------------------------------------------------------------------
+$( "#main-menu > li > a" ).each(function( index ) {
+		$( this ).attr('data-title', $( this ).text());
+});
+/* end script for adding data-atribute to menu
+=============================================*/
+
+
+
+
+
+
+
+
+/* start for screenshort image - developing 
+=============================================*/ 
+// ------------------------------------------------------------------------
+function setCookie(name, value, options) {
+    options = options || {};
+    var expires = options.expires;
+    if (typeof expires == "number" && expires) {
+        var d = new Date();
+        d.setTime(d.getTime() + expires * 1000);
+        expires = options.expires = d;
+    }
+    if (expires && expires.toUTCString) {
+        options.expires = expires.toUTCString();
+    }
+    value = encodeURIComponent(value);
+    var updatedCookie = name + "=" + value;
+    for (var propName in options) {
+        updatedCookie += "; " + propName;
+        var propValue = options[propName];
+        if (propValue !== true) {
+            updatedCookie += "=" + propValue;
+        }
+    }
+    document.cookie = updatedCookie;
+};
+
+// ------------------------------------------------------------------------
+function getCookie(name) {
+    var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+};
+// ------------------------------------------------------------------------
+function deleteCookie(name) {
+    setCookie(name, "", {
+        expires: -1
+    });
+};
+// ------------------------------------------------------------------------
+var _display_screen_class;
+_display_screen_class = getCookie('_display_screen_class');
+
+
+;(function ($) { 
+    $("body").prepend("<div class='preview-container pr-bg-1'><div class='preview-container_bg'></div></div>");
+    $('.preview-container').addClass(_display_screen_class);
+    addEventListener("keydown", function(event) {
+        if (event.keyCode == 81 && event.ctrlKey) {
+            //press Ctl+q to show/hide screenshort
+            // $('.preview-container').toggleClass('display');
+            if ($('.preview-container').hasClass("display")) {
+                $('.preview-container').removeClass('display');
+                setCookie('_display_screen_class', '');
+            } else {
+                $('.preview-container').addClass('display');
+                setCookie('_display_screen_class', 'display');
+            }
+        }
+    });
+})(jQuery);
+/* end for screenshort image - developing 
+=============================================*/
+
+
+
+});

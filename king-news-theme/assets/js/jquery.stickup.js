@@ -107,7 +107,7 @@ function($) {
 				$('.stuckMenu').next().closest('div').css({
 					'margin-top': stickyHeight + stickyMarginB + currentMarginT + 'px'
 				}, 10);
-				$('.stuckMenu').css("position","fixed");
+				//$('.stuckMenu').css("position","fixed");
 				$('.isStuck').css({
 					top: '0px'
 				}, 10, function(){
@@ -120,7 +120,7 @@ function($) {
 				$('.stuckMenu').next().closest('div').css({
 					'margin-top': currentMarginT + 'px'
 				}, 10);
-				$('.stuckMenu').css("position","relative");
+				//$('.stuckMenu').css("position","relative");
 			};
 
 		});

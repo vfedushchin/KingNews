@@ -19,8 +19,8 @@ if ( ! defined( 'WPINC' ) ) {
  * This filter hook is executed immediately
  * before WordPress includes the predetermined template file.
  */
-add_filter( 'template_include', array( '__Tm_Wrapping', 'wrap' ), 99 );
-add_filter( '__tm_wrap_base', '__tm_wrap_base_cpts' );
+add_filter( 'template_include', array( 'King_News_Wrapping', 'wrap' ), 99 );
+add_filter( 'king_news_wrap_base', 'king_news_wrap_base_cpts' );
 
 /**
  * Retrieve the full path to the main template file.
@@ -28,8 +28,8 @@ add_filter( '__tm_wrap_base', '__tm_wrap_base_cpts' );
  * @since  4.0.0
  * @return string Path to the file.
  */
-function __tm_template_path() {
-	return __Tm_Wrapping::$main_template;
+function king_news_template_path() {
+	return King_News_Wrapping::$main_template;
 }
 
 /**
@@ -38,11 +38,11 @@ function __tm_template_path() {
  * @since  4.0.0
  * @return string File name.
  */
-function __tm_template_base() {
-	return __Tm_Wrapping::$base;
+function king_news_template_base() {
+	return King_News_Wrapping::$base;
 }
 
-if ( ! class_exists( '__Tm_Wrapping' ) ) {
+if ( ! class_exists( 'King_News_Wrapping' ) ) {
 
 	/**
 	 * Class for template hierarchy.
@@ -55,7 +55,7 @@ if ( ! class_exists( '__Tm_Wrapping' ) ) {
 	 * @license http://opensource.org/licenses/MIT
 	 * @since   4.0.0
 	 */
-	class __Tm_Wrapping {
+	class King_News_Wrapping {
 
 		/**
 		 * Stores the full path to the main template file.
@@ -76,7 +76,7 @@ if ( ! class_exists( '__Tm_Wrapping' ) ) {
 		public static $base;
 
 		/**
-		 * Initialize new instance of __Tm_Wrapping class by setting a variable for the $slug (which defaults to base)
+		 * Initialize new instance of King_News_Wrapping class by setting a variable for the $slug (which defaults to base)
 		 * and create a new $templates array with the fallback template base.php as the first item.
 		 *
 		 * @since 4.0.0
@@ -103,14 +103,14 @@ if ( ! class_exists( '__Tm_Wrapping' ) ) {
 		 * @since 4.0.0
 		 */
 		public function __toString() {
-			$this->templates = apply_filters( '__tm_wrap_' . $this->slug, $this->templates );
+			$this->templates = apply_filters( 'king_news_wrap_' . $this->slug, $this->templates );
 
 			return locate_template( $this->templates );
 		}
 
 		/**
 		 * Function that saves the $main_template path
-		 * and $base as static variables in __Tm_Wrapping class.
+		 * and $base as static variables in King_News_Wrapping class.
 		 *
 		 * @since 4.0.0
 		 * @param string $main The path of the template to include
@@ -123,7 +123,7 @@ if ( ! class_exists( '__Tm_Wrapping' ) ) {
 				self::$base = false;
 			}
 
-			return new __Tm_Wrapping();
+			return new King_News_Wrapping();
 		}
 	}
 }
@@ -136,7 +136,7 @@ if ( ! class_exists( '__Tm_Wrapping' ) ) {
  * @param  array $templates Set of templates.
  * @return array            Filtered set of templates.
  */
-function __tm_wrap_base_cpts( $templates ) {
+function king_news_wrap_base_cpts( $templates ) {
 	$post_type = get_post_type();
 
 	if ( $post_type && ( 'page' !== $post_type ) ) {

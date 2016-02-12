@@ -2,7 +2,7 @@
 /**
  * Thumbnails configuration.
  *
- * @package    __Tm
+ * @package    King_News
  * @subpackage Config
  * @author     Cherry Team <cherryframework@gmail.com>
  */

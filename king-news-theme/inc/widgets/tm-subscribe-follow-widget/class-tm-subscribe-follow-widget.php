@@ -1,11 +1,11 @@
 <?php
 /**
- * Widget __tm subscribe and follow
+ * Widget king_news subscribe and follow
  *
- * @package __tm
+ * @package king_news
  */
 
-class __TM_Subscribe_Follow_Widget extends Cherry_Abstract_Widget {
+class KING_NEWS_Subscribe_Follow_Widget extends Cherry_Abstract_Widget {
 
 	/**
 	 * MailChimp API server
@@ -26,10 +26,10 @@ class __TM_Subscribe_Follow_Widget extends Cherry_Abstract_Widget {
 	 */
 	public function __construct() {
 
-		$this->widget_cssclass    = '__tm widget-subscribe';
-		$this->widget_description = __( 'Display subscribe form and follow links.', '__tm' );
-		$this->widget_id          = '__tm_widget_subscribe_follow';
-		$this->widget_name        = __( '__TM Subscribe and Follow', '__tm' );
+		$this->widget_cssclass    = 'king_news widget-subscribe';
+		$this->widget_description = __( 'Display subscribe form and follow links.', 'king_news' );
+		$this->widget_id          = 'king_news_widget_subscribe_follow';
+		$this->widget_name        = __( 'KING_NEWS Subscribe and Follow', 'king_news' );
 		$this->settings           = array(
 			'enable_subscribe' => array(
 				'type'   => 'checkbox',
@@ -37,32 +37,32 @@ class __TM_Subscribe_Follow_Widget extends Cherry_Abstract_Widget {
 					'enable_subscribe' => 'true',
 				),
 				'options' => array(
-					'enable_subscribe' => __( 'Enable Subscribe Box', '__tm' ),
+					'enable_subscribe' => __( 'Enable Subscribe Box', 'king_news' ),
 				),
 			),
 			'subscribe_title' => array(
 				'type'  => 'text',
-				'value' => __( 'Subscribe', '__tm' ),
-				'label' => __( 'Subscribe Title', '__tm' ),
+				'value' => __( 'Subscribe', 'king_news' ),
+				'label' => __( 'Subscribe Title', 'king_news' ),
 			),
 			'subscribe_message' => array(
 				'type'  => 'textarea',
-				'label' => __( 'Subscribe text message', '__tm' ),
+				'label' => __( 'Subscribe text message', 'king_news' ),
 			),
 			'subscribe_input' => array(
 				'type'  => 'text',
-				'value' => __( 'Enter your email', '__tm' ),
-				'label' => __( 'Subscribe input placeholder', '__tm' ),
+				'value' => __( 'Enter your email', 'king_news' ),
+				'label' => __( 'Subscribe input placeholder', 'king_news' ),
 			),
 			'subscribe_submit' => array(
 				'type'  => 'text',
-				'value' => __( 'Subscribe', '__tm' ),
-				'label' => __( 'Subscribe submit label', '__tm' ),
+				'value' => __( 'Subscribe', 'king_news' ),
+				'label' => __( 'Subscribe submit label', 'king_news' ),
 			),
 			'subscribe_success' => array(
 				'type'  => 'text',
-				'value' => __( 'You successfully subscribed', '__tm' ),
-				'label' => __( 'Subscribe success', '__tm' ),
+				'value' => __( 'You successfully subscribed', 'king_news' ),
+				'label' => __( 'Subscribe success', 'king_news' ),
 			),
 			'enable_follow' => array(
 				'type'   => 'checkbox',
@@ -70,28 +70,28 @@ class __TM_Subscribe_Follow_Widget extends Cherry_Abstract_Widget {
 					'enable_follow' => 'true',
 				),
 				'options' => array(
-					'enable_follow' => __( 'Enable Follow Box', '__tm' ),
+					'enable_follow' => __( 'Enable Follow Box', 'king_news' ),
 				),
 			),
 			'follow_title' => array(
 				'type'  => 'text',
-				'value' => __( 'Follow', '__tm' ),
-				'label' => __( 'Follow Title', '__tm' ),
+				'value' => __( 'Follow', 'king_news' ),
+				'label' => __( 'Follow Title', 'king_news' ),
 			),
 			'follow_message' => array(
 				'type'  => 'textarea',
-				'label' => __( 'Follow text message', '__tm' ),
+				'label' => __( 'Follow text message', 'king_news' ),
 			),
 		);
 
-		add_action( 'wp_ajax___tm_subscribe', array( $this, 'process_subscribe' ) );
-		add_action( 'wp_ajax_nopriv___tm_subscribe', array( $this, 'process_subscribe' ) );
+		add_action( 'wp_ajax_king_news_subscribe', array( $this, 'process_subscribe' ) );
+		add_action( 'wp_ajax_nopriv_king_news_subscribe', array( $this, 'process_subscribe' ) );
 
 		$this->errors = array(
-			'nonce'     => esc_html__( 'Security validation failed', '__tm' ),
-			'mail'      => esc_html__( 'Please, provide valid mail', '__tm' ),
-			'mailchimp' => esc_html__( 'Please, set up MailChimp API key and List ID', '__tm' ),
-			'internal'   => esc_html__( 'Internal error. Please, try again later', '__tm' ),
+			'nonce'     => esc_html__( 'Security validation failed', 'king_news' ),
+			'mail'      => esc_html__( 'Please, provide valid mail', 'king_news' ),
+			'mailchimp' => esc_html__( 'Please, set up MailChimp API key and List ID', 'king_news' ),
+			'internal'   => esc_html__( 'Internal error. Please, try again later', 'king_news' ),
 		);
 
 		parent::__construct();
@@ -148,7 +148,7 @@ class __TM_Subscribe_Follow_Widget extends Cherry_Abstract_Widget {
 		if ( $subscribe_enabled && $subscribe_template && $api_key && $list_id ) {
 			include $subscribe_template;
 		} elseif ( ! $api_key || ! $list_id ) {
-			_e( 'Please set up MailChimp API key and List ID', '__tm' );
+			_e( 'Please set up MailChimp API key and List ID', 'king_news' );
 		}
 
 		$this->widget_end( $args );
@@ -163,7 +163,7 @@ class __TM_Subscribe_Follow_Widget extends Cherry_Abstract_Widget {
 	 * @return string
 	 */
 	public function get_social_nav() {
-		return __tm_get_social_list( 'widget' );
+		return king_news_get_social_list( 'widget' );
 	}
 
 	/**
@@ -243,7 +243,7 @@ class __TM_Subscribe_Follow_Widget extends Cherry_Abstract_Widget {
 	 */
 	public function process_subscribe() {
 
-		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], '__tm_subscribe' ) ) {
+		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'king_news_subscribe' ) ) {
 			wp_send_json_error( array( 'message' => $this->errors['nonce'] ) );
 		}
 
@@ -320,7 +320,7 @@ class __TM_Subscribe_Follow_Widget extends Cherry_Abstract_Widget {
 
 }
 
-add_action( 'widgets_init', '__tm_register_subscribe_follow_widgets' );
-function __tm_register_subscribe_follow_widgets() {
-	register_widget( '__TM_Subscribe_Follow_Widget' );
+add_action( 'widgets_init', 'king_news_register_subscribe_follow_widgets' );
+function king_news_register_subscribe_follow_widgets() {
+	register_widget( 'KING_NEWS_Subscribe_Follow_Widget' );
 }

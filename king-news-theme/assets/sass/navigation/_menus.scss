@@ -17,29 +17,37 @@
 			z-index: 99999;
 			transition: 200ms linear;
 			transition-property: top, opacity, visibility;
-			padding: 0;
+			padding: 0 15px;
 			margin: 0;
 			left: -9999px;
+			border-radius: 0 0 $border__radius $border__radius;
 			@media (max-width: 600px) {
 				position: static;
 				opacity: 1;
 				visibility: visible;
 				box-shadow: none;
 				background: none;
-				padding: 0 0 0 15px;
 				margin: 0;
 				li:before {
 					content: "-";
 					display: inline-block;
 				}
 			}
+			@media screen and (min-width: 37.5em) {
+				padding: 0;
+			}
 			li {
+				padding: 5px;
+				border-top: 1px solid rgba(0,0,0,.1);
+				@media screen and (min-width: 37.5em) {
+					padding: 12px 10px;
+				}
+				&:first-child{
+					border-top: none;
+				}
 				> ul {
 					top: 20%;
 					background: #fff;
-					@media (max-width: 600px) {
-						background: none;
-					}
 				}
 				&:hover > ul,
 				&.focus > ul,
@@ -50,19 +58,15 @@
 				> ul.in-transition {
 					left: 100%;
 				}
+
 			}
 
 			a {
 				width: 240px;
 				text-align: left;
-				padding: 15px 20px;
+				padding: 5px;
 				position: relative;
-				border-top: 1px solid rgba(0,0,0,.1);
-				@media (max-width: 600px) {
-					@include font-size(1);
-					padding: 10px 15px;
-					width: 100%;
-				}
+				@include font-size(0.87);
 			}
 
 			> li:first-child > a {
@@ -91,7 +95,7 @@
 						position: absolute;
 						right: 8px;
 						@include font-size(1.2);
-						line-height: 1;
+						line-height: 0.8em;
 						@media (max-width: 600px) {
 							content: "\f107";
 							position: static;
@@ -115,17 +119,23 @@
 		li > ul.in-transition {
 			left: 0;
 		}
-
 	}
 
 	ul.menu {
 		font-size: 0;
 		line-height: 0;
 		margin-bottom: -3px;
+		@media screen and (min-width: 37.5em) {
+			padding: 0;
+		}
 		> li {
-			display: inline-block;
 			& + li {
 				margin-left: -1px;
+			}
+			display: block;
+			margin: 0;
+			@media screen and (min-width: 37.5em) {
+				display: inline-block;
 			}
 			.boxed-wrap & {
 				margin: 0 10px;
@@ -133,15 +143,15 @@
 			> a {
 				display: block;
 				padding: 15px 7px 21px;
+				position: relative;
 				text-align: center;
 				@include media-breakpoint-up(lg) {
 				  padding: 25px 17px 31px;
 				}
-				font-style: normal;
-				font-weight: 700;
-				position: relative;
 				@include font-size( 1 );
-				transition: .4s all ease;
+				@media screen and (min-width: 37.5em) {
+					
+				}
 				&:before {
 					left: 50%;
 					right: 50%;
@@ -171,12 +181,10 @@
 					opacity: 0;
 					background: #fff;
 					padding-top: 15px;
-					/*color: #000;*/
 					transition: .2s all ease;
 					@include media-breakpoint-up(lg) {
 					  padding-top: 25px;
 					}
-
 				}
 			}
 			&:hover,
@@ -185,7 +193,6 @@
 			&.current-menu-item,
 			&.current_page_ancestor {
 				> a {
-					color: #ffffff;
 					&:before {
 						left: 0;
 						right: 0;
@@ -259,26 +266,30 @@
 }
 
 /* Small menu. */
-.menu-toggle,
-.main-navigation.toggled ul {
-	display: block;
-}
-
-/* Stick Up menu */
-.rd-navbar--is-stuck {
-	position: fixed;
-	top: 0;
-	left: 0;
-}
-
-@media screen and (min-width: 37.5em) {
-	.menu-toggle {
+.menu-toggle{
+	display: inline-block;
+	line-height: 12px;
+	padding: 5px;
+	margin-bottom: 10px;
+	@media screen and (min-width: 37.5em) {
 		display: none;
 	}
-	.main-navigation ul {
-		display: block;
+}
+.main-navigation{
+	&.toggled{
+		ul{
+			display: block;
+		}
 	}
 }
+.main-navigation ul{
+	display: none;
+	@media screen and (min-width: 37.5em) {
+		display: block;
+	}
+
+}
+
 
 .comment-navigation,
 .posts-navigation,
@@ -328,3 +339,5 @@
 		}
 	}
 }
+
+

@@ -2,34 +2,34 @@
 /**
  * Instagram widget.
  *
- * @package __tm
+ * @package king_news
  */
 
-class __TM_Instagram_Widget extends Cherry_Abstract_Widget {
+class KING_NEWS_Instagram_Widget extends Cherry_Abstract_Widget {
 
 	/**
 	 * Constructor.
 	 */
 	public function __construct() {
 		$this->widget_cssclass    = 'widget-instagram';
-		$this->widget_description = esc_html__( 'Display a list of photos from Instagram network.', '__tm' );
-		$this->widget_id          = '__tm_widget_instagram';
-		$this->widget_name        = esc_html__( '__Tm Instagram', '__tm' );
+		$this->widget_description = esc_html__( 'Display a list of photos from Instagram network.', 'king_news' );
+		$this->widget_id          = 'king_news_widget_instagram';
+		$this->widget_name        = esc_html__( 'King_News Instagram', 'king_news' );
 		$this->settings           = array(
 			'title'  => array(
 				'type'  => 'text',
-				'value' => esc_html__( 'Instagram', '__tm' ),
-				'label' => esc_html__( 'Title', '__tm' ),
+				'value' => esc_html__( 'Instagram', 'king_news' ),
+				'label' => esc_html__( 'Title', 'king_news' ),
 			),
 			'client_id' => array(
 				'type'  => 'text',
 				'value' => '',
-				'label' => esc_html__( 'Client ID', '__tm' ),
+				'label' => esc_html__( 'Client ID', 'king_news' ),
 			),
 			'tag' => array(
 				'type'  => 'text',
 				'value' => '',
-				'label' => esc_html__( 'Hashtag (enter without `#` symbol)', '__tm' ),
+				'label' => esc_html__( 'Hashtag (enter without `#` symbol)', 'king_news' ),
 			),
 			'image_counter' => array(
 				'type'       => 'stepper',
@@ -37,7 +37,7 @@ class __TM_Instagram_Widget extends Cherry_Abstract_Widget {
 				'max_value'  => '12',
 				'min_value'  => '1',
 				'step_value' => '1',
-				'label'      => esc_html__( 'Number of photos', '__tm' ),
+				'label'      => esc_html__( 'Number of photos', 'king_news' ),
 			),
 			'display_caption' => array(
 				'type'  => 'checkbox',
@@ -45,7 +45,7 @@ class __TM_Instagram_Widget extends Cherry_Abstract_Widget {
 					'display_caption_check' => 'false',
 				),
 				'options' => array(
-					'display_caption_check' => esc_html__( 'Caption', '__tm' ),
+					'display_caption_check' => esc_html__( 'Caption', 'king_news' ),
 				),
 			),
 			'display_date' => array(
@@ -54,7 +54,7 @@ class __TM_Instagram_Widget extends Cherry_Abstract_Widget {
 					'display_date_check' => 'false',
 				),
 				'options' => array(
-					'display_date_check' => esc_html__( 'Date', '__tm' ),
+					'display_date_check' => esc_html__( 'Date', 'king_news' ),
 				),
 			),
 		);
@@ -74,11 +74,11 @@ class __TM_Instagram_Widget extends Cherry_Abstract_Widget {
 	public function widget( $args, $instance ) {
 
 		if ( empty( $instance['client_id'] ) ) {
-			return print $args['before_widget'] . __( 'Please, enter your Instagram CLIENT ID.', '__tm' ) . $args['after_widget'];
+			return print $args['before_widget'] . __( 'Please, enter your Instagram CLIENT ID.', 'king_news' ) . $args['after_widget'];
 		}
 
 		if ( empty( $instance['tag'] ) ) {
-			return print $args['before_widget'] . __( 'Please, enter #hashtag.', '__tm' ) . $args['after_widget'];
+			return print $args['before_widget'] . __( 'Please, enter #hashtag.', 'king_news' ) . $args['after_widget'];
 		}
 
 		if ( $this->get_cached_widget( $args ) ) {
@@ -124,7 +124,7 @@ class __TM_Instagram_Widget extends Cherry_Abstract_Widget {
 		$photos = $this->get_photos( $tag, $client_id, $image_counter, $config );
 
 		if ( ! $photos ) {
-			return print $args['before_widget'] . __( 'No photos. Maybe you entered a invalid CLIENT ID or hashtag.', '__tm' ) . $args['after_widget'];
+			return print $args['before_widget'] . __( 'No photos. Maybe you entered a invalid CLIENT ID or hashtag.', 'king_news' ) . $args['after_widget'];
 		}
 
 		$template = locate_template( 'inc/widgets/tm-instagram-widget/views/instagram.php' );
@@ -132,10 +132,10 @@ class __TM_Instagram_Widget extends Cherry_Abstract_Widget {
 		$date_format = get_option( 'date_format' );
 
 		printf( '<div class="%s">',
-			join( ' ', apply_filters( '__tm_instagram_widget_wrapper_class', array( 'instagram__items' ) ) )
+			join( ' ', apply_filters( 'king_news_instagram_widget_wrapper_class', array( 'instagram__items' ) ) )
 		);
 
-		foreach ( $photos as $photo ) {
+		foreach ( (array) $photos as $photo ) {
 
 			$image   = $this->get_image( $photo );
 			$caption = $this->get_caption( $photo );
@@ -164,7 +164,7 @@ class __TM_Instagram_Widget extends Cherry_Abstract_Widget {
 	 * @return array
 	 */
 	public function get_photos( $data, $client_id, $img_counter, $config ) {
-		$cached = get_transient( '__tm_instagram_photos' );
+		$cached = get_transient( 'king_news_instagram_photos' );
 
 		if ( false !== $cached ) {
 			return $cached;
@@ -211,7 +211,7 @@ class __TM_Instagram_Widget extends Cherry_Abstract_Widget {
 				$_photo['caption'] = substr(
 					$caption,
 					0,
-					apply_filters( '__tm_instagram_widget_caption_length', 10 )
+					apply_filters( 'king_news_instagram_widget_caption_length', 10 )
 				);
 			}
 
@@ -219,7 +219,7 @@ class __TM_Instagram_Widget extends Cherry_Abstract_Widget {
 			$counter++;
 		}
 
-		set_transient( '__tm_instagram_photos', $photos, HOUR_IN_SECONDS );
+		set_transient( 'king_news_instagram_photos', $photos, HOUR_IN_SECONDS );
 
 		return $photos;
 	}
@@ -269,11 +269,11 @@ class __TM_Instagram_Widget extends Cherry_Abstract_Widget {
 	 * @since 1.0.0
 	 */
 	public function delete_cache() {
-		delete_transient( '__tm_instagram_photos' );
+		delete_transient( 'king_news_instagram_photos' );
 	}
 }
 
-add_action( 'widgets_init', '__tm_register_instagram_widget' );
-function __tm_register_instagram_widget() {
-	register_widget( '__TM_Instagram_Widget' );
+add_action( 'widgets_init', 'king_news_register_instagram_widget' );
+function king_news_register_instagram_widget() {
+	register_widget( 'KING_NEWS_Instagram_Widget' );
 }

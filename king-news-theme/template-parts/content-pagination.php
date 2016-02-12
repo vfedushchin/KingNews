@@ -2,7 +2,7 @@
 /**
  * Template part for posts pagination.
  *
- * @package __Tm
+ * @package King_News
  */
 the_posts_pagination(
 	array(

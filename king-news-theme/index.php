@@ -9,7 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package __tm
+ * @package king_news
  */
 
 if ( have_posts() ) :
@@ -22,7 +22,7 @@ if ( have_posts() ) :
 	<?php
 	endif; ?>
 
-	<div <?php __tm_posts_list_class(); ?>>
+	<div <?php king_news_posts_list_class(); ?>>
 
 	<?php /* Start the Loop */
 	while ( have_posts() ) : the_post();

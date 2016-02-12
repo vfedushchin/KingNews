@@ -1,4 +1,3 @@
-
 <?php
 /**
  * The template for displaying all pages.
@@ -10,11 +9,10 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package __tm
+ * @package king_news
  */
 
 while ( have_posts() ) : the_post();
-
 
 	get_template_part( 'template-parts/content', 'page' );
 

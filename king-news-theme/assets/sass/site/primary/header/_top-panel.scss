@@ -1,10 +1,8 @@
-
 .top-panel {
 	font-size: 14px;
 	&__wrap {
 		padding: 50px 0 10px;
-		border-bottom: 1px solid $line_color;
-
+		border-bottom: 1px solid $color__line;
 		&:after {
 			clear: both;
 			content: "";
@@ -32,10 +30,7 @@
 		}
 	}
 	&__search {
-		float: left;
-		@include media-breakpoint-up(md) {
-		  float: right;
-		}
+		float: right;
 	}
 	&__menu {
 		float: right;
@@ -62,9 +57,9 @@
 
 	&__register {
 		float: right;
-		border-left: 1px solid $line_color;
+		border-left: 1px solid $color__line;
 		padding: 5px 0;
-		margin-left: 22px;
+		margin-left: 8px;
 		a {
 			padding-left: 10px;
 			@include media-breakpoint-up(lg) {
@@ -73,17 +68,16 @@
 		}
 	}
 
-
 	.search-form {
 		margin: 0;
 		.search-form__field {
 			background: none;
 			border: none;
 			border-radius: 0;
-			width: 125px;
+			width: 129px;
 			display: inline-block;
 			vertical-align: middle;
-			padding: 4px 10px 6px;
+			padding: 4px 5px 6px;
 		}
 		.search-form__submit {
 			background: none;
@@ -98,6 +92,4 @@
 			}
 		}
 	}
-
-
 }

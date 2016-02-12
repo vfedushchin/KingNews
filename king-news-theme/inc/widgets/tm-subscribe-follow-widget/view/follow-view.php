@@ -2,7 +2,7 @@
 /**
  * Template part to display follow list in Subscribe and Follow widget
  *
- * @package __tm/widgets
+ * @package king_news/widgets
  */
 ?>
 <div class="follow-block"><?php

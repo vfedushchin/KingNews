@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package __Tm
+ * @package King_News
  */
 
 ?>
@@ -15,10 +15,10 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-summary">
-		<?php __tm_post_excerpt( array( 'length' => 45, 'more' => '&hellip;' ) ); ?>
+		<?php king_news_post_excerpt( array( 'length' => 45, 'more' => '&hellip;' ) ); ?>
 	</div><!-- .entry-summary -->
 
 	<footer class="entry-footer">
-		<?php __tm_read_more(); ?>
+		<?php king_news_read_more(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.me/
  *
- * @package __Tm
+ * @package King_News
  */
 
 /**
@@ -13,23 +13,23 @@
  * See: https://jetpack.me/support/infinite-scroll/
  * See: https://jetpack.me/support/responsive-videos/
  */
-function __tm_jetpack_setup() {
+function king_news_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', array(
 		'container' => 'main',
-		'render'    => '__tm_infinite_scroll_render',
+		'render'    => 'king_news_infinite_scroll_render',
 		'footer'    => 'page',
 	) );
 
 	// Add theme support for Responsive Videos.
 	add_theme_support( 'jetpack-responsive-videos' );
 }
-add_action( 'after_setup_theme', '__tm_jetpack_setup' );
+add_action( 'after_setup_theme', 'king_news_jetpack_setup' );
 
 /**
  * Custom render function for Infinite Scroll.
  */
-function __tm_infinite_scroll_render() {
+function king_news_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
 		if ( is_search() ) :

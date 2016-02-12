@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package __tm
+ * @package king_news
  */
 $sidebar_position = get_theme_mod( 'sidebar_position' );
 
@@ -16,4 +16,4 @@ if ( ! is_active_sidebar( 'sidebar-primary' ) ) {
 	return;
 } ?>
 
-<?php do_action( '__tm_render_widget_area', 'sidebar-primary' ); ?>
+<?php do_action( 'king_news_render_widget_area', 'sidebar-primary' ); ?>
