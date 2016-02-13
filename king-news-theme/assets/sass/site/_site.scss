@@ -4,10 +4,10 @@
 		overflow: hidden;
 		.single-post &,
 		.page & {
-			padding: 10px;
+			padding: 0px;
 			@include card;
 			@include media-breakpoint-up(lg) {
-				padding: 30px;
+				padding: 0px;
 			}
 		}
 	}
@@ -39,6 +39,11 @@
 ## Asides
 --------------------------------------------------------------*/
 @import "primary/asides";
+
+/*--------------------------------------------------------------
+## Comments
+--------------------------------------------------------------*/
+@import "primary/offsets";
 
 /*--------------------------------------------------------------
 ## Comments

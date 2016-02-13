@@ -9,11 +9,15 @@
 
 while ( have_posts() ) : the_post();
 
-	get_template_part( 'template-parts/content', 'single' );
+
+  ?><div class="post-left-column"><?php
+    king_news_share_buttons( 'single' );
+  ?></div><div class="post-right-column"><?php
+  	get_template_part( 'template-parts/content', 'single' );
+    king_news_post_author_bio();
+  ?></div><?php
 
 	the_post_navigation();
-
-	king_news_post_author_bio();
 
 	// If comments are open or we have at least one comment, load up the comment template.
 	if ( comments_open() || get_comments_number() ) :

@@ -24,16 +24,16 @@
 					king_news_meta_author(
 						'single',
 						array(
-							'before' => esc_html__( 'Posted by', 'king_news' ) . ' ',
+							'before' => esc_html__( 'By', 'king_news' ) . ' ',
 						)
 					);
 
 					king_news_meta_date( 'single', array(
-						'before' => '<i class="material-icons">event</i>',
+						'before' => '<i class="material-icons">access_time</i>',
 					) );
 
 					king_news_meta_comments( 'single', array(
-						'before' => '<i class="material-icons">mode_comment</i>',
+						'before' => '<i class="material-icons">chat_bubble_outline</i>',
 						'zero'   => esc_html__( 'Leave a comment', 'king_news' ),
 						'one'    => '1',
 						'plural' => '%',
@@ -63,10 +63,10 @@
 	<footer class="entry-footer">
 		<?php
 			king_news_meta_tags( 'single', array(
-				'before'    => '<i class="material-icons">folder_open</i>',
+				'before'    => '<i class="material-icons">folder_open</i>Tagged in: ',
 				'separator' => ', ',
 			) );
 		?>
-		<?php king_news_share_buttons( 'single' ); ?>
+		
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

@@ -1050,7 +1050,7 @@ function king_news_site_breadcrumbs() {
 	$breadcrumbs_front_visibillity = get_theme_mod( 'breadcrumbs_front_visibillity', king_news_theme()->customizer->get_default( 'breadcrumbs_front_visibillity' ) );
 
 	$breadcrumbs_settings = apply_filters( 'king_news_breadcrumbs_settings', array(
-		'wrapper_format'	=> '<div class="container"><div class="breadcrumbs__title">%1$s</div><div class="breadcrumbs__items">%2$s</div><div class="clear"></div></div>',
+		'wrapper_format'	=> '<div class="container--"><div class="breadcrumbs__title">%1$s</div><div class="breadcrumbs__items">%2$s</div><div class="clear"></div></div>',
 		'page_title_format'	=> '<h4 class="page-title">%s</h4>',
 		'show_title'		=> $breadcrumbs_page_title,
 		'path_type'			=> $breadcrumbs_path_type,
@@ -1244,12 +1244,19 @@ function king_news_share_buttons( $context = 'loop', $args = array(), $config = 
 		esc_attr( $config['custom_class'] ),
 		$share_buttons
 	);*/
-
-	printf(
-		'<div class="share-btns-main"><div class="share-btns__list %1$s">%2$s</div><i class="material-icons share-main-icon">share</i></div>',
-		esc_attr( $config['custom_class'] ),
-		$share_buttons
-	);
+	if ( 'loop' == $context ) {
+		printf(
+			'<div class="share-btns-main"><div class="share-btns__list %1$s">%2$s</div><i class="material-icons share-main-icon">share</i></div>',
+			esc_attr( $config['custom_class'] ),
+			$share_buttons
+		);
+	} else {
+		printf(
+			'<div class="share-btns__list share-btns__list-single-page %1$s">%2$s</div>',
+			esc_attr( $config['custom_class'] ),
+			$share_buttons
+		);
+	}
 }
 
 

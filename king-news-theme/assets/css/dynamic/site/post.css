@@ -17,10 +17,10 @@
 	color: $regular_text_color;
 }
 .post__tags {
-	color: $regular_link_color;
+	color: $regular_text_color;
 }
 .post-author__holder {
-	background-color: $regular_link_color;
+	background-color: $regular_text_color;
 }
 .post-format-link {
 	background: @alpha( $regular_accent_color_1, 80 );

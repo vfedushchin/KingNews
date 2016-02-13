@@ -506,7 +506,7 @@ function king_news_get_customizer_options() {
 				'title'       => esc_html__( 'Line Height', 'king_news' ),
 				'description' => esc_html__( 'Relative to the font-size of the element', 'king_news' ),
 				'section'     => 'h1_typography',
-				'default'     => '1.1',
+				'default'     => '1.25',
 				'field'       => 'number',
 				'input_attrs' => array(
 					'min'  => 1.0,
@@ -1086,7 +1086,7 @@ function king_news_get_customizer_options() {
 			'page_layout_type' => array(
 				'title'   => esc_html__( 'Type', 'king_news' ),
 				'section' => 'page_layout',
-				'default' => '',
+				'default' => 'boxed',
 				'field'   => 'select',
 				'choices' => array(
 					'boxed'     => esc_html__( 'Boxed', 'king_news' ),
@@ -1100,7 +1100,7 @@ function king_news_get_customizer_options() {
 				'default'     => 1788,
 				'field'       => 'number',
 				'input_attrs' => array(
-					'min'  => 960,
+					'min'  => 1170,
 					'max'  => 1920,
 					'step' => 1,
 				),

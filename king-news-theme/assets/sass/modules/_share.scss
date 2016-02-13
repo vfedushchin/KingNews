@@ -10,6 +10,9 @@
 
 		.single-post & {
 			margin-top: 15px;
+			&.share-btns__list-single-page {
+				margin-top: 0;
+			}
 			@include media-breakpoint-up(sm) {
 				//float: right;
 			}
@@ -35,6 +38,21 @@
 			opacity: 1;
 			color: #000;
 			background: none;
+		}
+
+		.share-btns__list-single-page & {
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			background: #000;
+			color: #fff;
+			margin: 0 5px 5px 0;
+
+			&:hover {
+				opacity: 1;
+				color: #000;
+				background: #777;
+			}
 		}
 	}
 }

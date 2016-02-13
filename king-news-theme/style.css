@@ -304,12 +304,8 @@ h1, h2, h3, h4, h5, h6 {
   clear: both;
 }
 
-h2 + .posts-list {
-  margin-top: 30px;
-}
-
 p {
-  margin: 12px 0;
+  margin: 8px 0;
 }
 
 dfn, cite, em, i {
@@ -2138,17 +2134,7 @@ textarea {
 }
 
 .comment-respond {
-  margin: 0 -10px;
-  padding: 12px 10px;
   border-top: 1px solid #000000;
-}
-@media (min-width: 992px) {
-  .comment-respond {
-    margin-right: -30px;
-    margin-left: -30px;
-    padding-right: 30px;
-    padding-left: 30px;
-  }
 }
 @media (min-width: 992px) {
   .comment-reply-title {
@@ -2641,7 +2627,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   font-size: 16px;
   font-size: 1rem;
   font-size: 14px;
-  line-height: 38px;
+  line-height: 40px;
   text-align: center;
 }
 .pagination .page-numbers.dots {
@@ -2770,13 +2756,28 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 
 .breadcrumbs {
   position: relative;
-  margin: 20px 0;
+  margin: 15px 0;
+  font-size: 14px;
 }
 .breadcrumbs__title {
   float: left;
   margin-right: 30px;
   padding-right: 30px;
-  border-right: 1px solid #e0e0e8;
+  position: relative;
+  /*border-right: 1px solid $color__line;*/
+}
+.breadcrumbs__title h4 {
+  position: relative;
+}
+.breadcrumbs__title h4:after {
+  position: absolute;
+  display: inline-block;
+  content: '';
+  width: 1px;
+  height: 30px;
+  right: -23px;
+  top: 8px;
+  background: #d2d1d1;
 }
 .breadcrumbs__title .page-title {
   margin: 0;
@@ -2794,14 +2795,14 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 @media (min-width: 992px) {
   .breadcrumbs__wrap {
-    margin: 9px 0;
+    margin: 13px 0;
   }
 }
 .breadcrumbs__item {
   float: left;
 }
 .breadcrumbs__item-sep {
-  margin: 0 10px;
+  margin: 0 8px;
 }
 
 /*--------------------------------------------------------------
@@ -3090,16 +3091,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 /*--------------------------------------------------------------
 # Author Bio
 --------------------------------------------------------------*/
-.post-author-bio {
-  margin: 0 -10px;
-  padding: 10px;
-  border-top: 1px solid #000000;
-}
 @media (min-width: 992px) {
   .post-author-bio {
-    margin-right: -30px;
-    margin-left: -30px;
-    padding: 30px;
+    margin-top: -4px;
   }
 }
 .post-author__holder {
@@ -3116,24 +3110,26 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 @media (min-width: 992px) {
   .post-author__avatar {
-    margin: 0 30px 10px 0;
+    margin: 0 20px 10px 0;
   }
 }
 .post-author__avatar .avatar {
   width: 70px;
   vertical-align: top;
-  border-radius: 50%;
 }
 @media (min-width: 992px) {
   .post-author__avatar .avatar {
     width: auto;
+    width: 150px;
+  }
+  .post-author__avatar .avatar img {
+    width: 100%;
   }
 }
 @media (min-width: 992px) {
   .post-author__title {
-    font-size: 20px;
     line-height: 1.4;
-    margin: 20px 0;
+    margin: 24px 0 5px;
   }
 }
 
@@ -3151,6 +3147,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 .single-post .share-btns__list {
   margin-top: 15px;
+}
+.single-post .share-btns__list.share-btns__list-single-page {
+  margin-top: 0;
 }
 .share-btns__item {
   display: inline-block;
@@ -3173,6 +3172,19 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   opacity: 1;
   color: #000;
   background: none;
+}
+.share-btns__list-single-page .share-btns__link {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  background: #000;
+  color: #fff;
+  margin: 0 5px 5px 0;
+}
+.share-btns__list-single-page .share-btns__link:hover {
+  opacity: 1;
+  color: #000;
+  background: #777;
 }
 
 .share-btns-main {
@@ -4617,7 +4629,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   overflow: hidden;
 }
 .single-post .site-main, .page .site-main {
-  padding: 10px;
+  padding: 0px;
   background: #fff;
   /*box-shadow: 0 5px 32px rgba(103,122,141,.17);*/
   border-radius: 0;
@@ -4626,7 +4638,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 @media (min-width: 992px) {
   .single-post .site-main, .page .site-main {
-    padding: 30px;
+    padding: 0px;
   }
 }
 
@@ -4645,6 +4657,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 /*--------------------------------------------------------------
 ## Header
 --------------------------------------------------------------*/
+.site-header {
+  margin-bottom: 15px;
+}
+
 .header-container {
   box-shadow: none;
 }
@@ -4654,6 +4670,14 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 
 .header-container {
   padding: 25px 0px 0;
+}
+.header-container .header-container__flex {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.container .header-container .header-container__flex {
+  padding-left: 0;
+  padding-right: 0;
 }
 @media (min-width: 768px) {
   .header-container.isStuck {
@@ -4726,7 +4750,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   flex: 0 1 auto;
   -webkit-align-self: center;
   align-self: center;
-  padding: 0 0 19px;
+  padding: 0 0 15px;
   width: 100%;
   border-bottom: 1px solid #d2d1d1;
 }
@@ -4958,7 +4982,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   /*display: none;*/
 }
 .posts-list__item:not(.sticky) .btn__icon {
-  line-height: 50px;
+  /*line-height: 50px;*/
 }
 @media (min-width: 992px) {
   .posts-list--default .btn {
@@ -4979,6 +5003,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 
 .hentry {
+  overflow: hidden;
   position: relative;
   margin: 0 0 1.85em;
   background: #fff;
@@ -5027,6 +5052,8 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 .entry-footer {
   position: relative;
+}
+.posts-list .entry-footer {
   display: none;
 }
 .posts-list .entry-footer {
@@ -5120,11 +5147,16 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   margin-right: 14px;
 }
 .post__date .material-icons, .post__comments .material-icons, .post__tags .material-icons {
-  font-size: 16px;
+  font-size: 20px;
   margin-right: 10px;
   vertical-align: middle;
 }
+.post__tags {
+  font-size: 14px;
+  display: none;
+}
 .single-post .post__tags {
+  display: block;
   margin-top: 15px;
 }
 @media (min-width: 544px) {
@@ -5154,18 +5186,31 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   margin: 0 0 15px;
 }
 
-.post-list__item-content {
-  display: flex;
-}
 .post-list__item-content .post-thumbnail {
-  flex-shrink: 0;
   padding-right: 20px;
   position: relative;
+  min-width: 140px;
+  max-width: 100%;
+  margin-bottom: 12px;
+}
+@media (min-width: 500px) {
+  .post-list__item-content .post-thumbnail {
+    max-width: 50%;
+    float: left;
+    margin-bottom: 0;
+  }
 }
 .post-list__item-content .post-thumbnail .post__cats {
+  top: 7px;
+  position: relative;
+}
+.post-list__item-content .post-thumbnail .post-thumbnail__link + .post__cats {
   position: absolute;
   top: 10px;
   left: 10px;
+}
+.post-list__item-content .post-thumbnail + .post-body-right {
+  overflow: hidden;
 }
 
 .entry-meta-sharing {
@@ -5175,6 +5220,17 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 @media (min-width: 992px) {
   .post-body-right {
     margin-top: -7px;
+  }
+}
+
+@media (min-width: 1199px) {
+  .single-post .post-left-column {
+    float: left;
+    width: 149px;
+    padding-right: 70px;
+  }
+  .single-post .post-right-column {
+    overflow: hidden;
   }
 }
 
@@ -5400,6 +5456,12 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   padding-top: 24px;
   padding-bottom: 24px;
   border-top: 1px solid #000;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.container .footer-inner {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .site-footer.default .social-list {
@@ -5554,6 +5616,31 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 /*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
+h2 + .posts-list {
+  margin-top: 30px;
+}
+
+h1 + .entry-meta {
+  margin-top: 18px;
+  padding-bottom: 5px;
+}
+
+.breadcrumbs + .container {
+  margin-top: 46px;
+}
+
+.post-thumbnail + .entry-content {
+  margin-top: 22px;
+}
+
+p > img {
+  margin-top: 17px;
+  margin-bottom: 7px;
+}
+
+/*--------------------------------------------------------------
+## Comments
+--------------------------------------------------------------*/
 .comment-content a {
   word-wrap: break-word;
 }
@@ -5584,7 +5671,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 
 .preview-container_bg {
   position: absolute;
-  top: -715px;
+  top: -304px;
   height: 8000px;
   width: 2050px;
   left: 50%;

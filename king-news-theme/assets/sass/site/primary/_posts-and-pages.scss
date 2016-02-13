@@ -103,7 +103,7 @@
 					/*display: none;*/
 				}
 				&__icon {
-					line-height: 50px;
+					/*line-height: 50px;*/
 				}
 			}
 		}
@@ -136,6 +136,7 @@
 }
 
 .hentry {
+	overflow: hidden;
 	position: relative;
 	margin: 0 0 1.85em;
 	@include card;
@@ -191,7 +192,11 @@
 	}
 	&-footer {
 		position: relative;
-		display: none;
+
+		.posts-list & {
+			display: none;
+		}
+
 		.posts-list & {
 			margin: 5px 0 0;
 		}
@@ -295,13 +300,16 @@
 	&__comments,
 	&__tags {
 		.material-icons {
-			font-size: 16px;
+			font-size: 20px;
 			margin-right: 10px;
 			vertical-align: middle;
 		}
 	}
 	&__tags {
+		font-size: 14px;
+		display: none;
 		.single-post & {
+			display: block;
 			margin-top: 15px;
 			@include media-breakpoint-up(sm) {
 				float: left;
@@ -335,17 +343,33 @@
 
 .post-list__item {
 	&-content {
-		display: flex;
 
 		.post-thumbnail {
-			flex-shrink: 0;
 			padding-right: 20px;
 			position: relative;
+			min-width: 140px;
+	    max-width: 100%;
+	    margin-bottom: 12px;
+	    @media (min-width: 500px) {
+	      max-width: 50%;
+		    float: left;
+		    //min-height: 100px;
+		    margin-bottom: 0;
+	    }
 
-			.post__cats {
+	    .post__cats {
+	    	top: 7px;
+	    	position: relative;
+	    }
+
+			.post-thumbnail__link + .post__cats {
 				position: absolute;
 				top: 10px;
 				left: 10px;
+			}
+
+			& + .post-body-right {
+				overflow: hidden;
 			}
 		}
 	}
@@ -358,5 +382,20 @@
 .post-body-right {
 	@include media-breakpoint-up(lg) {
 	  margin-top: -7px;
+	}
+}
+
+
+
+.single-post {
+	@media (min-width: 1199px) {
+		.post-left-column {
+			float: left;
+			width: 149px;
+			padding-right: 70px;
+		}
+		.post-right-column {
+			overflow: hidden;
+		}
 	}
 }
