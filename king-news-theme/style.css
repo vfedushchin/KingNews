@@ -2252,12 +2252,20 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 @media (max-width: 600px) {
   .main-navigation ul ul {
+    border-top: 1px dotted #d2d1d1;
     position: static;
     opacity: 1;
     visibility: visible;
     box-shadow: none;
     background: none;
     margin: 0;
+    padding: 0;
+  }
+  .main-navigation ul ul a {
+    padding-left: 30px;
+  }
+  .main-navigation ul ul li li a {
+    padding-left: 40px;
   }
   .main-navigation ul ul li:before {
     content: "-";
@@ -2270,12 +2278,18 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   }
 }
 .main-navigation ul ul li {
-  padding: 5px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0px;
+  border-top: 1px dotted #fff;
+  color: #fff;
+}
+@media (max-width: 600px) {
+  .main-navigation ul ul li {
+    border-color: #d2d1d1;
+  }
 }
 @media screen and (min-width: 37.5em) {
   .main-navigation ul ul li {
-    padding: 12px 10px;
+    padding: 8px 18px 8px 12px;
   }
 }
 .main-navigation ul ul li:first-child {
@@ -2289,16 +2303,35 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   top: 0;
   left: 100%;
 }
+@media screen and (min-width: 37.5em) {
+  .main-navigation ul ul li:hover > ul, .main-navigation ul ul li.focus > ul, .main-navigation ul ul li.menu-hover > ul {
+    margin-left: 1px;
+  }
+}
 .main-navigation ul ul li > ul.in-transition {
   left: 100%;
 }
+@media screen and (min-width: 37.5em) {
+  .main-navigation ul ul li > ul.in-transition {
+    margin-left: 1px;
+  }
+}
 .main-navigation ul ul a {
-  width: 240px;
   text-align: left;
   padding: 5px;
   position: relative;
   font-size: 13.92px;
   font-size: 0.87rem;
+}
+@media (min-width: 768px) {
+  .main-navigation ul ul a {
+    width: 153px;
+  }
+}
+@media (max-width: 600px) {
+  .main-navigation ul ul a {
+    padding: 13px 30px;
+  }
 }
 .main-navigation ul ul > li:first-child > a {
   border-top: none;
@@ -2318,9 +2351,13 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   content: "\f105";
   font-family: FontAwesome;
   position: absolute;
-  right: 8px;
+  right: -8px;
+  top: 50%;
+  margin-top: -7px;
   font-size: 19.2px;
   font-size: 1.2rem;
+  font-size: 16px;
+  color: #999999;
   line-height: 0.8em;
 }
 @media (max-width: 600px) {
@@ -2331,7 +2368,12 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     display: inline-block;
     margin: 0 0 0 5px;
     vertical-align: middle;
+    display: none;
   }
+}
+.main-navigation ul ul .page_item_has_children > a:hover:after,
+.main-navigation ul ul .menu-item-has-children > a:hover:after {
+  color: inherit;
 }
 .main-navigation ul li:hover > ul,
 .main-navigation ul li.focus > ul,
@@ -2360,6 +2402,12 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 .main-navigation ul.menu > li + li {
   margin-left: -1px;
+  border-top: 1px dotted #d2d1d1;
+}
+@media screen and (min-width: 37.5em) {
+  .main-navigation ul.menu > li + li {
+    border-top: none;
+  }
 }
 @media screen and (min-width: 37.5em) {
   .main-navigation ul.menu > li {
@@ -2371,13 +2419,23 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 .main-navigation ul.menu > li > a {
   display: block;
-  padding: 15px 7px 21px;
+  padding: 11px 19px;
   position: relative;
-  text-align: center;
   font-size: 16px;
   font-size: 1rem;
 }
+@media screen and (min-width: 37.5em) {
+  .main-navigation ul.menu > li > a {
+    padding: 15px 7px 21px;
+    text-align: center;
+  }
+}
 @media (min-width: 992px) {
+  .main-navigation ul.menu > li > a {
+    padding: 15px 7px 21px;
+  }
+}
+@media (min-width: 1200px) {
   .main-navigation ul.menu > li > a {
     padding: 25px 17px 31px;
   }
@@ -2407,17 +2465,23 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   right: 0;
   top: 0px;
   bottom: 4px;
-  text-align: center;
   content: attr(data-title);
   font-style: italic;
   opacity: 0;
   background: #fff;
   padding-top: 15px;
   transition: .2s all ease;
+  display: none;
 }
 @media (min-width: 992px) {
   .main-navigation ul.menu > li > a:after {
     padding-top: 25px;
+  }
+}
+@media screen and (min-width: 37.5em) {
+  .main-navigation ul.menu > li > a:after {
+    text-align: center;
+    display: block;
   }
 }
 .main-navigation ul.menu > li:hover > a:before, .main-navigation ul.menu > li.menu-hover > a:before, .main-navigation ul.menu > li.current_page_item > a:before, .main-navigation ul.menu > li.current-menu-item > a:before, .main-navigation ul.menu > li.current_page_ancestor > a:before {

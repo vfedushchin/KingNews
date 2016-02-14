@@ -22,12 +22,20 @@
 			left: -9999px;
 			border-radius: 0 0 $border__radius $border__radius;
 			@media (max-width: 600px) {
+				border-top: 1px dotted $color__line;
 				position: static;
 				opacity: 1;
 				visibility: visible;
 				box-shadow: none;
 				background: none;
 				margin: 0;
+				padding: 0;
+				a {
+					padding-left: 30px;
+				}
+				li li a {
+					padding-left: 40px;
+				}
 				li:before {
 					content: "-";
 					display: inline-block;
@@ -37,10 +45,14 @@
 				padding: 0;
 			}
 			li {
-				padding: 5px;
-				border-top: 1px solid rgba(0,0,0,.1);
+				padding: 0px;
+				border-top: 1px dotted #fff;
+				@media (max-width: 600px) {
+				    border-color: $color__line;
+				}
+				color: #fff;
 				@media screen and (min-width: 37.5em) {
-					padding: 12px 10px;
+					padding: 8px 18px 8px 12px;
 				}
 				&:first-child{
 					border-top: none;
@@ -54,17 +66,30 @@
 				&.menu-hover > ul {
 					top: 0;
 					left: 100%;
+					@media screen and (min-width: 37.5em) {
+						margin-left: 1px;
+					}
 				}
 				> ul.in-transition {
 					left: 100%;
+					@media screen and (min-width: 37.5em) {
+						margin-left: 1px;
+					}
 				}
 
 			}
 
 			a {
-				width: 240px;
+				
+				@include media-breakpoint-up(md) {
+					width: 153px;
+				}
 				text-align: left;
 				padding: 5px;
+				
+				@media (max-width: 600px) {
+					padding: 13px 30px;
+				}
 				position: relative;
 				@include font-size(0.87);
 			}
@@ -93,8 +118,12 @@
 						content: "\f105";
 						font-family: FontAwesome;
 						position: absolute;
-						right: 8px;
+						right: -8px;
+						top: 50%;
+						margin-top: -7px;
 						@include font-size(1.2);
+						font-size: 16px;
+						color: #999999;
 						line-height: 0.8em;
 						@media (max-width: 600px) {
 							content: "\f107";
@@ -102,7 +131,11 @@
 							display: inline-block;
 							margin: 0 0 0 5px;
 							vertical-align: middle;
+							display: none;
 						}
+					}
+					&:hover:after {
+						color: inherit;
 					}
 				}
 			}
@@ -131,6 +164,10 @@
 		> li {
 			& + li {
 				margin-left: -1px;
+				border-top: 1px dotted $color__line;
+				@media screen and (min-width: 37.5em) {
+					border-top: none;
+				}
 			}
 			display: block;
 			margin: 0;
@@ -142,15 +179,20 @@
 			}
 			> a {
 				display: block;
-				padding: 15px 7px 21px;
+				padding: 11px 19px;
 				position: relative;
-				text-align: center;
+				@media screen and (min-width: 37.5em) {
+					padding: 15px 7px 21px;
+					text-align: center;
+				}
 				@include media-breakpoint-up(lg) {
+				  padding: 15px 7px 21px;
+				}
+				@include media-breakpoint-up(xl) {
 				  padding: 25px 17px 31px;
 				}
 				@include font-size( 1 );
 				@media screen and (min-width: 37.5em) {
-					
 				}
 				&:before {
 					left: 50%;
@@ -175,15 +217,19 @@
 					right: 0;
 					top: 0px;
 					bottom: 4px;
-					text-align: center;
 					content: attr(data-title);
 					font-style: italic;
 					opacity: 0;
 					background: #fff;
 					padding-top: 15px;
 					transition: .2s all ease;
+					display: none;
 					@include media-breakpoint-up(lg) {
 					  padding-top: 25px;
+					}
+					@media screen and (min-width: 37.5em) {
+						text-align: center;
+						display: block;
 					}
 				}
 			}
