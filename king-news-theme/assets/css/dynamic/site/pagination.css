@@ -21,3 +21,28 @@
 	color: $regular_accent_color_2;
 	background: $regular_text_color;
 }
+
+
+
+.breadcrumbs, .post-navigation {
+  font-family: $h2_font_family;
+}
+.post-navigation .post-title {
+  font-family: $h3_font_family;
+}
+
+
+.comment-navigation .nav-previous > a:before, .posts-navigation .nav-previous > a:before, .post-navigation .nav-previous > a:before,
+.comment-navigation .nav-next > a:after, .posts-navigation .nav-next > a:after, .post-navigation .nav-next > a:after {
+  color: $regular_accent_color_3;
+}
+.comment-navigation .nav-previous > a:hover:before, .posts-navigation .nav-previous > a:hover:before, .post-navigation .nav-previous > a:hover:before,
+.comment-navigation .nav-next > a:hover:after, .posts-navigation .nav-next > a:hover:after, .post-navigation .nav-next > a:hover:after {
+  color: $regular_accent_color_1;
+}
+.comment-navigation a, .posts-navigation a, .post-navigation a {
+  color: $regular_text_color;
+}
+
+.breadcrumbs__item a {color: $regular_text_color;}
+.breadcrumbs__item a:hover, .breadcrumbs__item-target {color: $regular_accent_color_1;}

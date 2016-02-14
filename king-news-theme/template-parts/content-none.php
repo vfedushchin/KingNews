@@ -11,7 +11,7 @@
 
 <section class="no-results not-found">
 	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'king_news' ); ?></h1>
+		<h4 class="page-title2"><?php esc_html_e( 'Nothing Found', 'king_news' ); ?></h4>
 	</header><!-- .page-header -->
 
 	<div class="page-content">

@@ -67,7 +67,7 @@ function king_news_get_comment_author_link( $args = array() ) {
 	 * @param array $output URL of the author of the comment.
 	 * @param array $args   Arguments.
 	 */
-	return apply_filters( 'king_news_get_comment_author_link', sprintf( '<b class="fn">%s</b>', get_comment_author_link() ), $args );
+	return apply_filters( 'king_news_get_comment_author_link', sprintf( '<span class="fn">%s</span>', get_comment_author_link() ), $args );
 }
 
 /**

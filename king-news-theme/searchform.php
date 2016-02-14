@@ -13,5 +13,5 @@
 			value="<?php echo get_search_query() ?>" name="s"
 			title="<?php echo esc_attr_x( 'Search for:', 'label', 'king_news' ) ?>" />
 	</label>
-	<button type="submit" class="search-form__submit btn"><i class="material-icons">search</i></button>
+	<button type="submit" class="search-form__submit btn"><span class="search-btn-txt">Search</span><i class="material-icons">search</i></button>
 </form>

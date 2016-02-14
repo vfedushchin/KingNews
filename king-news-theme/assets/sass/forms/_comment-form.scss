@@ -1,14 +1,13 @@
 .comment {
 	&-respond {
 
-		border-top: 1px solid $color__background-hr;
 		@include media-breakpoint-up(lg) {
 
 		}
 	}
 	&-reply-title {
 		@include media-breakpoint-up(lg) {
-			font-size: 20px;
+			font-size: 30px;
 			line-height: 1.4;
 			margin-bottom: 15px;
 		}
@@ -18,7 +17,7 @@
 		&-author,
 		&-email,
 		&-url {
-			margin: 0 0 10px;
+			margin: 0 0 11px;
 		}
 		&__field {
 			width: 100%;
@@ -30,6 +29,14 @@
 		.logged-in-as,
 		.comment-notes {
 			margin: 15px 0 25px;
+			font-style: italic;
+			@include media-breakpoint-up(lg) {
+				margin-top: 29px;
+			}	
+		}
+
+		.form-submit {
+			margin-top: 29px;
 		}
 	}
 }

@@ -12,8 +12,8 @@
 	}
 	&-title {
 		@include media-breakpoint-up(lg) {
-			font-size: 20px;
-			line-height: 1.4;
+			/*font-size: 20px;*/
+			/*line-height: 1.4;*/
 			margin-bottom: 15px;
 		}
 		&:before {
@@ -25,40 +25,42 @@
 			left: 0;
 			height: 1px;
 			background-color: $color__background-hr;
+			display: none;
 		}
 	}
 }
 
 .comment {
+	& + .comment {
+		border-top: 1px dotted $color__line;
+	}
 	&-list {
 		list-style: none;
 		padding: 0;
 		margin: 0;
+		margin-top: 8px;
 		.children {
 			list-style: none;
-			padding-left: 10px;
+			padding-left: 15px;
 			margin-left: 0;
-			border-top: 1px solid $color__background-hr;
+			margin-top: -27px;
+			margin-bottom: -7px;
 			@include media-breakpoint-up(lg) {
-				padding-left: 30px;
+				padding-left: 50px;
 			}
 		}
 		> .comment {
 			margin-bottom: 10px;
-			padding-right: 10px;
-			padding-left: 10px;
-			background-color: $color__background-input;
-			@include media-breakpoint-up(lg) {
-				padding-right: 30px;
-				padding-left: 30px;
-			}
+
+
 		}
 	}
 	&-body {
+		overflow: hidden;
 		padding-top: 10px;
 		padding-bottom: 10px;
 		@include media-breakpoint-up(lg) {
-			padding-top: 30px;
+			padding-top: 27px;
 			padding-bottom: 15px;
 		}
 		&__holder {
@@ -68,17 +70,21 @@
 		.avatar {
 			float: left;
 			margin: 0 15px 10px 0;
-			border-radius: 50%;
+			border-radius: 0;
 			width: 40px;
 			@include media-breakpoint-up(lg) {
 				width: auto;
-				margin: 0 30px 15px 0;
+				margin: 0 22px 15px 0;
 			}
+		}
+		.comment-meta {
+			padding-bottom: 4px;
+			font-size: 14px;
 		}
 		.fn {
 			margin-right: 10px;
 			@include media-breakpoint-up(lg) {
-				margin-right: 25px;
+				margin-right: 10px;
 			}
 		}
 		.reply {
@@ -86,7 +92,7 @@
 			top: 0;
 			right: 0;
 			z-index: 9;
-			opacity: .2;
+			opacity: 1;
 			transition: all 0.25s ease;
 			&:hover {
 				opacity: 1;
@@ -94,18 +100,18 @@
 		}
 	}
 	&-reply-link {
-		font-size: 17px;
 		.material-icons {
 			font-size: inherit;
+			font-size: 20px;
 		}
 	}
 	&-date {
 		display: inline-block;
 		&:before {
 			@include material-icon();
-			content: '\E878';
-			opacity: .2;
-			font-size: 17px;
+			content: '\e192';
+			opacity: 1;
+			font-size: 20px;
 			vertical-align: top;
 			margin-right: 4px;
 			@include media-breakpoint-up(lg) {

@@ -242,14 +242,14 @@
 		&--fullwidth {
 			.posts-list & {
 				display: block;
-				margin: -10px -10px 10px;
+				
 				&:first-child {
 					img {
 						border-radius: $border__radius $border__radius 0 0;
 					}
 				}
 				@include media-breakpoint-up(lg) {
-					margin: -30px -30px 25px;
+					
 				}
 			}
 		}

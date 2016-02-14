@@ -2,22 +2,46 @@
 .posts-navigation,
 .post-navigation {
 
+	border-top: 1px solid #000;
+	padding-top: 53px;
+	font-size: 20px;
+
 	.site-main & {
-		margin: 0 0 1.5em;
+		margin: 30px 0 0.8em;
+		@include media-breakpoint-up(lg) {
+			margin-top: 60px;
+		}
 		overflow: hidden;
+	}
+
+	.meta-nav {
+		display: block;
+		font-size: 14px;
+		padding-bottom: 7px;
 	}
 
 	.nav-previous {
 		float: left;
 		width: 50%;
+		max-width: 330px;
+		padding-left: 30px;
+		position: relative;
 		> a {
 			display: inline-block;
 			vertical-align: top;
 			&:before {
+				position: absolute;
+				left: -13px;
+				top: 50%;
+				margin-top: -20px;
 				@include material-icon();
-				font-size: 20px;
+				font-size: 40px;
 				content: '\E408';
 				vertical-align: top;
+			}
+
+			&:hover {
+				font-style: italic;
 			}
 		}
 	}
@@ -26,14 +50,25 @@
 		float: right;
 		text-align: right;
 		width: 50%;
+		max-width: 330px;
+		padding-right: 30px;
+		position: relative;
 		> a {
 			display: inline-block;
 			vertical-align: top;
 			&:after {
+				position: absolute;
+				right: -13px;
+				top: 50%;
+				margin-top: -20px;
 				@include material-icon();
-				font-size: 20px;
+				font-size: 40px;
 				content: '\E409';
 				vertical-align: top;
+			}
+
+			&:hover {
+				font-style: italic;
 			}
 		}
 	}
