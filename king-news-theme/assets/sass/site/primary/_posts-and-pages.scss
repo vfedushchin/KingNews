@@ -139,6 +139,7 @@
 	overflow: hidden;
 	position: relative;
 	margin: 0 0 1.85em;
+	padding-top: 7px;
 	@include card;
 	.single-post &,
 	.page & {

@@ -2038,6 +2038,23 @@ textarea {
   border-radius: 0;
   font-size: 14px;
   width: 100%;
+}
+.widget input[type="text"], .widget
+input[type="email"], .widget
+input[type="url"], .widget
+input[type="password"], .widget
+input[type="search"], .widget
+input[type="number"], .widget
+input[type="tel"], .widget
+input[type="range"], .widget
+input[type="date"], .widget
+input[type="month"], .widget
+input[type="week"], .widget
+input[type="time"], .widget
+input[type="datetime"], .widget
+input[type="datetime-local"], .widget
+input[type="color"], .widget
+textarea {
   height: 50px;
 }
 input[type="text"]:focus,
@@ -4674,6 +4691,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 /*--------------------------------------------------------------
 # Widget calendar
 --------------------------------------------------------------*/
+.widget_calendar {
+  font-size: 14px;
+}
 .widget_calendar h4 {
   margin: 0 0 24px 0;
 }
@@ -4686,7 +4706,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   font-size: 16px;
   padding: 13px 10px;
   border-radius: 0;
-  margin-bottom: 24px;
 }
 @media (min-width: 992px) {
   .widget_calendar .calendar_wrap caption {
@@ -4697,21 +4716,74 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   font-size: 16px;
   font-size: 1rem;
   font-size: 16px;
-  padding: 0 0 13px 0;
-  border-bottom: 1px #e0e0e8 solid;
+  height: 30px;
+  line-height: 30px;
+  border: 3px solid #fff;
+  position: relative;
+  color: #000;
+  background: #e8e8e8;
   text-align: center;
   position: relative;
 }
+@media (min-width: 992px) {
+  .widget_calendar .calendar_wrap th {
+    height: 50px;
+    line-height: 50px;
+    border: 9px solid #fff;
+  }
+}
+.widget_calendar .calendar_wrap th:first-child {
+  border-left: none;
+}
+.widget_calendar .calendar_wrap th:last-child {
+  border-right: none;
+}
+.widget_calendar .calendar_wrap tfoot td {
+  border: none;
+}
+.widget_calendar .calendar_wrap tfoot tr td a {
+  background: none;
+  color: #000;
+  margin: 0 5px;
+}
+.widget_calendar .calendar_wrap tfoot tr td a:hover {
+  color: #999;
+}
 .widget_calendar .calendar_wrap tbody td {
-  padding: 0px 0 9px 0;
-  width: 15%;
+  padding: 0px 0 0px 0;
+  width: 14%;
   text-align: center;
   position: relative;
+  line-height: 30px;
+  height: 30px;
+  border: 3px solid #fff;
+  position: relative;
+  background: #e8e8e8;
+}
+@media (min-width: 992px) {
+  .widget_calendar .calendar_wrap tbody td {
+    height: 50px;
+    line-height: 50px;
+    border: 9px solid #fff;
+  }
+}
+.widget_calendar .calendar_wrap tbody td:first-child {
+  border-left: none;
+}
+.widget_calendar .calendar_wrap tbody td:last-child {
+  border-right: none;
+}
+.widget_calendar .calendar_wrap tbody td#today {
+  background: #000;
+}
+.widget_calendar .calendar_wrap tbody td.pad {
+  background: none;
+  border: none;
 }
 .widget_calendar .calendar_wrap tbody td a {
   position: relative;
   display: inline-block;
-  width: 20px;
+  width: 100%;
   z-index: 1;
   transition: all 0.5s ease;
 }
@@ -4723,12 +4795,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 .widget_calendar .calendar_wrap tbody td a::before {
   content: '';
   position: absolute;
-  width: 40px;
-  height: 40px;
-  top: -50%;
-  left: -50%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: -1;
-  border-radius: 50%;
   display: block;
   opacity: 0;
   margin-left: 0px;
@@ -4737,6 +4808,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 .widget_calendar .calendar_wrap tbody tr:first-child > td {
   padding: 14px 0 9px 0;
+  padding: 0;
 }
 .widget_calendar .calendar_wrap #prev, .widget_calendar .calendar_wrap #next {
   font-size: 16px;
@@ -5268,6 +5340,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   overflow: hidden;
   position: relative;
   margin: 0 0 1.85em;
+  padding-top: 7px;
   background: #fff;
   /*box-shadow: 0 5px 32px rgba(103,122,141,.17);*/
   border-radius: 0;

@@ -96,6 +96,7 @@
 # Widget calendar
 --------------------------------------------------------------*/
 .widget_calendar{
+	font-size: 14px;
 	h4{
 		margin: 0 0 24px 0;
 	}
@@ -111,26 +112,80 @@
 			}
 			padding: 13px 10px;
 			border-radius: $border__radius;
-			margin-bottom: 24px;
 		}
 		th{
 			@include font-size(1);
 			font-size: 16px;
-			padding: 0 0 13px 0;
-			border-bottom: 1px #e0e0e8 solid;
+			height: 30px;
+			line-height: 30px;
+			border: 3px solid #fff;
+			@include media-breakpoint-up(lg) {
+				height: 50px;
+				line-height: 50px;
+				border: 9px solid #fff;
+			}
+			position: relative;
+			color: #000;
+
+			background: #e8e8e8;
 			text-align: center;
 			position: relative;
+		  &:first-child {
+		    	border-left: none;
+		    }
+		    &:last-child {
+		    	border-right: none;
+		    }
+		}
+		tfoot {
+			td {
+				border: none;
+			}
+			tr td a {
+				background: none;
+				color: #000;
+				margin: 0 5px;
+				&:hover {
+					color: #999;
+				}
+			}
 		}
 		tbody{
 			td{
-				padding: 0px 0 9px 0;
-				width: 15%;
+				padding: 0px 0 0px 0;
+				width: 14%;
 				text-align: center;
 				position: relative;
+				line-height: 30px;
+				height: 30px;
+				border: 3px solid #fff;
+				@include media-breakpoint-up(lg) {
+					height: 50px;
+					line-height: 50px;
+					border: 9px solid #fff;
+				}
+				position: relative;
+				background: #e8e8e8;
+		    
+		    &:first-child {
+		    	border-left: none;
+		    }
+		    &:last-child {
+		    	border-right: none;
+		    }
+
+		    &#today {
+		    	background: #000;
+		    }
+
+		    &.pad {
+					background: none;
+					border: none;
+		    }
 				a{
 					position: relative;
 					display: inline-block;
-					width: 20px;
+					width: 100%;
 					z-index: 1;
 					@include transition( all 0.5s ease );
 					&:hover{
@@ -143,12 +198,11 @@
 					&::before {
 						content:'';
 						position: absolute;
-						width: 40px;
-						height: 40px;
-						top: -50%;
-						left: -50%;
+						top: 0;
+						left: 0;
+						right: 0;
+						bottom: 0;
 						z-index: -1;
-						border-radius: 50%;
 						display:block;
 						opacity: 0;
 						margin-left: 0px;
@@ -160,6 +214,7 @@
 			}
 			tr:first-child > td{
 				padding: 14px 0 9px 0;
+				padding: 0;
 			}
 		}
 		#prev, #next{
