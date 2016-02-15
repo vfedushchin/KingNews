@@ -16,10 +16,9 @@
 # Widget calendar
 --------------------------------------------------------------*/
 .widget_calendar .calendar_wrap caption{
-	color: $invert_link_color;
-	background: $regular_accent_color_1;
-	background: -webkit-linear-gradient(to right, $regular_accent_color_1 0%, @darken( $regular_accent_color_1, 10% ) 100%);
-	background: linear-gradient(to right, $regular_accent_color_1 0%, @darken( $regular_accent_color_1, 10% ) 100%);
+	color: #fff;
+	background: $regular_text_color;
+	font-family: $h3_font_family;
 }
 .widget_calendar .calendar_wrap th{
 	color: $regular_accent_color_1;

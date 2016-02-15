@@ -22,6 +22,7 @@
 			line-height: 29px;
 			text-align: center;
 			@include font-size(1);
+			font-size: 16px;
 			margin: 0 10px 0 0;
 			vertical-align: middle;
 			&.indent-left {
@@ -87,6 +88,10 @@
 			display: inline-block;
 			vertical-align: middle;
 			padding-top: 3px;
+			width: 30px;
+			@include media-breakpoint-up(lg) {
+				width: 45px;
+			}
 			i.material-icons {
 				font-size: 20px;
 			}

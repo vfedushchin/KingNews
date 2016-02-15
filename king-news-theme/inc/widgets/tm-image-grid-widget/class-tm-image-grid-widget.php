@@ -271,10 +271,12 @@ if ( !class_exists( 'King_News_Image_Grid_Widget' ) ) {
 				foreach ( $posts as $post ) {
 					setup_postdata( $post );
 
-					$image = $this->get_post_image( $post, apply_filters( 'king_news_image_grid_widget_size', '_tm-thumb-m' ) );
+					$image = $this->get_post_image( $post, apply_filters( 'king_news_image_grid_widget_size', '_tm-thumb-536-411' ) );
 					$permalink = $this->get_post_permalink();
 					$title = $this->get_post_title( $post, $instance );
 					$date = $this->get_post_date();
+					//$date = human_time_diff($date, current_time( 'timestamp' ));
+
 
 					$view_dir = locate_template( 'inc/widgets/tm-image-grid-widget/views/tm-image-grid-view.php' );
 					if ( $view_dir ){

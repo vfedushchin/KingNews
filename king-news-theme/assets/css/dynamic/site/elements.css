@@ -30,3 +30,12 @@ button:focus,
 	background: @lighten( $regular_text_color, 20 );
 	color: $invert_link_color;
 }
+
+
+// contact form 7 plugin
+.wpcf7-form {
+	font-family: $h2_font_family;
+}
+.wpcf7-form .wpcf7-submit{
+	font-family: $h3_font_family;
+}

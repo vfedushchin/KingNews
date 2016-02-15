@@ -1835,5 +1835,5 @@ function king_news_get_default_top_panel_text() {
  * @return string
  */
 function king_news_get_default_footer_copyright() {
-	return '%%year%% News King, Inc. All Rights Reserved.';
+	return '© %%year%% News King, Inc. All Rights Reserved.';
 }

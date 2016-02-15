@@ -54,6 +54,7 @@
 	}
 	&__input[type="email"] {
 		max-width: 100%;
+		min-width: 130px;
 		-webkit-order: 0;
 		order: 0;
 		-webkit-flex: 0 1 auto;
@@ -100,11 +101,13 @@
 			content: "arrow_forward";
 			@include material-icon();
 			@include font-size(1);
+			font-size: 16px;
 			display: inline-block;
 			vertical-align: middle;
 		}
 		@include media-breakpoint-up(xl) {
 			@include font-size(1);
+			font-size: 16px;
 			&:before {
 				display: none;
 			}
@@ -125,7 +128,7 @@
 
 .site-footer .widget-subscribe {
 	h4 {
-		margin-top: -5px;
+		margin-top: -3px;
 		margin-bottom: 14px;
 	}
 	.subscribe-block__message {

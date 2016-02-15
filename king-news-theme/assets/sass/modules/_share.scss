@@ -28,6 +28,7 @@
 		width: 31px;
 		height: 20px;
 		@include font-size(1);
+		font-size: 16px;
 		line-height: 20px;
 		text-decoration: none;
 		text-align: center;
@@ -95,5 +96,39 @@
 	}
 	.share-btns-main {
 		float: right;
+	}
+}
+
+
+.widget-image-grid {
+	.share-btns-main {
+		display: inline-block;
+		position: relative;
+		.material-icons {
+			font-size: 20px;
+			cursor: pointer;
+			z-index: 10;
+			position: relative;
+		}
+
+		.share-btns__list {
+			position: absolute;
+			top: -5px;
+			right: -5px;
+			opacity: 0;
+			width: 180px;
+			padding: 5px;
+			transition: .4s all ease;
+			visibility: hidden;
+			background: rgba(#000,0.8);
+		}
+
+		&.show-share-list {
+			.share-btns__list {
+				opacity: 1;
+				right: 0;
+				visibility: visible;
+			}
+		}
 	}
 }

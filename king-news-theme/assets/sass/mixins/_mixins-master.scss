@@ -95,6 +95,7 @@
 // button
 @mixin button() {
 	@include font-size( 1 );
+  font-size: 16px;
 	line-height: 20px;
 	display: inline-block;
 	padding: $button__indents;

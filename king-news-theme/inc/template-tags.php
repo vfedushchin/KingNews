@@ -913,6 +913,10 @@ function king_news_is_meta_visible( $meta, $context = 'loop' ) {
 				return false;
 			}
 
+		case 'both-loop-single':
+
+			return true;
+
 	}
 
 	return false;
@@ -1244,7 +1248,7 @@ function king_news_share_buttons( $context = 'loop', $args = array(), $config = 
 		esc_attr( $config['custom_class'] ),
 		$share_buttons
 	);*/
-	if ( 'loop' == $context ) {
+	if ( 'loop' == $context || 'both-loop-single' == $context ) {
 		printf(
 			'<div class="share-btns-main"><div class="share-btns__list %1$s">%2$s</div><i class="material-icons share-main-icon">share</i></div>',
 			esc_attr( $config['custom_class'] ),

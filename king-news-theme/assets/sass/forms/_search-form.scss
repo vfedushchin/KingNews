@@ -2,6 +2,9 @@
 	margin: 0;
 	padding: 10px 0;
 	max-width: 450px;
+	.widget &{
+		max-width: 100%;
+	}
   margin: 0 auto;
 	.top-panel & {
 		padding: 0;

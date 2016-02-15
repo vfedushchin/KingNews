@@ -369,7 +369,9 @@
 			}
 
 			& + .post-body-right {
-				overflow: hidden;
+				@include media-breakpoint-up(xl) {
+					overflow: hidden;
+				}
 			}
 		}
 	}

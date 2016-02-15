@@ -219,3 +219,7 @@ a {transition: .4s all ease;}
 	font-family: $h3_font_family;
 }
 
+.post-author__title a {
+	color: $regular_accent_color_1;
+}
+

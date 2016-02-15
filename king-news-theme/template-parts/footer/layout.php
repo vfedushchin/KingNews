@@ -10,7 +10,7 @@
 	<div class="container">
 		<div class="footer-inner-line">
 			<?php do_action( 'king_news_render_widget_area', 'footer-area' ); ?>
-		</div><!-- .footer-inner -->
+		</div><!-- .footer-inner-line -->
 	</div>
 </div>
 

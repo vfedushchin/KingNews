@@ -36,6 +36,15 @@
 				li li a {
 					padding-left: 40px;
 				}
+				li li li a {
+					padding-left: 50px;
+				}
+				li li li li a {
+					padding-left: 60px;
+				}
+				li li li li li a {
+					padding-left: 70px;
+				}
 				li:before {
 					content: "-";
 					display: inline-block;
@@ -92,6 +101,7 @@
 				}
 				position: relative;
 				@include font-size(0.87);
+				font-size: 14px;
 			}
 
 			> li:first-child > a {
@@ -192,6 +202,7 @@
 				  padding: 25px 17px 31px;
 				}
 				@include font-size( 1 );
+				font-size: 16px;
 				@media screen and (min-width: 37.5em) {
 				}
 				&:before {
@@ -247,7 +258,7 @@
 						@media (max-width: 600px) {
 							top: 0;
 							bottom: 0;
-							width: 5px;
+							width: 3px;
 							left: 0;
 							right: auto;
 						}
@@ -277,11 +288,13 @@
 		display: block;
 		text-decoration: none;
 		@include font-size(1);
+		font-size: 16px;
 		line-height: 1;
 		position: relative;
 	}
 	.menu-item_description {
 		@include font-size(.75);
+		font-size: 14px;
 		position: absolute;
 		padding: 3px 0 0 0;
 		.sub-menu & {
@@ -297,7 +310,7 @@
 .footer-menu {
 	&__items {
 		li {
-			padding: 8px 25px;
+			padding: 3px;
 			border-left: 1px solid rgba(255,255,255,.1);
 			&:first-child {
 				border-left: none;
@@ -369,6 +382,7 @@
 		margin: 0 5px 5px 0;
 		border-radius: $border__radius;
 		@include font-size(1);
+		font-size: 16px;
 		line-height: 38px;
 		text-align: center;
 		&.dots {
