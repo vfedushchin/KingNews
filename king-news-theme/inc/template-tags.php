@@ -579,6 +579,54 @@ function king_news_post_thumbnail( $linked = false, $sizes = array() ) {
 
 }
 
+
+
+/**
+ * prints post thumbnail class
+ *
+ * @return void
+ */
+function king_news_post_thumbnail_class( $sizes = array() ) {
+
+	if ( ! has_post_thumbnail() ) {
+		return;
+	}
+
+	$sizes = wp_parse_args( $sizes, array(
+		'ultra-small'     => '_tm-thumb-150-115',
+		'small'     => 'post-thumbnail',
+		'fullwidth' => '_tm-thumb-l',
+	) );
+
+
+	$link_class      = 'post-thumbnail--fullwidth';
+
+	$size = apply_filters( 'king_news_post_thumbail_size', false );
+
+	if ( false === $size ) {
+		if ( ! is_single() ) {
+			$size = get_theme_mod(
+				'blog_featured_image',
+				king_news_theme()->customizer->get_default( 'blog_featured_image' )
+			);
+		} else {
+			$size = 'fullwidth';
+		}
+		$link_class = sanitize_html_class( 'post-thumbnail--' . $size );
+	}
+
+
+	printf( $link_class );
+
+}
+
+
+
+
+
+
+
+
 /**
  * Print meta block with post author
  *

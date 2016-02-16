@@ -102,6 +102,10 @@
 	border-radius: $button__border-radius;
 	border: $button__border;
 	box-shadow: $button__box-shadow;
+  @media (max-width: 991px) {
+      padding-right: 10px;
+      padding-left: 10px;
+  }
 }
 
 // .hentry, .widget

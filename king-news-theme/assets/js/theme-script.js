@@ -369,7 +369,10 @@ $('.share-btns-main').hover(function(){
     $(this).toggleClass('show-share-list');
 });
 
-
+// add class for full-width layout
+/*if ($('.post-list__item-content .post-thumbnail > a').hasClass('post-thumbnail--fullwidth')) {
+	$('.post-list__item-content .post-thumbnail').addClass('post-thumbnail--fullwidth-all');
+}*/
 
 
 
@@ -438,6 +441,8 @@ _display_screen_class = getCookie('_display_screen_class');
 })(jQuery);
 /* end for screenshort image - developing 
 =============================================*/
+
+
 
 
 

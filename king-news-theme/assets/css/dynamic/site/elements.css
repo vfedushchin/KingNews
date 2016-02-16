@@ -39,3 +39,15 @@ button:focus,
 .wpcf7-form .wpcf7-submit{
 	font-family: $h3_font_family;
 }
+
+ol li:before, ul li:before {
+	color: $regular_accent_color_1;
+}
+
+
+blockquote cite {
+	color: $regular_accent_color_1;
+	font-family: $h2_font_family;
+	font-style: $h2_font_style;
+	font-weight: $h2_font_weight;
+}

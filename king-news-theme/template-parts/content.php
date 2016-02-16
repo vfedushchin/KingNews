@@ -10,7 +10,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'posts-list__item card' ); ?>>
 	<div class="post-list__item-content">
 
-		<figure class="post-thumbnail">
+		<figure class="post-thumbnail <?php king_news_post_thumbnail_class(); ?> ">
 			<?php king_news_post_thumbnail( true ); ?>
 			<?php king_news_meta_categories( 'loop' ); ?>
 			<?php king_news_sticky_label(); ?>
@@ -72,6 +72,7 @@
 		
 		<footer class="entry-footer">
 			<?php king_news_read_more(); ?>
+			<?php king_news_share_buttons( 'loop' ); ?>
 		</footer><!-- .entry-footer -->
 	</div><!-- .post-body-right -->
 </article><!-- #post-## -->

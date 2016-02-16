@@ -26,6 +26,7 @@ input[type="submit"] {
 		&:before {
 			content: '\E5C8';
 		}
+		display: none;
 	}
 	&.btn-fullwidth {
 		width: 100%;

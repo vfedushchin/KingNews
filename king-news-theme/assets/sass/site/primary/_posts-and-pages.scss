@@ -194,6 +194,10 @@
 	&-footer {
 		position: relative;
 
+		.share-btns-main {
+			display: none;
+		}
+
 		.posts-list & {
 			display: none;
 		}
@@ -348,14 +352,27 @@
 		.post-thumbnail {
 			padding-right: 20px;
 			position: relative;
-			min-width: 140px;
+			min-width: 130px;
 	    max-width: 100%;
 	    margin-bottom: 12px;
+	    @media (max-width: 500px) {
+	    	padding-right: 10px;
+	      max-width: 30%;
+		    float: left;
+		    margin-bottom: 0;
+	    }
 	    @media (min-width: 500px) {
 	      max-width: 50%;
 		    float: left;
 		    //min-height: 100px;
 		    margin-bottom: 0;
+	    }
+
+	    &.post-thumbnail--fullwidth {
+				max-width: 100%;
+				padding-right: 0;
+				padding-bottom: 15px;
+				float: none;
 	    }
 
 	    .post__cats {
@@ -370,6 +387,7 @@
 			}
 
 			& + .post-body-right {
+				overflow: hidden;
 				@include media-breakpoint-up(xl) {
 					overflow: hidden;
 				}

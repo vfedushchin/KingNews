@@ -33,6 +33,9 @@
 .widget_calendar .calendar_wrap tr td a:hover{
 	color: $regular_text_color;
 }
+.widget_calendar .calendar_wrap tbody td#today {
+	background: $regular_accent_color_2;
+}
 
 /* invert color */
 .invert .widget_calendar .calendar_wrap caption{

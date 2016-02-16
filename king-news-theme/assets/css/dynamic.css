@@ -29,7 +29,7 @@ h2 {
 	text-align: $h2_text_align;
 	color: $regular_h2_color;
 }
-h3 {
+h3, blockquote p {
 	font-style: $h3_font_style;
 	font-weight: $h3_font_weight;
 	font-size: @font_size($h3_font_size, multiple, ceil, 0.45)px;
@@ -72,7 +72,7 @@ h6 {
 	@media (min-width: 992px) {
 		h1 { font-size: $h1_font_size{px}; }
 		h2 { font-size: $h2_font_size{px}; }
-		h3 { font-size: $h3_font_size{px}; }
+		h3, blockquote p { font-size: $h3_font_size{px}; }
 		h4 { font-size: $h4_font_size{px}; }
 		h5 { font-size: $h5_font_size{px}; }
 		h6 { font-size: $h6_font_size{px}; }
@@ -98,8 +98,8 @@ h6 a:hover,
 a:hover { color: $regular_link_hover_color; }
 
 mark, ins {
-	color: $invert_text_color;
-	background-color: $regular_link_color;
+	color: $regular_text_color;
+	background-color: $regular_accent_color_2;
 }
 
 ::-webkit-input-placeholder { color: $regular_text_color; }

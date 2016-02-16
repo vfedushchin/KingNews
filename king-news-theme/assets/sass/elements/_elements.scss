@@ -19,7 +19,42 @@ blockquote, q {
 	&:after {
 		content: "";
 	}
+
+	
 }
+
+blockquote {
+	padding: 0;
+	margin: 0;
+	padding-left: 60px;
+	@include media-breakpoint-up(lg) {
+		padding-left: 60px;
+		padding-right: 60px;
+	}
+	position: relative;
+	&:before {
+		position: absolute;
+		top: -12px;
+		left: -16px;
+		content: "format_quote";
+		@include material-icon();
+		@include font-size(1);
+		font-size: 70px;
+		display: inline-block;
+		vertical-align: middle;
+		color: #02affc;
+	}
+	cite {
+		display: block;
+		font-style: normal;
+		@include media-breakpoint-up(lg) {
+			font-size: 20px;
+		}
+		margin-top: 16px;
+	}
+}
+
+
 
 hr {
 	background-color: $color__background-hr;
