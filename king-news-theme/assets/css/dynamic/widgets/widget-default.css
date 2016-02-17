@@ -90,6 +90,20 @@
 	color: $regular_accent_color_3;
 }
 
+/*--------------------------------------------------------------
+# Widget Recent comments
+--------------------------------------------------------------*/
+.widget_recent_comments ul li {
+	color: $regular_text_color;
+}
+.widget_recent_comments ul li .comment-author-link {
+	color: $regular_accent_color_1;
+}
+.widget_recent_comments ul li a{
+	font-family: $h3_font_family;
+}
+
+
 /* invert color */
 .invert .widget_recent_entries ul li a, .invert .widget_recent_comments ul li>a{
 	color: $invert_link_hover_color;

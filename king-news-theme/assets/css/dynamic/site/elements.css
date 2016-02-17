@@ -52,10 +52,21 @@ ol li:before, ul li:before {
 	color: $regular_accent_color_1;
 }
 
-
+.post-format-quote blockquote, .format-quote blockquote {
+	font-family: $h3_font_family;
+}
 blockquote cite {
 	color: $regular_accent_color_1;
 	font-family: $h2_font_family;
 	font-style: $h2_font_style;
 	font-weight: $h2_font_weight;
+}
+.post_format-post-format-quote blockquote p {
+	color: #fff;
+}
+blockquote:before, .single-post blockquote:before {
+	color: $regular_accent_color_1;
+}
+.post_format-post-format-quote blockquote:before {
+	color: $regular_accent_color_2;
 }

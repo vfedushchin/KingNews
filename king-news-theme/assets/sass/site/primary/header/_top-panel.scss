@@ -31,7 +31,18 @@
 		}
 	}
 	&__search {
-		float: right;
+		float: left;
+		@media (max-width: 544px) {
+		    .search-form .search-form__field {
+		    	.top-panel & {
+			    	padding-left: 0;
+			    }
+		    }
+		}
+		@include media-breakpoint-up(sm) {
+			float: right;
+		}
+		
 	}
 	&__menu {
 		float: right;

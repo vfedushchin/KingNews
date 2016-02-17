@@ -1,4 +1,7 @@
 .site-header.default {
+	.header-container {
+		padding-top: 10px;
+	}
 	.main-navigation {
 		text-align: left;
 		clear: both;
@@ -10,6 +13,7 @@
 		}
 	}
 	.site-branding {
+		margin-top: 4px;
 		float: left;
 	}
 	.social-list {

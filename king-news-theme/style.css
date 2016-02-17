@@ -1744,7 +1744,6 @@ blockquote:before {
   font-size: 70px;
   display: inline-block;
   vertical-align: middle;
-  color: #02affc;
 }
 blockquote cite {
   display: block;
@@ -1755,6 +1754,29 @@ blockquote cite {
   blockquote cite {
     font-size: 20px;
   }
+}
+
+.post-format-quote blockquote, .format-quote blockquote {
+  text-align: center;
+  color: #fff;
+  background: #000;
+  padding: 30px 15px;
+  margin: 0;
+}
+@media (min-width: 992px) {
+  .post-format-quote blockquote, .format-quote blockquote {
+    padding: 93px 50px 120px;
+  }
+}
+.post-format-quote blockquote:before, .format-quote blockquote:before {
+  position: relative;
+  text-align: center;
+  display: block;
+  top: 0;
+  left: 0;
+}
+.post-format-quote blockquote + p, .format-quote blockquote + p {
+  margin-top: 20px;
 }
 
 hr {
@@ -5101,6 +5123,13 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   font-size: 16px;
   font-size: 1rem;
   font-size: 16px;
+  display: block !important;
+}
+@media (min-width: 992px) {
+  .widget_recent_comments ul li > a {
+    font-size: 20px;
+    margin-top: 7px !important;
+  }
 }
 
 /* Recent Posts  & Recent Comments */
@@ -5108,7 +5137,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   margin-bottom: 18px;
 }
 .widget_recent_comments ul li, .widget_recent_entries ul li {
-  border-top: 1px #e0e0e8 solid;
+  border-top: 1px dotted #d2d1d1;
   padding-top: 21px;
 }
 .widget_recent_comments ul li:first-child, .widget_recent_entries ul li:first-child {
@@ -5196,6 +5225,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   }
 }
 
+.site-header.default .header-container {
+  padding-top: 10px;
+}
 .site-header.default .main-navigation {
   text-align: left;
   clear: both;
@@ -5205,6 +5237,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   margin-left: 0;
 }
 .site-header.default .site-branding {
+  margin-top: 4px;
   float: left;
 }
 .site-header.default .social-list {
@@ -5214,13 +5247,30 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 
 .site-header.centered .site-branding {
   text-align: center;
+  padding: 0 0 19px;
+  width: 100%;
+  border-bottom: 1px solid #d2d1d1;
 }
-.site-header.centered .social-list {
+.site-header.centered .site-branding .social-list {
   text-align: center;
-  padding: 15px 0 0 0;
+  padding: 5px 0 0 0;
+}
+@media (min-width: 768px) {
+  .site-header.centered .site-branding .social-list {
+    text-align: right;
+  }
 }
 .site-header.centered .main-navigation {
-  text-align: center;
+  text-align: left;
+}
+@media (min-width: 992px) {
+  .site-header.centered .main-navigation {
+    text-align: center;
+  }
+}
+.site-header.centered .main-navigation .menu-toggle {
+  margin: 5px 0;
+  text-align: left;
 }
 
 .site-header.minimal .social-list {
@@ -5318,7 +5368,17 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   margin-left: 35px;
 }
 .top-panel__search {
-  float: right;
+  float: left;
+}
+@media (max-width: 544px) {
+  .top-panel .top-panel__search .search-form .search-form__field {
+    padding-left: 0;
+  }
+}
+@media (min-width: 544px) {
+  .top-panel__search {
+    float: right;
+  }
 }
 .top-panel__menu {
   float: right;
@@ -5777,14 +5837,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   /* Quote */
   /* Wrapper for non-image featured content */
 }
-.post-gallery {
-  margin: -10px -10px 10px;
-}
-@media (min-width: 992px) {
-  .post-gallery {
-    margin: -30px -30px 30px;
-  }
-}
 .entry-content .post-gallery {
   margin-top: 10px;
 }
@@ -5817,6 +5869,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 .post-gallery__link {
   display: block;
+}
+.post-gallery__link img {
+  width: 100%;
 }
 .post-format-link {
   display: inline-block;
@@ -5865,7 +5920,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 .has-thumb .post-thumbnail__format-link .post-format-link {
   margin: -20px 0 0 0;
 }
+.post .quote-link:hover blockquote {
+  background: #222;
+}
 .post-format-quote {
+  transition: .4s all ease;
   position: relative;
   margin: 0;
   padding: 10px 10px 10px 50px;
@@ -5873,7 +5932,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   font-size: 1.2rem;
 }
 @media (min-width: 992px) {
-  .post-format-quote {
+  .entry-content .post-format-quote {
     padding: 30px 30px 30px 70px;
   }
 }
@@ -5884,7 +5943,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   font-size: 1rem;
 }
 .post-format-quote cite:before {
-  content: "- ";
+  content: "— ";
 }
 .post-format-quote:before {
   content: "format_quote";
@@ -5906,17 +5965,8 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   -moz-osx-font-smoothing: grayscale;
   /* Support for IE. */
   font-feature-settings: 'liga';
-  position: absolute;
   font-size: 40px;
-  top: 10px;
-  left: 10px;
   margin: -5px 0 0 0;
-}
-@media (min-width: 992px) {
-  .post-format-quote:before {
-    left: 30px;
-    top: 30px;
-  }
 }
 .post-featured-content {
   border-radius: 0 0 0 0;
@@ -6359,7 +6409,7 @@ blockquote {
 @media (min-width: 992px) {
   .not-found .page-title {
     font-size: 150px;
-    margin-top: -42px;
+    margin-top: 0;
     margin-bottom: -10px;
   }
 }

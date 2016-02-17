@@ -1,12 +1,33 @@
 .site-header.centered {
 	.site-branding {
 		text-align: center;
+		padding: 0 0 19px;
+		width: 100%;
+		border-bottom: 1px solid $color__line;
+
+		&__logo {
+		}
+
+		.social-list {
+			text-align: center;
+			@include media-breakpoint-up(md) {
+				text-align: right;
+			}
+			padding: 5px 0 0 0;
+		}
 	}
-	.social-list {
-		text-align: center;
-		padding: 15px 0 0 0;
-	}
+
 	.main-navigation {
-		text-align: center;
+		text-align: left;
+		@include media-breakpoint-up(lg) {
+			text-align: center;
+		}
+
+		.menu-toggle {
+			margin: 5px 0;
+			text-align: left;
+		}
 	}
+
+	
 }

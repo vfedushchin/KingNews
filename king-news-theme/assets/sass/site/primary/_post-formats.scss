@@ -1,10 +1,6 @@
 .post {
 	/* Gallery */
 	&-gallery {
-		margin: -10px -10px 10px;
-		@include media-breakpoint-up(lg) {
-			margin: -30px -30px 30px;
-		}
 		.entry-content & {
 			margin-top: 10px;
 		}
@@ -37,6 +33,9 @@
 		}
 		&__link {
 			display: block;
+			img {
+				width: 100%;
+			}
 		}
 	}
 	/* Link */
@@ -76,34 +75,35 @@
 	}
 
 	/* Quote */
+	.quote-link:hover {
+		blockquote {
+			background: #222;
+		}
+	}
 	&-format-quote {
+		transition: .4s all ease;
 		position: relative;
 		margin: 0;
 		padding:10px 10px 10px 50px;
 		@include font-size(1.2);
 		@include media-breakpoint-up(lg) {
-			padding: 30px 30px 30px 70px;
+			.entry-content & {
+				padding: 30px 30px 30px 70px;
+			}
 		}
 		cite {
 			display: block;
 			font-style: normal;
 			@include font-size(1);
 			&:before {
-				content: "- ";
+				content: "— ";
 			}
 		}
 		&:before {
 			content: "format_quote";
 			@include material-icon();
-			position: absolute;
 			font-size: 40px;
-			top: 10px;
-			left: 10px;
 			margin: -5px 0 0 0;
-			@include media-breakpoint-up(lg) {
-				left: 30px;
-				top: 30px;
-			}
 		}
 	}
 

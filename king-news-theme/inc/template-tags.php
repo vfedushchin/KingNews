@@ -240,7 +240,8 @@ function king_news_top_message( $format = '%s' ) {
 		return;
 	}
 
-	printf( $format, wp_kses( $message, wp_kses_allowed_html( 'post' ) ) );
+
+	printf( $format, wp_kses( king_news_render_macros($message), wp_kses_allowed_html( 'post' ) ) );
 
 }
 
