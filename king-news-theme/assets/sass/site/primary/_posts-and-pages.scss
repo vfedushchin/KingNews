@@ -384,6 +384,7 @@
 				position: absolute;
 				top: 10px;
 				left: 10px;
+				padding-right: 15px;
 			}
 
 			& + .post-body-right {
@@ -408,7 +409,7 @@
 
 
 
-.single-post {
+.single-post, .page-template-page-with-social {
 	@media (min-width: 1199px) {
 		.post-left-column {
 			float: left;
@@ -420,3 +421,5 @@
 		}
 	}
 }
+
+.page-template-page-with-social .post-left-column .share-btns__list { margin-top: 20px; }

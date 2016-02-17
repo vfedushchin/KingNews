@@ -1193,7 +1193,7 @@ function king_news_share_buttons( $context = 'loop', $args = array(), $config = 
 		$meta = 'single_post_share_buttons';
 	}
 
-	if ( ! king_news_is_meta_visible( $meta, $context ) ) {
+	if ( ! king_news_is_meta_visible( $meta, $context ) & 'page-social' != $context) {
 		return;
 	}
 
