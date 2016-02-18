@@ -11,7 +11,7 @@
 	<div class="post-list__item-content">
 
 
-			<figure class="post-thumbnail <?php /*king_news_post_thumbnail_class();*/ ?> ">
+			<figure class="post-thumbnail <?php king_news_post_thumbnail_class(); ?> ">
 				<?php king_news_post_thumbnail( true ); ?>
 				<?php king_news_meta_categories( 'loop' ); ?>
 				<?php king_news_sticky_label(); ?>
@@ -31,7 +31,7 @@
 			</header><!-- .entry-header -->
 
 			<div class="entry-content">
-				<?php king_news_blog_content(70); ?>
+				<?php king_news_blog_content(); ?>
 			</div><!-- .entry-content -->
 
 			<?php if ( 'post' === get_post_type() ) : ?>

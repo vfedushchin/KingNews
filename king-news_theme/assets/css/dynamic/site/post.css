@@ -23,7 +23,8 @@
 	background-color: $regular_text_color;
 }
 .post-format-link {
-	background: @alpha( $regular_accent_color_1, 80 );
+	background: $regular_accent_color_1;
+	font-family: $h3_font_family;
 }
 .post-format-quote:before,
 .post-format-quote cite,

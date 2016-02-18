@@ -11,12 +11,14 @@
 	<div class="post-list__item-content">
 
 
-			<figure class="post-thumbnail <?php /*king_news_post_thumbnail_class();*/ ?> ">
-				<?php king_news_post_thumbnail( true ); ?>
-				<?php king_news_meta_categories( 'loop' ); ?>
-				<?php king_news_sticky_label(); ?>
-			</figure><!-- .post-thumbnail -->
-
+		<figure class="post-thumbnail  post-thumbnail--fullwidth">
+			<?php king_news_post_thumbnail(true, '','_tm-thumb-1132-411'); ?>
+			<?php king_news_meta_categories( 'loop' ); ?>
+			<?php king_news_sticky_label(); ?>
+			<div class="post-thumbnail__format-link">
+				<?php do_action( 'cherry_post_format_link', array( 'render' => true, 'class' => 'invert' ) ); ?>
+			</div>
+		</figure><!-- .post-thumbnail -->
 
 		<div class="post-body-right">
 			<header class="entry-header">
@@ -31,7 +33,7 @@
 			</header><!-- .entry-header -->
 
 			<div class="entry-content">
-				<?php king_news_blog_content(70); ?>
+				<?php king_news_blog_content(100); ?>
 			</div><!-- .entry-content -->
 
 			<?php if ( 'post' === get_post_type() ) : ?>

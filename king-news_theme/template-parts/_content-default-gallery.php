@@ -16,7 +16,7 @@
 <!-- $layout = get_theme_mod( 'blog_layout_type', 'default' ); -->
 
 			<figure class="post-thumbnail <?php king_news_post_thumbnail_class(); ?> ">
-				<?php do_action( 'cherry_post_format_gallery', array('size' => '_tm-thumb-240-100') ); ?>
+				<?php do_action( 'cherry_post_format_gallery', array('size' => '_tm-thumb-1132-411') ); ?>
 				<?php king_news_meta_categories( 'loop' ); ?>
 				<?php king_news_sticky_label(); ?>
 			</figure><!-- .post-thumbnail -->

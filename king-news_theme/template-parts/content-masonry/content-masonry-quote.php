@@ -11,27 +11,16 @@
 	<div class="post-list__item-content">
 
 
-			<figure class="post-thumbnail <?php /*king_news_post_thumbnail_class();*/ ?> ">
-				<?php king_news_post_thumbnail( true ); ?>
-				<?php king_news_meta_categories( 'loop' ); ?>
-				<?php king_news_sticky_label(); ?>
-			</figure><!-- .post-thumbnail -->
 
 
 		<div class="post-body-right">
-			<header class="entry-header">
 
-				<?php
-					if ( is_single() ) {
-						the_title( '<h2 class="entry-title">', '</h2>' );
-					} else {
-						the_title( '<h5 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h5>' );
-					}
-				?>
-			</header><!-- .entry-header -->
 
 			<div class="entry-content">
-				<?php king_news_blog_content(70); ?>
+				<?php king_news_sticky_label(); ?>
+				<a href="<?php echo get_permalink() ?>" class="quote-link" rel="bookmark">
+					<?php do_action( 'cherry_post_format_quote' ); ?>
+				</a>
 			</div><!-- .entry-content -->
 
 			<?php if ( 'post' === get_post_type() ) : ?>

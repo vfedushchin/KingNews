@@ -6,44 +6,43 @@
  *
  * @package King_News
  */
+
 ?>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'posts-list__item card' ); ?>>
-
 	<div class="post-list__item-content">
+	<header class="entry-header">
+
+
 		<?php king_news_meta_categories( 'loop' ); ?>
-		<?php king_news_sticky_label(); ?>
 
-		<header class="entry-header">
-			<?php
-				if ( is_single() ) {
-					the_title( '<h1 class="entry-title">', '</h1>' );
-				} else {
-					the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-				}
-			?>
-		</header><!-- .entry-header -->
+		<?php
+			if ( is_single() ) {
+				the_title( '<h2 class="entry-title">', '</h2>' );
+			} else {
+				the_title( '<h5 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h5>' );
+			}
+		?>
 
-		<div class="entry-content">
-			<?php
+		<?php do_action( 'cherry_post_format_audio' ); ?>
+	</header><!-- .entry-header -->
 
-				$embed_args = array(
-					'fields' => array( 'twitter', 'facebook' ),
-					'height' => 300,
-					'width'  => 300,
-				);
-				$embed_content = apply_filters( 'cherry_get_embed_post_formats', false, $embed_args );
-
-				if ( false === $embed_content ) {
-					king_news_blog_content();
-				} else {
-					printf( '<div class="embed-wrapper">%s</div>', $embed_content );
-				}
-			?>
-		</div><!-- .entry-content -->
+	<div class="entry-meta-sharing">
+		<!-- <div class="entry-content">
+			<?php king_news_blog_content(); ?>
+		</div>.entry-content -->
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 
 			<div class="entry-meta">
+				<?php
+					king_news_meta_author(
+						'loop',
+						array(
+							'before' => esc_html__( 'By', 'king_news' ) . ' ',
+						)
+					);
+				?>
 				<?php
 					king_news_meta_date( 'loop', array(
 						'before' => '<i class="material-icons">event</i>',
@@ -62,9 +61,10 @@
 					) );
 				?>
 			</div><!-- .entry-meta -->
+			<?php king_news_share_buttons( 'loop' ); ?>
+		</div><!-- .entry-meta-sharing -->
 
-		<?php endif; ?>
-
+	<?php endif; ?>
 	</div>
 	<footer class="entry-footer">
 		<?php king_news_share_buttons( 'loop' ); ?>

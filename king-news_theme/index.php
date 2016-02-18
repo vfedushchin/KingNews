@@ -42,6 +42,7 @@ if ( have_posts() ) :
 		//if need different templates for grid and masonry layouts
 		$layout = get_theme_mod( 'blog_layout_type', 'default' );
 
+
 		switch ( $layout ) {
 			case 'grid-2-cols':
 			case 'grid-3-cols':
@@ -64,15 +65,15 @@ if ( have_posts() ) :
 
 		$format = get_post_format();
 
-		if ( ! in_array( $layout, array( 'default', 'minimal' ) ) ) {
+		if ( in_array( $layout, array( 'default', 'minimal' ) ) ) {
 			if ( $format ) {
 				$layout .= '-' . $format;
 			}
 		}
-		$layout .= '-' . $format;
+		
 
-		echo " format = " . $format;
-		echo "<br> layout = " . $layout;
+		/*echo "<br> format = " . $format;
+		echo "<br> layout = " . $layout;*/
 
 		get_template_part( 'template-parts/content', $layout );
 

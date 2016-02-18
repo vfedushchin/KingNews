@@ -8,21 +8,12 @@
  */
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'posts-list__item card' ); ?>>
+
 	<div class="post-list__item-content">
+		<?php king_news_meta_categories( 'loop' ); ?>
+		<?php king_news_sticky_label(); ?>
 
-	<?php echo "minimal content"  ?>
-
-
-			<figure class="post-thumbnail <?php king_news_post_thumbnail_class(); ?> ">
-				<?php king_news_post_thumbnail( true ); ?>
-				<?php king_news_meta_categories( 'loop' ); ?>
-				<?php king_news_sticky_label(); ?>
-			</figure><!-- .post-thumbnail -->
-
-
-		<div class="post-body-right">
-			<header class="entry-header">
-
+		<header class="entry-header">
 				<?php
 					if ( is_single() ) {
 						the_title( '<h2 class="entry-title">', '</h2>' );
@@ -30,13 +21,27 @@
 						the_title( '<h5 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h5>' );
 					}
 				?>
-			</header><!-- .entry-header -->
+		</header><!-- .entry-header -->
 
-			<div class="entry-content">
-				<?php king_news_blog_content(25); ?>
-			</div><!-- .entry-content -->
+		<div class="entry-content">
+			<?php
 
-			<?php if ( 'post' === get_post_type() ) : ?>
+				$embed_args = array(
+					'fields' => array( 'twitter', 'facebook' ),
+					'height' => 300,
+					'width'  => 300,
+				);
+				$embed_content = apply_filters( 'cherry_get_embed_post_formats', false, $embed_args );
+
+				if ( false === $embed_content ) {
+					king_news_blog_content();
+				} else {
+					printf( '<div class="embed-wrapper">%s</div>', $embed_content );
+				}
+			?>
+		</div><!-- .entry-content -->
+
+		<?php if ( 'post' === get_post_type() ) : ?>
 
 				<div class="entry-meta-sharing">
 					<div class="entry-meta">
@@ -71,12 +76,11 @@
 					<?php king_news_share_buttons( 'loop' ); ?>
 				</div><!-- .entry-meta-sharing -->
 
-			<?php endif; ?>
+		<?php endif; ?>
 
-		
-		<footer class="entry-footer">
-			<?php king_news_read_more(); ?>
-			<?php king_news_share_buttons( 'loop' ); ?>
-		</footer><!-- .entry-footer -->
-	</div><!-- .post-body-right -->
+	</div>
+	<footer class="entry-footer">
+		<?php king_news_share_buttons( 'loop' ); ?>
+		<?php king_news_read_more(); ?>
+	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

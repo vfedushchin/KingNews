@@ -527,7 +527,7 @@ function king_news_post_content() {
  *
  * @return void
  */
-function king_news_post_thumbnail( $linked = false, $sizes = array() ) {
+function king_news_post_thumbnail( $linked = false, $sizes = array(), $new_custom_size = '' ) {
 
 	if ( ! has_post_thumbnail() ) {
 		return;
@@ -555,6 +555,7 @@ function king_news_post_thumbnail( $linked = false, $sizes = array() ) {
 
 	$size = apply_filters( 'king_news_post_thumbail_size', false );
 
+
 	if ( false === $size ) {
 
 		if ( ! is_single() ) {
@@ -571,6 +572,10 @@ function king_news_post_thumbnail( $linked = false, $sizes = array() ) {
 	}
 
 	$format = ( true === $linked ) ? $linked_format : $single_format;
+
+	if ('' !== $new_custom_size) {
+		$size = $new_custom_size;
+	};
 
 	printf( $format,
 		get_the_post_thumbnail( get_the_id(), $size, array( 'class' => join( ' ', $extra_classes ) ) ),

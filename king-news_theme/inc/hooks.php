@@ -66,6 +66,7 @@ function king_news_nav_menu_description( $item_output, $item, $depth, $args ) {
  */
 function king_news_set_thumb_sizes( $size ) {
 
+
 	if ( is_single() ) {
 		return $size;
 	}
@@ -73,8 +74,16 @@ function king_news_set_thumb_sizes( $size ) {
 	$layout = get_theme_mod( 'blog_layout_type', king_news_theme()->customizer->get_default( 'blog_layout_type' ) );
 
 	if ( 'default' === $layout && ! ( is_sticky() && is_home() && ! is_paged() ) ) {
+		return '_tm-thumb-536-411';
+		 //return $size;
+	}
+
+	if ( 'minimal' === $layout && ! ( is_sticky() && is_home() && ! is_paged() ) ) {
 		return $size;
 	}
+
+
+
 
 	return '_tm-post-thumbnail-large';
 }

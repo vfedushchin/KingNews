@@ -10,12 +10,13 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'posts-list__item card' ); ?>>
 	<div class="post-list__item-content">
 
-
-			<figure class="post-thumbnail <?php /*king_news_post_thumbnail_class();*/ ?> ">
-				<?php king_news_post_thumbnail( true ); ?>
-				<?php king_news_meta_categories( 'loop' ); ?>
-				<?php king_news_sticky_label(); ?>
+			<figure class="post-thumbnail <?php king_news_post_thumbnail_class(); ?> ">
+				<?php do_action( 'cherry_post_format_video', array( 'width'  => 770, 'height' => 480, ) ); ?>
+				<!-- <?php king_news_meta_categories( 'loop' ); ?>
+				<?php king_news_sticky_label(); ?> -->
 			</figure><!-- .post-thumbnail -->
+
+
 
 
 		<div class="post-body-right">
@@ -31,7 +32,7 @@
 			</header><!-- .entry-header -->
 
 			<div class="entry-content">
-				<?php king_news_blog_content(70); ?>
+				<?php king_news_blog_content(); ?>
 			</div><!-- .entry-content -->
 
 			<?php if ( 'post' === get_post_type() ) : ?>

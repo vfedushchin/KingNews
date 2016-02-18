@@ -119,6 +119,7 @@ button.mfp-arrow {
   padding: 0;
   z-index: 1046;
   -webkit-box-shadow: none;
+  background: none !important;
   box-shadow: none; }
 
 button::-moz-focus-inner {

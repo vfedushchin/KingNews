@@ -31,8 +31,8 @@ button:focus,
 	color: $invert_link_color;
 }
 
-button.menu-toggle {
-	background: $regular_accent_color_3;
+button.menu-toggle:hover {
+	color: $regular_accent_color_1;
 }
 
 // contact form 7 plugin

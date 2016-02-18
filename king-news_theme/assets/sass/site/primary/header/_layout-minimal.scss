@@ -2,6 +2,9 @@
 	.social-list {
 		-webkit-order: 2;
 		order: 2;
+		@media (max-width: 991px) {
+		    order: 0;
+		}
 		-webkit-flex: 0 1 auto;
 		flex: 0 1 auto;
 		-webkit-align-self: center;

@@ -37,4 +37,5 @@ function _tm_register_image_sizes() {
 	add_image_size( '_tm-thumb-536-411', 536, 411, true );
 	add_image_size( '_tm-thumb-426-327', 426, 327, true );
 	add_image_size( '_tm-thumb-860-662', 860, 662, true );
+	add_image_size( '_tm-thumb-1132-411', 1132, 411, true );
 }

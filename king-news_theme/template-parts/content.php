@@ -33,7 +33,7 @@
 			</header><!-- .entry-header -->
 
 			<div class="entry-content">
-				<?php king_news_blog_content(100); ?>
+				<?php king_news_blog_content(25); ?>
 			</div><!-- .entry-content -->
 
 			<?php if ( 'post' === get_post_type() ) : ?>
