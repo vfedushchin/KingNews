@@ -29,7 +29,7 @@ h2 {
 	text-align: $h2_text_align;
 	color: $regular_h2_color;
 }
-h3, blockquote p {
+h3, blockquote p, .tm_fpblock__item__title {
 	font-style: $h3_font_style;
 	font-weight: $h3_font_weight;
 	font-size: @font_size($h3_font_size, multiple, ceil, 0.45)px;
@@ -148,8 +148,11 @@ mark, ins {
 	background-color: $top_panel_bg;
 }
 
-.site-footer, .sidebar-primary, .entry-meta, .post__tags {
+.site-footer, .sidebar-primary, .entry-meta, .post__tags, .entry-header {
 	font-family: $h2_font_family;
+}
+.entry-header {
+	font-size: 14px;
 }
 
 .boxed-wrap {

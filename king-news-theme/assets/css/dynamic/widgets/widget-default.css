@@ -114,3 +114,24 @@
 .invert .widget_recent_entries ul li .post-date::before{
 	color: $invert_accent_color_3;
 }
+
+
+
+
+
+
+/*_tm-widget-featured-posts-block*/
+.tm_fpblock__item__date {
+	color: $regular_accent_color_1;
+	font-family: $h2_font_family;
+}
+.tm_fpblock__item .tm_fpblock__item__category {
+	color: $regular_text_color;
+	background: $regular_accent_color_2;
+	font-family: $h2_font_family;
+	transition: .4s all ease;
+}
+.tm_fpblock__item .tm_fpblock__item__category:hover {
+	color: $regular_accent_color_2;
+	background: $regular_text_color;
+}

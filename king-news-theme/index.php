@@ -24,7 +24,7 @@ if ( have_posts() ) :
 
 
 	<!-- title -->
-	<h2 class="title-line">Latest news</h2>
+	<h2 class="title-line"><?php esc_html_e( 'Latest news', 'king_news' ); ?></h2>
 
 	<div <?php king_news_posts_list_class(); ?>>
 
@@ -38,7 +38,29 @@ if ( have_posts() ) :
 		 * If you want to override this in a child theme, then include a file
 		 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 		 */
-		get_template_part( 'template-parts/content', get_post_format() );
+
+		//if need different templates for grid and masonry layouts
+		$layout = get_theme_mod( 'blog_layout_type', 'default' );
+
+		switch ( $layout ) {
+			case 'grid-2-cols':
+			case 'grid-3-cols':
+				$layout = 'grid';
+				break;
+			
+			case 'masonry-2-cols':
+			case 'masonry-3-cols':
+				$layout = 'masonry';
+				break;
+		}
+
+		$format = get_post_format();
+
+		if ( $format ) {
+			$layout .= '-' . $format;
+		}
+
+		get_template_part( 'template-parts/content', $layout );
 
 	endwhile; ?>
 

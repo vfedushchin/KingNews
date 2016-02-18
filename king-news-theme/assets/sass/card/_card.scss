@@ -23,16 +23,31 @@
 		}
 	}
 	.posts-list {
-		&--grid-2-cols {
+		&--grid-2-cols , &--grid-3-cols{
 			.card {
 				flex: 1 0 calc(100%/2 - #{$card-deck-margin});
 				max-width: calc(100%/2 - #{$card-deck-margin});
 			}
+
+			.hentry, .hentry + .hentry {
+				overflow: visible;
+				padding-top: 0;
+				border-top: none;
+				border: 1px solid #000;
+				padding: 7px;
+				@include media-breakpoint-up(lg) {
+					padding: 20px;
+				}
+			}
 		}
 		&--grid-3-cols {
 			.card {
-				flex: 1 0 calc(100%/3 - #{$card-deck-margin});
-				max-width: calc(100%/3 - #{$card-deck-margin});
+				flex: 1 0 calc(100%/2 - #{$card-deck-margin});
+				max-width: calc(100%/2 - #{$card-deck-margin});
+				@include media-breakpoint-up(xl) {
+					flex: 1 0 calc(100%/3 - #{$card-deck-margin});
+					max-width: calc(100%/3 - #{$card-deck-margin});
+				}
 			}
 		}
 		&--grid-2-cols,

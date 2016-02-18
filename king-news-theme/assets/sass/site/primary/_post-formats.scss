@@ -88,7 +88,7 @@
 		@include font-size(1.2);
 		@include media-breakpoint-up(lg) {
 			.entry-content & {
-				padding: 30px 30px 30px 70px;
+				padding: 30px 30px 30px 30px;
 			}
 		}
 		cite {
@@ -110,11 +110,8 @@
 	/* Wrapper for non-image featured content */
 	&-featured-content {
 		border-radius: $border__radius $border__radius 0 0;
-		margin: -10px -10px 10px;
 		overflow: hidden;
-		@include media-breakpoint-up(lg) {
-			margin: -30px -30px 30px;
-		}
+
 		.format-video & {
 			background: none;
 		}

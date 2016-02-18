@@ -18,7 +18,7 @@ button:hover,
 .btn:focus,
 button:focus,
 .comment-form .submit:focus {
-	box-shadow: 0 0 1px $regular_accent_color_1;
+	//box-shadow: 0 0 1px $regular_accent_color_3;
 }
 
 .btn.btn-secondary,
@@ -31,6 +31,9 @@ button:focus,
 	color: $invert_link_color;
 }
 
+button.menu-toggle {
+	background: $regular_accent_color_3;
+}
 
 // contact form 7 plugin
 .wpcf7-form {

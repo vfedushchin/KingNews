@@ -331,6 +331,7 @@ if ( ! class_exists( 'King_News_Theme_Setup' ) ) {
 			require_once KING_NEWS_THEME_DIR . '/inc/widgets/tm-smart-slider-widget/class-tm-smart-slider-widget.php';
 			require_once KING_NEWS_THEME_DIR . '/inc/widgets/tm-subscribe-follow-widget/class-tm-subscribe-follow-widget.php';
 			require_once KING_NEWS_THEME_DIR . '/inc/widgets/tm-instagram-widget/class-tm-instagram-widget.php';
+			require_once KING_NEWS_THEME_DIR . '/inc/widgets/tm-featured-posts-block-widget/class-tm-featured-posts-block-widget.php';
 
 			/**
 			 * Classes

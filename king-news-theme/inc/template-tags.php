@@ -710,8 +710,8 @@ function king_news_meta_date( $context = 'loop', $args = array() ) {
 	);
 
 	// output date for posts for example '2 days ago'
-	// printf( _x( '%s ago', '%s = human-readable time difference', '__tm' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) );
-	$time_string = sprintf( _x( '%s ago', '%s = human-readable time difference', '__tm' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) );
+	// printf( _x( '%s ago', '%s = human-readable time difference', 'king_news' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) );
+	$time_string = sprintf( _x( '%s ago', '%s = human-readable time difference', 'king_news' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) );
 
 
 	/**

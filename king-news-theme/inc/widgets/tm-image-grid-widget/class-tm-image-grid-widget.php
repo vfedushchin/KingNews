@@ -276,6 +276,8 @@ if ( !class_exists( 'King_News_Image_Grid_Widget' ) ) {
 					$title = $this->get_post_title( $post, $instance );
 					$date = $this->get_post_date();
 					//$date = human_time_diff($date, current_time( 'timestamp' ));
+					//$date = human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ));
+					$date = sprintf( _x( '%s ago', '%s = human-readable time difference', 'king_news' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) );
 
 
 					$view_dir = locate_template( 'inc/widgets/tm-image-grid-widget/views/tm-image-grid-view.php' );
