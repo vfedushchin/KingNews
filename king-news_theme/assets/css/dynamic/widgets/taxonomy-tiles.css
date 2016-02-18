@@ -1,0 +1,16 @@
+.widget-taxonomy-tiles__content::before{
+	background: $regular_accent_color_1;
+	background: -webkit-linear-gradient(to right, $regular_accent_color_1 0%, @darken( $regular_accent_color_1, 10% ) 100%);
+	background: linear-gradient(to right, $regular_accent_color_1 0%, @darken( $regular_accent_color_1, 10% ) 100%);
+}
+.widget-taxonomy-tiles__inner:hover .widget-taxonomy-tiles__content::before {
+	background: $regular_accent_color_2;
+	background: -webkit-linear-gradient(to right, $regular_accent_color_2 0%, @darken( $regular_accent_color_2, 0% ) 100%);
+	background: linear-gradient(to right, $regular_accent_color_2 0%, @darken( $regular_accent_color_2, 0% ) 100%);
+
+}
+.widget-taxonomy-tiles__content a:hover{
+	color: $regular_link_color;
+	-webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}

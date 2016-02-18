@@ -1,0 +1,58 @@
+.site-header.minimal {
+	.social-list {
+		-webkit-order: 2;
+		order: 2;
+		-webkit-flex: 0 1 auto;
+		flex: 0 1 auto;
+		-webkit-align-self: center;
+		align-self: center;
+		white-space: nowrap;
+		padding: 5px 0 5px;
+	}
+	.main-navigation {
+		-webkit-order: 1;
+		order: 3;
+		-webkit-flex: 0 1 100%;
+		flex: 0 1 100%;
+		-webkit-align-self: flex-end;
+		align-self: flex-end;
+		text-align: left;
+			@media screen and (min-width: 37.5em) {
+				order: 1;
+				flex: 20 1 50%;
+			}
+	}
+	.site-branding {
+		-webkit-order: 0;
+		order: 0;
+		-webkit-flex: 0 1 auto;
+		flex: 0 1 auto;
+		-webkit-align-self: center;
+		align-self: center;
+		padding: 0 0 19px;
+		width: 100%;
+		border-bottom: 1px solid $color__line;
+	}
+}
+.header-container {
+	&__flex {
+		display: -webkit-flex;
+		display: flex;
+		-webkit-flex-direction: row;
+		flex-direction: row;
+		-webkit-flex-wrap: wrap;
+		flex-wrap: wrap;
+		-ms-flex-pack: justify;
+		-webkit-justify-content: space-between;
+		justify-content: space-between;
+		-ms-flex-line-pack: stretch;
+		-webkit-align-content: stretch;
+		align-content: stretch;
+		-ms-flex-align: start;
+		-webkit-align-items: flex-start;
+		align-items: flex-start;
+			@media screen and (min-width: 37.5em) {
+				flex-wrap: no-wrap;
+			}
+	}
+}

@@ -1,0 +1,10 @@
+form[id*='give-form'] {
+	margin: 0;
+	.give-btn {
+		&.give-btn-modal {
+			margin: 0
+		}
+	}
+}
+
+.widget_give_forms_widget .widget-title {}
