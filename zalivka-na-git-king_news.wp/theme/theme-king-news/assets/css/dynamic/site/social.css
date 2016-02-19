@@ -1,0 +1,57 @@
+.social-list a,
+.social-list a:hover,
+.social-list a:active,
+.social-list a:visited,
+.share-btns__link,
+.share-btns__link:hover,
+.share-btns__link:active,
+.share-btns__link:visited {
+	color: $regular_accent_color_3;
+}
+.social-list a::before,
+.share-btns__link {
+  transition: .4s all ease;
+}
+.social-list a:hover::before,
+.share-btns__link:hover {
+  transition: .4s all ease;
+  color: $regular_text_color;
+  background: $regular_accent_color_2;
+}
+.share-btns__link:hover {
+  background: none;
+}
+
+//.footer-area .social-list li > a:hover::before { background: $regular_accent_color_2; }
+.social-list--footer li > a:hover { color: $invert_link_color; }
+.social-list--footer li > a:hover::before { background-color: $regular_accent_color_2;; }
+
+.widget .social-list a::before {
+  color: #fff;
+  background: $regular_text_color;
+}
+.widget .social-list a:hover::before {
+  color: $regular_text_color;
+  background: $regular_accent_color_2;
+}
+
+.share-btns__list-single-page .share-btns__link:hover {
+  background: $regular_accent_color_2;
+}
+
+
+
+
+.widget-image-grid .social-list a,
+.widget-image-grid .social-list a:hover,
+.widget-image-grid .social-list a:active,
+.widget-image-grid .social-list a:visited,
+.widget-image-grid .share-btns__link,
+.widget-image-grid .share-btns__link:hover,
+.widget-image-grid .share-btns__link:active,
+.widget-image-grid .share-btns__link:visited {
+  color: #fff;
+}
+.widget-image-grid .share-btns__link:hover {
+  color: $regular_accent_color_2;
+}

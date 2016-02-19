@@ -1,0 +1,23 @@
+.site-header.default {
+	.header-container {
+		padding-top: 10px;
+	}
+	.main-navigation {
+		text-align: left;
+		clear: both;
+		padding: 10px 0 0 0;
+		ul.menu {
+			> li {
+				margin-left: 0;
+			}
+		}
+	}
+	.site-branding {
+		margin-top: 4px;
+		float: left;
+	}
+	.social-list {
+		float: right;
+		padding: 10px 0;
+	}
+}

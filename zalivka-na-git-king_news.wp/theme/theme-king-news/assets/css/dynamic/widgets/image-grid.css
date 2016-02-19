@@ -1,0 +1,23 @@
+.widget-image-grid__content::before{
+	color: #fff;
+}
+.widget-image-grid__content .widget-image-grid__link i{
+	color: #fff;
+}
+.widget-image-grid__content .widget-image-grid__link:hover i{
+	color: #fff;
+}
+.widget-image-grid__content .widget-image-grid__title a:hover {
+	color: $regular_accent_color_1;
+}
+
+.widget-image-grid__content .share-btns-main .share-main-icon {
+  //color: #fff;
+}
+.widget-image-grid__holder .widget-image-grid__content,
+.widget-image-grid__holder .widget-image-grid__content .widget-image-grid__footer .post-author {
+  color: #fff;
+}
+.widget-image-grid__content .share-btns-main .share-main-icon {
+  color: $regular_accent_color_2;
+}

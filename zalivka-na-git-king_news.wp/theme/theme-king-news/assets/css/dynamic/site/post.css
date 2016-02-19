@@ -1,0 +1,33 @@
+.post__cats a,
+.sticky__label {
+	color: $regular_text_color;
+	background: $regular_accent_color_2;
+	font-family: $h2_font_family;
+}
+.post__cats a:hover{
+	color: $regular_accent_color_2;
+	background: $regular_text_color;
+}
+.post .material-icons{
+	color: $regular_accent_color_3;
+}
+.post-author,
+.posted-by,
+.post-featured-content {
+	color: $regular_text_color;
+}
+.post__tags {
+	color: $regular_text_color;
+}
+.post-author__holder {
+	background-color: $regular_text_color;
+}
+.post-format-link {
+	background: $regular_accent_color_1;
+	font-family: $h3_font_family;
+}
+.post-format-quote:before,
+.post-format-quote cite,
+#cancel-comment-reply-link {
+	color: $regular_accent_color_1;
+}
