@@ -41,6 +41,14 @@
 
 
 
+.widget-new-smart-inner-big-before-content .social-list a,
+.widget-new-smart-inner-big-before-content .social-list a:hover,
+.widget-new-smart-inner-big-before-content .social-list a:active,
+.widget-new-smart-inner-big-before-content .social-list a:visited,
+.widget-new-smart-inner-big-before-content .share-btns__link,
+.widget-new-smart-inner-big-before-content .share-btns__link:hover,
+.widget-new-smart-inner-big-before-content .share-btns__link:active,
+.widget-new-smart-inner-big-before-content .share-btns__link:visited,
 
 .widget-image-grid .social-list a,
 .widget-image-grid .social-list a:hover,
@@ -52,6 +60,7 @@
 .widget-image-grid .share-btns__link:visited {
   color: #fff;
 }
+.widget-new-smart-inner-big-before-content .share-btns__link:hover,
 .widget-image-grid .share-btns__link:hover {
   color: $regular_accent_color_2;
 }

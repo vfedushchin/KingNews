@@ -31,6 +31,11 @@ function my_theme_register_required_plugins() {
 			'required'  => false,
 		),
 		array(
+			'name'      => 'Easy twitter feed widget',
+			'slug'      => 'easy-twitter-feed-widget',
+			'required'  => false,
+		),
+		array(
 			'name'      => 'Give - WordPress Donation Plugin',
 			'slug'      => 'give',
 			'required'  => false,

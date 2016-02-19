@@ -148,3 +148,9 @@
 .news-smart-box__navigation .terms-list .term-item:before {
 	background: $regular_accent_color_1;
 }
+.widget-new-smart-inner-big-before-content .material-icons.share-main-icon {
+  color: $regular_accent_color_2;
+}
+.widget-new-smart-inner-big-before-content figure figcaption .post-date__link {
+	font-family: $h2_font_family;
+}

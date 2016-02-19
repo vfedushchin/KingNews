@@ -1,5 +1,29 @@
 .news-smart-box{
 	margin-top: 13px;
+	margin-bottom: 12px;
+
+	.entry-meta {
+		.meta-inner {
+			float: left;
+		}
+		.share-btns-main {
+			float: right;
+		}
+	}
+	.post__cats {
+		a {
+			margin-right: 5px;
+		}
+	}
+
+	.widget-new-smart__title-small {
+		margin-top: -8px;
+		margin-bottom: 0;
+		a {
+			text-decoration: none;
+		}
+	}
+
 	&__instance{
 		article.post{
 
@@ -16,6 +40,12 @@
 						max-width: 240px;
 						float: left;
 						margin-right: 20px;
+						@media (max-width: 1340px) {
+						    max-width: 100%;
+						    margin-right: 0;
+						    margin-bottom: 10px;
+						    float: none;
+						}
 					}
 					&-content {
 						margin-top: 0;
@@ -27,7 +57,7 @@
 			}
 			.inner{
 				margin-top: 20px;
-				padding-top: 20px;
+				padding-top: 30px;
 				border-top: 1px dotted #d2d1d1;
 				@include transition(all 0.8s ease);
 				&.animate-cycle-show{
@@ -49,6 +79,7 @@
 			}
 			.post-thumbnail__link{
 				display: block;
+				margin-bottom: 10px;
 				img{
 					width: 100%;
 					display: block;
@@ -116,7 +147,10 @@
 		@media (max-width: 1199px) {
 			flex-direction: column;
 		}
-		margin-bottom: 60px;
+		margin-bottom: 20px;
+		@include media-breakpoint-up(lg) {
+			margin-bottom: 54px;
+		}
 			.current-term{
 				flex: 0 1 auto;
 				position: relative;
@@ -223,8 +257,13 @@
 
 
 
-
 .widget-new-smart-inner-big-before-content {
+
+	.full-type + .full-type {
+		margin-top: 20px;
+	}
+
+
 	figure {
 		position: relative;
 
@@ -275,6 +314,21 @@
 				@include gradient_vertical(rgba(#000,0), rgba(#000,1));
 			}
 
+			.widget-new-smart__title {
+				color: #fff;
+			}
+			.post-date__link {
+				font-size: 14px;
+				&:hover {
+					color: #fff;
+				}
+			}
+
+
+			.widget-new-smart__footer {
+				width: 100%;
+			}
+
 			.widget-new-smart__footer-2 {
 				flex-wrap: wrap;
 		    align-content: center;
@@ -282,6 +336,12 @@
 		    width: 100%;
 		    justify-content: space-between;
 		    display: flex;
+			}
+
+			@media (min-width: 991px) and (max-width: 1350px) {
+			    .widget-new-smart__title {
+			    	font-size: 20px;
+			    }
 			}
 		}
 	}
