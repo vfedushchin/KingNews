@@ -27,6 +27,7 @@
 			self.smart_slider_init( self );
 			self.swiper_carousel_init( self );
 			self.featured_posts_block_init( self );
+			self.news_smart_box_init( self );
 			self.post_formats_custom_init( self );
 			self.navbar_init( self );
 			self.subscribe_init( self );
@@ -144,6 +145,74 @@
 						}
 					}
 				);
+			});
+		},
+
+
+		
+		news_smart_box_init: function ( self ) {
+			jQuery('.news-smart-box__instance').each( function() {
+				var uniqId = $( this ).data( 'uniq-id' ),
+					instanceSettings = $( this ).data( 'instance-settings' ),
+					instance = $( '#' + uniqId ),
+					$termItemList = $( '.terms-list .term-item', instance ),
+					$currentTerm = $( '.current-term span', instance ),
+					$listContainer = $( '.news-smart-box__wrapper', instance ),
+					$ajaxPreloader = $( '.nsb-spinner', instance ),
+					ajaxGetNewInstance = null,
+					ajaxGetNewInstanceSuccess = true,
+					showNewItems = null;
+
+					$termItemList.on( 'click', function(){
+						var slug = $( this ).data( 'slug' ),
+							data = {
+								action: 'new_smart_box_instance',
+								value_slug: slug,
+								instance_settings: instanceSettings
+							},
+							currentTermName = $( 'span', this ).text(),
+							counter = 0;
+
+						$currentTerm.html( currentTermName );
+
+						if ( ajaxGetNewInstance != null && ajaxGetNewInstanceSuccess ) {
+							ajaxGetNewInstance.abort();
+						}
+						ajaxGetNewInstance = $.ajax({
+							type: 'GET',
+							url: king_news.ajaxurl,
+							data: data,
+							cache: false,
+							beforeSend: function(){
+								ajaxGetNewInstanceSuccess = false;
+								$ajaxPreloader.css( { 'display' : 'block' } ).fadeTo( 300, 1 );
+							},
+							success: function( response ){
+								ajaxGetNewInstanceSuccess = true;
+
+								$ajaxPreloader.fadeTo( 300, 0, function() {
+									$( this ).css( { 'display' : 'none' } );
+								});
+
+								$( '.news-smart-box__listing', $listContainer ).html( response );
+
+								counter = 0;
+								$( '.news-smart-box__listing .post .inner', $listContainer ).addClass( 'animate-cycle-show' );
+								$( '.news-smart-box__listing .post', $listContainer ).each( function() {
+									showItem( $( this ), 100 * parseInt( counter ) );
+									counter++;
+								})
+
+							}
+						});
+
+					});
+
+					var showItem = function( itemList, delay ) {
+						var timeOutInterval = setTimeout( function() {
+							$('.inner', itemList).removeClass( 'animate-cycle-show' );
+						}, delay );
+					}
 			});
 		},
 
@@ -463,21 +532,64 @@ $('.share-btns-main').hover(function(){
 });
 
 
-				/*stick up menu for social icons on single page*/
-				//var $page_social = $('.share-btns__list-single-page');
-				//$page_social.stickUp();
+/*
+if ($('.post-left-column')) {
+	// function for sticky social icons in post and pages
+	(function(){
+	var a = document.querySelector('.post-left-column'), b = null, P = 0;
+	window.addEventListener('scroll', Ascroll, false);
+	document.body.addEventListener('scroll', Ascroll, false);
+	function Ascroll() {
+		if (b == null) {
+			var Sa = getComputedStyle(a, ''), s = '';
+			for (var i = 0; i < Sa.length; i++) {
+				if (Sa[i].indexOf('overflow') == 0 || Sa[i].indexOf('padding') == 0 || Sa[i].indexOf('border') == 0 || Sa[i].indexOf('outline') == 0 || Sa[i].indexOf('box-shadow') == 0 || Sa[i].indexOf('background') == 0) {
+					s += Sa[i] + ': ' +Sa.getPropertyValue(Sa[i]) + '; '
+				}
+			}
+			b = document.createElement('div');
+			b.style.cssText = s + ' box-sizing: border-box; width: ' + a.offsetWidth + 'px;';
+			a.insertBefore(b, a.firstChild);
+			var l = a.childNodes.length;
+			for (var i = 1; i < l; i++) {
+				b.appendChild(a.childNodes[1]);
+			}
+			a.style.height = b.getBoundingClientRect().height + 'px';
+			a.style.padding = '0';
+			a.style.border = '0';
+		}
+		var Ra = a.getBoundingClientRect(),
+				R = Math.round(Ra.top + b.getBoundingClientRect().height - document.querySelector('.post-right-column').getBoundingClientRect().bottom);  // block selector when the lower edge of which you want to detach the adhesive element
+		if ((Ra.top - P) <= 0) {
+			if ((Ra.top - P) <= R) {
+				b.className = 'stop';
+				b.style.top = - R +'px';
+			} else {
+				b.className = 'sticky';
+				b.style.top = P + 'px';
+			}
+		} else {
+			b.className = '';
+			b.style.top = '';
+		}
+		window.addEventListener('resize', function() {
+			a.children[0].style.width = getComputedStyle(a, '').width
+		}, false);
+	}
+	})();
+}
+*/
 
-
-//initializing jQuery
+/*//initializing jQuery
 jQuery(function($) {
 	$(document).ready( function() {
 		//enabling stickUp on the '.navbar-wrapper' class
-		/*$('.share-btns__list-single-page').stickUp({
+		$('.share-btns__list-single-page').stickUp({
 			//enabling marginTop with the 'auto' setting 
 			marginTop: 'auto'
-		});*/
+		});
 	});
-});
+});*/
 
 
 // add class for full-width layout

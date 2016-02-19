@@ -156,7 +156,7 @@
 
 
 .posts-list .post_format-post-format-quote .entry-content, .posts-list .post_format-post-format-status .entry-content,  {
-    display: block;
+		display: block;
 }
 
 .entry {
@@ -394,7 +394,7 @@
 					float: right;
 					margin-top: 40px;
 					@media (max-width: 991px) {
-					    margin-top: 21px;
+							margin-top: 21px;
 					}
 				}
 			}
@@ -407,29 +407,29 @@
 			padding-right: 20px;
 			position: relative;
 			min-width: 130px;
-	    max-width: 100%;
-	    margin-bottom: 12px;
+			max-width: 100%;
+			margin-bottom: 12px;
 			
 			.posts-list--default & {
 				@media (max-width: 300px) {
-				    max-width: 100%;
-				    float: none;
-				    padding-right: 0;
+						max-width: 100%;
+						float: none;
+						padding-right: 0;
 				}
 
 				@media (max-width: 768px) {
-		    	padding-right: 10px;
-		      max-width: 20%;
-			    float: left;
-			    margin-bottom: 0;
-		    }
+					padding-right: 10px;
+					max-width: 20%;
+					float: left;
+					margin-bottom: 0;
+				}
 
-		    @media (max-width: 500px) {
-		    	padding-right: 0;
-		      max-width: 100%;
-			    float: none;
-			    margin-bottom: 15px;
-		    }
+				@media (max-width: 500px) {
+					padding-right: 0;
+					max-width: 100%;
+					float: none;
+					margin-bottom: 15px;
+				}
 
 				@include media-breakpoint-up(xl) {
 					max-width: 53%;
@@ -437,31 +437,31 @@
 				}
 			}
 
-	    @media (max-width: 500px) {
-	    	padding-right: 10px;
-	      max-width: 30%;
-		    float: left;
-		    margin-bottom: 0;
-	    }
-	    @media (min-width: 500px) {
-	      max-width: 50%;
-	      min-width: 170px;
-		    float: left;
-		    //min-height: 100px;
-		    margin-bottom: 0;
-	    }
+			@media (max-width: 500px) {
+				padding-right: 10px;
+				max-width: 30%;
+				float: left;
+				margin-bottom: 0;
+			}
+			@media (min-width: 500px) {
+				max-width: 50%;
+				min-width: 170px;
+				float: left;
+				//min-height: 100px;
+				margin-bottom: 0;
+			}
 
-	    &.post-thumbnail--fullwidth {
+			&.post-thumbnail--fullwidth {
 				max-width: 100%;
 				padding-right: 0;
 				padding-bottom: 15px;
 				float: none;
-	    }
+			}
 
-	    .post__cats {
-	    	top: 7px;
-	    	position: relative;
-	    }
+			.post__cats {
+				top: 7px;
+				position: relative;
+			}
 
 			.post-thumbnail__link + .post__cats {
 				position: absolute;
@@ -486,7 +486,7 @@
 }
 .post-body-right {
 	@include media-breakpoint-up(lg) {
-	  margin-top: -7px;
+		margin-top: -7px;
 	}
 }
 
@@ -519,27 +519,24 @@
 }
 
 
-.share-btns__list-single-page {
+
+.page, .single, .single-post {
+	.post-left-column {
+		height: auto !important;
+	}
 	@include media-breakpoint-up(xl) {
-		&.isStuck {
-
-			&.header-container {
-				padding-top: 0;
-			}
-			.site-branding {
-				display: none;
-			}
+		.sticky {
 			position: fixed;
-			width: 70px;
-			top: 50px !important;
-			z-index: 9999;
-			&.has-bar {
-				margin-top: 32px;
-			}
+			z-index: 101;
 		}
-
-		&.slideUp {
-			opacity: 0;
+		.stop {
+			position: relative;
+			z-index: 101;
 		}
 	}
+	
+}
+
+.share-btns__list-single-page {
+	padding-bottom: 20px;
 }

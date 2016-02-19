@@ -334,6 +334,7 @@ if ( ! class_exists( 'King_News_Theme_Setup' ) ) {
 			require_once KING_NEWS_THEME_DIR . '/inc/widgets/tm-subscribe-follow-widget/class-tm-subscribe-follow-widget.php';
 			require_once KING_NEWS_THEME_DIR . '/inc/widgets/tm-instagram-widget/class-tm-instagram-widget.php';
 			require_once KING_NEWS_THEME_DIR . '/inc/widgets/tm-featured-posts-block-widget/class-tm-featured-posts-block-widget.php';
+			require_once KING_NEWS_THEME_DIR . '/inc/widgets/tm-news-smart-box-widget/class-tm-news-smart-box-widget.php';
 
 			/**
 			 * Classes
@@ -491,6 +492,17 @@ if ( ! class_exists( 'King_News_Theme_Setup' ) ) {
 			wp_enqueue_script( 'king_news-theme-script', KING_NEWS_THEME_URI . '/assets/js/theme-script.js', $script_depends, KING_NEWS_THEME_VERSION, true );
 
 			wp_localize_script( 'king_news-theme-script', 'king_news', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+
+			/**
+			 * Filter for theme labels
+			 * @var array
+			 */
+			$theme_labels = apply_filters( 'king_news_theme_localize_labels', array( 'totop_button' => __( 'Top', 'king_news' ) ) );
+
+			wp_localize_script( 'king_news-theme-script', 'king_news', array(
+				'ajaxurl' => admin_url( 'admin-ajax.php' ),
+				'labels' => $theme_labels,
+			) );
 		}
 
 

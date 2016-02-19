@@ -69,7 +69,7 @@ if ( have_posts() ) :
 
 		$format = get_post_format();
 
-		if ( in_array( $layout, array( 'default', 'minimal' ) ) ) {
+		if ( in_array( $layout, array( 'default', 'minimal', 'masonry' ) ) ) {
 			if ( $format ) {
 				$layout .= '-' . $format;
 			}

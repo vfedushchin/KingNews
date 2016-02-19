@@ -123,6 +123,8 @@ function($) {
 				//$('.stuckMenu').css("position","relative");
 			};
 
+
+
 				var colOffset = $('.post-right-column').offset().top;
 				var colHeight = $('.post-right-column').height();
 				var colFullOffset = colOffset+colHeight;
@@ -145,6 +147,8 @@ function($) {
 						$('.stuckMenu.share-btns__list-single-page').removeClass('slideUp')
 					}			
 				}
+
+
 		});
 	});
 

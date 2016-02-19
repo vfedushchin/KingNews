@@ -100,7 +100,7 @@ if ( ! class_exists( 'Cherry_Breadcrumbs' ) ) {
 			$this->core = $core;
 
 			$defaults = array(
-				'separator'         => '&#124;',
+				'separator'         => '&#47;',
 				'before'            => '',
 				'after'             => '',
 				'show_mobile'       => true,
