@@ -548,8 +548,7 @@ $('.share-btns-main').hover(function(){
 
 
 
-/*
-if ($('.post-left-column')) {
+if ( $( ".post-left-column" ).length ) {
 	// function for sticky social icons in post and pages
 	(function(){
 	var a = document.querySelector('.post-left-column'), b = null, P = 0;
@@ -594,7 +593,7 @@ if ($('.post-left-column')) {
 	}
 	})();
 }
-*/
+
 
 /*//initializing jQuery
 jQuery(function($) {
