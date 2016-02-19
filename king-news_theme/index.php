@@ -63,6 +63,10 @@ if ( have_posts() ) :
 				break;
 		}
 
+		if( is_category( ) ){
+			$layout = 'default';
+		}
+
 		$format = get_post_format();
 
 		if ( in_array( $layout, array( 'default', 'minimal' ) ) ) {

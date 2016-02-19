@@ -31,6 +31,12 @@ ol {
 				padding-right: 9px;
 		}
 	}
+
+	.comments-area & {
+		li:before {
+			display: none;
+		}
+	}
 }
 
 

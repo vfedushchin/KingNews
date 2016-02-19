@@ -17,7 +17,7 @@
 		<figure class="post-thumbnail-- <?php king_news_post_thumbnail_class(); ?> ">
 			<!-- <?php king_news_post_thumbnail( true ); ?> -->
 			<?php do_action( 'cherry_post_format_image', array('size' => '_tm-thumb-150-115') ); ?>
-			<?php king_news_meta_categories( 'loop' ); ?>
+			<!-- <?php king_news_meta_categories( 'loop' ); ?> -->
 			<?php king_news_sticky_label(); ?>
 		</figure><!-- .post-thumbnail -->
 

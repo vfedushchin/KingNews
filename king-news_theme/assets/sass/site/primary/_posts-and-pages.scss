@@ -497,6 +497,7 @@
 		.post-left-column {
 			float: left;
 			width: 149px;
+			min-height: 1px;
 			padding-right: 70px;
 		}
 		.post-right-column {
@@ -509,9 +510,36 @@
 
 .single-post{
 	.post_format-post-format-gallery,
+	.post_format-post-format-video,
 	 {
 		.post-thumbnail {
 			display: none;
+		}
+	}
+}
+
+
+.share-btns__list-single-page {
+	@include media-breakpoint-up(xl) {
+		&.isStuck {
+
+			&.header-container {
+				padding-top: 0;
+			}
+			.site-branding {
+				display: none;
+			}
+			position: fixed;
+			width: 70px;
+			top: 50px !important;
+			z-index: 9999;
+			&.has-bar {
+				margin-top: 32px;
+			}
+		}
+
+		&.slideUp {
+			opacity: 0;
 		}
 	}
 }

@@ -266,7 +266,7 @@ if ( !class_exists( 'King_News_Image_Grid_Widget' ) ) {
 					$inline_style = 'style="margin: 0 0 ' . $items_padding . 'px ' . $items_padding . 'px;"';
 				}
 
-				echo apply_filters( 'king_news_image_grid_widget_before', '<div class="row columns-number-' . $columns_number . '" ' . $row_inline_style . '>' );
+				echo apply_filters( 'king_news_image_grid_widget_before', '<div class="row image_grid_widget-main columns-number-' . $columns_number . '" ' . $row_inline_style . '>' );
 
 				foreach ( $posts as $post ) {
 					setup_postdata( $post );

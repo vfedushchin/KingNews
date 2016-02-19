@@ -24,6 +24,13 @@
 
 	@include media-breakpoint-up(md) {
 		&.isStuck {
+
+			&.header-container {
+				padding-top: 0;
+			}
+			.site-branding {
+				display: none;
+			}
 			position: fixed;
 			width: 100%;
 			left: 0;
