@@ -17,6 +17,10 @@ if ( have_posts() ) : ?>
 	</header><!-- .page-header -->
 
 	<?php
+	echo "<h2  class='title-line archive-title'>";
+	echo single_cat_title();
+	echo get_the_author( );
+	echo "</h2>";
 	/* Start the Loop */
 	while ( have_posts() ) : the_post();
 
@@ -31,6 +35,7 @@ if ( have_posts() ) : ?>
 		}
 
 		get_template_part( 'template-parts/content' . $layout, get_post_format() );
+
 
 	endwhile;
 

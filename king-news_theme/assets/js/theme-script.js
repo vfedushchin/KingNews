@@ -539,7 +539,6 @@ $( "#main-menu > li > a" ).each(function( index ) {
 function share_hover_init() {
 	$('.news-smart-box .share-btns-main').hover(function(){
 		$(this).toggleClass('show-share-list');
-
 	});
 }
 $('.share-btns-main').hover(function(){

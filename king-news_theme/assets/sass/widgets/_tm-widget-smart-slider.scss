@@ -8,6 +8,22 @@
 	}
 }
 .king_news-smartslider{
+
+	.sp-bottom-thumbnails {
+		@include media-breakpoint-up(lg) {
+			margin-top: -154px;
+			margin-bottom: 55px;
+		}
+	}
+
+	.sp-thumbnail-container {
+		border: 2px solid rgba(#fff,0);
+		transition: .4s all ease;
+		&:hover, &.sp-selected-thumbnail {
+			border-color: #fff;
+		}
+	}
+
 	position: relative;
 	opacity: 0;
 	&__instance{
@@ -32,6 +48,7 @@
 				height: 50px;
 				background-image: none;
 				background-color: #2b8ffb;
+				transition: .4s all ease;
 					&:before{
 						@include material-icon();
 						transform: none;
@@ -39,33 +56,39 @@
 						position: relative;
 						width: 1em;
 						height: 1em;
-						margin: 13px;
+						margin: 16px;
 						right: 0;
 						top: 0;
 						left: 0;
 						bottom: 0;
-						font-size: 24px;
+						font-size: 20px;
 					}
 					&:after{
 						display:  none;
 					}
 					&.sp-previous-arrow{
-						border-radius: 0 4px 4px 0;
+						border-radius: 0;
 					}
 					&.sp-next-arrow{
-						border-radius: 4px 0 0 4px;
+						border-radius: 0;
 					}
 			}
 		}
 		&.sp-horizontal{
 			.sp-previous-arrow{
 				left: 0;
+				@include media-breakpoint-up(lg) {
+					left: 30px;
+				}
 					&:before{
 						content: "keyboard_arrow_left";
 					}
 			}
 			.sp-next-arrow{
 				right: 0;
+				@include media-breakpoint-up(lg) {
+					right: 30px;
+				}
 					&:before{
 						content: "keyboard_arrow_right";
 					}
@@ -95,15 +118,20 @@
 					width: 15px;
 					height: 15px;
 					border-color: #fff;
-					margin: 4px 15px;
-						&.sp-selected-button{
+					margin: 4px 9px;
+					transition: .4s all ease;
+						&:hover, &.sp-selected-button{
 							background-color: #fff;
 						}
 				}
 		}
 		h2.sp-title{
-			font-size: 80px;
-			line-height: 80px;
+			font-size: 20px;
+			line-height: 24px;
+			@include media-breakpoint-up(lg) {
+				font-size: 50px;
+				line-height: 63px;
+			}
 			text-align: center;
 				a{
 					color: #fff;

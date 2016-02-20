@@ -8,7 +8,7 @@
 
 			<div class="widget-new-smart__footer">
 				<h3 class="widget-new-smart__title">
-					<?php echo wp_trim_words($title, 5); ?>
+					<?php echo $title ?>
 				</h3>
 
 				<div class="widget-new-smart__footer-2">

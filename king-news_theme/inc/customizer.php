@@ -1364,7 +1364,7 @@ function king_news_get_customizer_options() {
 					'default'        => esc_html__( 'Default', 'king_news' ),
 					'minimal'        => esc_html__( 'Minimal', 'king_news' ),
 					'grid-2-cols'    => esc_html__( 'Grid (2 Columns)', 'king_news' ),
-					'grid-3-cols'    => esc_html__( 'Grid (3 Columns)', 'king_news' ),
+					// 'grid-3-cols'    => esc_html__( 'Grid (3 Columns)', 'king_news' ),
 					'masonry-2-cols' => esc_html__( 'Masonry (2 Columns)', 'king_news' ),
 					'masonry-3-cols' => esc_html__( 'Masonry (3 Columns)', 'king_news' ),
 				),

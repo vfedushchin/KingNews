@@ -534,4 +534,20 @@ function king_news_theme() {
 	return King_News_Theme_Setup::get_instance();
 }
 
+
+/**
+ * Returns trimmed title
+ *
+ * @return title
+ */
+function get_short_title($maxchar = 10){
+	$title = get_the_title();
+	if( iconv_strlen($title, 'utf-8') < $maxchar )
+		return $title;
+	$title = iconv_substr( $title, 0, $maxchar, 'utf-8' );
+	$title = preg_replace('@(.*)\s[^\s]*$@s', '\\1...', $title); // remove the last word, because it is in 99% of cases of incomplete
+
+	return $title;
+}
+
 king_news_theme();

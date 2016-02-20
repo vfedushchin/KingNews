@@ -1,18 +1,14 @@
 .king_news-smartslider .sp-arrows .sp-arrow{
-	color: $invert_link_color;
-	background: $regular_accent_color_2;
+	background: #000;
+	color: #fff;
 }
 .king_news-smartslider .sp-arrows .sp-next-arrow:hover{
-	color: $invert_link_color;
-	background: $regular_accent_color_1;
-	background: -webkit-linear-gradient(to right, $regular_accent_color_1 0%, @darken( $regular_accent_color_1, 10% ) 100%);
-	background: linear-gradient(to right, $regular_accent_color_1 0%, @darken( $regular_accent_color_1, 10% ) 100%);
+	color: #000;
+	background: #fff;
 }
 .king_news-smartslider .sp-arrows .sp-previous-arrow:hover{
-	color: $invert_link_color;
-	background: $regular_accent_color_1;
-	background: -webkit-linear-gradient(to left, $regular_accent_color_1 0%, @darken( $regular_accent_color_1, 10% ) 100%);
-	background: linear-gradient(to left, $regular_accent_color_1 0%, @darken( $regular_accent_color_1, 10% ) 100%);
+	color: #000;
+	background: #fff;
 }
 
 .sp-image-container {
@@ -25,5 +21,10 @@
 	top: 0;
 	right: 0;
 	bottom: 0;
-	background: @alpha( $regular_accent_color_2, 50 );
+	background: @alpha( $regular_text_color, 50 );
+}
+
+h2.sp-title {
+	font-family: $h3_font_family;
+	font-style: $h3_font_style;
 }
