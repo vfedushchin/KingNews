@@ -10,7 +10,7 @@
 // Grid layout
 //
 
-@include media-breakpoint-up(md) {
+@include media-breakpoint-up(xl) {
 	.card-deck {
 		display: flex;
 		flex-flow: row wrap;
@@ -29,16 +29,24 @@
 				max-width: calc(100%/2 - #{$card-deck-margin});
 			}
 
+
 			.hentry, .hentry + .hentry {
-				overflow: visible;
 				padding-top: 0;
 				border-top: none;
-				border: 1px solid #000;
-				padding: 7px;
-				@include media-breakpoint-up(lg) {
-					padding: 20px;
+			}
+			.post-format-audio {
+				.hentry, .hentry + .hentry {
+					overflow: visible;
+					padding-top: 0;
+					border-top: none;
+					border: 1px solid #000;
+					padding: 7px;
+					@include media-breakpoint-up(lg) {
+						padding: 20px;
+					}
 				}
 			}
+
 		}
 		&--grid-3-cols {
 			.card {
@@ -82,6 +90,12 @@
 		}
 	}
 	.posts-list--masonry-2-cols, .posts-list--masonry-3-cols {
+
+		/* hide gallery on masonry view */
+		.post_format-post-format-gallery .post-thumbnail {
+			display: none;
+		}
+
 		-moz-column-count: 2;
 		-webkit-column-count: 2;
 		column-count: 2;

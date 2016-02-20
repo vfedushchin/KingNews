@@ -39,8 +39,27 @@
   background: $regular_accent_color_2;
 }
 
+.grid-view-main .material-icons.share-main-icon {
+  color: $regular_accent_color_2;
+}
 
+.grid-view-main .social-list a,
+.grid-view-main .social-list a:hover,
+.grid-view-main .social-list a:active,
+.grid-view-main .social-list a:visited,
+.grid-view-main .share-btns__link,
+.grid-view-main .share-btns__link:hover,
+.grid-view-main .share-btns__link:active,
+.grid-view-main .share-btns__link:visited,
 
+.widget-new-smart-inner-big-before-content .social-list a,
+.widget-new-smart-inner-big-before-content .social-list a:hover,
+.widget-new-smart-inner-big-before-content .social-list a:active,
+.widget-new-smart-inner-big-before-content .social-list a:visited,
+.widget-new-smart-inner-big-before-content .share-btns__link,
+.widget-new-smart-inner-big-before-content .share-btns__link:hover,
+.widget-new-smart-inner-big-before-content .share-btns__link:active,
+.widget-new-smart-inner-big-before-content .share-btns__link:visited,
 
 .widget-image-grid .social-list a,
 .widget-image-grid .social-list a:hover,
@@ -52,6 +71,12 @@
 .widget-image-grid .share-btns__link:visited {
   color: #fff;
 }
+.grid-view-main .share-btns__link:hover,
+.widget-new-smart-inner-big-before-content .share-btns__link:hover,
 .widget-image-grid .share-btns__link:hover {
   color: $regular_accent_color_2;
+}
+
+.grid-view__footer-2 {
+  font-family: $h2_font_family;
 }

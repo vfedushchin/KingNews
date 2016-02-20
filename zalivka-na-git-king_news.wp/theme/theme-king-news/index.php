@@ -39,7 +39,7 @@ if ( have_posts() ) :
 		 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 		 */
 
-		//if need different templates for grid and masonry layouts
+		//if need different post templates for grid and masonry layouts
 		$layout = get_theme_mod( 'blog_layout_type', 'default' );
 
 
@@ -69,12 +69,11 @@ if ( have_posts() ) :
 
 		$format = get_post_format();
 
-		if ( in_array( $layout, array( 'default', 'minimal', 'masonry' ) ) ) {
+		if ( in_array( $layout, array( 'default', 'minimal', 'masonry', 'grid' ) ) ) {
 			if ( $format ) {
 				$layout .= '-' . $format;
 			}
 		}
-		
 
 		/*echo "<br> format = " . $format;
 		echo "<br> layout = " . $layout;*/

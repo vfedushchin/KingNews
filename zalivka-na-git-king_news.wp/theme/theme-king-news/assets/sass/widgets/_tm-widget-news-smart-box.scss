@@ -1,5 +1,35 @@
 .news-smart-box{
 	margin-top: 13px;
+	margin-bottom: 12px;
+
+	a {
+		text-decoration: none;
+	}
+
+
+
+	.entry-meta {
+		.meta-inner {
+			float: left;
+		}
+		.share-btns-main {
+			float: right;
+		}
+	}
+	.post__cats {
+		a {
+			margin-right: 5px;
+		}
+	}
+
+	.widget-new-smart__title-small {
+		margin-top: -8px;
+		margin-bottom: 0;
+		a {
+			text-decoration: none;
+		}
+	}
+
 	&__instance{
 		article.post{
 
@@ -16,6 +46,12 @@
 						max-width: 240px;
 						float: left;
 						margin-right: 20px;
+						@media (max-width: 1340px) {
+						    max-width: 100%;
+						    margin-right: 0;
+						    margin-bottom: 10px;
+						    float: none;
+						}
 					}
 					&-content {
 						margin-top: 0;
@@ -27,7 +63,7 @@
 			}
 			.inner{
 				margin-top: 20px;
-				padding-top: 20px;
+				padding-top: 30px;
 				border-top: 1px dotted #d2d1d1;
 				@include transition(all 0.8s ease);
 				&.animate-cycle-show{
@@ -49,6 +85,7 @@
 			}
 			.post-thumbnail__link{
 				display: block;
+				margin-bottom: 10px;
 				img{
 					width: 100%;
 					display: block;
@@ -116,7 +153,10 @@
 		@media (max-width: 1199px) {
 			flex-direction: column;
 		}
-		margin-bottom: 60px;
+		margin-bottom: 20px;
+		@include media-breakpoint-up(lg) {
+			margin-bottom: 54px;
+		}
 			.current-term{
 				flex: 0 1 auto;
 				position: relative;
@@ -187,12 +227,12 @@
 }
 
 .nsb-spinner {
-	width: 35px;
-	height: 35px;
+	width: 25px;
+	height: 25px;
 	position: absolute;
 	display: none;
-	top: 0;
-	right: -50px;
+	top: 10px;
+	right: -26px;
 }
 
 .double-bounce-1, .double-bounce-2 {
@@ -200,11 +240,12 @@
 	height: 100%;
 	border-radius: 50%;
 	background-color: #333;
-	opacity: 0.6;
+	opacity: 0.5;
 	position: absolute;
 	top: 0;
 	left: 0;
 	animation: tm-bounce 2.0s infinite ease-in-out;
+	display: none;
 }
 
 .double-bounce-2 {
@@ -221,10 +262,99 @@
 
 
 
+.widget-new-smart-inner-big-after-content {
+	display: none;
+}
+.before-loop-area {
+	.widget-new-smart-inner-big-after-content {
+		display: none;
+	}
+	.post__comments {
+		display: none;
+	}
+}
 
+
+.after-loop-area {
+	.widget-new-smart-inner-big-before-content {
+		display: none;
+	}
+	.post__date {
+		margin-right: 7px;
+	}
+	.widget-new-smart-inner-big-after-content {
+		display: block;
+		.entry-meta-sharing {
+			overflow: hidden;
+			margin-top: 23px;
+    	margin-bottom: 14px;
+		}
+		.entry-header.entry-header {
+			max-width: 50%;
+	    float: left;
+	    margin-right: 30px;
+			@include media-breakpoint-up(xl) {
+				max-width: 47.3%;
+				margin-right: 60px;
+				margin-top: 8px;
+			}
+			@media (max-width: 1470px) {
+				margin-right: 20px;
+			}
+
+			@media (max-width: 991px) {
+			    float: none;
+			    margin-right: 0;
+			    margin-bottom: 20px;
+			    width: 100%;
+			    max-width: 100%;
+			}
+		}
+
+		.entry-footer {
+			display: block;
+			margin-top: 30px;
+			display: flex;
+			align-content: center;
+	    align-items: center;
+	    justify-content: space-between;
+
+			& > a {
+				margin-top: 0;
+			}
+			.share-btns-main {
+				display: block;
+			}
+		}
+	}
+
+	.news-smart-box__instance article.post.mini-type .entry-header {
+		max-width: 100%;
+		@media (max-width: 1479px) {
+		    float: none;
+		    margin-right: 0;
+		    margin-bottom: 20px;
+		}
+		@media (min-width: 1480px) {
+		    max-width: 150px;
+		}
+
+	}
+	.news-smart-box__instance article.post.mini-type .post__excerpt {display: none;}
+	.news-smart-box__instance article.post.mini-type .entry-meta {
+		margin-top: 10px;
+	}
+}
 
 
 .widget-new-smart-inner-big-before-content {
+
+
+	.full-type + .full-type {
+		margin-top: 20px;
+	}
+
+
 	figure {
 		position: relative;
 
@@ -275,6 +405,21 @@
 				@include gradient_vertical(rgba(#000,0), rgba(#000,1));
 			}
 
+			.widget-new-smart__title {
+				color: #fff;
+			}
+			.post-date__link {
+				font-size: 14px;
+				&:hover {
+					color: #fff;
+				}
+			}
+
+
+			.widget-new-smart__footer {
+				width: 100%;
+			}
+
 			.widget-new-smart__footer-2 {
 				flex-wrap: wrap;
 		    align-content: center;
@@ -282,6 +427,12 @@
 		    width: 100%;
 		    justify-content: space-between;
 		    display: flex;
+			}
+
+			@media (min-width: 991px) and (max-width: 1350px) {
+			    .widget-new-smart__title {
+			    	font-size: 20px;
+			    }
 			}
 		}
 	}

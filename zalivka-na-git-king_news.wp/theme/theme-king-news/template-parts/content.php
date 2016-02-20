@@ -21,8 +21,6 @@
 		<div class="post-body-right">
 			<header class="entry-header">
 
-
-
 				<?php
 					if ( is_single() ) {
 						the_title( '<h2 class="entry-title">', '</h2>' );

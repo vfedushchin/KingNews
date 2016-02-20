@@ -188,6 +188,15 @@
 								$ajaxPreloader.css( { 'display' : 'block' } ).fadeTo( 300, 1 );
 							},
 							success: function( response ){
+
+							/*for share icons hover appear*/
+							setTimeout( function() {
+								$('.news-smart-box .share-btns-main').hover(function(){
+									$(this).toggleClass('show-share-list');
+								})
+							}, 1000 );
+
+
 								ajaxGetNewInstanceSuccess = true;
 
 								$ajaxPreloader.fadeTo( 300, 0, function() {
@@ -527,13 +536,18 @@ $( "#main-menu > li > a" ).each(function( index ) {
 
 
 // add/remove class for showing share-list in posts
-$('.share-btns-main').hover(function(){
+function share_hover_init() {
+	$('.news-smart-box .share-btns-main').hover(function(){
 		$(this).toggleClass('show-share-list');
+	});
+}
+$('.share-btns-main').hover(function(){
+	$(this).toggleClass('show-share-list');
 });
 
 
-/*
-if ($('.post-left-column')) {
+
+if ( $( ".post-left-column" ).length ) {
 	// function for sticky social icons in post and pages
 	(function(){
 	var a = document.querySelector('.post-left-column'), b = null, P = 0;
@@ -578,7 +592,7 @@ if ($('.post-left-column')) {
 	}
 	})();
 }
-*/
+
 
 /*//initializing jQuery
 jQuery(function($) {
