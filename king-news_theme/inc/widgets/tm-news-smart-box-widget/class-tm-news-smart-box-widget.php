@@ -397,7 +397,8 @@ class KING_NEWS_News_Smart_Box_Widget extends Cherry_Abstract_Widget {
 		if ( has_post_thumbnail( $id ) ) {
 			$thumbnail_id = get_post_thumbnail_id( intval( $id ) );
 			//$attachment_image = wp_get_attachment_image_src( $thumbnail_id, $size );
-			$attachment_image = wp_get_attachment_image_src( $thumbnail_id, '_tm-thumb-xl' );
+			//$attachment_image = wp_get_attachment_image_src( $thumbnail_id, '_tm-thumb-xl' );
+			$attachment_image = wp_get_attachment_image_src( $thumbnail_id, '_tm-thumb-536-411' );
 
 			if( $only_url ){
 				return $attachment_image[0];
