@@ -26,7 +26,7 @@
   font-family: $h2_font_family;
 }
 
-.main-navigation ul.sub-menu > li:hover > a,
+.main-navigation ul.sub-menu > li > a:hover,
 .main-navigation ul.sub-menu > li.menu-hover > a,
 .main-navigation ul.sub-menu > li.current_page_item > a,
 .main-navigation ul.sub-menu > li.current-menu-item > a,

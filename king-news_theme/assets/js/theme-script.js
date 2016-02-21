@@ -552,7 +552,7 @@ $(".share-btns-main").on({
 if ( $( ".post-left-column" ).length ) {
 	// function for sticky social icons in post and pages
 	(function(){
-	var a = document.querySelector('.post-left-column'), b = null, P = 0;
+	var a = document.querySelector('.post-left-column'), b = null, P = 20;
 	window.addEventListener('scroll', Ascroll, false);
 	document.body.addEventListener('scroll', Ascroll, false);
 	function Ascroll() {

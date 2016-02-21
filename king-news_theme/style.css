@@ -2208,6 +2208,7 @@ input[type="datetime-local"]:focus,
 input[type="color"]:focus,
 textarea:focus {
   box-shadow: 0 0 8px #d2d1d1;
+  box-shadow: none;
   outline: none;
 }
 
@@ -2658,7 +2659,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   right: 0;
   top: 0px;
   bottom: 4px;
-  content: attr(data-title);
+  /*content: attr(data-title);*/
   font-style: italic;
   opacity: 0;
   background: #fff;
@@ -2695,7 +2696,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 .main-navigation ul.menu > li:hover > a:after, .main-navigation ul.menu > li.menu-hover > a:after, .main-navigation ul.menu > li.current_page_item > a:after, .main-navigation ul.menu > li.current-menu-item > a:after, .main-navigation ul.menu > li.current_page_ancestor > a:after {
   top: 0;
   bottom: 4px;
-  opacity: 1;
+  opacity: 0;
 }
 .main-navigation li {
   position: relative;
@@ -2903,6 +2904,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   font-size: 40px;
   content: '\E408';
   vertical-align: top;
+  width: 44px;
 }
 @media (max-width: 479px) {
   .comment-navigation .nav-previous > a:before,
@@ -2960,6 +2962,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   font-size: 40px;
   content: '\E409';
   vertical-align: top;
+  width: 44px;
 }
 @media (max-width: 479px) {
   .comment-navigation .nav-next > a:after,
@@ -6998,6 +7001,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   .single-post .post-left-column, .page-template-page-with-social .post-left-column {
     float: left;
     width: 149px;
+    max-width: 149px;
     min-height: 1px;
     padding-right: 70px;
   }
@@ -7022,6 +7026,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   .page .sticky, .single .sticky, .single-post .sticky {
     position: fixed;
     z-index: 101;
+    top: 20px;
   }
   .page .stop, .single .stop, .single-post .stop {
     position: relative;

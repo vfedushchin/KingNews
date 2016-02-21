@@ -6,7 +6,7 @@
 .share-btns__link:hover,
 .share-btns__link:active,
 .share-btns__link:visited {
-	color: $regular_accent_color_3;
+	//color: $regular_accent_color_3;
 }
 .social-list a::before,
 .share-btns__link {
