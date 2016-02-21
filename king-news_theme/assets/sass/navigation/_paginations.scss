@@ -5,6 +5,16 @@
 	border-top: 1px solid #000;
 	padding-top: 53px;
 	font-size: 20px;
+	@media (max-width: 991px) {
+		font-size: 16px;
+	}
+
+	@media (max-width: 479px) {
+		.post-title {
+			display: none;
+		}
+	}
+
 
 	.site-main & {
 		margin: 30px 0 0.8em;
@@ -34,6 +44,9 @@
 				left: -13px;
 				top: 50%;
 				margin-top: -20px;
+				@media (max-width: 479px) {
+						margin-top: -23px;
+				}
 				@include material-icon();
 				font-size: 40px;
 				content: '\E408';
@@ -41,7 +54,8 @@
 			}
 
 			&:hover {
-				font-style: italic;
+				//font-style: italic;
+				opacity: 0.8;
 			}
 		}
 	}
@@ -61,6 +75,9 @@
 				right: -13px;
 				top: 50%;
 				margin-top: -20px;
+				@media (max-width: 479px) {
+						margin-top: -23px;
+				}
 				@include material-icon();
 				font-size: 40px;
 				content: '\E409';
@@ -68,7 +85,8 @@
 			}
 
 			&:hover {
-				font-style: italic;
+				//font-style: italic;
+				opacity: 0.8;
 			}
 		}
 	}

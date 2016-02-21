@@ -536,13 +536,15 @@ $( "#main-menu > li > a" ).each(function( index ) {
 
 
 // add/remove class for showing share-list in posts
-function share_hover_init() {
-	$('.news-smart-box .share-btns-main').hover(function(){
-		$(this).toggleClass('show-share-list');
-	});
-}
-$('.share-btns-main').hover(function(){
-	$(this).toggleClass('show-share-list');
+$(".share-btns-main").on({
+    mouseenter: function () {
+        //stuff to do on mouse enter
+        $(this).addClass('show-share-list');
+    },
+    mouseleave: function () {
+        //stuff to do on mouse leave
+        $(this).removeClass('show-share-list');
+    }
 });
 
 

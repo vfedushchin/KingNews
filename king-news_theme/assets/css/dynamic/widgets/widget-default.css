@@ -36,6 +36,9 @@
 .widget_calendar .calendar_wrap tbody td#today {
 	background: $regular_accent_color_2;
 }
+.widget_calendar .calendar_wrap #prev a, .widget_calendar .calendar_wrap #next a {
+	color: $regular_accent_color_1;
+}
 
 /* invert color */
 .invert .widget_calendar .calendar_wrap caption{

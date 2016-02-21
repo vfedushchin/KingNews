@@ -155,8 +155,11 @@
 	}
 
 	& + .hentry {
-		padding-top: 30px;
 		border-top: 1px dotted $color__line;
+		padding-top: 30px;
+		@include media-breakpoint-up(lg) {
+			padding-top: 37px;
+		}
 	}
 }
 
@@ -411,6 +414,12 @@
 
 		.post-thumbnail {
 			padding-right: 20px;
+
+			.archive.category & {
+				@include media-breakpoint-up(xl) {
+					padding-right: 60px;
+				}
+			}
 			position: relative;
 			min-width: 130px;
 			max-width: 100%;

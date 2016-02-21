@@ -2826,6 +2826,20 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   padding-top: 53px;
   font-size: 20px;
 }
+@media (max-width: 991px) {
+  .comment-navigation,
+  .posts-navigation,
+  .post-navigation {
+    font-size: 16px;
+  }
+}
+@media (max-width: 479px) {
+  .comment-navigation .post-title,
+  .posts-navigation .post-title,
+  .post-navigation .post-title {
+    display: none;
+  }
+}
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
 .post-navigation {
@@ -2890,10 +2904,17 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   content: '\E408';
   vertical-align: top;
 }
+@media (max-width: 479px) {
+  .comment-navigation .nav-previous > a:before,
+  .posts-navigation .nav-previous > a:before,
+  .post-navigation .nav-previous > a:before {
+    margin-top: -23px;
+  }
+}
 .comment-navigation .nav-previous > a:hover,
 .posts-navigation .nav-previous > a:hover,
 .post-navigation .nav-previous > a:hover {
-  font-style: italic;
+  opacity: 0.8;
 }
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
@@ -2940,10 +2961,17 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   content: '\E409';
   vertical-align: top;
 }
+@media (max-width: 479px) {
+  .comment-navigation .nav-next > a:after,
+  .posts-navigation .nav-next > a:after,
+  .post-navigation .nav-next > a:after {
+    margin-top: -23px;
+  }
+}
 .comment-navigation .nav-next > a:hover,
 .posts-navigation .nav-next > a:hover,
 .post-navigation .nav-next > a:hover {
-  font-style: italic;
+  opacity: 0.8;
 }
 
 .pagination {
@@ -3957,7 +3985,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   padding: 0;
 }
 .widget-image-grid__title a {
-  display: inline-block;
+  display: inline;
   text-decoration: none;
   transition: all 0.5s ease;
 }
@@ -5134,7 +5162,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   text-align: center;
   position: relative;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .widget_calendar .calendar_wrap th {
     height: 50px;
     line-height: 50px;
@@ -5169,7 +5197,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   position: relative;
   background: #e8e8e8;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .widget_calendar .calendar_wrap tbody td {
     height: 50px;
     line-height: 50px;
@@ -5219,8 +5247,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 .widget_calendar .calendar_wrap #prev, .widget_calendar .calendar_wrap #next {
   font-size: 16px;
   font-size: 1rem;
-  font-size: 16px;
+  font-size: 14px;
   padding: 10px 0 0 0;
+}
+.widget_calendar .calendar_wrap #prev a:hover, .widget_calendar .calendar_wrap #next a:hover {
+  color: #000;
 }
 .widget_calendar .calendar_wrap #next {
   text-align: right;
@@ -5981,9 +6012,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   content: '';
   transition: all 0.4s ease;
 }
-.news-smart-box__navigation .terms-list .term-item:hover {
-  font-style: italic;
-}
 .news-smart-box__navigation .terms-list .term-item:hover:before {
   width: 100%;
   left: 0;
@@ -6476,11 +6504,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   margin-left: 8px;
 }
 .top-panel__register a {
-  padding-left: 10px;
+  margin-left: 10px;
 }
 @media (min-width: 992px) {
   .top-panel__register a {
-    padding-left: 31px;
+    margin-left: 31px;
   }
 }
 .top-panel .search-form {
@@ -6502,7 +6530,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   box-shadow: none;
   display: inline-block;
   vertical-align: middle;
-  padding-top: 3px;
+  padding-top: 4px;
   width: 30px;
 }
 @media (min-width: 992px) {
@@ -6664,8 +6692,13 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   padding: 0;
 }
 .hentry + .hentry {
-  padding-top: 30px;
   border-top: 1px dotted #d2d1d1;
+  padding-top: 30px;
+}
+@media (min-width: 992px) {
+  .hentry + .hentry {
+    padding-top: 37px;
+  }
 }
 
 .posts-list .post_format-post-format-quote .entry-content, .posts-list .post_format-post-format-status .entry-content {
@@ -6875,6 +6908,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   min-width: 130px;
   max-width: 100%;
   margin-bottom: 12px;
+}
+@media (min-width: 1200px) {
+  .archive.category .post-list__item-content .post-thumbnail {
+    padding-right: 60px;
+  }
 }
 @media (max-width: 300px) {
   .posts-list--default .post-list__item-content .post-thumbnail {
@@ -7207,7 +7245,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   display: block;
 }
 .post-gallery__link img {
-  width: 100%;
+  /*width: 100%;*/
 }
 .post-format-link {
   font-style: italic;
@@ -7694,7 +7732,7 @@ div.wpcf7 {
 
 .preview-container_bg {
   position: absolute;
-  top: 3px;
+  top: 0px;
   height: 8000px;
   width: 2050px;
   left: 50%;

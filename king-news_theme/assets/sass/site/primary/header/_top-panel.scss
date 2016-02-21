@@ -76,9 +76,9 @@
 		padding: 5px 0;
 		margin-left: 8px;
 		a {
-			padding-left: 10px;
+			margin-left: 10px;
 			@include media-breakpoint-up(lg) {
-			  padding-left: 31px;
+			  margin-left: 31px;
 			}
 		}
 	}
@@ -101,7 +101,7 @@
 			box-shadow: none;
 			display: inline-block;
 			vertical-align: middle;
-			padding-top: 3px;
+			padding-top: 4px;
 			width: 30px;
 			@include media-breakpoint-up(lg) {
 				width: 45px;

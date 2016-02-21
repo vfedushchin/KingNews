@@ -12,7 +12,7 @@
 
 
 			<figure class="post-thumbnail post-thumbnail--fullwidth ">
-				<?php do_action( 'cherry_post_format_gallery', array('size' => '_tm-thumb-1132-411') ); ?>
+				<?php do_action( 'cherry_post_format_gallery', array('size' => '_tm-post-thumbnail-large') ); ?>
 				<?php king_news_sticky_label(); ?>
 			</figure><!-- .post-thumbnail -->
 
