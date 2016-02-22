@@ -1,2 +1,2 @@
-# blank
-WordPress blank theme
+# King News
+WordPress King News theme

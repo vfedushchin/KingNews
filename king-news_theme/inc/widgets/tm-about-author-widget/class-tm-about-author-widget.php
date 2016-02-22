@@ -15,7 +15,7 @@ class KING_NEWS_About_Author_Widget extends Cherry_Abstract_Widget {
 		$this->widget_cssclass    = 'king_news widget-about-author';
 		$this->widget_description = __( 'Display an information about selected user.', 'king_news' );
 		$this->widget_id          = 'king_news_widget_about_author';
-		$this->widget_name        = __( 'KING_NEWS About Author', 'king_news' );
+		$this->widget_name        = __( 'King News About Author', 'king_news' );
 		$this->settings           = array(
 			'title'  => array(
 				'type'  => 'text',

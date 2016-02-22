@@ -11,7 +11,7 @@ class KING_NEWS_Smart_Slider_Widget extends Cherry_Abstract_Widget {
 		$this->widget_cssclass = 'cherry widget_smart_slider';
 		$this->widget_description = esc_html__( 'Display smart slider on your site.', 'king_news' );
 		$this->widget_id = 'widget_smart_slider';
-		$this->widget_name = esc_html__( 'KING_NEWS Smart Slider Widget', 'king_news' );
+		$this->widget_name = esc_html__( 'King News Smart Slider Widget', 'king_news' );
 		$this->settings = array(
 			'title' => array(
 				'type'  => 'text',

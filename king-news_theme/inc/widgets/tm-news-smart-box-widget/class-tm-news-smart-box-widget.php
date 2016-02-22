@@ -9,7 +9,7 @@ class KING_NEWS_News_Smart_Box_Widget extends Cherry_Abstract_Widget {
 		$this->widget_cssclass = 'king_news widget_news_smart_box';
 		$this->widget_description = esc_html__( 'Display a list of your posts on your site.', 'king_news' );
 		$this->widget_id = 'widget_news_smart_box';
-		$this->widget_name = esc_html__( 'KING_NEWS New Smart Box Widget', 'king_news' );
+		$this->widget_name = esc_html__( 'King News New Smart Box Widget', 'king_news' );
 		$this->settings = array(
 			'title' => array(
 				'type'  => 'text',

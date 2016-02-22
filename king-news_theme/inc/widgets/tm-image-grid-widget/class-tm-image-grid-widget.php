@@ -23,7 +23,7 @@ if ( !class_exists( 'King_News_Image_Grid_Widget' ) ) {
 		 * @since  1.0.0
 		 */
 		public function __construct() {
-			$this->widget_name			= esc_html__( 'King_News Image Grid Widget', 'king_news' );
+			$this->widget_name			= esc_html__( 'King News Image Grid Widget', 'king_news' );
 			$this->widget_description	= esc_html__( 'This widget displays images from post.', 'king_news' );
 			$this->widget_id			= 'widget-image-grid';
 			$this->widget_cssclass		= 'widget-image-grid';

@@ -20,4 +20,26 @@
 		float: right;
 		padding: 10px 0;
 	}
+
+	@media (max-width: 599px) {
+		.site-branding {
+			border-bottom: none;
+			margin-left: 50px;
+			padding-bottom: 0;
+			margin-bottom: -40px;
+		}
+		.menu-toggle {
+			position: relative;
+			top: -13px;
+		}
+		.main-navigation {
+			margin-top: -20px;
+		}
+	}
+
+	@include media-breakpoint-up(lg) {
+		.main-navigation ul.menu {
+			margin: 0 -50px;
+		}
+	}
 }

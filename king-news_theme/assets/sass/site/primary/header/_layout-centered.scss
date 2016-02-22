@@ -31,3 +31,13 @@
 
 	
 }
+
+.site-header.centered + .site-content .breadcrumbs{
+	text-align: center;
+	& > div {
+		display: inline-block;
+		@include media-breakpoint-up(xl) {
+			margin-left: 57px;
+		}
+	}
+}

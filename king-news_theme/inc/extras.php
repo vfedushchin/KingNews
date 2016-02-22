@@ -127,3 +127,13 @@ function king_news_get_render_icons_set() {
 		'material' => '<i class="material-icons">%s</i>',
 	) );
 }
+
+/**
+ * Replace %s with theme URL.
+ *
+ * @param  string $url Formatted URL to parse.
+ * @return string
+ */
+function king_news_render_theme_url( $url ) {
+	return sprintf( $url, get_stylesheet_directory_uri() );
+}

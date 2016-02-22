@@ -57,8 +57,8 @@
 	}
 	&-body {
 		overflow: hidden;
-		padding-top: 10px;
-		padding-bottom: 10px;
+		padding-top: 20px;
+		padding-bottom: 20px;
 		@include media-breakpoint-up(lg) {
 			padding-top: 27px;
 			padding-bottom: 15px;

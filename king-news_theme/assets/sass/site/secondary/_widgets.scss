@@ -38,13 +38,17 @@
 				padding: 0px 20px;
 				font-size: 14px;
 				line-height: 50px;
+				background: #fff;
 			}
 		}
 
 
 		/*subscribe widget styles*/
 		&.widget-subscribe {
-			padding: 20px 30px;
+			padding: 20px 30px 10px;
+			@include media-breakpoint-up(xl) {
+				margin-bottom: 40px;
+			}
 			h4 {
 				margin-bottom: 8px;
 			}

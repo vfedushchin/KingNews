@@ -1,4 +1,4 @@
-=== blank ===
+=== King News ===
 
 Contributors: automattic
 Tags: translation-ready, custom-background, theme-options, custom-menu, post-formats, threaded-comments
@@ -9,11 +9,11 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A starter theme called blank, or underscores.
+A starter theme called King News, or underscores.
 
 == Description ==
 
-Hi. I'm a starter theme called blank, or underscores, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
+Hi. I'm a starter theme called King News, or underscores, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
 
 == Installation ==
 	
@@ -25,7 +25,7 @@ Hi. I'm a starter theme called blank, or underscores, if you like. I'm a theme m
 
 = Does this theme support any plugins? =
 
-blank includes support for Infinite Scroll in Jetpack.
+King News includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 

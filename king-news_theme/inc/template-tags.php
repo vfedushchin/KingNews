@@ -278,7 +278,7 @@ function king_news_footer_logo() {
 
 	$url      = esc_url( home_url( '/' ) );
 	$alt      = esc_attr( get_bloginfo( 'name' ) );
-	$logo_url = esc_url( $logo_url );
+	$logo_url = esc_url( king_news_render_theme_url($logo_url) );
 
 	$logo_format = apply_filters(
 		'king_news_footer_logo_format',
@@ -313,7 +313,7 @@ function king_news_footer_copyright() {
 function king_news_main_menu() {
 	?>
 	<nav id="site-navigation" class="main-navigation" role="navigation">
-		<button class="menu-toggle" aria-controls="main-menu" aria-expanded="false"><i class="material-icons">subject</i></button>
+		<button class="menu-toggle" aria-controls="main-menu" aria-expanded="false"><i class="material-icons">menu</i></button>
 		<?php
 			$args = apply_filters( 'king_news_main_menu_args', array(
 				'theme_location'   => 'main',
@@ -1035,7 +1035,7 @@ function king_news_get_site_title_by_type( $type ) {
 		'<img src="%1$s" alt="%2$s" class="site-link__img" %3$s>'
 	);
 
-	return sprintf( $format_image, esc_url( $logo_url ), esc_attr( $logo ), $retina_logo );
+	return sprintf( $format_image, esc_url( king_news_render_theme_url( $logo_url ) ), esc_attr( $logo ), $retina_logo );
 }
 
 /**

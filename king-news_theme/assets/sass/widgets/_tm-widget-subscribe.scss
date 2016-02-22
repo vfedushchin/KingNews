@@ -55,6 +55,11 @@
 	&__input[type="email"] {
 		max-width: 100%;
 		min-width: 130px;
+		@media (max-width: 991px) {
+			min-width: 100px;
+			padding-left: 10px;
+			padding-right: 10px;
+		}
 		-webkit-order: 0;
 		order: 0;
 		-webkit-flex: 0 1 auto;
@@ -85,6 +90,9 @@
 		-webkit-order: 0;
 		order: 0;
 		-webkit-flex: 0 1 auto;
+		@include media-breakpoint-up(xl) {
+			flex-shrink: 0;
+		}
 		flex: 0 1 auto;
 		-webkit-align-self: auto;
 		align-self: auto;
@@ -130,8 +138,15 @@
 	h4 {
 		margin-top: -3px;
 		margin-bottom: 14px;
+		@media (max-width: 1199px) {
+		    font-size: 20px;
+		}
+		@media (max-width: 991px) {
+		    font-size: 18px;
+		}
 	}
 	.subscribe-block__message {
 		padding-bottom: 27px;
+		font-size: 16px;
 	}
 }

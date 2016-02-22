@@ -23,7 +23,7 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 		 * @var array
 		 */
 		public $image_sizes = array(
-			'large'             => 'large',
+			'large'             => '_tm-thumb-860-662',
 			'large_2x'          => 'large',
 			'small'             => 'large',
 			'small_2x'          => 'large',

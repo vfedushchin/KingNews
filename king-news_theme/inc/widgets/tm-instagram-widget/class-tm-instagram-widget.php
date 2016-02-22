@@ -14,7 +14,7 @@ class KING_NEWS_Instagram_Widget extends Cherry_Abstract_Widget {
 		$this->widget_cssclass    = 'widget-instagram';
 		$this->widget_description = esc_html__( 'Display a list of photos from Instagram network.', 'king_news' );
 		$this->widget_id          = 'king_news_widget_instagram';
-		$this->widget_name        = esc_html__( 'King_News Instagram', 'king_news' );
+		$this->widget_name        = esc_html__( 'King News Instagram', 'king_news' );
 		$this->settings           = array(
 			'title'  => array(
 				'type'  => 'text',

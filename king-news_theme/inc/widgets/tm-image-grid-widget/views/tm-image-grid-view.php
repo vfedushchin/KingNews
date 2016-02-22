@@ -5,6 +5,8 @@
 
       <?php king_news_meta_categories( 'both-loop-single' ); ?>
 
+      <div></div>
+
 			<div class="widget-image-grid__content-2">
         <h3 class="widget-image-grid__title">
           <a href="<?php echo $permalink; ?>"><?php echo $title ?></a>

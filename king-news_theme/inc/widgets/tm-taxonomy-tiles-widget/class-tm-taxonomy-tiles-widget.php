@@ -23,7 +23,7 @@ if ( !class_exists( 'King_News_Taxonomy_Tiles_Widget' ) ) {
 		 * @since  1.0.0
 		 */
 		public function __construct() {
-			$this->widget_name			= esc_html__( 'King_News Taxonomy Tiles Widget', 'king_news' );
+			$this->widget_name			= esc_html__( 'King News Taxonomy Tiles Widget', 'king_news' );
 			$this->widget_description	= esc_html__( 'This widget displays images from taxonomy.', 'king_news' );
 			$this->widget_id			= 'widget-taxonomy-tiles';
 			$this->widget_cssclass		= 'widget-taxonomy-tiles';

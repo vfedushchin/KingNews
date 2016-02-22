@@ -44,7 +44,7 @@ function king_news_get_customizer_options() {
 				'title'    => esc_html__( 'Show preloader when open a page', 'king_news' ),
 				'section'  => 'title_tagline',
 				'priority' => 62,
-				'default'  => true,
+				'default'  => false,
 				'field'    => 'checkbox',
 				'type'     => 'control',
 			),
@@ -980,7 +980,7 @@ function king_news_get_customizer_options() {
 			'breadcrumbs_font_family' => array(
 				'title'   => esc_html__( 'Font Family', 'king_news' ),
 				'section' => 'breadcrumbs_typography',
-				'default' => 'Montserrat',
+				'default' => 'Noto Serif',
 				'field'   => 'fonts',
 				'type'    => 'control',
 			),
@@ -1187,12 +1187,12 @@ function king_news_get_customizer_options() {
 			'header_layout_type' => array(
 				'title'   => esc_html__( 'Layout', 'king_news' ),
 				'section' => 'header_styles',
-				'default' => 'minimal',
+				'default' => 'centered',
 				'field'   => 'select',
 				'choices' => array(
-					'minimal'  => esc_html__( 'Minimal', 'king_news' ),
+					'default'  => esc_html__( 'Minimal', 'king_news' ),
 					'centered' => esc_html__( 'Centered', 'king_news' ),
-					'default'  => esc_html__( 'Default', 'king_news' ),
+					'minimal'  => esc_html__( 'Default', 'king_news' ),
 				),
 				'type' => 'control',
 			),
@@ -1709,6 +1709,14 @@ function king_news_get_dynamic_css_options() {
 			'h6_letter_spacing',
 			'h6_text_align',
 
+			'breadcrumbs_font_style',
+			'breadcrumbs_font_weight',
+			'breadcrumbs_font_size',
+			'breadcrumbs_line_height',
+			'breadcrumbs_font_family',
+			'breadcrumbs_letter_spacing',
+			'breadcrumbs_text_align',
+
 			'regular_accent_color_1',
 			'regular_accent_color_2',
 			'regular_accent_color_3',
@@ -1826,7 +1834,7 @@ function king_news_get_default_top_panel_text() {
 		'<i class="material-icons">place</i>',
 		'<i class="material-icons indent-left">call</i>'
 	);*/
-	return 'Wednesday Jan.20, 2016 %%date%%';
+	return '%%date%%';
 }
 
 /**

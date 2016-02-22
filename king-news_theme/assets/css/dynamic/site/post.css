@@ -27,7 +27,6 @@
 	font-family: $h3_font_family;
 }
 .post-format-quote:before,
-.post-format-quote cite,
-#cancel-comment-reply-link {
+.post-format-quote cite {
 	color: $regular_accent_color_1;
 }

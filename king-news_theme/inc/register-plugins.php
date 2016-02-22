@@ -26,6 +26,11 @@ function my_theme_register_required_plugins() {
 	 */
 	$plugins = array(
 		array(
+			'name'      => 'Contact Form 7',
+			'slug'      => 'contact-form-7',
+			'required'  => false,
+		),
+		array(
 			'name'      => 'Facebook pagelike widget',
 			'slug'      => 'facebook-pagelike-widget',
 			'required'  => false,

@@ -134,10 +134,13 @@
 			}
 		}
 
-		.hentry {
+		.hentry{
 			overflow: visible;
 			padding-top: 30px;
 			border-top: 1px dotted #d2d1d1;
+			& + .hentry {
+				padding-top: 30px;
+			}
 
 			.entry-meta-sharing {
 				.share-btns-main {

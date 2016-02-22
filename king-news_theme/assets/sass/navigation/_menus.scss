@@ -61,7 +61,8 @@
 				}
 				color: #fff;
 				@media screen and (min-width: 37.5em) {
-					padding: 8px 18px 8px 12px;
+					//padding: 8px 18px 8px 12px;
+					padding: 0;
 				}
 				&:first-child{
 					border-top: none;
@@ -95,6 +96,7 @@
 				}
 				text-align: left;
 				padding: 5px;
+				padding: 13px 23px 13px 17px;
 				
 				@media (max-width: 600px) {
 					padding: 13px 30px;
@@ -128,7 +130,7 @@
 						content: "\f105";
 						font-family: FontAwesome;
 						position: absolute;
-						right: -8px;
+						right: 7px;
 						top: 50%;
 						margin-top: -7px;
 						@include font-size(1.2);

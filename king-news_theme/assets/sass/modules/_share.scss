@@ -9,7 +9,9 @@
 		}
 
 		.single-post & {
-			margin-top: 15px;
+			&.post-left-column {
+				margin-top: 15px;
+			}
 			&.share-btns__list-single-page {
 				margin-top: 0;
 			}
@@ -59,6 +61,9 @@
 }
 
 .share-btns-main {
+	@media (max-width: 400px) {
+		display: none !important;
+	}
 	display: inline-block;
 	position: relative;
 	.material-icons {
@@ -77,7 +82,7 @@
 		padding-right: 35px;
 		transition: .4s all ease;
 		visibility: hidden;
-		background: rgba(#fff,0.9);
+		//background: rgba(#fff,0.9);
 	}
 
 	&.show-share-list {
@@ -93,6 +98,7 @@
 	@include clearfix();
 	.entry-meta {
 		float: left;
+		max-width: calc(100% - 29px);
 	}
 	.share-btns-main {
 		float: right;
@@ -120,7 +126,7 @@
 			padding: 5px;
 			transition: .4s all ease;
 			visibility: hidden;
-			background: rgba(#000,0.8);
+			//background: rgba(#000,0.8);
 		}
 
 		&.show-share-list {
