@@ -166,3 +166,13 @@
 .site .widget.widget_search h4 {
 	color: $invert_h4_color;
 }
+
+
+
+.widget-new-smart-main:hover .widget-new-smart__title {
+	color: $regular_accent_color_1;
+}
+
+.widget-image-grid__content:hover .widget-image-grid__title {
+	color: $regular_accent_color_1;
+}

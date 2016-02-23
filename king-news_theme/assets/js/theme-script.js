@@ -191,11 +191,21 @@
 
 							/*for share icons hover appear*/
 							setTimeout( function() {
-								$('.news-smart-box .share-btns-main').hover(function(){
-									$(this).toggleClass('show-share-list');
-								})
+								share_hover_hide_selector = $('.widget-image-grid__footer-meta, .widget-new-smart__post__date, .meta-inner');
+									// add/remove class for showing share-list in posts
+									$(".share-btns-main").on({
+										mouseenter: function () {
+												//stuff to do on mouse enter
+												$(this).addClass('show-share-list');
+												$(this).siblings(share_hover_hide_selector).fadeTo(300, 0);
+										},
+										mouseleave: function () {
+												//stuff to do on mouse leave
+												$(this).removeClass('show-share-list');
+												$(this).siblings(share_hover_hide_selector).fadeTo(400, 1);
+										}
+								});
 							}, 1000 );
-
 
 								ajaxGetNewInstanceSuccess = true;
 
@@ -538,17 +548,16 @@ $( "#main-menu > li > a" ).each(function( index ) {
 share_hover_hide_selector = $('.widget-image-grid__footer-meta, .widget-new-smart__post__date, .meta-inner');
 // add/remove class for showing share-list in posts
 $(".share-btns-main").on({
-    mouseenter: function () {
-        //stuff to do on mouse enter
-        $(this).addClass('show-share-list');
-        //$(".widget-image-grid__footer-meta").fadeTo(500, 0)
-        $(this).siblings(share_hover_hide_selector).fadeTo(300, 0);
-    },
-    mouseleave: function () {
-        //stuff to do on mouse leave
-        $(this).removeClass('show-share-list');
-        $(this).siblings(share_hover_hide_selector).fadeTo(400, 1);
-    }
+		mouseenter: function () {
+				//stuff to do on mouse enter
+				$(this).addClass('show-share-list');
+				$(this).siblings(share_hover_hide_selector).fadeTo(300, 0);
+		},
+		mouseleave: function () {
+				//stuff to do on mouse leave
+				$(this).removeClass('show-share-list');
+				$(this).siblings(share_hover_hide_selector).fadeTo(400, 1);
+		}
 });
 
 

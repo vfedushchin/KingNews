@@ -145,7 +145,20 @@
 	}
 }
 
-
+/* widget in sidebar area */
+#sidebar-secondary .widget.widget-image-grid,
+#sidebar-primary .widget.widget-image-grid {
+	@include media-breakpoint-up(lg) {
+		.widget-title {
+			margin-bottom: 33px;
+		}
+	}
+	@include media-breakpoint-up(xl) {
+		.widget-title {
+			margin-bottom: 53px;
+		}
+	}
+}
 
 /* widget in content area */
 #primary .widget.widget-image-grid.widget{
