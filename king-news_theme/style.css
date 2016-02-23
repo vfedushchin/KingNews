@@ -6383,6 +6383,26 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 
 .header-container {
   padding: 25px 0px 0;
+  /* 	@include media-breakpoint-up(md) {
+  	&.isStuck {
+  
+  		&.header-container {
+  			padding-top: 0;
+  		}
+  		.site-branding {
+  			display: none;
+  		}
+  		position: fixed;
+  		width: 100%;
+  		left: 0;
+  		z-index: 9999;
+  		&.has-bar {
+  			margin-top: 32px;
+  		}
+  	}
+  
+  
+  } */
 }
 .header-container .header-container__flex {
   padding-left: 30px;
@@ -6392,21 +6412,19 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   padding-left: 0;
   padding-right: 0;
 }
-@media (min-width: 768px) {
+.header-container.isStuck {
+  z-index: 1999;
+  padding: 0;
+}
+.header-container.isStuck .site-branding {
+  display: none;
+}
+.header-container.isStuck .main-navigation ul.menu > li > a {
+  padding: 10px 17px 10px;
+}
+@media only screen and (max-width: 979px) {
   .header-container.isStuck {
-    position: fixed;
-    width: 100%;
-    left: 0;
-    z-index: 9999;
-  }
-  .header-container.isStuck.header-container {
-    padding-top: 0;
-  }
-  .header-container.isStuck .site-branding {
-    display: none;
-  }
-  .header-container.isStuck.has-bar {
-    margin-top: 32px;
+    display: none !important;
   }
 }
 

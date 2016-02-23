@@ -1,129 +1,94 @@
-/**
- * https://github.com/LiranCohen/stickUp
- * licensed under GNU GPL
- * Copyright @LiranCohen
- */
-
-jQuery(
-function($) {
-
-	$(document).ready(function(){
-		var contentButton = [];
-		var contentTop = [];
-		var content = [];
-		var lastScrollTop = 0;
-		var scrollDir = '';
-		var itemClass = '';
-		var itemHover = '';
-		var menuSize = null;
-		var stickyHeight = 0;
-		var stickyMarginB = 0;
-		var currentMarginT = 0;
-		var topMargin = 0;
-		var vartop = 0;
-		$(window).scroll(function(event){
-			var st = $(this).scrollTop();
-			if (st > lastScrollTop){
-				scrollDir = 'down';
-			} else {
-				scrollDir = 'up';
-			}
-			lastScrollTop = st;
-		});
-		$.fn.stickUp = function( options ) {
-			// adding a class to users div
-			$(this).addClass('stuckMenu');
-			//getting options
-			var objn = 0;
-			if(options != null) {
-				for(var o in options.parts) {
-					if (options.parts.hasOwnProperty(o)){
-						content[objn] = options.parts[objn];
-						objn++;
-					}
-				}
-				if(objn == 0) {
-					console.log('error:needs arguments');
-				}
-
-				itemClass = options.itemClass;
-				itemHover = options.itemHover;
-				if(options.topMargin != null) {
-					if(options.topMargin == 'auto') {
-						topMargin = parseInt($('.stuckMenu').css('margin-top'));
-					} else {
-						if(isNaN(options.topMargin) && options.topMargin.search("px") > 0){
-							topMargin = parseInt(options.topMargin.replace("px",""));
-						} else if(!isNaN(parseInt(options.topMargin))) {
-							topMargin = parseInt(options.topMargin);
-						} else {
-							console.log("incorrect argument, ignored.");
-							topMargin = 0;
-						}
-					}
-				} else {
-					topMargin = 0;
-				}
-				menuSize = $('.'+itemClass).size();
-			}
-			stickyHeight = parseInt($(this).height());
-			stickyMarginB = parseInt($(this).css('margin-bottom'));
-			currentMarginT = parseInt($(this).next().closest('div').css('margin-top'));
-			vartop = parseInt($(this).offset().top);
-			//$(this).find('*').removeClass(itemHover);
+(function($,undefined){
+	var 
+		def={
+			stuckClass:'isStuck'			
 		}
-		$(document).on('scroll', function() {
-			varscroll = parseInt($(document).scrollTop());
-			if(menuSize != null){
-				for(var i=0;i < menuSize;i++)
-				{
-					contentTop[i] = $('#'+content[i]+'').offset().top;
-					function bottomView(i) {
-						contentView = $('#'+content[i]+'').height()*.4;
-						testView = contentTop[i] - contentView;
-						//console.log(varscroll);
-						if(varscroll > testView){
-							$('.'+itemClass).removeClass(itemHover);
-							$('.'+itemClass+':eq('+i+')').addClass(itemHover);
-						} else if(varscroll < 50){
-							$('.'+itemClass).removeClass(itemHover);
-							$('.'+itemClass+':eq(0)').addClass(itemHover);
+		,doc=$(document),anim = false;
+
+	$.fn.TMStickUp=function(opt){
+		opt=$.extend(true,{},def,opt)
+
+		$(this).each(function(){
+			var $this=$(this)
+				,posY//=$this.offset().top+$this.outerHeight()
+				,isStuck=false
+				,clone=$this.clone().appendTo($this.parent()).addClass(opt.stuckClass)
+				,height//=$this.outerHeight()
+				,stuckedHeight=clone.outerHeight()
+				,opened//=$.cookie&&$.cookie('panel1')==='opened'
+				,tmr
+
+			$(window).resize(function(){
+				clearTimeout(tmr)				
+				clone.css({top:isStuck?0:-stuckedHeight,visibility:isStuck?'visible':'hidden'})
+				tmr=setTimeout(function(){
+					posY=$this.offset().top//+$this.outerHeight()				
+					height=$this.outerHeight()
+					stuckedHeight=clone.outerHeight()
+					opened=$.cookie&&$.cookie('panel1')==='opened'
+
+					clone.css({top:isStuck?0:-stuckedHeight})
+				},40)
+			}).resize()
+
+			clone.css({
+				position:'fixed'				
+				,width:'100%'
+			})
+
+			$this
+				.on('rePosition',function(e,d){
+					if(isStuck)
+						clone.animate({marginTop:d},{easing:'linear'})
+					if(d===0)
+						opened=false
+					else
+						opened=true
+				})
+			
+			doc
+				.on('scroll',function(){
+					var scrollTop=doc.scrollTop()
+
+					if(scrollTop>=posY&&!isStuck){
+						clone
+							.stop()
+							.css({visibility:'visible'})
+							.animate({
+								top:0
+								,marginTop:opened?50:0
+							},{
+
+							})
+							
+						isStuck=true
+					}
+					
+					if(scrollTop<posY+height&&isStuck){
+						$('.sf-menu ul').css('display', 'none');
+
+						var sf = $('.search-form');
+						if(sf.length > 0){
+							sf.find('input').blur();
 						}
-					}
-					if(scrollDir == 'down' && varscroll > contentTop[i]-50 && varscroll < contentTop[i]+50) {
-						$('.'+itemClass).removeClass(itemHover);
-						$('.'+itemClass+':eq('+i+')').addClass(itemHover);
-					}
-					if(scrollDir == 'up') {
-						bottomView(i);
-					}
-				}
-			}
 
+						clone
+							.stop()
+							.animate({
+								top:-stuckedHeight
+								,marginTop:0
+							},{
+								duration:200
+								,complete:function(){
+									clone.css({visibility:'hidden'})
+								}
+							});
+						
+						isStuck=false;
 
-
-			if(vartop < varscroll + topMargin - 80){
-				$('.stuckMenu').addClass('isStuck');
-				$('.stuckMenu').next().closest('div').css({
-					'margin-top': stickyHeight + stickyMarginB + currentMarginT + 'px'
-				}, 10);
-				//$('.stuckMenu').css("position","fixed");
-				$('.isStuck').css({
-					top: '0px'
-				}, 10, function(){
-
-				});
-			};
-
-			if(varscroll + topMargin < vartop + 80){
-				$('.stuckMenu').removeClass('isStuck');
-				$('.stuckMenu').next().closest('div').css({
-					'margin-top': currentMarginT + 'px'
-				}, 10);
-				//$('.stuckMenu').css("position","relative");
-			};
-
-		});
-	});
-
-});
+					}			
+				})				
+				.trigger('scroll')
+		})
+	}
+})(jQuery)

@@ -22,24 +22,43 @@
 
 	}
 
-	@include media-breakpoint-up(md) {
-		&.isStuck {
-
-			&.header-container {
-				padding-top: 0;
-			}
-			.site-branding {
+	&.isStuck {
+		  z-index: 1999;
+		  padding: 0;
+		  .site-branding {
 				display: none;
 			}
-			position: fixed;
-			width: 100%;
-			left: 0;
-			z-index: 9999;
-			&.has-bar {
-				margin-top: 32px;
+			.main-navigation ul.menu > li > a {
+		    padding: 10px 17px 10px;
 			}
 		}
+
+		@media only screen and (max-width: 979px) {
+		  &.isStuck {
+		    display: none !important;
+		  }
+		}
+
+/* 	@include media-breakpoint-up(md) {
+	&.isStuck {
+
+		&.header-container {
+			padding-top: 0;
+		}
+		.site-branding {
+			display: none;
+		}
+		position: fixed;
+		width: 100%;
+		left: 0;
+		z-index: 9999;
+		&.has-bar {
+			margin-top: 32px;
+		}
 	}
+
+
+} */
 }
 
 @import "header/layout-default";

@@ -261,7 +261,7 @@
 
 				var $navbar = $('.header-container');
 
-				if ( ! $.isFunction( jQuery.fn.stickUp ) || ! $navbar.length ) {
+				if ( ! $.isFunction( jQuery.fn.TMStickUp ) || ! $navbar.length ) {
 					return !1;
 				}
 
@@ -269,7 +269,8 @@
 					$navbar.addClass('has-bar');
 				}
 
-				$navbar.stickUp();
+				// $navbar.stickUp();
+				$navbar.TMStickUp({})
 
 			});
 		},
@@ -565,7 +566,7 @@ $(".share-btns-main").on({
 if ( $( ".post-left-column" ).length ) {
 	// function for sticky social icons in post and pages
 	(function(){
-	var a = document.querySelector('.post-left-column'), b = null, P = 20;
+	var a = document.querySelector('.post-left-column'), b = null, P = 40;
 	window.addEventListener('scroll', Ascroll, false);
 	document.body.addEventListener('scroll', Ascroll, false);
 	function Ascroll() {
