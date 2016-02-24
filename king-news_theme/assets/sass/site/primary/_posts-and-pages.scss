@@ -538,6 +538,10 @@
 			overflow: hidden;
 		}
 	}
+
+	.has-thumb .post-thumbnail__format-link .post-format-link {
+		margin-top: 20px;
+	}
 }
 
 .page-template-page-with-social .post-left-column .share-btns__list { margin-top: 20px; }
@@ -545,12 +549,53 @@
 .single-post{
 	.post_format-post-format-gallery,
 	.post_format-post-format-video,
+	.post_format-post-format-status,
+	.post_format-post-format-quote,
 	 {
 		.post-thumbnail {
 			display: none;
 		}
 	}
+
+	.post_format-post-format-status {
+		iframe, .fb_iframe_widget {
+			margin-bottom: 26px !important;
+		}
+	}
 }
+
+.archive.category {
+	.post_format-post-format-video {
+		.post-thumbnail {
+			width: 100%;
+		}
+	}
+
+	.post_format-post-format-link {
+		.post-thumbnail__format-link {
+			right: 20px;
+			a {
+				max-width: calc(100% - 80px);
+			}
+			@media (max-width: 768px) {
+				right: 10px;
+			}
+			@include media-breakpoint-up(xl) {
+				margin-left: -40px;
+			}
+			@media (max-width: 1199px) {
+				a {
+					font-size: 14px;
+					padding: 5px;
+					right: 0;
+					max-width: calc(100% - 40px);
+				}
+			}
+		}
+	}
+}
+
+
 
 
 

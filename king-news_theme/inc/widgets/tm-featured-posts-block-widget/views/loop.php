@@ -8,10 +8,12 @@
 ?>
 <div class="tm_fpblock__item tm_fpblock__item-<?php print $item_count; ?> post-<?php the_ID(); ?> tm_fpblock__item-<?php print esc_attr( $special_class ); ?>">
 
-	<?php $preview_url = get_the_post_thumbnail_url( null, $image_size ); ?>
-	<div class="tm_fpblock__item__preview" style="background-image: url('<?php print esc_attr( $preview_url ); ?>');">
-		<img src="<?php print esc_attr( $preview_url ); ?>">
-	</div>
+	<?php print $this->post_featured_image(
+		array(
+			'size'   => $image_size,
+			'format' => '<div class="tm_fpblock__item__preview" style="background-image: url(\'%1$s\');"><img src="%2$s"></div>',
+		)
+	); ?>
 
 	<?php if ( 'true' === $this->instance['checkboxes']['categories'] ) : ?>
 		<?php print $this->post_categories(
@@ -32,10 +34,9 @@
 		<?php if ( 'true' === $this->instance['checkboxes']['date'] ) : ?>
 			<?php print $this->post_date(
 				array(
-					'for_human' => true,
-					'format'    => 'H:i:s',
-					'before'    => '<span class="tm_fpblock__item__date"><i class="material-icons dp18">access_time</i>',
-					'after'     => '</span>',
+					'for_human'   => true,
+					'date_format' => 'H:i:s',
+					'format'      => '<span class="tm_fpblock__item__date"><i class="material-icons dp18">access_time</i> %2$s</span>',
 				)
 			); ?>
 		<?php endif; ?>
@@ -56,8 +57,7 @@
 				array(
 					'before'  => '<div class="tm_fpblock__item__author">',
 					'after'   => '</div>',
-					'has_url' => '<a href="%1$s">%2$s</a>',
-					'no_url'  => '%2$s',
+					'format' => '<a href="%1$s">%2$s</a>',
 				)
 			); ?>
 		<?php endif; ?>

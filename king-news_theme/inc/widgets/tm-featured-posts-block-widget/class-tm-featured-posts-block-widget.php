@@ -76,6 +76,11 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 					),
 					'label'            => esc_html__( 'Layout', '__tm' ),
 				),
+				'posts_ids' => array(
+					'type'      => 'text',
+					'value'     => '',
+					'label'     => esc_html__( 'Posts IDs (Optional)', '__tm' ),
+				),
 				'checkboxes'     => array(
 					'type'    => 'checkbox',
 					'value'   => array(
@@ -109,6 +114,28 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 		}
 
 		/**
+		 * Get posts list array
+		 *
+		 * @since  1.0.0
+		 *
+		 * @param string [$key] default = 'ID', key values.
+		 *
+		 * @return array
+		 */
+		public function get_posts_list( $key = 'ID' ) {
+			$result = array();
+			$posts  = get_posts();
+
+			foreach( $posts as $post ) {
+				if ( property_exists( $post, $key ) ) {
+					$result[ $post->$key ] = get_the_title( $post );
+				}
+			}
+
+			return $result;
+		}
+
+		/**
 		 * widget function.
 		 *
 		 * @see   WP_Widget
@@ -123,6 +150,11 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 				return;
 			}
 
+			$layout = $this->_default_layout;
+			if ( $this->_validate_layout( $this->instance['layout'] ) ) {
+				$layout = $this->instance['layout'];
+			}
+
 			ob_start();
 
 			$this->setup_widget_data( $args, $instance );
@@ -131,7 +163,7 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 			$this->_excerpt_length = $instance['excerpt_length'];
 			add_filter( 'excerpt_length', array( &$this, 'get_excerpt_length' ) );
 
-			$template = locate_template( 'inc/widgets/tm-featured-posts-block-widget/views/main-view.php' );
+			$template = locate_template( 'inc/widgets/tm-featured-posts-block-widget/views/widget.php' );
 
 			if ( ! empty( $template ) ) {
 				include $template;
@@ -145,26 +177,178 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 		}
 
 		/**
-		 * Render layout
-		 * @return string
+		 * Prepare args before processing loop
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $layout Layout name.
+		 *
+		 * @return array
 		 */
-		public function render_layout() {
-			$layout = $this->_default_layout;
-			if ( $this->_validate_layout( $this->instance['layout'] ) ) {
-				$layout = $this->instance['layout'];
+		private function _prepare_args( $layout ) {
+			$posts_limit = 5;
+			$special_class = 'large';
+			$image_size = $this->image_sizes['large'];
+			switch ( $layout ) {
+				case 'layout-5' :
+					$posts_limit = 3;
+					$special_class = 'large-2x';
+					$image_size = $this->image_sizes['large_2x'];
+					break;
+				case 'layout-3' :
+				case 'layout-4' :
+					$posts_limit = 4;
+					break;
+				case 'layout-1' :
+					$special_class = 'small';
+					$image_size = $this->image_sizes['small'];
+					break;
 			}
+
+			return array(
+				'posts_limit'   => $posts_limit,
+				'special_class' => $special_class,
+				'image_size'    => $image_size,
+			);
+		}
+
+		/**
+		 * Render layout
+		 * @param array $options
+		 * @return string|boolean
+		 */
+		public function render_layout( $options = array() ) {
+			$defaults = array(
+				'layout'    => $this->_default_layout,
+				'posts_ids' => '',
+				'wrapper'   => '<div class="%1$s">%2$s</div>',
+			);
+
+			$settings = array();
+
+			foreach( $defaults as $key => $defaultValue ) {
+				$value = $defaultValue;
+
+				if ( isset( $options[ $key ] ) ) {
+					$value = $options[ $key ];
+				}
+
+				$settings[ $key ] = $value;
+			}
+
+			$template = locate_template( 'inc/widgets/tm-featured-posts-block-widget/views/loop.php' );
+
+			if ( ! $template || empty( $template ) ) {
+				return false;
+			}
+
+			global $post;
+
+			$args          = $this->_prepare_args( $settings['layout'] );
+			$posts_limit   = $args['posts_limit'];
+			$special_class = $args['special_class'];
+			$image_size    = $args['image_size'];
+			$ids           = null;
+			$query         = array(
+				'showposts'      => $posts_limit,
+				'orderby'        => 'date',
+				'order'          => 'DESC',
+			);
+
+			if ( isset( $this->instance['posts_ids'] ) &&
+					 ! empty( $this->instance['posts_ids'] ) ) {
+		  	$query['include'] = $this->instance['posts_ids'];
+				$ids = explode( ",", $this->instance['posts_ids'] );
+			}
+
+			// Retrieve posts
+			$posts      = get_posts( $query );
+			$item_count = 1;
 
 			ob_start();
 
-			$template = locate_template( "inc/widgets/tm-featured-posts-block-widget/views/layouts/{$layout}.php" );
+			if ( sizeof( $posts ) > 0 ) {
+				$values = $posts;
+				if ( null !== $ids ) {
+					$values  = $ids;
+				}
+				foreach( $values as $post ) {
 
-			if ( ! empty( $template ) ) {
-				include $template;
+					if ( null !== $ids ) {
+						$post = $this->_find_post( $posts, $post );
+					}
+
+					if ( null !== $post ) {
+						setup_postdata( $post );
+						include $template;
+
+						switch( $settings['layout'] ) {
+							case 'layout-5' :
+								$item_count = $item_count + 1;
+								$special_class = 'small';
+								$image_size = $this->image_sizes['small'];
+								break;
+							case 'layout-4' :
+								$item_count = $item_count + 1;
+								if ( 2 === $item_count ) {
+									$special_class = 'small-2x-vertical';
+									$image_size    = $this->image_sizes['small_2x_vertical'];
+								} else {
+									$special_class = 'small';
+									$image_size    = $this->image_sizes['small'];
+								}
+								break;
+							case 'layout-3' :
+								$item_count = $item_count + 1;
+								if ( 2 === $item_count ) {
+									$special_class = 'small-2x';
+									$image_size    = $this->image_sizes['small_2x'];
+								} else {
+									$special_class = 'small';
+									$image_size    = $this->image_sizes['small'];
+								}
+								break;
+							case 'layout-2' :
+								if ( 0 < $item_count ) {
+									$special_class = 'small';
+									$image_size    = $this->image_sizes['small'];
+								}
+								$item_count = $item_count + 1;
+								break;
+							case 'layout-1' :
+								$item_count = $item_count + 1;
+								if ( 3 === $item_count ) {
+									$special_class = 'large';
+									$image_size    = $this->image_sizes['large'];
+								} else {
+									$special_class = 'small';
+									$image_size    = $this->image_sizes['small'];
+								}
+								break;
+							default :
+								if ( 0 < $item_count ) {
+									$special_class = 'small';
+									$image_size = $this->image_sizes['small'];
+								}
+								$item_count = $item_count + 1;
+								break;
+						}
+					}
+				}
 			}
 
-			$content = ob_get_clean();
+			wp_reset_postdata();
+			$loop_contents = ob_get_clean();
 
-			return $content;
+			if ( 0 < sizeof( $posts ) ) {
+				return sprintf(
+					$settings['wrapper'],
+					$settings['layout'],
+					$loop_contents
+				);
+			}
+
+			return false;
 		}
 
 		/**
@@ -201,6 +385,41 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 			);
 		}
 
+		/**
+		 * Get post featured image
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param  array  $args Array, containing size and format options.
+		 *
+		 * @return string
+		 */
+		public function post_featured_image( array $args = array() ) {
+			$size   = $this->image_sizes['small'];
+			$format = '<div style="background-image: url(\'%1$s\');"><img src="%2$s"></div>';
+
+			if ( true === isset( $args['size'] ) &&
+					 false === empty( $args['size'] ) ) {
+				$size = $args['size'];
+		  }
+
+			if ( true === isset( $args['format'] ) &&
+					 false === empty( $args['format'] ) ) {
+				$format = $args['format'];
+			}
+
+			if ( has_post_thumbnail() ) {
+				$image_url = get_the_post_thumbnail_url( null, $size );
+			} else {
+				$width = get_option( "{$size}_size_w" );
+				$height = get_option( "{$size}_size_h" );
+				$image_url = "http://fakeimg.pl/{$width}x{$height}";
+			}
+
+			$image_url = esc_url( $image_url );
+
+			return sprintf( $format, $image_url, $image_url );
+		}
 
 		/**
 		 * Get post categories
@@ -340,8 +559,7 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 
 			$before  = '<div>';
 			$after   = '</div>';
-			$has_url = '<a href="%1$s">%2$s</a>';
-			$no_url  = '%2$s';
+			$format = '<a href="%1$s">%2$s</a>';
 
 			if ( true === isset( $args['before'] ) &&
 				false === empty( $args['before'] )
@@ -355,26 +573,14 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 				$after = $args['after'];
 			}
 
-			if ( true === isset( $args['has_url'] ) &&
-				false === empty( $args['has_url'] )
+			if ( true === isset( $args['format'] ) &&
+				false === empty( $args['format'] )
 			) {
-				$has_url = $args['has_url'];
+				$format = $args['format'];
 			}
 
-			if ( true === isset( $args['no_url'] ) &&
-				false === empty( $args['no_url'] )
-			) {
-				$no_url = $args['no_url'];
-			}
-
-			$author_url  = get_the_author_meta( 'user_url', $post->post_author );
+			$author_url  = get_author_posts_url( $post->post_author );
 			$author_name = get_the_author_meta( 'display_name', $post->post_author );
-
-			if ( false === empty( $author_url ) ) {
-				$format = $has_url;
-			} else {
-				$format = $no_url;
-			}
 
 			return sprintf(
 				'%s%s%s',
@@ -403,10 +609,9 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 		public function post_date( array $args = array() ) {
 			global $post;
 
-			$before    = '<a>';
-			$after     = '</a>';
-			$format    = get_option( 'date_format' );
-			$for_human = false;
+			$format      = '<a href="%1$s">%2$s</a>';
+			$date_format = get_option( 'date_format' );
+			$for_human   = false;
 
 			if ( true === isset( $args['before'] ) &&
 				false === empty( $args['before'] )
@@ -426,10 +631,16 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 				$format = $args['format'];
 			}
 
+			if ( true === isset( $args['date_format'] ) &&
+				false === empty( $args['date_format'] )
+			) {
+				$date_format = $args['date_format'];
+			}
+
 			if ( true === isset( $args['for_human'] ) &&
 				false === empty( $args['for_human'] )
 			) {
-				$for_human = (boolean) $args['for_human'];
+				$for_human = !( !$args['for_human'] );
 			}
 
 			if ( true === $for_human ) {
@@ -438,13 +649,13 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 					human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) )
 				);
 			} else {
-				$date = get_the_date( $format );
+				$date = get_the_date( $date_format );
 				if ( empty( $date ) ) {
-					$date = get_the_modified_date( $format );
+					$date = get_the_modified_date( $date_format );
 				}
 			}
 
-			return sprintf( '%s%s%s', $before, $date, $after );
+			return sprintf( $format, esc_url( get_the_permalink() ), $date );
 		}
 
 		/**
@@ -471,7 +682,7 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 			$before    = '<div>';
 			$after     = '</div>';
 			$format    = '<a href="%1$s">%2$s</a>';
-			$separator = ',';
+			$separator = ', ';
 
 			if ( true === isset( $args['before'] ) &&
 				false === empty( $args['before'] )
@@ -497,19 +708,44 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 				$separator = $args['separator'];
 			}
 
-			$post_tags = wp_get_post_tags( $post->ID );
-			if ( 0 < sizeof( $post_tags ) ) {
+			$post_tags = get_the_tags( $post->ID );
+			$i = 0;
+			$item = '';
+
+			if ( is_array( $post_tags ) && 0 < sizeof( $post_tags ) ) {
 				array_push( $result, $before );
 
 				foreach ( $post_tags as $tag ) {
 					$tag = get_tag( $tag );
-					array_push( $result, sprintf( $format, esc_attr( get_tag_link( $tag ) ), esc_html( $tag->name ) ) );
+					$item = sprintf( $format, esc_attr( get_tag_link( $tag ) ), esc_html( $tag->name ) );
+
+					if ( $i < sizeof( $post_tags ) - 1 ) {
+						 $item = $item . $separator;
+					}
+
+					array_push( $result, $item );
+					$i = $i + 1;
 				}
 
 				array_push( $result, $after );
 			}
 
-			return join( $separator, $result );
+			return join( '', $result );
+		}
+
+		/**
+		 * Find post in the posts array by it's ID
+		 * @param  array          $posts  Posts array.
+		 * @param  integer|string $postID Post ID.
+		 * @return WP_Post|null
+		 */
+		private function _find_post( $posts, $postID ) {
+			foreach( $posts as $post ) {
+				if ( $post->ID == $postID ) {
+					return $post;
+				}
+			}
+			return null;
 		}
 	}
 

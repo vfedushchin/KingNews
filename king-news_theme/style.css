@@ -3181,7 +3181,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 .post-navigation .nav-previous {
   float: left;
   width: 50%;
-  max-width: 330px;
+  max-width: 300px;
   padding-left: 30px;
   position: relative;
 }
@@ -3240,7 +3240,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   float: right;
   text-align: right;
   width: 50%;
-  max-width: 330px;
+  max-width: 300px;
   padding-right: 30px;
   position: relative;
 }
@@ -7993,14 +7993,52 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     overflow: hidden;
   }
 }
+.single-post .has-thumb .post-thumbnail__format-link .post-format-link, .page-template-page-with-social .has-thumb .post-thumbnail__format-link .post-format-link {
+  margin-top: 20px;
+}
 
 .page-template-page-with-social .post-left-column .share-btns__list {
   margin-top: 20px;
 }
 
 .single-post .post_format-post-format-gallery .post-thumbnail,
-.single-post .post_format-post-format-video .post-thumbnail {
+.single-post .post_format-post-format-video .post-thumbnail,
+.single-post .post_format-post-format-status .post-thumbnail,
+.single-post .post_format-post-format-quote .post-thumbnail {
   display: none;
+}
+.single-post .post_format-post-format-status iframe, .single-post .post_format-post-format-status .fb_iframe_widget {
+  margin-bottom: 26px !important;
+}
+
+.archive.category .post_format-post-format-video .post-thumbnail {
+  width: 100%;
+}
+.archive.category .post_format-post-format-link .post-thumbnail__format-link {
+  right: 20px;
+}
+.archive.category .post_format-post-format-link .post-thumbnail__format-link a {
+  max-width: -webkit-calc(100% - 80px);
+  max-width: calc(100% - 80px);
+}
+@media (max-width: 768px) {
+  .archive.category .post_format-post-format-link .post-thumbnail__format-link {
+    right: 10px;
+  }
+}
+@media (min-width: 1200px) {
+  .archive.category .post_format-post-format-link .post-thumbnail__format-link {
+    margin-left: -40px;
+  }
+}
+@media (max-width: 1199px) {
+  .archive.category .post_format-post-format-link .post-thumbnail__format-link a {
+    font-size: 14px;
+    padding: 5px;
+    right: 0;
+    max-width: -webkit-calc(100% - 40px);
+    max-width: calc(100% - 40px);
+  }
 }
 
 .page .post-left-column, .single .post-left-column, .single-post .post-left-column {

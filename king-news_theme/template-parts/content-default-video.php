@@ -12,7 +12,9 @@
 
 
 			<figure class="post-thumbnail <?php /*king_news_post_thumbnail_class();*/ ?> ">
+				<!-- <?php king_news_post_thumbnail(true, '','_tm-thumb-536-411'); ?> -->
 				<?php do_action( 'cherry_post_format_video', array( 'width'  => 770, 'height' => 480, ) ); ?>
+				<?php king_news_meta_categories( 'loop' ); ?>
 				<?php king_news_sticky_label(); ?>
 			</figure><!-- .post-thumbnail -->
 
@@ -30,7 +32,7 @@
 			</header><!-- .entry-header -->
 
 			<div class="entry-content">
-				<?php king_news_blog_content(40); ?>
+				<?php king_news_blog_content(70); ?>
 			</div><!-- .entry-content -->
 
 			<?php if ( 'post' === get_post_type() ) : ?>

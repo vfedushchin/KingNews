@@ -11,8 +11,8 @@
 	<div class="post-list__item-content">
 
 
-		<figure class="post-thumbnail  post-thumbnail--fullwidth">
-			<?php king_news_post_thumbnail(true, '','_tm-thumb-1132-411'); ?>
+		<figure class="post-thumbnail">
+			<?php king_news_post_thumbnail(true, '','_tm-thumb-536-411'); ?>
 			<?php king_news_meta_categories( 'loop' ); ?>
 			<?php king_news_sticky_label(); ?>
 			<div class="post-thumbnail__format-link">
