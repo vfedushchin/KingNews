@@ -32,3 +32,8 @@
     }
   }
 }
+.error-404 {
+  @include media-breakpoint-up(xl) {
+    margin-top: -12px;
+  }
+}

@@ -15,8 +15,6 @@ add_filter( 'king_news_widget_area_classes', 'king_news_set_sidebar_classes', 10
 add_filter( 'king_news_widget_area_classes', 'king_news_add_footer_widgets_wrapper_classes', 10, 2 );
 // Set footer columns
 add_filter( 'dynamic_sidebar_params', 'king_news_get_footer_widget_layout' );
-// Add background field to Kickstarter widget
-add_filter( 'tf_track_kickstarter_widget_fields', 'king_news_add_kickstarter_bg_field' );
 // Adapt default image post format classes to current theme
 add_filter( 'cherry_post_formats_image_css_model', 'king_news_add_image_format_classes', 10, 2 );
 // Enqueue sticky menu if required
@@ -186,22 +184,6 @@ function king_news_get_footer_widget_layout( $params ) {
 	return $params;
 }
 
-/**
- * Add BG field to widget kickstarter.
- *
- * @param  array $fields Existing fields array.
- * @return array
- */
-function king_news_add_kickstarter_bg_field( $fields ) {
-
-	$fields['bg_image'] = array(
-		'label' => __( 'Background image URL', 'king_news' ),
-		'type'  => 'text',
-		'value' => get_stylesheet_directory_uri() . '/assets/images/kickstarter-bg.png',
-	);
-
-	return $fields;
-}
 
 /**
  * Filter image CSS model

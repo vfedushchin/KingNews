@@ -5,7 +5,7 @@
  * @package king_news
  */
 
-class KING_NEWS_About_Author_Widget extends Cherry_Abstract_Widget {
+class king_news_About_Author_Widget extends Cherry_Abstract_Widget {
 
 	/**
 	 * Constructor
@@ -15,7 +15,7 @@ class KING_NEWS_About_Author_Widget extends Cherry_Abstract_Widget {
 		$this->widget_cssclass    = 'king_news widget-about-author';
 		$this->widget_description = __( 'Display an information about selected user.', 'king_news' );
 		$this->widget_id          = 'king_news_widget_about_author';
-		$this->widget_name        = __( 'King News About Author', 'king_news' );
+		$this->widget_name        = __( 'About Author', 'king_news' );
 		$this->settings           = array(
 			'title'  => array(
 				'type'  => 'text',
@@ -127,6 +127,11 @@ class KING_NEWS_About_Author_Widget extends Cherry_Abstract_Widget {
 	 */
 	public function get_author_name() {
 		$user = get_userdata( intval( $this->instance['user_id'] ) );
+
+		if ( ! $user ) {
+			return;
+		}
+
 		return sprintf( '<h5 class="about-author_name">%s</h5>', $user->display_name );
 	}
 
@@ -150,7 +155,12 @@ class KING_NEWS_About_Author_Widget extends Cherry_Abstract_Widget {
 		$size    = intval( $this->instance['avatar_size'] );
 		$user_id = intval( $this->instance['user_id'] );
 
-		$user   = get_userdata( $user_id );
+		$user = get_userdata( $user_id );
+
+		if ( ! $user ) {
+			return;
+		}
+
 		$avatar = get_avatar( $user_id, $size, '', $user->display_name );
 
 		return sprintf( $format, $avatar );
@@ -163,6 +173,11 @@ class KING_NEWS_About_Author_Widget extends Cherry_Abstract_Widget {
 	 */
 	public function get_author_description() {
 		$user = get_userdata( intval( $this->instance['user_id'] ) );
+
+		if ( ! $user ) {
+			return;
+		}
+
 		return sprintf(
 			'<div class="about-author_description">%s</div>',
 			wp_filter_post_kses( $user->description )
@@ -198,5 +213,5 @@ class KING_NEWS_About_Author_Widget extends Cherry_Abstract_Widget {
 
 add_action( 'widgets_init', 'king_news_register_about_author_widgets' );
 function king_news_register_about_author_widgets() {
-	register_widget( 'KING_NEWS_About_Author_Widget' );
+	register_widget( 'king_news_About_Author_Widget' );
 }

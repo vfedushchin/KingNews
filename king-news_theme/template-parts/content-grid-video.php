@@ -12,7 +12,7 @@
 	
 
 			<figure class="grid-view-main">
-				<?php do_action( 'cherry_post_format_video', array( 'width'  => 770, 'height' => 480, ) ); ?>
+				<?php do_action( 'cherry_post_format_video', array( 'width'  => 536, 'height' => 411, ) ); ?>
 
 				<figcaption class="grid-view-figcaption">
 					<span></span>
@@ -22,8 +22,7 @@
 							if ( is_single() ) {
 								the_title( '<h2 class="entry-title">', '</h2>' );
 							} else {
-								echo '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . get_short_title(50) . '</a></h3>';
-								/*the_title( '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' );*/
+								echo '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . king_news_get_short_title(50) . '</a></h3>';
 							}
 						?>
 

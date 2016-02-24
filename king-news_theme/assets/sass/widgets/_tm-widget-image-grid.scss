@@ -67,8 +67,8 @@
 			content:'';
 			position: absolute;
 			width: 100%;
-			height: 100%;
-			top: 0;
+			top: 50%;
+			bottom: 0;
 			left: 0;
 			opacity: 0.7;
 			z-index: -1;
@@ -76,6 +76,7 @@
 			transition: .4s all ease;
 		}
 		&:hover:before {
+			top: 40%;
 			opacity: 1;
 		}
 
@@ -269,3 +270,30 @@
 
 }
 
+
+
+#sidebar-secondary,
+#sidebar-primary {
+	.widget_search .widget-title, .widget-subscribe .widget-title {
+		margin-bottom: 0px;
+	}
+	@include media-breakpoint-up(lg) {
+		.widget-title {
+			margin-bottom: 33px;
+		}
+		.widget_recent_comments .widget-title {
+			margin-bottom: 20px;
+		}
+	}
+	@include media-breakpoint-up(xl) {
+		.widget-title {
+			margin-bottom: 43px;
+		}
+		.widget_recent_comments .widget-title {
+			margin-bottom: 20px;
+		}
+		.widget {
+			margin-bottom: 40px;
+		}
+	}
+}

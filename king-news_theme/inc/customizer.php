@@ -284,21 +284,21 @@ function king_news_get_customizer_options() {
 			'invert_accent_color_1' => array(
 				'title'   => esc_html__( 'Accent color (1)', 'king_news' ),
 				'section' => 'invert_scheme',
-				'default' => '',
+				'default' => '#ffffff',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'invert_accent_color_2' => array(
 				'title'   => esc_html__( 'Accent color (2)', 'king_news' ),
 				'section' => 'invert_scheme',
-				'default' => '',
+				'default' => '#ffffff',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
 			'invert_accent_color_3' => array(
 				'title'   => esc_html__( 'Accent color (3)', 'king_news' ),
 				'section' => 'invert_scheme',
-				'default' => '',
+				'default' => '#ffffff',
 				'field'   => 'hex_color',
 				'type'    => 'control',
 			),
@@ -1187,7 +1187,7 @@ function king_news_get_customizer_options() {
 			'header_layout_type' => array(
 				'title'   => esc_html__( 'Layout', 'king_news' ),
 				'section' => 'header_styles',
-				'default' => 'centered',
+				'default' => 'minimal',
 				'field'   => 'select',
 				'choices' => array(
 					'default'  => esc_html__( 'Minimal', 'king_news' ),
@@ -1635,7 +1635,6 @@ function king_news_get_dynamic_css_options() {
 			KING_NEWS_THEME_DIR . '/assets/css/dynamic/widgets/smart-slider.css',
 			KING_NEWS_THEME_DIR . '/assets/css/dynamic/widgets/instagram.css',
 			KING_NEWS_THEME_DIR . '/assets/css/dynamic/widgets/facebook.css',
-			KING_NEWS_THEME_DIR . '/assets/css/dynamic/widgets/track-kickstarter.css',
 			KING_NEWS_THEME_DIR . '/assets/css/dynamic/widgets/donate.css',
 			KING_NEWS_THEME_DIR . '/assets/css/dynamic/site/top-panel.css',
 			KING_NEWS_THEME_DIR . '/assets/css/dynamic/site/search-form.css',

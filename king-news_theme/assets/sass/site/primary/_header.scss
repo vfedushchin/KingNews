@@ -31,34 +31,29 @@
 			.main-navigation ul.menu > li > a {
 		    padding: 10px 17px 10px;
 			}
+			.social-list.social-list--header {
+				display: none;
+			}
+			.main-navigation {
+				padding-top: 0;
+				width: 100% !important;
+				text-align: center;
+				margin-bottom: 0 !important;
+				.menu {
+					text-align: center;
+				}
+				.admin-bar & {
+					padding-top: 25px !important;
+					margin-bottom: 0 !important;
+				}
+			}
 		}
 
-		@media only screen and (max-width: 979px) {
+		@media only screen and (max-width: 1199px) {
 		  &.isStuck {
 		    display: none !important;
 		  }
 		}
-
-/* 	@include media-breakpoint-up(md) {
-	&.isStuck {
-
-		&.header-container {
-			padding-top: 0;
-		}
-		.site-branding {
-			display: none;
-		}
-		position: fixed;
-		width: 100%;
-		left: 0;
-		z-index: 9999;
-		&.has-bar {
-			margin-top: 32px;
-		}
-	}
-
-
-} */
 }
 
 @import "header/layout-default";

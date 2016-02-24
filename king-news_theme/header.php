@@ -29,7 +29,7 @@
 			<div class="container">
 				<div <?php echo king_news_get_container_classes( array( 'top-panel__wrap' ) ); ?>><?php
 					king_news_top_message( '<div class="top-panel__message">%s</div>' );
-					__tm_top_sign_register();
+					king_news_top_sign_register();
 					king_news_top_search( '<div class="top-panel__search">%s</div>' );
 					king_news_top_menu();
 				?></div>

@@ -109,3 +109,10 @@ img {
 @import "tables";
 
 
+.post__cats {
+	@media (max-width: 468px) {
+	.site-main & {
+		 display: none !important;
+		}
+	}
+}

@@ -12,7 +12,7 @@
 
 
 			<figure class="grid-view-main">
-				<?php king_news_post_thumbnail( true ); ?>
+				<?php king_news_post_thumbnail(true, '','_tm-thumb-536-411'); ?>
 
 				<figcaption class="grid-view-figcaption">
 					<?php king_news_meta_categories( 'loop' ); ?>
@@ -22,8 +22,7 @@
 							if ( is_single() ) {
 								the_title( '<h2 class="entry-title">', '</h2>' );
 							} else {
-								echo '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . get_short_title(50) . '</a></h3>';
-								/*the_title( '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' );*/
+								echo '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . king_news_get_short_title(50) . '</a></h3>';
 							}
 						?>
 

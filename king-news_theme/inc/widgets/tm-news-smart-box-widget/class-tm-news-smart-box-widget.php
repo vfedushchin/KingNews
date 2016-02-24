@@ -84,11 +84,6 @@ class KING_NEWS_News_Smart_Box_Widget extends Cherry_Abstract_Widget {
 				'multiple' => true,
 				'placeholder' => esc_html__( 'Select tags', 'king_news' ),
 			),
-			'main_color' => array(
-				'type' => 'colorpicker',
-				'value' => '#000',
-				'label'  => esc_html__( 'Main color', 'king_news' ),
-			),
 			'posts_per_page' => array(
 				'type' => 'stepper',
 				'value' => 6,
@@ -96,13 +91,39 @@ class KING_NEWS_News_Smart_Box_Widget extends Cherry_Abstract_Widget {
 				'min_value' => 1,
 				'label'  => esc_html__( 'Posts count', 'king_news' ),
 			),
-			'trim_words' => array(
+			'trim_title_words' => array(
+				'type' => 'slider',
+				'value' => 5,
+				'max_value' => 55,
+				'min_value' => 1,
+				'step_value' => 1,
+				'label'  => esc_html__( 'Title words trimmed count', 'king_news' ),
+			),
+			'trim_content_words' => array(
 				'type' => 'slider',
 				'value' => 15,
 				'max_value' => 55,
 				'min_value' => 1,
 				'step_value' => 1,
 				'label'  => esc_html__( 'Content words trimmed count', 'king_news' ),
+			),
+			'date_visibility' => array(
+				'type' => 'switcher',
+				'value' => 'true',
+				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
+				'label' => esc_html__( 'Display date', 'king_news' ),
+			),
+			'author_visibility' => array(
+				'type' => 'switcher',
+				'value' => 'true',
+				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
+				'label' => esc_html__( 'Display author', 'king_news' ),
+			),
+			'comment_visibility' => array(
+				'type' => 'switcher',
+				'value' => 'true',
+				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
+				'label' => esc_html__( 'Display comments', 'king_news' ),
 			),
 		);
 
@@ -263,11 +284,14 @@ class KING_NEWS_News_Smart_Box_Widget extends Cherry_Abstract_Widget {
 					)
 				);
 
-				$image_size = apply_filters( 'king_news_carousel_image_size', '_tm-thumb-540-410' );
+				$image_size = apply_filters( 'king_news_carousel_image_size', '_tm-thumb-536-411' );
 				$image = '<a class="post-thumbnail__link" href="' . $permalink . '">' . $this->get_image( $post_id, $image_size, $placeholder_args ) .'</a>';
 
-				$title = '<a href="' . $permalink . '">' . $title . '</a>';
-				$content = '<p class="post__excerpt">' . $this->get_trimed_content( get_the_content(), (int) $this->instance['trim_words'] ) . '</p>';
+				$trim_title_words = isset( $this->instance['trim_title_words'] ) ? $this->instance['trim_title_words'] : 5;
+				$title = '<a href="' . $permalink . '">' . $this->get_trimed_content( $title, (int) $trim_title_words ) . '</a>';
+
+				$trim_content_words = isset( $this->instance['trim_content_words'] ) ? $this->instance['trim_content_words'] : 15;
+				$content = '<p class="post__excerpt">' . $this->get_trimed_content( get_the_content(), (int) $trim_content_words ) . '</p>';
 
 				$date = '<a href="' . $permalink . '">' . $this->get_post_date( $post_id ) . '</a>';
 				$comments = $this->get_post_comments( $post_id );
@@ -278,7 +302,7 @@ class KING_NEWS_News_Smart_Box_Widget extends Cherry_Abstract_Widget {
 				$mini_view_dir = locate_template( 'inc/widgets/tm-news-smart-box-widget/views/tm-news-smart-box-mini-view.php' );
 				$view_type = $full_view_dir;
 
-				$grid_class_line = 'col-xs-12 col-sm-12 col-md-12 col-lg-6';
+				$grid_class_line = 'col-xs-6 col-sm-6 col-md-6';
 				$type_class = 'full-type';
 				$order_class = 'post-item-' . $post_counter;
 
@@ -365,7 +389,7 @@ class KING_NEWS_News_Smart_Box_Widget extends Cherry_Abstract_Widget {
 
 			$this->get_new_instance( $value_slug );
 
-			exit();
+			exit('');
 		}
 	}
 
@@ -397,7 +421,6 @@ class KING_NEWS_News_Smart_Box_Widget extends Cherry_Abstract_Widget {
 		if ( has_post_thumbnail( $id ) ) {
 			$thumbnail_id = get_post_thumbnail_id( intval( $id ) );
 			//$attachment_image = wp_get_attachment_image_src( $thumbnail_id, $size );
-			//$attachment_image = wp_get_attachment_image_src( $thumbnail_id, '_tm-thumb-xl' );
 			$attachment_image = wp_get_attachment_image_src( $thumbnail_id, '_tm-thumb-536-411' );
 
 			if( $only_url ){

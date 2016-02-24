@@ -12,7 +12,7 @@
 
 
 			<figure class="post-thumbnail <?php /*king_news_post_thumbnail_class();*/ ?> ">
-				<?php king_news_post_thumbnail(true, '','_tm-thumb-1132-411'); ?>
+				<?php king_news_post_thumbnail(true, '','_tm-thumb-536-411'); ?>
 				<?php king_news_meta_categories( 'loop' ); ?>
 				<?php king_news_sticky_label(); ?>
 			</figure><!-- .post-thumbnail -->

@@ -75,9 +75,6 @@ if ( have_posts() ) :
 			}
 		}
 
-		/*echo "<br> format = " . $format;
-		echo "<br> layout = " . $layout;*/
-
 		get_template_part( 'template-parts/content', $layout );
 
 	endwhile; ?>

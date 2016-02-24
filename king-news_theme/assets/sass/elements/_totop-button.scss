@@ -24,6 +24,10 @@
 		font-size: 24px;
 		content: "keyboard_arrow_up";
 	}
+
+	@media (max-width: 991px) {
+		display: none !important;
+	}
 }
 
 #toTop:active, #toTop:focus {

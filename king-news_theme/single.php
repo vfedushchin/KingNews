@@ -18,11 +18,11 @@ while ( have_posts() ) : the_post();
 	?></div><?php
 
 	the_post_navigation( array(
-		'next_text' => '<span class="meta-nav" aria-hidden="true">Next Post</span> ' .
-										'<span class="screen-reader-text">Next Post</span> ' .
+		'next_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Next Post', 'king_news' ) .'</span> ' .
+										'<span class="screen-reader-text">' . __( 'Next Post', 'king_news' ) .'</span> ' .
 										'<span class="post-title">%title</span>',
-		'prev_text' => '<span class="meta-nav" aria-hidden="true">Previous Post</span> ' .
-										'<span class="screen-reader-text">Previous Post</span> ' .
+		'prev_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Previous Post', 'king_news' ) .'</span> ' .
+										'<span class="screen-reader-text">' . __( 'Previous Post', 'king_news' ) .'</span> ' .
 										'<span class="post-title">%title</span>',
 	) );
 

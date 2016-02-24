@@ -151,89 +151,89 @@
 
 		
 		news_smart_box_init: function ( self ) {
-			jQuery('.news-smart-box__instance').each( function() {
-				var uniqId = $( this ).data( 'uniq-id' ),
-					instanceSettings = $( this ).data( 'instance-settings' ),
-					instance = $( '#' + uniqId ),
-					$termItemList = $( '.terms-list .term-item', instance ),
-					$currentTerm = $( '.current-term span', instance ),
-					$listContainer = $( '.news-smart-box__wrapper', instance ),
-					$ajaxPreloader = $( '.nsb-spinner', instance ),
-					ajaxGetNewInstance = null,
-					ajaxGetNewInstanceSuccess = true,
-					showNewItems = null;
+      jQuery('.news-smart-box__instance').each( function() {
+        var uniqId = $( this ).data( 'uniq-id' ),
+          instanceSettings = $( this ).data( 'instance-settings' ),
+          instance = $( '#' + uniqId ),
+          $termItemList = $( '.terms-list .term-item', instance ),
+          $currentTerm = $( '.current-term span', instance ),
+          $listContainer = $( '.news-smart-box__wrapper', instance ),
+          $ajaxPreloader = $( '.nsb-spinner', instance ),
+          ajaxGetNewInstance = null,
+          ajaxGetNewInstanceSuccess = true,
+          showNewItems = null;
 
-					$termItemList.on( 'click', function(){
-						var slug = $( this ).data( 'slug' ),
-							data = {
-								action: 'new_smart_box_instance',
-								value_slug: slug,
-								instance_settings: instanceSettings
-							},
-							currentTermName = $( 'span', this ).text(),
-							counter = 0;
+          $termItemList.on( 'click', function(){
+            var slug = $( this ).data( 'slug' ),
+              data = {
+                action: 'new_smart_box_instance',
+                value_slug: slug,
+                instance_settings: instanceSettings
+              },
+              currentTermName = $( 'span', this ).text(),
+              counter = 0;
 
-						$currentTerm.html( currentTermName );
+            $currentTerm.html( currentTermName );
 
-						if ( ajaxGetNewInstance != null && ajaxGetNewInstanceSuccess ) {
-							ajaxGetNewInstance.abort();
-						}
-						ajaxGetNewInstance = $.ajax({
-							type: 'GET',
-							url: king_news.ajaxurl,
-							data: data,
-							cache: false,
-							beforeSend: function(){
-								ajaxGetNewInstanceSuccess = false;
-								$ajaxPreloader.css( { 'display' : 'block' } ).fadeTo( 300, 1 );
-							},
-							success: function( response ){
+            if ( ajaxGetNewInstance !== null ) {
+              ajaxGetNewInstance.abort();
+            }
+            ajaxGetNewInstance = $.ajax({
+              type: 'GET',
+              url: king_news.ajaxurl,
+              data: data,
+              cache: false,
+              beforeSend: function(){
+                ajaxGetNewInstanceSuccess = false;
+                $ajaxPreloader.css( { 'display' : 'block' } ).fadeTo( 300, 1 );
+              },
+              success: function( response ){
 
-							/*for share icons hover appear*/
-							setTimeout( function() {
-								share_hover_hide_selector = $('.widget-image-grid__footer-meta, .widget-new-smart__post__date, .meta-inner');
-									// add/remove class for showing share-list in posts
-									$(".share-btns-main").on({
-										mouseenter: function () {
-												//stuff to do on mouse enter
-												$(this).addClass('show-share-list');
-												$(this).siblings(share_hover_hide_selector).fadeTo(300, 0);
-										},
-										mouseleave: function () {
-												//stuff to do on mouse leave
-												$(this).removeClass('show-share-list');
-												$(this).siblings(share_hover_hide_selector).fadeTo(400, 1);
-										}
-								});
-							}, 1000 );
+                /*for share icons hover appear*/
+              setTimeout( function() {
+                share_hover_hide_selector = $('.widget-image-grid__footer-meta, .widget-new-smart__post__date, .meta-inner');
+                  // add/remove class for showing share-list in posts
+                  $(".share-btns-main").on({
+                    mouseenter: function () {
+                        //stuff to do on mouse enter
+                        $(this).addClass('show-share-list');
+                        $(this).siblings(share_hover_hide_selector).fadeTo(300, 0);
+                    },
+                    mouseleave: function () {
+                        //stuff to do on mouse leave
+                        $(this).removeClass('show-share-list');
+                        $(this).siblings(share_hover_hide_selector).fadeTo(400, 1);
+                    }
+                });
+              }, 1000 );
+              
+                ajaxGetNewInstanceSuccess = true;
 
-								ajaxGetNewInstanceSuccess = true;
+                $ajaxPreloader.fadeTo( 300, 0, function() {
+                  $( this ).css( { 'display' : 'none' } );
+                });
 
-								$ajaxPreloader.fadeTo( 300, 0, function() {
-									$( this ).css( { 'display' : 'none' } );
-								});
+                $( '.news-smart-box__listing', $listContainer ).html( response );
 
-								$( '.news-smart-box__listing', $listContainer ).html( response );
+                counter = 0;
+                $( '.news-smart-box__listing .post .inner', $listContainer ).addClass( 'animate-cycle-show' );
+                $( '.news-smart-box__listing .post', $listContainer ).each( function() {
+                  showItem( $( this ), 100 * parseInt( counter ) + 200 );
+                  counter++;
+                })
 
-								counter = 0;
-								$( '.news-smart-box__listing .post .inner', $listContainer ).addClass( 'animate-cycle-show' );
-								$( '.news-smart-box__listing .post', $listContainer ).each( function() {
-									showItem( $( this ), 100 * parseInt( counter ) );
-									counter++;
-								})
+              }
+            });
 
-							}
-						});
+          });
 
-					});
-
-					var showItem = function( itemList, delay ) {
-						var timeOutInterval = setTimeout( function() {
-							$('.inner', itemList).removeClass( 'animate-cycle-show' );
-						}, delay );
-					}
-			});
-		},
+          var showItem = function( itemList, delay ) {
+            var timeOutInterval = setTimeout( function() {
+              $('.inner', itemList).removeClass( 'animate-cycle-show' );
+            }, delay );
+          }
+      });
+    },
 
 		post_formats_custom_init: function ( self ) {
 			CHERRY_API.variable.$document.on( 'cherry-post-formats-custom-init', function( event ) {

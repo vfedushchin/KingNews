@@ -129,7 +129,7 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 			$this->widget_start( $args, $instance );
 
 			$this->_excerpt_length = $instance['excerpt_length'];
-			add_filter( 'excerpt_length', [ &$this, 'get_excerpt_length' ] );
+			add_filter( 'excerpt_length', array( &$this, 'get_excerpt_length' ) );
 
 			$template = locate_template( 'inc/widgets/tm-featured-posts-block-widget/views/main-view.php' );
 

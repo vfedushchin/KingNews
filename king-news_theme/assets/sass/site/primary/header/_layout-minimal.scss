@@ -41,13 +41,29 @@
 	@media (max-width: 599px) {
 		.site-branding {
 			border-bottom: none;
-			margin-left: 50px;
 			padding-bottom: 0;
-			margin-bottom: -40px;
+			margin-bottom: -25px;
+			width: 100%;
+			text-align: center;
+			order: 1;
+			a img {
+				max-width: 200px;
+			}
 		}
 		.menu-toggle {
 			position: relative;
-			top: -24px;
+			top: -6px;
+		}
+		.site-navigation {
+			order: 2px;
+		}
+
+		.social-list {
+			order: 3;
+			width: 100%;
+			text-align: right;
+			position: relative;
+			top: 34px;
 		}
 	}
 }

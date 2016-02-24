@@ -540,7 +540,7 @@ function king_news_theme() {
  *
  * @return title
  */
-function get_short_title($maxchar = 10){
+function king_news_get_short_title($maxchar = 10){
 	$title = get_the_title();
 	if( iconv_strlen($title, 'utf-8') < $maxchar )
 		return $title;

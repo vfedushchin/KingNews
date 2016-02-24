@@ -4,6 +4,7 @@
 
 		<figcaption >
 			<div class="post__cats"><?php echo $terms_line; ?></div>
+			<div></div>
 
 
 			<div class="widget-new-smart__footer">
@@ -84,24 +85,3 @@
 	</div>
 </div>
 
-
-
-
-
-<!-- 
-<div class="inner">
-	<header class="entry-header">
-		<?php echo $image; ?>
-	</header>
-	<div class="entry-content">
-		<div class="post__cats"><?php echo $terms_line; ?></div>
-		<?php echo $title; ?>
-		<div class="entry-meta">
-			<span class="post__date"><i class="material-icons">event</i><?php echo $date; ?></span>
-			<div class="post__author vcard"><span><?php echo esc_html__( 'by ', 'king_news' ); ?></span><?php echo $author; ?></div>
-			<span class="post__comments"><i class="material-icons">mode_comment</i><?php echo $comments; ?></span>
-		</div>
-		<?php echo $content; ?>
-	</div>
-	<footer class="entry-footer"></footer>
-</div> -->

@@ -24,9 +24,6 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-meta-sharing">
-		<!-- <div class="entry-content">
-			<?php king_news_blog_content(); ?>
-		</div>.entry-content -->
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 
