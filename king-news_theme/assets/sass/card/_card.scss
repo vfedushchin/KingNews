@@ -91,6 +91,12 @@
 	}
 	.posts-list--masonry-2-cols, .posts-list--masonry-3-cols {
 
+		@include media-breakpoint-up(lg) {
+			.posts-list__item.card {
+				margin-bottom: 6px;
+			}
+		}
+
 
 		.archive.category & .entry-footer, & .entry-footer {
 			display: block;
@@ -117,7 +123,7 @@
 		.site-content h2 + & {
 			margin-top: -30px;
 			@include media-breakpoint-up(xl) {
-				margin-top: -41px;
+				margin-top: -38px;
 			}
 		}
 

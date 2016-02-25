@@ -143,6 +143,9 @@
 	overflow: hidden;
 	position: relative;
 	margin: 0 0 1.85em;
+	@media (max-width: 361px) {
+		margin-bottom: 10px;
+	}
 
 	.posts-list--grid-2-cols &, .posts-list--grid-3-cols & {
 		@include media-breakpoint-up(xl) {
@@ -161,6 +164,10 @@
 	& + .hentry {
 		border-top: 1px dotted $color__line;
 		padding-top: 30px;
+		@media (max-width: 361px) {
+			margin-top: 12px;
+			padding-top: 12px;
+		}
 		@include media-breakpoint-up(lg) {
 			padding-top: 37px;
 		}
@@ -838,5 +845,11 @@
 @media (max-width: 411px) {
 	.entry-meta > span {
 		display: block;
+	}
+}
+
+.posts-list--default {
+	.post-thumbnail + .post-body-right {
+		overflow: visible;
 	}
 }

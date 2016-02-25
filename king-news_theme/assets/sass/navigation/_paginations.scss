@@ -97,6 +97,9 @@
 .pagination {
 	border-top: 1px dotted $color__line;
 	padding: 28px 0 25px;
+	@media (max-width: 361px) {
+		padding: 10px 0;
+	}
 	.page-numbers {
 		display: inline-block;
 		min-width: 50px;

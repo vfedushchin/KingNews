@@ -82,6 +82,9 @@
 				background: #fff;
 			}
 		}
+		@media (max-width: 361px) {
+			margin-right: -1px;
+		}
 	}
 	&__submit {
 		border-top-left-radius: 0;
@@ -153,7 +156,12 @@
 	}
 }
 
-.widget_search + .widget-subscribe { margin-top: 62px; }
+.widget_search + .widget-subscribe { 
+	margin-top: 62px;
+	@media (max-width: 361px) {
+		margin-top: 15px;
+	}
+}
 #sidebar-primary, #sidebar-secondary {
 	.widget-subscribe .widget-title, .subscribe-block .widget-title { margin-bottom: 8px; }
 }

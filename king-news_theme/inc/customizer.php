@@ -1100,8 +1100,8 @@ function king_news_get_customizer_options() {
 				'default'     => 1788,
 				'field'       => 'number',
 				'input_attrs' => array(
-					'min'  => 1170,
-					'max'  => 1920,
+					'min'  => 1465,
+					'max'  => 2020,
 					'step' => 1,
 				),
 				'type' => 'control',
@@ -1187,12 +1187,12 @@ function king_news_get_customizer_options() {
 			'header_layout_type' => array(
 				'title'   => esc_html__( 'Layout', 'king_news' ),
 				'section' => 'header_styles',
-				'default' => 'minimal',
+				'default' => 'default',
 				'field'   => 'select',
 				'choices' => array(
-					'default'  => esc_html__( 'Minimal', 'king_news' ),
+					'default'  => esc_html__( 'Default', 'king_news' ),
 					'centered' => esc_html__( 'Centered', 'king_news' ),
-					'minimal'  => esc_html__( 'Default', 'king_news' ),
+					'minimal'  => esc_html__( 'Minimal', 'king_news' ),
 				),
 				'type' => 'control',
 			),

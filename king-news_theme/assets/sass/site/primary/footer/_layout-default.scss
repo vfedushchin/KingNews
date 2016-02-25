@@ -8,7 +8,7 @@
 		align-self: center;
 		white-space: nowrap;
 
-		@include media-breakpoint-up(XL) {
+		@include media-breakpoint-up(xl) {
 			margin-top: -16px;
 		}
 	}

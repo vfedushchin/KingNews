@@ -1,6 +1,9 @@
 .widget{
 	h4{
 		margin: 0 0 20px 0;
+			@media (max-width: 361px) {
+			margin-bottom: 10px;
+		}
 	}
 	ul{
 		margin: 0px 0px 0;

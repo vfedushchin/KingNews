@@ -169,6 +169,12 @@
 	.widget-image-grid__holder {
 		border-top: 1px dotted #d2d1d1;
 		padding-top: 30px;
+		@media (max-width: 361px) {
+			padding-top: 10px;
+			figure {
+				margin-bottom: 10px !important;
+			}
+		}
 	}
 	.image_grid_widget-main {
 		position: relative;

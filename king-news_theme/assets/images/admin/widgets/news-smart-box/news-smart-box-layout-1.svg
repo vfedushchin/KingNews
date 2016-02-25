@@ -11,15 +11,8 @@
 		c1.614,2.659,3.627,5.258,4.829,8.139c1.049,2.513,3.27,4.284,6.151,3.492C371.373,235.834,373.54,232.858,372.488,230.337z"/>
 	<rect x="20" y="20" fill="#A7A9AC" width="370" height="220"/>
 	<rect x="20" y="265" fill="#A7A9AC" width="370" height="50"/>
-	<rect x="20" y="340.333" fill="#A7A9AC" width="370" height="15"/>
+	<rect x="20" y="324.333" fill="#A7A9AC" width="370" height="15"/>
 	<rect x="410" y="20.5" fill="#A7A9AC" width="139.667" height="97.506"/>
-	<rect x="20" y="367.5" fill="#A7A9AC" width="370" height="15"/>
-	<rect x="20" y="394.833" fill="#A7A9AC" width="370" height="15"/>
-	<rect x="20" y="422.839" fill="#A7A9AC" width="185" height="15"/>
-	<rect x="20" y="459.641" fill="#A7A9AC" width="370" height="15"/>
-	<rect x="20" y="486.808" fill="#A7A9AC" width="370" height="15"/>
-	<rect x="20" y="514.141" fill="#A7A9AC" width="370" height="15"/>
-	<rect x="20" y="542.147" fill="#A7A9AC" width="185" height="15"/>
 	<rect x="560" y="20.5" fill="#A7A9AC" width="220" height="15"/>
 	<rect x="560" y="47.667" fill="#A7A9AC" width="220" height="15"/>
 	<rect x="560" y="75" fill="#A7A9AC" width="220" height="15"/>
@@ -44,5 +37,17 @@
 	<rect x="560" y="491.667" fill="#A7A9AC" width="220" height="15"/>
 	<rect x="560" y="519" fill="#A7A9AC" width="220" height="15"/>
 	<rect x="560" y="547.006" fill="#A7A9AC" width="113.55" height="15"/>
+
+
+	<rect x="20" y="353.5" fill="#A7A9AC" width="139.667" height="97.506"/>
+	<rect x="170" y="353.5" fill="#A7A9AC" width="220" height="15"/>
+	<rect x="170" y="380.667" fill="#A7A9AC" width="220" height="15"/>
+	<rect x="170" y="408" fill="#A7A9AC" width="220" height="15"/>
+	<rect x="170" y="436.006" fill="#A7A9AC" width="113.55" height="15"/>
+	<rect x="20" y="464.5" fill="#A7A9AC" width="139.667" height="97.506"/>
+	<rect x="170" y="464.5" fill="#A7A9AC" width="220" height="15"/>
+	<rect x="170" y="491.667" fill="#A7A9AC" width="220" height="15"/>
+	<rect x="170" y="519" fill="#A7A9AC" width="220" height="15"/>
+	<rect x="170" y="547.006" fill="#A7A9AC" width="113.55" height="15"/>
 </g>
 </svg>

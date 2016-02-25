@@ -29,7 +29,8 @@ h2 {
 	text-align: $h2_text_align;
 	color: $regular_h2_color;
 }
-h3, blockquote p, .tm_fpblock__item__title {
+blockquote p, .tm_fpblock__item__title,
+h3 {
 	font-style: $h3_font_style;
 	font-weight: $h3_font_weight;
 	font-size: @font_size($h3_font_size, multiple, ceil, 0.55)px;
@@ -49,6 +50,18 @@ h4 {
 	text-align: $h4_text_align;
 	color: $regular_h4_color;
 }
+.tm_fpblock__item .tm_fpblock__item__category,
+.news-smart-box__navigation .current-term span ,
+.post__cats a, 
+.sticky__label {
+	font-style: $h4_font_style;
+	font-family: $h4_font_family;
+}
+.tm_fpblock__item__categories, {
+	font-style: $h4_font_style;
+	font-family: $h4_font_family;
+}
+
 h5 {
 	font-style: $h5_font_style;
 	font-weight: $h5_font_weight;

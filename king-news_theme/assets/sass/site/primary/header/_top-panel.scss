@@ -72,9 +72,7 @@
 
 	&__register {
 		float: right;
-		border-left: 1px solid $color__line;
 		padding: 5px 0;
-		margin-left: 8px;
 		a {
 			margin-left: 10px;
 			@include media-breakpoint-up(lg) {
@@ -84,7 +82,13 @@
 	}
 
 	.search-form {
+		border-right: 1px solid $color__line;
+		@media (max-width: 500px) {
+			border: none;
+		}
 		margin: 0;
+		margin-right: 4px;
+		padding-right: 7px;
 		.search-form__field {
 			background: none;
 			border: none;
@@ -93,6 +97,7 @@
 			display: inline-block;
 			vertical-align: middle;
 			padding: 4px 5px 6px;
+			margin-bottom: 0;
 		}
 		.search-form__submit {
 			background: none;

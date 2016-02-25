@@ -1,5 +1,8 @@
 .widget {
 	margin: 0 0 30px;
+	@media (max-width: 361px) {
+		margin-bottom: 10px;
+	}
 	@include media-breakpoint-up(lg) {
 		margin-bottom: 30px;
 		.after-loop-area.widget-area & {
@@ -26,6 +29,9 @@
 		/*search widget styles*/
 		&.widget_search {
 			padding: 10px 14px 5px;
+			@media (max-width: 361px) {
+				padding: 10px;
+			}
 			@include media-breakpoint-up(lg) {
 				padding: 20px 30px;
 			}
@@ -39,6 +45,9 @@
 			input {
 				border: none;
 				padding: 0px 20px;
+				@media (max-width: 361px) {
+					padding: 0 10px;
+				}
 				font-size: 14px;
 				line-height: 50px;
 				background: #fff;
@@ -49,6 +58,9 @@
 		/*subscribe widget styles*/
 		&.widget-subscribe {
 			padding: 20px 30px 10px;
+			@media (max-width: 361px) {
+				padding: 10px 10px 10px;
+			}
 			@include media-breakpoint-up(xl) {
 				margin-bottom: 40px;
 			}

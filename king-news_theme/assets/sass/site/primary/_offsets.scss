@@ -1,4 +1,9 @@
-h2 + .posts-list { margin-top: 30px; }
+h2 + .posts-list { 
+	margin-top: 30px; 
+	@media (max-width: 361px) {
+		margin-top: 10px;
+	}
+}
 h2 + .posts-list.posts-list--grid-2-cols { margin-top: 14px; }
 h1 + .entry-meta { margin-top: 18px; padding-bottom: 5px; }
 .breadcrumbs + .container { margin-top: 15px; }
@@ -9,7 +14,12 @@ p > img {margin-top: 17px; margin-bottom: 7px;}
 .page.type-page .title-line + p > img {margin-top: 8px;}
 .entry-content  * + table {margin-top: 20px;}
 
-.sidebar-primary aside:first-child { margin-top: 30px;}
+.sidebar-primary aside:first-child { 
+	margin-top: 30px;
+	@media (max-width: 361px) {
+		margin-top: 10px;
+	}
+}
 
 h2 + h1 {margin-top: 19px;}
 h1 + p {margin-top: 10px;}

@@ -1,6 +1,10 @@
 .footer-area {
 	padding-top: 49px;
 	padding-bottom: 30px;
+  @media (max-width: 361px) {
+    padding-top: 19px;
+    padding-bottom: 0px;
+  }
 }
 .footer-container {
 	padding: 0px 0px;
@@ -14,6 +18,10 @@
   padding-top: 24px;
   padding-bottom: 24px;
   border-top: 1px solid #000;
+  @media (max-width: 361px) {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
 
   padding-left: 30px;
   padding-right: 30px;
@@ -45,6 +53,10 @@
   margin-top: 22px;
   @include media-breakpoint-up(lg) {
     margin-top: 22px;
+  }
+
+  @media (max-width: 361px) {
+    .footer-logo {display: none;}
   }
 
 
