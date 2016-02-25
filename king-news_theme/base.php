@@ -4,7 +4,8 @@
 
 	<?php king_news_site_breadcrumbs(); ?>
 
-	<div class="container">
+	<!-- <div class="container"> -->
+	<div <?php king_news_content_class(); ?> >
 
 		<?php do_action( 'king_news_render_widget_area', 'before-content-area' ); ?>
 

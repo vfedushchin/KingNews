@@ -90,7 +90,7 @@
 			}
 
 			a {
-				
+				min-width: 153px;
 				@include media-breakpoint-up(md) {
 					width: 153px;
 				}
@@ -194,11 +194,11 @@
 				padding: 11px 19px;
 				position: relative;
 				@media screen and (min-width: 37.5em) {
-					padding: 15px 7px 21px;
+					padding: 25px 7px 31px;
 					text-align: center;
 				}
 				@include media-breakpoint-up(lg) {
-				  padding: 15px 7px 21px;
+				  padding: 25px 7px 31px;
 				}
 				@include media-breakpoint-up(xl) {
 				  padding: 25px 17px 31px;

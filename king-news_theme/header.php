@@ -26,7 +26,7 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'king_news' ); ?></a>
 	<header id="masthead" <?php king_news_header_class(); ?> role="banner">
 		<div class="top-panel">
-			<div class="container">
+			<div <?php king_news_content_class(); ?> >
 				<div <?php echo king_news_get_container_classes( array( 'top-panel__wrap' ) ); ?>><?php
 					king_news_top_message( '<div class="top-panel__message">%s</div>' );
 					king_news_top_sign_register();

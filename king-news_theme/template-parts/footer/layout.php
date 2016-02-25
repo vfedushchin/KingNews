@@ -7,7 +7,7 @@
 
 ?>
 <div class="footer-area-wrap invert--">
-	<div class="container">
+	<div <?php king_news_content_class(); ?> >
 		<div class="footer-inner-line">
 			<?php do_action( 'king_news_render_widget_area', 'footer-area' ); ?>
 		</div><!-- .footer-inner-line -->

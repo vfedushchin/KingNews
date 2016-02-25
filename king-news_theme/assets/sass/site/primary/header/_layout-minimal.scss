@@ -37,6 +37,12 @@
 		border-bottom: 1px solid $color__line;
 	}
 
+	@media (min-width: 599px) and (max-width: 767px) {
+		.main-navigation ul.menu > li > a {
+			font-size: 13px;
+		}
+	}
+
 
 	@media (max-width: 599px) {
 		.site-branding {
