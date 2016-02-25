@@ -91,6 +91,15 @@
 	}
 	.posts-list--masonry-2-cols, .posts-list--masonry-3-cols {
 
+
+		.archive.category & .entry-footer, & .entry-footer {
+			display: block;
+
+			.btn {
+				display: inline-block;
+			}
+		}
+
 		/* hide gallery on masonry view */
 		.post_format-post-format-gallery .post-thumbnail {
 			display: none;
@@ -107,6 +116,9 @@
 		position: relative;
 		.site-content h2 + & {
 			margin-top: -30px;
+			@include media-breakpoint-up(xl) {
+				margin-top: -41px;
+			}
 		}
 
 		&:before {

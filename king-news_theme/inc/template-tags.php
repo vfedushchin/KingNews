@@ -1326,8 +1326,8 @@ function king_news_share_buttons( $context = 'loop', $args = array(), $config = 
  */
 function king_news_top_sign_register() {
 	echo "<div class='top-panel__register'>";
-	echo "<a href=' " . wp_login_url() . "' title='Login'>Login</a>";
-	wp_register('', '');
+		echo "<a href=' " . wp_login_url() . "' title='Login'>" . __( 'Login', 'king_news' ) ."</a>";
+		wp_register('', '');
 	echo "</div>";
 
 }

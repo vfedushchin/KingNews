@@ -834,3 +834,9 @@
 		}
 	}
 }
+
+@media (max-width: 411px) {
+	.entry-meta > span {
+		display: block;
+	}
+}

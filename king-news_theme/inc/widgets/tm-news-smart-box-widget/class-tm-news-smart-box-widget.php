@@ -302,7 +302,7 @@ class KING_NEWS_News_Smart_Box_Widget extends Cherry_Abstract_Widget {
 				$mini_view_dir = locate_template( 'inc/widgets/tm-news-smart-box-widget/views/tm-news-smart-box-mini-view.php' );
 				$view_type = $full_view_dir;
 
-				$grid_class_line = 'col-xs-6 col-sm-6 col-md-6';
+				$grid_class_line = 'col-xs-12 col-sm-6 col-md-6';
 				$type_class = 'full-type';
 				$order_class = 'post-item-' . $post_counter;
 
@@ -323,7 +323,7 @@ class KING_NEWS_News_Smart_Box_Widget extends Cherry_Abstract_Widget {
 						if ( 1 <= $post_counter ) {
 							$view_type = $mini_view_dir;
 							$type_class = 'mini-type';
-							$grid_class_line = 'col-xs-6 col-sm-6 col-md-6';
+							$grid_class_line = 'col-xs-12 col-sm-6 col-md-6';
 						}else{
 							$grid_class_line = 'col-xs-12 col-sm-12 col-md-12';
 						}

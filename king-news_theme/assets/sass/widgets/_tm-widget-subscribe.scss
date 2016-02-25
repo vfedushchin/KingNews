@@ -1,6 +1,6 @@
 
 .follow-block {
-	padding: 0 0 30px;
+	padding: 0 0 27px;
 	.sidebar-primary &,
 	.sidebar-secondary &,
 	.footer-area & {
@@ -90,6 +90,8 @@
 		-webkit-order: 0;
 		order: 0;
 		-webkit-flex: 0 1 auto;
+		height: 50px;
+		overflow: hidden;
 		@include media-breakpoint-up(xl) {
 			flex-shrink: 0;
 		}
@@ -149,4 +151,9 @@
 		padding-bottom: 27px;
 		font-size: 16px;
 	}
+}
+
+.widget_search + .widget-subscribe { margin-top: 62px; }
+#sidebar-primary, #sidebar-secondary {
+	.widget-subscribe .widget-title, .subscribe-block .widget-title { margin-bottom: 8px; }
 }

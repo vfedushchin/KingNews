@@ -164,6 +164,10 @@
 		@include media-breakpoint-up(xl) {
 			margin-bottom: 54px;
 		}
+		@media (max-width: 500px) {
+			margin-bottom: 5px;
+			margin-top: -20px;
+		}
 			.current-term{
 				flex: 0 1 auto;
 				position: relative;
@@ -194,6 +198,10 @@
 						padding: 0 7px 11px 7px;
 						@include media-breakpoint-up(xl) {
 							padding: 0 17px 11px 17px;
+						}
+						@media (max-width: 500px) {
+							font-size: 14px;
+							padding: 0 4px 11px 4px;
 						}
 					}
 					&:before{
@@ -320,7 +328,7 @@
 
 		.entry-footer {
 			display: block;
-			margin-top: 30px;
+			margin-top: 25px;
 			display: flex;
 			align-content: center;
 			align-items: center;
@@ -461,7 +469,9 @@
 
 	@media (max-width: 467px) {
 			.current-term {
-				display: none !important;
+				.before-loop-area.widget-area & {
+					display: none !important;
+				}
 			}
 		}
 

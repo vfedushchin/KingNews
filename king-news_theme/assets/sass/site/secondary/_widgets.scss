@@ -2,6 +2,9 @@
 	margin: 0 0 30px;
 	@include media-breakpoint-up(lg) {
 		margin-bottom: 30px;
+		.after-loop-area.widget-area & {
+			margin-bottom: 0;
+		}
 
 		&.widget_search {
 			margin-bottom: 60px;

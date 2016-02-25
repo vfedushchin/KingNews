@@ -75,7 +75,7 @@
 
 
 			
-			<p><?php king_news_blog_content(50); ?></p>
+			<p><?php king_news_blog_content(100); ?></p>
 
 		</div>
 			<footer class="entry-footer">

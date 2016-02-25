@@ -58,7 +58,7 @@
 		    padding: 12px;
 		}
 		@include media-breakpoint-up(xl) {
-			padding: 30px 30px 25px;
+			padding: 30px 30px 28px;
 		}
 		&:hover{
 			opacity: 1;
@@ -114,6 +114,9 @@
 	&__title{
 		margin: 0;
 		padding: 0;
+		@include media-breakpoint-up(xl) {
+			margin-bottom: 8px;
+		}
 		a{
 			display: inline;
 			text-decoration: none;
@@ -293,7 +296,7 @@
 			margin-bottom: 20px;
 		}
 		.widget {
-			margin-bottom: 40px;
+			margin-bottom: 45px;
 		}
 	}
 }
