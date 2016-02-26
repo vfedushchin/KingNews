@@ -1,0 +1,47 @@
+/*--- start Development (to delete) ======================================================== */
+.preview-container {
+		display: none;
+		opacity: 0.6;
+		z-index: 99999999999;
+		pointer-events: none;
+		width: 100%;
+		overflow: hidden;
+		position: absolute;
+
+		top: 0;
+		bottom: 0;
+}
+.preview-container.display {
+		display: block; 
+}
+.preview-container_bg {
+		position: absolute;
+		top: 0px;
+		height: 8000px;
+
+		width: 2050px;
+		left: 50%;
+		margin-left: -1025px;
+		
+		-webkit-filter: opacity(1); 
+		filter: hue-rotate(120deg);
+		filter: invert(1);
+		filter: opacity(1);
+}
+
+.pr-bg-1 {
+		margin: 0 0 0 0;
+		height: 8000px;
+}
+
+.pr-bg-1 .preview-container_bg {
+		background: url(assets/images/1.jpg) 50% 0 no-repeat;
+}
+
+.develop {
+		position: relative;
+		min-height: 702px;
+		box-sizing: border-box;
+}
+/* Development (to delete)
+========================================================*/

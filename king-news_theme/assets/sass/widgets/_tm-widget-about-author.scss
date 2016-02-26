@@ -35,7 +35,7 @@
 		.after-content-area &,
 		.after-loop-area & {
 			@include media-breakpoint-up(sm) {
-				float: left;
+				//float: left;
 			}
 			margin: 0 20px 0 0;
 		}

@@ -1,0 +1,126 @@
+.comments {
+	&-area {
+		position: relative;
+		margin: 0 -10px;
+		padding: 12px 10px 0;
+		@include media-breakpoint-up(lg) {
+			margin-right: -30px;
+			margin-left: -30px;
+			padding-right: 30px;
+			padding-left: 30px;
+		}
+	}
+	&-title {
+		@include media-breakpoint-up(lg) {
+			/*font-size: 20px;*/
+			/*line-height: 1.4;*/
+			margin-bottom: 15px;
+		}
+		&:before {
+			display: block;
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+			height: 1px;
+			background-color: $color__background-hr;
+			display: none;
+		}
+	}
+}
+
+.comment {
+	& + .comment {
+		border-top: 1px dotted $color__line;
+	}
+	&-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		margin-top: 8px;
+		.children {
+			list-style: none;
+			padding-left: 15px;
+			margin-left: 0;
+			margin-top: -27px;
+			margin-bottom: -7px;
+			@include media-breakpoint-up(lg) {
+				padding-left: 50px;
+			}
+		}
+		> .comment {
+			margin-bottom: 10px;
+
+
+		}
+	}
+	&-body {
+		overflow: hidden;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		@include media-breakpoint-up(lg) {
+			padding-top: 27px;
+			padding-bottom: 15px;
+		}
+		&__holder {
+			position: relative;
+			padding-right: 18px;
+		}
+		.avatar {
+			float: left;
+			margin: 0 15px 10px 0;
+			border-radius: 0;
+			width: 40px;
+			@include media-breakpoint-up(lg) {
+				width: auto;
+				margin: 0 22px 15px 0;
+			}
+		}
+		.comment-meta {
+			padding-bottom: 4px;
+			font-size: 14px;
+		}
+		.fn {
+			margin-right: 10px;
+			@include media-breakpoint-up(lg) {
+				margin-right: 10px;
+			}
+		}
+		.reply {
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: 9;
+			opacity: 1;
+			transition: all 0.25s ease;
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+	&-reply-link {
+		.material-icons {
+			font-size: inherit;
+			font-size: 20px;
+		}
+	}
+	&-date {
+		display: inline-block;
+		&:before {
+			@include material-icon();
+			content: '\e192';
+			opacity: 1;
+			font-size: 20px;
+			vertical-align: top;
+			margin-right: 4px;
+			@include media-breakpoint-up(lg) {
+				margin-right: 8px;
+			}
+		}
+		&__time {
+			display: inline-block;
+			vertical-align: top;
+		}
+	}
+}

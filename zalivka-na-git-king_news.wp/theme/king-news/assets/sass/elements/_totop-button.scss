@@ -1,0 +1,35 @@
+#toTop {
+	display: none;
+	text-decoration: none;
+	position: fixed;
+	bottom: 80px;
+	right: 20px;
+	overflow: hidden;
+	width: 50px;
+	height: 50px;
+	border: none;
+	text-indent: 0%;
+	background-color: #298ffc;
+	z-index: 999;
+	border-radius: $border__radius;
+	&:before{
+		@include material-icon();
+		width: 1em;
+		height: 1em;
+		margin: 13px;
+		top: 0;
+		left: 0;
+		position: absolute;
+		display: block;
+		font-size: 24px;
+		content: "keyboard_arrow_up";
+	}
+
+	@media (max-width: 991px) {
+		display: none !important;
+	}
+}
+
+#toTop:active, #toTop:focus {
+	outline: none;
+}

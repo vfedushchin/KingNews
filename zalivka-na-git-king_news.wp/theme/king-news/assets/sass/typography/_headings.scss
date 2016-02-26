@@ -1,0 +1,29 @@
+h1, h2, h3, h4, h5, h6 {
+	margin: 10px 0;
+}
+
+.title-line, 
+.news-smart-box__navigation .current-term span, 
+.widget-area:not(.footer-area) .widget:not(.widget-subscribe) .widget-title, 
+.comment-reply-title {
+  position: relative;
+  /*background: red;*/
+  display: inline-block;
+  padding-right: 11px;
+  
+
+  &:after {
+    position: absolute;
+    display: inline-block;
+    content: '';
+    width: 2000px;
+    height: 1px;
+    left: 100%;
+    bottom: 6px;
+    background: #000;
+    z-index: -1;
+  }
+  &:after {
+    @include clearfix();
+  }
+}

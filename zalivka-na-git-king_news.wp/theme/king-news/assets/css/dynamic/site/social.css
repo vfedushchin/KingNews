@@ -1,0 +1,83 @@
+.social-list a,
+.social-list a:hover,
+.social-list a:active,
+.social-list a:visited,
+.share-btns__link,
+.share-btns__link:hover,
+.share-btns__link:active,
+.share-btns__link:visited {
+	//color: $regular_accent_color_3;
+}
+.social-list a::before,
+.share-btns__link {
+  transition: .4s all ease;
+}
+.social-list a:hover::before,
+.share-btns__link:hover {
+  transition: .4s all ease;
+  color: $regular_text_color;
+  background: $regular_accent_color_2;
+}
+.share-btns__link:hover {
+  background: none;
+}
+
+//.footer-area .social-list li > a:hover::before { background: $regular_accent_color_2; }
+.social-list--footer li > a:hover { color: $invert_link_color; }
+.social-list--footer li > a::before { color: $regular_accent_color_3; }
+.social-list--footer li > a:hover::before { background-color: $regular_accent_color_2;; }
+
+.widget .social-list a::before {
+  color: #fff;
+  background: $regular_text_color;
+}
+.widget .social-list a:hover::before {
+  color: $regular_text_color;
+  background: $regular_accent_color_2;
+}
+
+.share-btns__list-single-page .share-btns__link:hover {
+  background: $regular_accent_color_2;
+}
+
+.grid-view-main .material-icons.share-main-icon {
+  color: $regular_accent_color_2;
+}
+
+.grid-view-main .social-list a,
+.grid-view-main .social-list a:hover,
+.grid-view-main .social-list a:active,
+.grid-view-main .social-list a:visited,
+.grid-view-main .share-btns__link,
+.grid-view-main .share-btns__link:hover,
+.grid-view-main .share-btns__link:active,
+.grid-view-main .share-btns__link:visited,
+
+.widget-new-smart-inner-big-before-content .social-list a,
+.widget-new-smart-inner-big-before-content .social-list a:hover,
+.widget-new-smart-inner-big-before-content .social-list a:active,
+.widget-new-smart-inner-big-before-content .social-list a:visited,
+.widget-new-smart-inner-big-before-content .share-btns__link,
+.widget-new-smart-inner-big-before-content .share-btns__link:hover,
+.widget-new-smart-inner-big-before-content .share-btns__link:active,
+.widget-new-smart-inner-big-before-content .share-btns__link:visited,
+
+.widget-image-grid .social-list a,
+.widget-image-grid .social-list a:hover,
+.widget-image-grid .social-list a:active,
+.widget-image-grid .social-list a:visited,
+.widget-image-grid .share-btns__link,
+.widget-image-grid .share-btns__link:hover,
+.widget-image-grid .share-btns__link:active,
+.widget-image-grid .share-btns__link:visited {
+  color: #fff;
+}
+.grid-view-main .share-btns__link:hover,
+.widget-new-smart-inner-big-before-content .share-btns__link:hover,
+.widget-image-grid .share-btns__link:hover {
+  color: $regular_accent_color_2;
+}
+
+.grid-view__footer-2 {
+  font-family: $h2_font_family;
+}

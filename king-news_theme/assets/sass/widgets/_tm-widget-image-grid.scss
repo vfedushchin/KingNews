@@ -55,7 +55,7 @@
 		padding: 5px;
 		text-align: left;
 		@media (max-width: 767px) {
-		    padding: 12px;
+				padding: 12px;
 		}
 		@include media-breakpoint-up(xl) {
 			padding: 30px 30px 28px;
@@ -164,6 +164,53 @@
 	}
 }
 
+
+.sidebar-primary,
+.sidebar-secondary {
+	.widget-image-grid {
+		.widget-image-grid__holder {
+			flex: 0 0 100%;
+			max-width: 100%;
+			width: 100%;
+		}
+	}
+}
+
+.full-width-header-area,
+.before-content-area,
+.after-content-area,
+.after-content-full-width-area,
+.before-loop-area,
+.after-loop-area {
+	.widget.widget-image-grid.widget{
+		.widget-image-grid__holder {
+			border-top: 1px dotted #d2d1d1;
+			padding-top: 30px;
+			@media (max-width: 361px) {
+				padding-top: 10px;
+				figure {
+					margin-bottom: 10px !important;
+				}
+			}
+		}
+		.image_grid_widget-main {
+			position: relative;
+			margin-top: 2px;
+			&:before {
+				position: absolute;
+				display: inline-block;
+				content: '';
+				width: 100%;
+				height: 2px;
+				left: 0;
+				top: 0;
+				background: #fff;
+				z-index: 1;
+			}
+		}
+	}
+}
+
 /* widget in content area */
 #primary .widget.widget-image-grid.widget{
 	.widget-image-grid__holder {
@@ -207,18 +254,18 @@
 			line-height: 1.1;
 		}
 		.widget-image-grid__content {
-		    position: initial;
-		    display: flex;
-		    align-content: center;
-		    align-items: flex-start;
-		    justify-content: space-between;
-		    flex-wrap: wrap;
-		    opacity: 1;
-		    flex-direction: column;
-		    padding: 0;
-		    padding-top: 13px;
-		    text-align: left;
-		    transition: all 0.5s ease;
+				position: initial;
+				display: flex;
+				align-content: center;
+				align-items: flex-start;
+				justify-content: space-between;
+				flex-wrap: wrap;
+				opacity: 1;
+				flex-direction: column;
+				padding: 0;
+				padding-top: 13px;
+				text-align: left;
+				transition: all 0.5s ease;
 		}
 
 		.widget-image-grid__content::before {
@@ -264,13 +311,13 @@
 		}
 
 		.share-btns-main .share-btns__list {
-		    background: rgba(#fff, 0.8);
-		    .share-btns__link {
-		    	color: #adadad;
-		    	&:hover {
-		    		color: #000;
-		    	}
-		    }
+				background: rgba(#fff, 0.8);
+				.share-btns__link {
+					color: #adadad;
+					&:hover {
+						color: #000;
+					}
+				}
 		}
 
 	}

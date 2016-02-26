@@ -1,0 +1,45 @@
+.comment {
+	&-respond {
+
+		@include media-breakpoint-up(lg) {
+
+		}
+	}
+	&-reply-title {
+		@include media-breakpoint-up(lg) {
+			font-size: 30px;
+			line-height: 1.4;
+			margin-bottom: 15px;
+		}
+	}
+	&-form {
+		&-comment,
+		&-author,
+		&-email,
+		&-url {
+			margin: 0 0 11px;
+		}
+		&__field {
+			width: 100%;
+			vertical-align: top;
+			.comment-list & {
+				background-color: #fff;
+			}
+		}
+		.logged-in-as,
+		.comment-notes {
+			margin: 15px 0 25px;
+			font-style: italic;
+			@include media-breakpoint-up(lg) {
+				margin-top: 29px;
+			}	
+		}
+
+		.form-submit {
+			margin-top: 29px;
+		}
+	}
+}
+#cancel-comment-reply-link {
+	@include font-size(0.75);
+}

@@ -617,7 +617,7 @@ $grid-size: 25%;
 
 /*styles for big image*/
 .tm_fpblock__item.tm_fpblock__item-large .tm_fpblock__item__description .tm_fpblock__item__title {
-	@include media-breakpoint-up(md) {
+	@media (min-width: 1199px) {
 		font-size: 34px;
 		line-height: 40px;
 		margin-bottom: 10px;

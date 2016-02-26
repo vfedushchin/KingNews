@@ -29,72 +29,80 @@
 		}
 	}
 }
-.before-content-area,
-.after-content-area,
-.before-loop-area,
-.after-loop-area,
-.full-width-header-area{
-	& .widget_archive,
-	& .widget_meta,
-	& .widget_rss,
-	& .widget_recent_comments,
-	& .widget_recent_entries{
-		ul{
-			&::after {
-				content:'';
-				display: block;
-				clear: both;
-			}
-			& li{
-				margin-left: 2%;
-				width: 23%;
-				float: left;
-			}
-		}
-	}
-	& .widget_rss,
-	& .widget_recent_comments,
-	& .widget_recent_entries{
-		ul{
-			& li{
-				&:first-child{
-					border-top: 1px #e0e0e8 solid;
-					padding-top: 21px;
+
+
+
+@media (min-width: 767px) {
+	.before-content-area,
+	.after-content-area,
+	.before-loop-area,
+	.after-loop-area,
+	.after-content-full-width-area,
+	.full-width-header-area{
+		& .widget_archive,
+		& .widget_meta,
+		& .widget_rss,
+		& .widget_recent_comments,
+		& .widget_recent_entries{
+			ul{
+				&::after {
+					content:'';
+					display: block;
+					clear: both;
+				}
+				& li{
 					margin-left: 2%;
+					width: 23%;
+					float: left;
 				}
-				&:nth-child(1), &:nth-child(2), &:nth-child(3){
-					border-top: none;
-					padding-top: 0;
-				}
-				margin-left: 2%;
-				width: 31%;
-				float: left;
 			}
 		}
-	}
-	.widget_recent_comments,
-	& .widget_recent_entries{
-		ul{
-			margin-left: -2%;
-		}
-	}
-	& .widget_categories,
-	& .widget_pages,
-	& .widget_nav_menu > div{
-		&>ul{
-			&::after {
-				content:'';
-				display: block;
-				clear: both;
+		& .widget_rss,
+		& .widget_recent_comments,
+		& .widget_recent_entries{
+			ul{
+				& li{
+					&:first-child{
+						border-top: 1px #e0e0e8 solid;
+						padding-top: 21px;
+						margin-left: 2%;
+					}
+					&:nth-child(1), &:nth-child(2), &:nth-child(3){
+						border-top: none;
+						padding-top: 0;
+					}
+					margin-left: 2%;
+					width: 31%;
+					float: left;
+				}
 			}
-			&>li{
-				margin-left: 2%;
-				width: 23%;
-				float: left;
+		}
+		.widget_recent_comments,
+		& .widget_recent_entries{
+			ul{
+				margin-left: -2%;
+			}
+		}
+		& .widget_categories,
+		& .widget_pages,
+		& .widget_nav_menu > div{
+			&>ul{
+				&::after {
+					content:'';
+					display: block;
+					clear: both;
+				}
+				&>li{
+					margin-left: 2%;
+					width: 23%;
+					float: left;
+				}
 			}
 		}
 	}
 }
+
+
 /*--------------------------------------------------------------
 # Widget calendar
 --------------------------------------------------------------*/

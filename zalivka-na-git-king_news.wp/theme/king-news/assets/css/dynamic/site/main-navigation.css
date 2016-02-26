@@ -1,0 +1,59 @@
+.main-navigation ul.menu > li > a,
+.main-navigation ul.menu > li > a:visited,
+.main-navigation ul.menu > li > a:active {
+	color: $regular_text_color;
+  border-color: $regular_accent_color_1;
+}
+.main-navigation ul.menu > li > a:after {
+  color: $regular_text_color;
+}
+.menu-item_description {
+	color: $regular_text_color;
+}
+.main-navigation ul.menu > li > a:before {
+	background: $regular_accent_color_1;
+}
+.main-navigation ul.menu > li:hover > a,
+.main-navigation ul.menu > li.menu-hover > a,
+.main-navigation ul.menu > li.current_page_item > a,
+.main-navigation ul.menu > li.current-menu-item > a,
+.main-navigation ul.menu > li.current_page_ancestor > a:hover {
+	color: $regular_accent_color_1;
+}
+.main-navigation ul ul a {
+	color: #fff;
+  font-weight: $h2_font_weight;
+  font-family: $h2_font_family;
+}
+
+.main-navigation ul.sub-menu > li > a:hover,
+.main-navigation ul.sub-menu > li.menu-hover > a,
+.main-navigation ul.sub-menu > li.current_page_item > a,
+.main-navigation ul.sub-menu > li.current-menu-item > a,
+.main-navigation ul.sub-menu > li.current_page_ancestor > a:hover {
+	color: $regular_accent_color_1;
+}
+@media (max-width: 600px) {
+  .main-navigation ul.sub-menu > li:hover > a,
+  .main-navigation ul.sub-menu > li.menu-hover > a,
+  .main-navigation ul.sub-menu > li.current_page_item > a,
+  .main-navigation ul.sub-menu > li.current-menu-item > a,
+  .main-navigation ul.sub-menu > li.current_page_ancestor > a:hover {
+    color: $regular_text_color;
+  }
+  .main-navigation ul ul a:hover {
+    color: $regular_accent_color_1 !important;
+  }
+}
+.main-navigation ul.sub-menu {
+	background: $regular_text_color;
+}
+
+@media (max-width: 600px) {
+  .main-navigation ul.sub-menu {
+    background: none;
+  }
+  .main-navigation ul ul a {
+    color: $regular_text_color;
+  }
+}

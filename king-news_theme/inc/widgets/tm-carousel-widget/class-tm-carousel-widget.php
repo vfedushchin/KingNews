@@ -68,7 +68,7 @@ class KING_NEWS_Carousel_Widget extends Cherry_Abstract_Widget {
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
 				'label' => esc_html__( 'Display content', 'king_news' ),
 			),
-			'more_button' => array(
+			/*'more_button' => array(
 				'type' => 'switcher',
 				'value' => 'false',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
@@ -86,10 +86,10 @@ class KING_NEWS_Carousel_Widget extends Cherry_Abstract_Widget {
 				'min_value' => 1,
 				'step_value' => 1,
 				'label'  => esc_html__( 'Content words trimmed count', 'king_news' ),
-			),
+			),*/
 			'slides_per_view' => array(
 				'type'		=> 'slider',
-				'max_value'	=> 25,
+				'max_value'	=> 4,
 				'min_value'	=> 1,
 				'value'		=> 5,
 				'label' 	=> esc_html__( 'Number of slides per view', 'king_news' ),
@@ -323,7 +323,7 @@ class KING_NEWS_Carousel_Widget extends Cherry_Abstract_Widget {
 
 					$view_dir = locate_template( 'inc/widgets/tm-carousel-widget/views/tm-carousel-view.php' );
 
-					$image_size = apply_filters( 'king_news_carousel_image_size', '_tm-thumb-560-350' );
+					$image_size = apply_filters( 'king_news_carousel_image_size', '_tm-thumb-426-327' );
 					$image = '<a class="post-thumbnail__link" href="' . $permalink . '">' . $this->get_image( $post_id, $image_size, $placeholder_args ) .'</a>';
 
 					$title = ( 'true' == $this->instance['post_title'] ) ? '<h4><a href="' . $permalink . '">' . $title . '</a></h4>' : '';

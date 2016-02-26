@@ -268,7 +268,7 @@ if ( !class_exists( 'King_News_Taxonomy_Tiles_Widget' ) ) {
 					$permalink = $this->get_term_link( $term );
 					$count = $this->get_term_post_count( $term, $show_post_count['show_post_count_check'] );
 					$description = $this->get_term_description( $term, $description_length );
-					$image = $this->get_term_image( $term, apply_filters( 'king_news_taxonomy_tiles_widget_size', '_tm-thumb-m' ) );
+					$image = $this->get_term_image( $term, apply_filters( 'king_news_taxonomy_tiles_widget_size', '_tm-thumb-426-327' ) );
 
 					$view_dir = locate_template( 'inc/widgets/tm-taxonomy-tiles-widget/views/tm-taxonomy-tiles-view.php' );
 					if ( $view_dir ){

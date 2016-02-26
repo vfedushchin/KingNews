@@ -1,0 +1,28 @@
+Когда экспортнул дамп нужно в sql заменить:
+http://www.charactercountonline.com/ - сервис чтоб считать количество символов
+s:100:"http://192.168.9.75/wordpress/king-news/wordpress/wp-content/themes/king-news/assets/images/logo.png"
+s:25:"%s/assets/images/logo.png"
+
+
+    // s:107:"http://192.168.9.75/wordpress/king-news/wordpress/wp-content/themes/king-news/assets/images/footer-logo.png"
+s:92:"http://192.168.9.75/wordpress/king-news/wordpress/wp-content/uploads/2016/02/footer-logo.png"
+s:32:"%s/assets/images/footer-logo.png"
+
+
+
+
+
+http://192.168.9.75/wordpress/king-news/wordpress
+your_website_url_here
+
+
+
+Для вставки перевода:
+<?php esc_html_e( 'Search', 'king_news' ); ?>
+<?php __( 'Search', 'king_news' ); ?>
+
+'next_text' => __( 'Next', 'king_news' ) . '<i class="material-icons">navigate_next</i>'
+
+
+номера постов для featured posts:
+1851, 1818, 1848, 2024, 1852 

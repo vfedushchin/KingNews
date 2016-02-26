@@ -161,7 +161,7 @@ mark, ins {
 	background-color: $top_panel_bg;
 }
 
-.site-footer, .sidebar-primary, .entry-meta, .post__tags, .entry-header {
+.site-footer, .sidebar-primary, .entry-meta, .post__tags, .entry-header, .tagcloud {
 	font-family: $h2_font_family;
 }
 .site-footer .footer-copyright {

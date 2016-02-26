@@ -1,0 +1,64 @@
+ul, ol {
+	margin: 0;
+	padding: 0;
+	ul, ol {
+		margin-left: 1em;
+	}
+}
+
+ul, ul li {
+	list-style: none;
+}
+
+.entry-content ul {
+	li:before {
+		content: "•"; /* Insert content that looks like bullets */
+		padding-right: 8px;
+	}
+	li + li {margin-top: 4px;}
+}
+
+
+
+ol {
+	counter-reset: li;
+	li + li {margin-top: 4px;}
+	li {
+		list-style: none;
+		&:before {
+				content: counter(li, decimal-leading-zero);
+				counter-increment: li;
+				padding-right: 9px;
+		}
+	}
+
+	.comments-area & {
+		li:before {
+			display: none;
+		}
+	}
+}
+
+
+
+li > ul,
+li > ol {
+	margin-bottom: 0;
+	margin-left: 1.5em;
+}
+
+dt {
+	font-weight: bold;
+}
+
+dd {
+	margin: 0 1.5em 1.5em;
+}
+
+/* Inline list */
+.inline-list {
+	@include reset-list;
+	li {
+		display: inline-block;
+	}
+}

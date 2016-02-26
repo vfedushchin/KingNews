@@ -9,8 +9,11 @@
 			margin-bottom: 0;
 		}
 
-		&.widget_search {
-			margin-bottom: 60px;
+		.sidebar-primary &,
+		.sidebar-secondary & {
+			&.widget_search {
+				margin-bottom: 60px;
+			}
 		}
 	}
 	.full-width-header-area &,
@@ -18,6 +21,7 @@
 	.sidebar-secondary &,
 	.before-content-area &,
 	.after-content-area &,
+	.after-content-full-width-area &,
 	.before-loop-area &,
 	.after-loop-area & {
 		@include card;
@@ -73,6 +77,8 @@
 
 	select {
 		max-width: 100%;
+		display: block;
+		width: 100%;
 	}
 }
 
