@@ -24,10 +24,12 @@
 			float: none;
 			position: absolute;
 			top: 10px;
+			right: 10px;
 			right: 0;
 			z-index: 99;
 			@include media-breakpoint-up(lg) {
-				top: 30px;
+				top: 10px;
+				right: 10px;
 			}
 		}
 	}
@@ -272,14 +274,14 @@
 		&--fullwidth {
 			.posts-list & {
 				display: block;
-				
+
 				&:first-child {
 					img {
 						border-radius: $border__radius $border__radius 0 0;
 					}
 				}
 				@include media-breakpoint-up(lg) {
-					
+
 				}
 			}
 		}
@@ -437,7 +439,7 @@
 			min-width: 130px;
 			max-width: 100%;
 			margin-bottom: 12px;
-			
+
 			.archive .posts-list--minimal &,
 			.posts-list--default & {
 				@media (max-width: 300px) {
@@ -562,7 +564,7 @@
 		.post-thumbnail {
 			display: none;
 		}
-	
+
 }
 	.post_format-post-format-status {
 		iframe, .fb_iframe_widget {
@@ -621,7 +623,7 @@
 			z-index: 101;
 		}
 	}
-	
+
 }
 
 .share-btns__list-single-page {
@@ -749,7 +751,7 @@
 		blockquote {
 			@media (max-width: 1199px) {
 				padding: 30px 15px;
-			} 
+			}
 			@media (min-width: 1300px) {
 				font-size: 24px;
 				padding-top: 53px;
@@ -780,7 +782,7 @@
 			.grid-view__footer-2 {
 				display: none;
 			}
-		} 
+		}
 	}
 
 }
