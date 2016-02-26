@@ -630,27 +630,6 @@ if ( $( ".post-left-column" ).length ) {
 }
 
 
-/*//initializing jQuery
-jQuery(function($) {
-	$(document).ready( function() {
-		//enabling stickUp on the '.navbar-wrapper' class
-		$('.share-btns__list-single-page').stickUp({
-			//enabling marginTop with the 'auto' setting 
-			marginTop: 'auto'
-		});
-	});
-});*/
-
-
-// add class for full-width layout
-/*if ($('.post-list__item-content .post-thumbnail > a').hasClass('post-thumbnail--fullwidth')) {
-	$('.post-list__item-content .post-thumbnail').addClass('post-thumbnail--fullwidth-all');
-}*/
-
-
-
-
-
 /* start for screenshort image - developing 
 =============================================*/ 
 // ------------------------------------------------------------------------
