@@ -62,13 +62,13 @@ class KING_NEWS_Carousel_Widget extends Cherry_Abstract_Widget {
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
 				'label' => esc_html__( 'Display title', 'king_news' ),
 			),
-			'content' => array(
+			/*'content' => array(
 				'type' => 'switcher',
 				'value' => 'false',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
 				'label' => esc_html__( 'Display content', 'king_news' ),
 			),
-			/*'more_button' => array(
+			'more_button' => array(
 				'type' => 'switcher',
 				'value' => 'false',
 				'style' => ( wp_is_mobile() ) ? 'normal' : 'small',
@@ -81,8 +81,8 @@ class KING_NEWS_Carousel_Widget extends Cherry_Abstract_Widget {
 			),
 			'trim_words' => array(
 				'type' => 'slider',
-				'value' => 15,
-				'max_value' => 55,
+				'value' => 12,
+				'max_value' => 12,
 				'min_value' => 1,
 				'step_value' => 1,
 				'label'  => esc_html__( 'Content words trimmed count', 'king_news' ),
@@ -91,7 +91,7 @@ class KING_NEWS_Carousel_Widget extends Cherry_Abstract_Widget {
 				'type'		=> 'slider',
 				'max_value'	=> 4,
 				'min_value'	=> 1,
-				'value'		=> 5,
+				'value'		=> 4,
 				'label' 	=> esc_html__( 'Number of slides per view', 'king_news' ),
 			),
 			'slides_per_group' => array(
@@ -140,6 +140,7 @@ class KING_NEWS_Carousel_Widget extends Cherry_Abstract_Widget {
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 9 );
 	}
+
 
 	/**
 	 * widget function.
@@ -327,8 +328,19 @@ class KING_NEWS_Carousel_Widget extends Cherry_Abstract_Widget {
 					$image = '<a class="post-thumbnail__link" href="' . $permalink . '">' . $this->get_image( $post_id, $image_size, $placeholder_args ) .'</a>';
 
 					$title = ( 'true' == $this->instance['post_title'] ) ? '<h4><a href="' . $permalink . '">' . $title . '</a></h4>' : '';
-					$content = ( 'true' == $this->instance['content'] ) ? '<p class="post__excerpt">' . $this->get_trimed_content( get_the_content(), (int) $this->instance['trim_words'] ) . '</p>' : '';
-					$more_button = ( 'true' == $this->instance['more_button'] ) ? '<a class="btn" href="' . $permalink . '">' . esc_html( $this->instance['more_button_text'] ) . '</a>' : '';
+
+					if (isset($this->instance['content'])) {
+						$content = ( 'true' == $this->instance['content'] ) ? '<p class="post__excerpt">' . $this->get_trimed_content( get_the_content(), (int) $this->instance['trim_words'] ) . '</p>' : '';
+					} else {
+						$content = '';
+					}
+
+
+					if (isset($this->instance['more_button'])) {
+						$more_button = ( 'true' == $this->instance['more_button'] ) ? '<a class="btn" href="' . $permalink . '">' . esc_html( $this->instance['more_button_text'] ) . '</a>' : '';
+					} else {
+						$more_button = '';
+					}
 
 					$date = '<a href="' . $permalink . '">' . $this->get_post_date( $post_id ) . '</a>';
 					$comments = $this->get_post_comments( $post_id );

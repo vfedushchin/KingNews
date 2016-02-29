@@ -39,6 +39,7 @@ if ( have_posts() ) : ?>
 
 				//if need different post templates for grid and masonry layouts
 		$layout = get_theme_mod( 'blog_layout_type', 'default' );
+		$img_size_in_layout = get_theme_mod( 'blog_featured_image', 'ultra-small' );
 
 
 		switch ( $layout ) {
@@ -46,17 +47,21 @@ if ( have_posts() ) : ?>
 			case 'grid-3-cols':
 				$layout = 'grid';
 				break;
-			
+
 			case 'masonry-2-cols':
 			case 'masonry-3-cols':
 				$layout = 'masonry';
 				break;
 
 			case 'minimal':
-				$layout = 'minimal';
-				$layout = 'default';
+				if ('ultra-small' == $img_size_in_layout) {
+					$layout = 'minimal';
+				} else {
+					$layout = 'default';
+				}
 				break;
 
+			case 'default':
 			case 'default':
 				$layout = 'default';
 				break;

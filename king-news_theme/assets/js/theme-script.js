@@ -149,7 +149,7 @@
 		},
 
 
-		
+
 		news_smart_box_init: function ( self ) {
       jQuery('.news-smart-box__instance').each( function() {
         var uniqId = $( this ).data( 'uniq-id' ),
@@ -206,7 +206,7 @@
                     }
                 });
               }, 1000 );
-              
+
                 ajaxGetNewInstanceSuccess = true;
 
                 $ajaxPreloader.fadeTo( 300, 0, function() {
@@ -536,7 +536,7 @@
 
 			setTimeout(_scaleImage, 10);
 			setTimeout(_scaleImage, 100);
-			
+
 			window.onresize = function() {
 				_scaleImage();
 			};
@@ -557,7 +557,7 @@ jQuery(document).ready(function($){
 
 
 /* start script for adding data-atribute to menu
-=============================================*/ 
+=============================================*/
 // ------------------------------------------------------------------------
 $( "#main-menu > li > a" ).each(function( index ) {
 		$( this ).attr('data-title', $( this ).text());
@@ -586,7 +586,7 @@ $(".share-btns-main").on({
 if ( $( ".post-left-column" ).length ) {
 	// function for sticky social icons in post and pages
 	(function(){
-	var a = document.querySelector('.post-left-column'), b = null, P = 40;
+	var a = document.querySelector('.post-left-column'), b = null, P = 80;
 	window.addEventListener('scroll', Ascroll, false);
 	document.body.addEventListener('scroll', Ascroll, false);
 	function Ascroll() {
@@ -630,8 +630,8 @@ if ( $( ".post-left-column" ).length ) {
 }
 
 
-/* start for screenshort image - developing 
-=============================================*/ 
+/* start for screenshort image - developing
+=============================================*/
 // ------------------------------------------------------------------------
 function setCookie(name, value, options) {
 		options = options || {};
@@ -674,7 +674,7 @@ var _display_screen_class;
 _display_screen_class = getCookie('_display_screen_class');
 
 
-;(function ($) { 
+;(function ($) {
 		$("body").prepend("<div class='preview-container pr-bg-1'><div class='preview-container_bg'></div></div>");
 		$('.preview-container').addClass(_display_screen_class);
 		addEventListener("keydown", function(event) {
@@ -691,7 +691,7 @@ _display_screen_class = getCookie('_display_screen_class');
 				}
 		});
 })(jQuery);
-/* end for screenshort image - developing 
+/* end for screenshort image - developing
 =============================================*/
 
 

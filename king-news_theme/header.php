@@ -20,7 +20,11 @@
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<?php
+	$sidebar_position = get_theme_mod( 'sidebar_position' );
+ ?>
+
+<body <?php body_class($sidebar_position); ?>>
 <?php king_news_get_page_preloader(); ?>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'king_news' ); ?></a>

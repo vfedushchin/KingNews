@@ -42,7 +42,7 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 		 *
 		 * @var int
 		 */
-		private $_excerpt_length = 55;
+		private $_excerpt_length = 15;
 
 		/**
 		 * Get excerpt length

@@ -1187,12 +1187,12 @@ function king_news_get_customizer_options() {
 			'header_layout_type' => array(
 				'title'   => esc_html__( 'Layout', 'king_news' ),
 				'section' => 'header_styles',
-				'default' => 'default',
+				'default' => 'minimal',
 				'field'   => 'select',
 				'choices' => array(
-					'default'  => esc_html__( 'Default', 'king_news' ),
+					'default'  => esc_html__( 'Minimal', 'king_news' ),
 					'centered' => esc_html__( 'Centered', 'king_news' ),
-					'minimal'  => esc_html__( 'Minimal', 'king_news' ),
+					'minimal'  => esc_html__( 'Default', 'king_news' ),
 				),
 				'type' => 'control',
 			),

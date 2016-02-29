@@ -465,6 +465,10 @@
 				@include media-breakpoint-up(xl) {
 					max-width: 53%;
 					padding-right: 60px;
+					&.post-thumbnail--small,
+					&.post-thumbnail--ultra-small {
+						padding-right: 20px;
+					}
 				}
 			}
 

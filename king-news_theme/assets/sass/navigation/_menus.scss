@@ -97,7 +97,7 @@
 				text-align: left;
 				padding: 5px;
 				padding: 13px 23px 13px 17px;
-				
+
 				@media (max-width: 600px) {
 					padding: 13px 30px;
 				}
@@ -305,6 +305,12 @@
 		font-family: Tahoma;
 		.sub-menu & {
 			position: static;
+		}
+		.isStuck & {
+			position: relative;
+		}
+		@media (max-width: 600px) {
+			position: relative;
 		}
 	}
 }

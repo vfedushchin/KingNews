@@ -37,7 +37,7 @@
 		padding-left: 30px;
 		position: relative;
 		> a {
-			display: inline-block;
+			display: inline;
 			vertical-align: top;
 			&:before {
 				position: absolute;
@@ -69,7 +69,7 @@
 		padding-right: 30px;
 		position: relative;
 		> a {
-			display: inline-block;
+			display: inline;
 			vertical-align: top;
 			&:after {
 				position: absolute;

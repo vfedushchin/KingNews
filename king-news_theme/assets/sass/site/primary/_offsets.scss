@@ -1,5 +1,5 @@
-h2 + .posts-list { 
-	margin-top: 30px; 
+h2 + .posts-list {
+	margin-top: 30px;
 	@media (max-width: 361px) {
 		margin-top: 10px;
 	}
@@ -14,7 +14,7 @@ p > img {margin-top: 17px; margin-bottom: 7px;}
 .page.type-page .title-line + p > img {margin-top: 8px;}
 .entry-content  * + table {margin-top: 20px;}
 
-.sidebar-primary aside:first-child { 
+.sidebar-primary aside:first-child {
 	margin-top: 30px;
 	@media (max-width: 361px) {
 		margin-top: 10px;
@@ -90,4 +90,9 @@ div.wpcf7 {margin-top: 36px;}
 	@include media-breakpoint-up(xl) {
 		margin-top: -5px;
 	}
+}
+
+.posts-list--masonry-2-cols + .navigation.pagination,
+.posts-list--masonry-3-cols + .navigation.pagination {
+	margin-top: 30px;
 }
