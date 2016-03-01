@@ -22,7 +22,7 @@ if ( have_posts() ) : ?>
 	echo get_the_author( );
 	echo "</h2>";
 
-	?><div <?php king_news_posts_list_class(); ?>><?php
+	?><div <?php king_news_posts_list_class( ); ?>><?php
 	/* Start the Loop */
 	while ( have_posts() ) : the_post();
 
@@ -32,12 +32,8 @@ if ( have_posts() ) : ?>
 		 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 		 */
 
-		/*if( is_category( ) ){
-			$layout = '-default';
-		}
-		get_template_part( 'template-parts/content' . $layout, get_post_format() );*/
 
-				//if need different post templates for grid and masonry layouts
+		//if need different post templates for grid and masonry layouts
 		$layout = get_theme_mod( 'blog_layout_type', 'default' );
 		$img_size_in_layout = get_theme_mod( 'blog_featured_image', 'ultra-small' );
 

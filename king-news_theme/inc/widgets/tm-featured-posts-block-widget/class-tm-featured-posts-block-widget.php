@@ -104,8 +104,9 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 				),
 				'excerpt_length' => array(
 					'type'      => 'stepper',
-					'value'     => 55,
+					'value'     => 15,
 					'min_value' => 1,
+					'max_value' => 25,
 					'label'     => esc_html__( 'Excerpt length', '__tm' ),
 				),
 			);

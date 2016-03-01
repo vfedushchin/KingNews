@@ -1113,7 +1113,7 @@ function king_news_get_customizer_options() {
 				'field'   => 'select',
 				'choices' => array(
 					'1/3' => '1/3',
-					'1/4' => '1/4',
+					/*'1/4' => '1/4',*/
 				),
 				'sanitize_callback' => 'sanitize_text_field',
 				'type'              => 'control',
@@ -1265,7 +1265,7 @@ function king_news_get_customizer_options() {
 				'choices' => array(
 					'one-left-sidebar'  => esc_html__( 'Sidebar on left side', 'king_news' ),
 					'one-right-sidebar' => esc_html__( 'Sidebar on right side', 'king_news' ),
-					'two-sidebars'      => esc_html__( '2 sidebars', 'king_news' ),
+					// 'two-sidebars'      => esc_html__( '2 sidebars', 'king_news' ),
 					'fullwidth'         => esc_html__( 'No sidebars', 'king_news' ),
 				),
 				'type' => 'control',

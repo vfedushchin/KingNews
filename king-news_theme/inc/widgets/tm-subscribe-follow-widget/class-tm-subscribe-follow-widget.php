@@ -29,7 +29,7 @@ class KING_NEWS_Subscribe_Follow_Widget extends Cherry_Abstract_Widget {
 		$this->widget_cssclass    = 'king_news widget-subscribe';
 		$this->widget_description = __( 'Display subscribe form and follow links.', 'king_news' );
 		$this->widget_id          = 'king_news_widget_subscribe_follow';
-		$this->widget_name        = __( 'King News Subscribe and Follow', 'king_news' );
+		$this->widget_name        = __( 'Subscribe and Follow', 'king_news' );
 		$this->settings           = array(
 			'enable_subscribe' => array(
 				'type'   => 'checkbox',

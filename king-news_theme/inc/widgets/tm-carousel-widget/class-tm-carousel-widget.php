@@ -9,7 +9,7 @@ class KING_NEWS_Carousel_Widget extends Cherry_Abstract_Widget {
 		$this->widget_cssclass = 'king_news widget_carousel';
 		$this->widget_description = esc_html__( 'Display a list of your posts on your site.', 'king_news' );
 		$this->widget_id = 'widget_carousel';
-		$this->widget_name = esc_html__( 'King News Carousel Widget', 'king_news' );
+		$this->widget_name = esc_html__( 'Carousel Widget', 'king_news' );
 		$this->settings = array(
 			'title' => array(
 				'type'  => 'text',

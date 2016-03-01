@@ -71,7 +71,7 @@
 
 			<?php endif; ?>
 
-		
+
 		<footer class="entry-footer">
 			<?php king_news_read_more(); ?>
 			<?php king_news_share_buttons( 'loop' ); ?>

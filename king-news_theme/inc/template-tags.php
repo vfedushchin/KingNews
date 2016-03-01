@@ -189,10 +189,12 @@ function king_news_get_layout_classes( $layout = 'content', $classes = array() )
 function king_news_posts_list_class( $classes = array(), $echo = true ) {
 	$layout_type      = get_theme_mod( 'blog_layout_type', king_news_theme()->customizer->get_default( 'blog_layout_type' ) );
 	$sidebar_position = get_theme_mod( 'sidebar_position', king_news_theme()->customizer->get_default( 'sidebar_position' ) );
+	$image_size_blog = get_theme_mod( 'blog_featured_image', king_news_theme()->customizer->get_default( 'blog_featured_image' ) );
 
 	$classes[] = 'posts-list';
 	$classes[] = 'posts-list--' . sanitize_html_class( $layout_type );
 	$classes[] = sanitize_html_class( $sidebar_position );
+	$classes[] = sanitize_html_class( $image_size_blog );
 
 	if ( in_array( $layout_type, array( 'grid-2-cols', 'grid-3-cols' ) ) ) {
 		$classes[] = 'card-deck';

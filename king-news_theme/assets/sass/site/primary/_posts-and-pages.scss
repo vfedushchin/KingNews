@@ -441,7 +441,7 @@
 			margin-bottom: 12px;
 
 			.archive .posts-list--minimal &,
-			.posts-list--default & {
+			.archive .posts-list--default & {
 				@media (max-width: 300px) {
 						max-width: 100%;
 						float: none;
@@ -578,9 +578,22 @@
 }
 
 .archive.category {
+	.post-thumbnail {
+		a {
+			margin-right: 0;
+		}
+	}
 	.post_format-post-format-video {
 		.post-thumbnail {
 			width: 100%;
+		}
+	}
+
+	.ultra-small {
+		.post_format-post-format-video {
+		.post-thumbnail {
+				width: auto;
+			}
 		}
 	}
 
@@ -862,4 +875,10 @@
 
 .posts-list .post__tags {
 	display: block !important;
+}
+
+.single.single-post {
+	.site-main {
+		margin-top: 32px;
+	}
 }

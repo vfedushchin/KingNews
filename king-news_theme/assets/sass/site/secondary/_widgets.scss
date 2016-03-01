@@ -94,3 +94,13 @@
   overflow: hidden;
 }
 
+
+.site#page .sidebar-primary,
+.site .sidebar-secondary {
+	.title-line:after,
+	.widget-title:after {
+		@media (min-width: 768px) and (max-width: 1199px) {
+			display: none;
+		}
+	}
+}

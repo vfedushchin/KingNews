@@ -138,7 +138,7 @@
 								slidesPerView: Math.floor( slidesPerView * 0.5 ),
 								spaceBetween: Math.floor( spaceBetweenSlides * 0.5 )
 							},
-							768: {
+							503: {
 								slidesPerView: Math.floor( slidesPerView * 0.25 ),
 								spaceBetween: Math.floor( spaceBetweenSlides * 0.25 )
 							},
@@ -554,39 +554,24 @@
 
 jQuery(document).ready(function($){
 
-
-
-/* start script for adding data-atribute to menu
-=============================================*/
-// ------------------------------------------------------------------------
-$( "#main-menu > li > a" ).each(function( index ) {
-		$( this ).attr('data-title', $( this ).text());
-});
-/* end script for adding data-atribute to menu
-=============================================*/
-
-
 share_hover_hide_selector = $('.widget-image-grid__footer-meta, .widget-new-smart__post__date, .meta-inner');
 // add/remove class for showing share-list in posts
 $(".share-btns-main").on({
 		mouseenter: function () {
-				//stuff to do on mouse enter
 				$(this).addClass('show-share-list');
 				$(this).siblings(share_hover_hide_selector).fadeTo(300, 0);
 		},
 		mouseleave: function () {
-				//stuff to do on mouse leave
 				$(this).removeClass('show-share-list');
 				$(this).siblings(share_hover_hide_selector).fadeTo(400, 1);
 		}
 });
 
 
-
 if ( $( ".post-left-column" ).length ) {
 	// function for sticky social icons in post and pages
 	(function(){
-	var a = document.querySelector('.post-left-column'), b = null, P = 80;
+	var a = document.querySelector('.post-left-column'), b = null, P = 100;
 	window.addEventListener('scroll', Ascroll, false);
 	document.body.addEventListener('scroll', Ascroll, false);
 	function Ascroll() {
@@ -628,72 +613,6 @@ if ( $( ".post-left-column" ).length ) {
 	}
 	})();
 }
-
-
-/* start for screenshort image - developing
-=============================================*/
-// ------------------------------------------------------------------------
-function setCookie(name, value, options) {
-		options = options || {};
-		var expires = options.expires;
-		if (typeof expires == "number" && expires) {
-				var d = new Date();
-				d.setTime(d.getTime() + expires * 1000);
-				expires = options.expires = d;
-		}
-		if (expires && expires.toUTCString) {
-				options.expires = expires.toUTCString();
-		}
-		value = encodeURIComponent(value);
-		var updatedCookie = name + "=" + value;
-		for (var propName in options) {
-				updatedCookie += "; " + propName;
-				var propValue = options[propName];
-				if (propValue !== true) {
-						updatedCookie += "=" + propValue;
-				}
-		}
-		document.cookie = updatedCookie;
-};
-
-// ------------------------------------------------------------------------
-function getCookie(name) {
-		var matches = document.cookie.match(new RegExp(
-				"(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-		));
-		return matches ? decodeURIComponent(matches[1]) : undefined;
-};
-// ------------------------------------------------------------------------
-function deleteCookie(name) {
-		setCookie(name, "", {
-				expires: -1
-		});
-};
-// ------------------------------------------------------------------------
-var _display_screen_class;
-_display_screen_class = getCookie('_display_screen_class');
-
-
-;(function ($) {
-		$("body").prepend("<div class='preview-container pr-bg-1'><div class='preview-container_bg'></div></div>");
-		$('.preview-container').addClass(_display_screen_class);
-		addEventListener("keydown", function(event) {
-				if (event.keyCode == 81 && event.ctrlKey) {
-						//press Ctl+q to show/hide screenshort
-						// $('.preview-container').toggleClass('display');
-						if ($('.preview-container').hasClass("display")) {
-								$('.preview-container').removeClass('display');
-								setCookie('_display_screen_class', '');
-						} else {
-								$('.preview-container').addClass('display');
-								setCookie('_display_screen_class', 'display');
-						}
-				}
-		});
-})(jQuery);
-/* end for screenshort image - developing
-=============================================*/
-
 
 
 
