@@ -1,0 +1,12 @@
+#toTop {
+	color: #fff;
+	background: #000;
+}
+#toTop:hover {
+	color: #fff;
+	background: #444;
+}
+
+.tm-folding-cube .tm-cube:before {
+	background-color: $regular_accent_color_1;
+}

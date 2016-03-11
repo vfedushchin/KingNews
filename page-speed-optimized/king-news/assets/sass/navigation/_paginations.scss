@@ -1,0 +1,133 @@
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+
+	border-top: 1px solid #000;
+	padding-top: 53px;
+	font-size: 20px;
+	@media (max-width: 991px) {
+		font-size: 16px;
+	}
+
+	@media (max-width: 479px) {
+		.post-title {
+			display: none;
+		}
+	}
+
+
+	.site-main & {
+		margin: 30px 0 0.8em;
+		@include media-breakpoint-up(lg) {
+			margin-top: 60px;
+		}
+		overflow: hidden;
+	}
+
+	.meta-nav {
+		display: block;
+		font-size: 14px;
+		padding-bottom: 7px;
+	}
+
+	.nav-previous {
+		float: left;
+		width: 50%;
+		max-width: 300px;
+		padding-left: 30px;
+		position: relative;
+		> a {
+			display: inline;
+			vertical-align: top;
+			&:before {
+				position: absolute;
+				left: -13px;
+				top: 50%;
+				margin-top: -20px;
+				@media (max-width: 479px) {
+						margin-top: -23px;
+				}
+				@include material-icon();
+				font-size: 40px;
+				content: '\E408';
+				vertical-align: top;
+				width: 44px;
+			}
+
+			&:hover {
+				//font-style: italic;
+				opacity: 0.8;
+			}
+		}
+	}
+
+	.nav-next {
+		float: right;
+		text-align: right;
+		width: 50%;
+		max-width: 300px;
+		padding-right: 30px;
+		position: relative;
+		> a {
+			display: inline;
+			vertical-align: top;
+			&:after {
+				position: absolute;
+				right: -13px;
+				top: 50%;
+				margin-top: -20px;
+				@media (max-width: 479px) {
+						margin-top: -23px;
+				}
+				@include material-icon();
+				font-size: 40px;
+				content: '\E409';
+				vertical-align: top;
+				width: 44px;
+			}
+
+			&:hover {
+				//font-style: italic;
+				opacity: 0.8;
+			}
+		}
+	}
+}
+
+.pagination {
+	border-top: 1px dotted $color__line;
+	padding: 28px 0 25px;
+	@media (max-width: 361px) {
+		padding: 10px 0;
+	}
+	.page-numbers {
+		display: inline-block;
+		min-width: 50px;
+		height: 50px;
+		padding: 5px;
+		border: none;
+		margin: 0 5px 5px 0;
+		border-radius: $border__radius;
+		@include font-size(1);
+		font-size: 14px;
+		line-height: 40px;
+		text-align: center;
+		&.dots {
+			border: none;
+			min-width: 30px;
+		}
+		&.next,
+		&.prev {
+			font-size: 16px;
+			border: none;
+			line-height: 40px;
+			i {
+				vertical-align: middle;
+				font-size: 20px;
+			}
+		}
+
+		&.next {padding-left: 10px;}
+		&.prev {padding-right: 10px;}
+	}
+}

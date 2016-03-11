@@ -1,0 +1,14 @@
+.widget-taxonomy-tiles__content a:hover{
+	color: $regular_link_color;
+	-webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.widget-taxonomy-tiles__title {
+  font-family: $h3_font_family;
+}
+.widget-taxonomy-tiles .post-count {
+  font-family: $h2_font_family;
+  font-size: 14px;
+  color: $regular_accent_color_1;
+}

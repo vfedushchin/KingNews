@@ -1,0 +1,233 @@
+.widget-subscribe {
+	text-align: center;
+	position: relative;
+
+	.site .sidebar-secondary &,
+	.site .sidebar-primary &{
+		@media (max-width: 991px) {
+			padding: 20px 10px 10px;
+		}
+		@media (max-width: 767px) {
+			.subscribe-block,
+			.follow-block {
+				text-align: center;
+			}
+		}
+	}
+
+	&:before, &:after {
+		position: absolute;
+		display: inline-block;
+		content: '';
+		width: 30px;
+		@media (max-width: 361px) {
+			width: 10px;
+		}
+
+		.sidebar-secondary &,
+		.sidebar-primary &{
+			@media (max-width: 991px) {
+				width: 10px;
+			}
+		}
+		left: 0;
+		top: 0;
+		bottom: 0;
+		background: #efefef;
+		z-index: 1;
+		.site-footer & {
+			display: none;
+		}
+	}
+	&:after {
+		left: auto;
+		right: 0;
+	}
+}
+
+.follow-block {
+	padding: 0 0 27px;
+	.sidebar-primary &,
+	.sidebar-secondary &,
+	.footer-area & {
+		text-align: left;
+	}
+
+	max-width: 470px;
+	margin: 0 auto;
+}
+.subscribe-block {
+	max-width: 470px;
+	margin: 0 auto;
+
+	padding: 0 0 20px;
+	.sidebar-primary &,
+	.sidebar-secondary &,
+	.footer-area & {
+		text-align: left;
+	}
+	.follow-block + & {
+		//border-top: 1px dotted $color__background-hr;
+		position: relative;
+
+		&:before {
+			position: absolute;
+			display: inline-block;
+			content: '';
+			/*width: 100%;*/
+			height: 1px;
+			left: -3330px;
+			right: -3330px;
+			top: 0;
+			border-top: 1px dotted $color__background-hr;;
+		}
+
+		padding: 10px 0;
+		@include media-breakpoint-up(lg) {
+			padding: 20px 0;
+		}
+		.sidebar-primary &,
+		.sidebar-secondary & {
+
+			@include media-breakpoint-up(lg) {
+			}
+		}
+		.footer-area & {
+			border-top: 1px solid rgba(255,255,255,.2);
+		}
+	}
+	&__input-group {
+		display: -webkit-flex;
+		display: flex;
+		-webkit-flex-direction: row;
+		flex-direction: row;
+		-webkit-flex-wrap: nowrap;
+		flex-wrap: nowrap;
+		-webkit-justify-content: flex-start;
+		-ms-flex-pack: start;
+		justify-content: flex-start;
+		-webkit-align-content: stretch;
+		align-content: stretch;
+		-webkit-align-items: flex-start;
+		align-items: flex-start;
+		.sidebar-primary &,
+		.sidebar-secondary &,
+		.footer-area & {
+			-ms-flex-pack: center;
+			-webkit-justify-content: center;
+			justify-content: center;
+		}
+	}
+	&__input[type="email"] {
+		max-width: 100%;
+		min-width: 130px;
+		@media (max-width: 991px) {
+			min-width: 100px;
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+		-webkit-order: 0;
+		order: 0;
+		-webkit-flex: 0 1 auto;
+		flex: 10 1 auto;
+		-webkit-align-self: auto;
+		align-self: auto;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		/*border-right: none;*/
+		margin-right: 8px;
+		font-size: 14px;
+		line-height: 48px;
+		padding-top: 0;
+		padding-bottom: 0;
+		background: #fff;
+		border-color: $color__line;
+		.footer-area & {
+			&:focus {
+				box-shadow: none;
+				background: #fff;
+			}
+		}
+		@media (max-width: 361px) {
+			margin-right: -1px;
+		}
+	}
+	&__submit {
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		max-width: 50%;
+		-webkit-order: 0;
+		order: 0;
+		-webkit-flex: 0 1 auto;
+		height: 50px;
+		overflow: hidden;
+		@include media-breakpoint-up(xl) {
+			flex-shrink: 0;
+		}
+		flex: 0 1 auto;
+		-webkit-align-self: auto;
+		align-self: auto;
+		max-width: 50%;
+		padding-left: 5px;
+		padding-right: 5px;
+		width: 75px;
+		@include media-breakpoint-up(xl) {
+			width: 135px;
+		}
+		text-align: center;
+		font-size: 0;
+		&:before {
+			content: "arrow_forward";
+			@include material-icon();
+			@include font-size(1);
+			font-size: 16px;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		@include media-breakpoint-up(xl) {
+			@include font-size(1);
+			font-size: 16px;
+			&:before {
+				display: none;
+			}
+		}
+	}
+	&__message {
+		padding: 0 0 19px;
+	}
+}
+
+.follow-block__message {
+	padding-bottom: 14px;
+}
+
+.widget .social-list .social-list__items li {
+	margin-bottom: 3px;
+}
+
+.site-footer .widget-subscribe {
+	h4 {
+		margin-top: -3px;
+		margin-bottom: 14px;
+		@media (max-width: 1199px) {
+		    font-size: 20px;
+		}
+		@media (max-width: 991px) {
+		    font-size: 18px;
+		}
+	}
+	.subscribe-block__message {
+		padding-bottom: 27px;
+		font-size: 16px;
+	}
+}
+
+.widget_search + .widget-subscribe {
+	margin-top: 62px;
+	@media (max-width: 361px) {
+		margin-top: 15px;
+	}
+}
+#sidebar-primary, #sidebar-secondary {
+	.widget-subscribe .widget-title, .subscribe-block .widget-title { margin-bottom: 8px; }
+}

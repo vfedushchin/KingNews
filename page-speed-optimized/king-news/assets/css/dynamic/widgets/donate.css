@@ -1,0 +1,21 @@
+.sidebar-primary .widget_give_forms_widget,
+.sidebar-secondary .widget_give_forms_widget,
+.before-content-area .widget_give_forms_widget,
+.after-content-area .widget_give_forms_widget,
+.before-loop-area .widget_give_forms_widget,
+.after-loop-area .widget_give_forms_widget {
+	background-color: $regular_accent_color_1;
+}
+
+.widget_give_forms_widget .widget-title {
+	color: $invert_text_color;
+}
+
+.give-btn {
+	background: $regular_accent_color_2;
+	color: $invert_link_color;
+}
+.give-btn:hover {
+	background: @darken( $regular_accent_color_2, 15 );
+	color: $invert_link_color;
+}

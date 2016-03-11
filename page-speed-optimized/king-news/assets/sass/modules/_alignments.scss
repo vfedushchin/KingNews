@@ -1,0 +1,26 @@
+.alignleft {
+	float: left;
+	margin-right: 30px;
+  @include media-breakpoint-up(lg) {
+    margin-right: 60px;
+    .page & {
+      margin-bottom: 42px;
+    }
+  }
+	margin-bottom: 15px;
+}
+
+.alignright {
+	float: right;
+	margin-left: 30px;
+  @include media-breakpoint-up(lg) {
+    margin-left: 60px;
+  }
+	margin-bottom: 15px;
+}
+
+.aligncenter {
+	clear: both;
+	@include center-block;
+	margin-bottom: 22px;
+}

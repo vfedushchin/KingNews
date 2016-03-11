@@ -15,6 +15,7 @@ s:32:"%s/assets/images/footer-logo.png"
 http://192.168.9.75/wordpress/king-news/wordpress
 your_website_url_here
 
+demo@demo.org
 
 
 Для вставки перевода:

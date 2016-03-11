@@ -1,0 +1,217 @@
+// Rem output with px fallback
+@mixin font-size($sizeValue: 1) {
+	font-size: ($sizeValue * 16) * 1px;
+	font-size: $sizeValue * 1rem;
+}
+
+// Box shadw
+@mixin box-shadow {
+	box-shadow: $box__shadow;
+}
+
+// Center block
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+// Clearfix
+@mixin clearfix2() {
+	content: "";
+	display: table;
+	table-layout: fixed;
+}
+
+
+// Clear after (not all clearfix need this also)
+@mixin clearfix-after() {
+	clear: both;
+}
+
+@mixin reset-container() {
+	max-width: inherit;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+@mixin reset-list() {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+@mixin font-awesome-icon() {
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale
+}
+
+@mixin material-icon() {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+}
+
+// Optional hyphenation
+@mixin hyphens($mode: auto) {
+	word-wrap: break-word;
+	-webkit-hyphens: $mode;
+	-moz-hyphens: $mode;
+	-ms-hyphens: $mode; // IE10+
+	-o-hyphens: $mode;
+	hyphens: $mode;
+}
+
+@mixin word-wrap() {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	-ms-word-break: break-all;
+	word-break: break-word;
+}
+
+// button
+@mixin button() {
+	@include font-size( 1 );
+  font-size: 16px;
+	line-height: 20px;
+	display: inline-block;
+	padding: $button__indents;
+	border-radius: $button__border-radius;
+	border: $button__border;
+	box-shadow: $button__box-shadow;
+  @media (max-width: 991px) {
+      padding-right: 10px;
+      padding-left: 10px;
+  }
+}
+
+// .hentry, .widget
+@mixin card() {
+	background: #fff;
+	/*box-shadow: 0 5px 32px rgba(103,122,141,.17);*/
+	border-radius: $border__radius;
+  position: relative;
+  z-index: 0;
+}
+
+// Resize anything
+@mixin resizable($direction) {
+	resize: $direction; // Options: horizontal, vertical, both
+	overflow: auto; // Per CSS3 UI, `resize` only applies when `overflow` isn't `visible`
+}
+
+
+
+
+
+
+
+
+
+
+// Clearfix
+@mixin clearfix {
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+
+
+// Box Sizing
+@mixin box-sizing($bs) {
+  -moz-box-sizing: $bs;
+  -webkit-box-sizing: $bs;
+  box-sizing: $bs;
+}
+
+// Border Radius
+@mixin border-radius($border-radius) {
+  -webkit-border-radius: $border-radius;
+  -moz-border-radius: $border-radius;
+  border-radius: $border-radius;
+}
+
+
+
+
+// Transform
+@mixin transform($trfm) {
+  -moz-transform: $trfm;
+  -ms-transform: $trfm;
+  -o-transform: $trfm;
+  -webkit-transform: $trfm;
+  transform: $trfm;
+}
+
+// GRADIENTS
+// --------------------------------------------------
+
+@mixin gradient_vertical($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+    background-image: -webkit-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);  // Safari 5.1-6, Chrome 10+
+    background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+    background-repeat: repeat-x;
+}
+
+// Triangle
+@mixin triangle($dir, $w, $h, $clr) {
+  width: 0;
+  height: 0;
+  border-style: solid;
+
+  @if $dir == top {
+    border-width: 0 $w/2 $h $w/2;
+    border-color: transparent transparent $clr transparent;
+  } @else if $dir == bottom {
+    border-width: $h $w/2 0 $w/2;
+    border-color: $clr transparent transparent transparent;
+  } @else if $dir == left {
+    border-width: $h/2 $w $h/2 0;
+    border-color: transparent $clr transparent transparent;
+  } @else if $dir == right {
+    border-width: $h/2 0 $h/2 $w;
+    border-color: transparent transparent transparent $clr;
+  } @else if $dir == top_left {
+    border-width: $w $w 0 0;
+    border-color: $clr transparent transparent transparent;
+  } @else if $dir == top_right {
+    border-width: 0 $w $w 0;
+    border-color: transparent $clr transparent transparent;
+  } @else if $dir == bottom_right {
+    border-width: 0 0 $w $w;
+    border-color: transparent transparent $clr transparent;
+  } @else if $dir == bottom_left {
+    border-width: $w 0 0 $w;
+    border-color: transparent transparent transparent $clr;
+  }
+}

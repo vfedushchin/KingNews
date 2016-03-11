@@ -1,0 +1,13 @@
+.swiper-pagination .swiper-pagination-bullet{
+	background-color: $regular_accent_color_1;
+}
+.site-content .swiper-button-next .material-icons, .site-content .swiper-button-prev .material-icons{
+	transition: .4s all ease;
+}
+.swiper-button-next:hover .material-icons, .swiper-button-prev:hover .material-icons{
+
+}
+
+.footer-area .swiper-wrapper .post .inner{
+	background-color: $regular_accent_color_2;
+}
