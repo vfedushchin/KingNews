@@ -48,7 +48,7 @@ if ( have_posts() ) :
 			case 'grid-3-cols':
 				$layout = 'grid';
 				break;
-			
+
 			case 'masonry-2-cols':
 			case 'masonry-3-cols':
 				$layout = 'masonry';

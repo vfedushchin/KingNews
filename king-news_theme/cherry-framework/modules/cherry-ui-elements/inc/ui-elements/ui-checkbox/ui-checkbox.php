@@ -34,6 +34,7 @@ if ( ! class_exists( 'UI_Checkbox' ) ) {
 			),
 			'label'			=> '',
 			'class'			=> '',
+			'master'		=> '',
 		);
 
 		/**
@@ -52,17 +53,17 @@ if ( ! class_exists( 'UI_Checkbox' ) ) {
 					<script>
 					(function(){
 
-						CHERRY_API.utilites.namespace('ui_elements.tmp_assets');
-						CHERRY_API.ui_elements.tmp_assets = (typeof CHERRY_API.ui_elements.tmp_assets === 'object') ? [] : CHERRY_API.ui_elements.tmp_assets ;
+						CherryJsCore.utilites.namespace('ui_elements.tmp_assets');
+						CherryJsCore.ui_elements.tmp_assets = (typeof CherryJsCore.ui_elements.tmp_assets === 'object') ? [] : CherryJsCore.ui_elements.tmp_assets ;
 
-						if( $.inArray( 'ui-checkbox.min.js', CHERRY_API.variable.loaded_assets.script ) == -1 ){
-							CHERRY_API.ui_elements.tmp_assets.push("<?php echo self::get_current_file_url() . '/assets/min/ui-checkbox.min.js'; ?>");
+						if( $.inArray( 'ui-checkbox.min.js', CherryJsCore.variable.loaded_assets.script ) == -1 ){
+							CherryJsCore.ui_elements.tmp_assets.push("<?php echo self::get_current_file_url() . '/assets/min/ui-checkbox.min.js'; ?>");
 						}else{
-							CHERRY_API.ui_elements.checkbox.init( $('body') );
+							CherryJsCore.ui_elements.checkbox.init( $('body') );
 						}
 
-						if( $.inArray( 'ui-checkbox.css', CHERRY_API.variable.loaded_assets.style ) == -1 ){
-							CHERRY_API.ui_elements.tmp_assets.push("<?php echo self::get_current_file_url() . '/assets/ui-checkbox.css' ?>");
+						if( $.inArray( 'ui-checkbox.css', CherryJsCore.variable.loaded_assets.style ) == -1 ){
+							CherryJsCore.ui_elements.tmp_assets.push("<?php echo self::get_current_file_url() . '/assets/ui-checkbox.css' ?>");
 						}
 					}())
 					</script>
@@ -79,45 +80,48 @@ if ( ! class_exists( 'UI_Checkbox' ) ) {
 		 */
 		public function render() {
 			$html = '';
+			$master_class = ! empty( $this->settings['master'] ) && isset( $this->settings['master'] ) ? esc_html( $this->settings['master'] ) : '';
+
+			$html .= '<div class="cherry-ui-container ' . $master_class . '">';
+
 			$counter = 0;
-			if( $this->settings['options'] && !empty( $this->settings['options'] ) && is_array( $this->settings['options'] ) ){
-				if ( !is_array( $this->settings['value'] ) ) {
-					$this->settings['value'] = array( $this->settings['value'] );
-				}
-				if( '' !== $this->settings['label'] ){
-					$html .= '<label class="cherry-label" for="' . esc_attr( $this->settings['id'] ) . '">' . esc_html( $this->settings['label'] ) . '</label> ';
-				}
-
-				foreach ( $this->settings['options'] as $option => $option_value ) {
-
-					if ( ! empty( $this->settings['value'] ) ) {
-						$option_checked = array_key_exists( $option, $this->settings['value'] ) ? $option : '';
-						$item_value     = ! empty( $option_checked ) ? $this->settings['value'][ $option ] : 'false';
-					} else {
-						$option_checked = '';
-						$item_value     = 'false';
+				if( $this->settings['options'] && !empty( $this->settings['options'] ) && is_array( $this->settings['options'] ) ) {
+					if ( !is_array( $this->settings['value'] ) ) {
+						$this->settings['value'] = array( $this->settings['value'] );
+					}
+					if( '' !== $this->settings['label'] ){
+						$html .= '<label class="cherry-label" for="' . esc_attr( $this->settings['id'] ) . '">' . esc_html( $this->settings['label'] ) . '</label> ';
 					}
 
-					$checked = ( ! empty( $option_checked ) && 'true' === $item_value ) ? 'checked' : '';
+					foreach ( $this->settings['options'] as $option => $option_value ) {
 
-					$option_label = isset( $option_value ) && is_array( $option_value ) ? $option_value['label'] : $option_value;
-					$data_slave = isset( $option_value['slave'] ) && !empty( $option_value['slave'] ) ? ' data-slave="' . $option_value['slave'] . '"' : '';
+						if ( ! empty( $this->settings['value'] ) ) {
+							$option_checked = array_key_exists( $option, $this->settings['value'] ) ? $option : '';
+							$item_value     = ! empty( $option_checked ) ? $this->settings['value'][ $option ] : 'false';
+						} else {
+							$option_checked = '';
+							$item_value     = 'false';
+						}
 
-					$html .= '<div class="cherry-checkbox-item-wrap ' . esc_attr( $this->settings['class'] ) . '">';
-						$html .= '<div class="cherry-checkbox-item ' . $checked . '"><span class="marker dashicons dashicons-yes"></span></div>';
-						$html .= '<input type="hidden" id="' . esc_attr( $this->settings['id'] ) . '-' . $counter . '" class="cherry-checkbox-input" name="' . esc_attr( $this->settings['name'] ) . '['. $option .']" value="' . esc_html( $item_value ) . '"' . $data_slave . '>';
-						$html .= '<label class="cherry-checkbox-label" for="' . esc_attr( $this->settings['id'] ) . '-' . $counter . '">' . esc_html( $option_label ) . '</label> ';
-					$html .= '</div>';
+						$checked = ( ! empty( $option_checked ) && 'true' === $item_value ) ? 'checked' : '';
 
-					$counter++;
+						$option_label = isset( $option_value ) && is_array( $option_value ) ? $option_value['label'] : $option_value;
+						$data_slave = isset( $option_value['slave'] ) && !empty( $option_value['slave'] ) ? ' data-slave="' . $option_value['slave'] . '"' : '';
+
+						$html .= '<div class="cherry-checkbox-item-wrap ' . esc_attr( $this->settings['class'] ) . '">';
+							$html .= '<div class="cherry-checkbox-item ' . $checked . '"><span class="marker dashicons dashicons-yes"></span></div>';
+							$html .= '<input type="hidden" id="' . esc_attr( $this->settings['id'] ) . '-' . $counter . '" class="cherry-checkbox-input" name="' . esc_attr( $this->settings['name'] ) . '['. $option .']" value="' . esc_html( $item_value ) . '"' . $data_slave . '>';
+							$html .= '<label class="cherry-checkbox-label" for="' . esc_attr( $this->settings['id'] ) . '-' . $counter . '">' . esc_html( $option_label ) . '</label> ';
+						$html .= '</div>';
+
+						$counter++;
+					}
 				}
-			}
+			$html .= '</div>';
+
 			return $html;
 		}
 
-		public function type_of_assets(){
-
-		}
 		/**
 		 * Get current file URL
 		 *

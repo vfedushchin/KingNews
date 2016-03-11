@@ -144,7 +144,7 @@ if ( ! class_exists( 'King_News_Theme_Setup' ) ) {
 				'base_dir' => CHERRY_DIR,
 				'base_url' => CHERRY_URI,
 				'modules'  => array(
-					'cherry-api-js' => array(
+					'cherry-js-core' => array(
 						'priority' => 999,
 						'autoload' => true,
 					),

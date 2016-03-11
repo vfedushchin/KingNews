@@ -4,18 +4,28 @@
 (function($){
 	"use strict";
 
-	CHERRY_API.utilites.namespace('ui_elements.checkbox');
-	CHERRY_API.ui_elements.checkbox = {
+	CherryJsCore.utilites.namespace('ui_elements.checkbox');
+	CherryJsCore.ui_elements.checkbox = {
 		init: function ( target ) {
 			var self = this;
 
-			if ( CHERRY_API.status.document_ready ) {
+			if ( CherryJsCore.status.document_ready ) {
 				self.render( target );
 			} else {
-				CHERRY_API.variable.$document.on(' ready', self.render( target ) );
+				CherryJsCore.variable.$document.on(' ready', self.render( target ) );
 			}
 		},
 		render: function ( target ) {
+			$( '.cherry-checkbox-input[type="hidden"]', target ).each( function() {
+				var $this = $( this ),
+					this_slave = $this.data( 'slave' ),
+					state = ( $this.val() === 'true' );
+
+				if ( ! state ) {
+					$( '.'+ this_slave, target ).stop().hide();
+				}
+			})
+
 			$( '.cherry-checkbox-item', target ).on( 'click', function( event ) {
 				var input = $( this ).siblings( '.cherry-checkbox-input[type="hidden"]' ),
 					slave = input.data( 'slave' ),
@@ -25,10 +35,14 @@
 					$( this ).removeClass( 'checked' );
 					input.val( 'false' );
 					state = false;
+
+					$( '.' + slave, target ).hide();
 				} else {
 					$( this ).addClass( 'checked' );
 					input.val( 'true' );
 					state = true;
+
+					$( '.' + slave, target ).show();
 				}
 				//input.trigger( 'checkbox_change_event', [slave, state] );
 				input.trigger( 'change' );
@@ -44,10 +58,14 @@
 					item.removeClass( 'checked' );
 					input.val( 'false' );
 					state = false;
+
+					$( '.' + slave, target ).hide();
 				} else {
 					item.addClass( 'checked' );
 					input.val( 'true' );
 					state = true;
+
+					$( '.' + slave, target ).show();
 				}
 				//input.trigger( 'checkbox_change_event', [slave, state] );
 				input.trigger( 'change' );
@@ -56,7 +74,7 @@
 	}
 	$( window ).on( 'cherry-ui-elements-init',
 		function( event, data ) {
-			CHERRY_API.ui_elements.checkbox.init( data.target );
+			CherryJsCore.ui_elements.checkbox.init( data.target );
 		}
 	);
 }(jQuery));

@@ -1,14 +1,14 @@
 (function($){
 	"use strict";
 
-	CHERRY_API.utilites.namespace('admin_theme_script');
-	CHERRY_API.admin_theme_script = {
+	CherryJsCore.utilites.namespace('admin_theme_script');
+	CherryJsCore.admin_theme_script = {
 		init: function ( target ) {
 			var self = this;
-			if( CHERRY_API.status.document_ready ){
+			if( CherryJsCore.status.document_ready ){
 				self.render( target );
 			}else{
-				CHERRY_API.variable.$document.on('ready', self.render( target ) );
+				CherryJsCore.variable.$document.on('ready', self.render( target ) );
 			}
 		},
 		render: function ( target ) {
@@ -17,5 +17,5 @@
 			} );*/
 		}
 	}
-	CHERRY_API.admin_theme_script.init( $( 'body' ) );
+	CherryJsCore.admin_theme_script.init( $( 'body' ) );
 }(jQuery));

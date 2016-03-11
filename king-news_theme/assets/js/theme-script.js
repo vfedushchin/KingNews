@@ -1,23 +1,23 @@
 (function($){
 	"use strict";
 
-	CHERRY_API.utilites.namespace('theme_script');
-	CHERRY_API.theme_script = {
+	CherryJsCore.utilites.namespace('theme_script');
+	CherryJsCore.theme_script = {
 		init: function () {
 			var self = this;
 
 			// Document ready event check
-			if( CHERRY_API.status.is_ready ){
+			if( CherryJsCore.status.is_ready ){
 				self.document_ready_render( self );
 			}else{
-				CHERRY_API.variable.$document.on( 'ready', self.document_ready_render( self ) );
+				CherryJsCore.variable.$document.on( 'ready', self.document_ready_render( self ) );
 			}
 
 			// Windows load event check
-			if( CHERRY_API.status.on_load ){
+			if( CherryJsCore.status.on_load ){
 				self.window_load_render( self );
 			}else{
-				CHERRY_API.variable.$window.on( 'load', self.window_load_render( self ) );
+				CherryJsCore.variable.$window.on( 'load', self.window_load_render( self ) );
 			}
 		},
 
@@ -236,7 +236,7 @@
     },
 
 		post_formats_custom_init: function ( self ) {
-			CHERRY_API.variable.$document.on( 'cherry-post-formats-custom-init', function( event ) {
+			CherryJsCore.variable.$document.on( 'cherry-post-formats-custom-init', function( event ) {
 
 				if ( 'slider' !== event.object ) {
 					return;
@@ -276,7 +276,7 @@
 		},
 
 		subscribe_init: function( self ) {
-			CHERRY_API.variable.$document.on( 'click', '.subscribe-block__submit', function( event ){
+			CherryJsCore.variable.$document.on( 'click', '.subscribe-block__submit', function( event ){
 
 				event.preventDefault();
 
@@ -544,7 +544,7 @@
 
 
 	}
-	CHERRY_API.theme_script.init();
+	CherryJsCore.theme_script.init();
 }(jQuery));
 
 

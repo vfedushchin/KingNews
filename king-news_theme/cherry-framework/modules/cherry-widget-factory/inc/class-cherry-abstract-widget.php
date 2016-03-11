@@ -104,9 +104,9 @@ if ( ! class_exists( 'Cherry_Abstract_Widget' ) ) {
 
 			parent::__construct( $this->widget_id, $this->widget_name, $widget_ops );
 
-			add_action( 'save_post', array( $this, 'flush_widget_cache' ) );
-			add_action( 'deleted_post', array( $this, 'flush_widget_cache' ) );
-			add_action( 'switch_theme', array( $this, 'flush_widget_cache' ) );
+			add_action( 'save_post', array( $this, 'flush_cache' ) );
+			add_action( 'deleted_post', array( $this, 'flush_cache' ) );
+			add_action( 'switch_theme', array( $this, 'flush_cache' ) );
 
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_init' ), 1 );
 			add_action( 'widgets.php', array( $this, 'ajax_init' ), 1 );
@@ -269,7 +269,7 @@ if ( ! class_exists( 'Cherry_Abstract_Widget' ) ) {
 		 * @since  1.0.0
 		 * @return void
 		 */
-		public function flush_widget_cache() {
+		public function flush_cache() {
 			wp_cache_delete( $this->get_cache_id(), 'widget' );
 		}
 
@@ -334,9 +334,14 @@ if ( ! class_exists( 'Cherry_Abstract_Widget' ) ) {
 				} elseif ( isset( $old_instance[ $key ] ) ) {
 					$instance[ $key ] = '';
 				}
+
+				// WPML - register strings for translation.
+				if ( in_array( $setting['type'], array( 'text', 'textarea' ) ) && 'title' !== $key ) {
+					do_action( 'wpml_register_single_string', 'Widgets', "{$this->widget_name} - {$key}", $instance[ $key ] );
+				}
 			}
 
-			$this->flush_widget_cache();
+			$this->flush_cache();
 
 			/**
 			 * Fires after current widget update is proceed, before returning result.
@@ -408,7 +413,7 @@ if ( ! class_exists( 'Cherry_Abstract_Widget' ) ) {
 			$current_element = $this->ui_builder->get_ui_element_instance( $args['type'], $args );
 
 			?>
-			<div style="padding:10px 0;">
+			<div>
 				<?php echo $current_element->render(); ?>
 			</div>
 			<?php
@@ -486,6 +491,7 @@ if ( ! class_exists( 'Cherry_Abstract_Widget' ) ) {
 						'true_slave'   => '',
 						'false_slave'  => '',
 					) ),
+					'master'             => $this->get_arg( $setting, 'master', '' ),
 				);
 
 				$this->render_control( $args );
@@ -547,6 +553,17 @@ if ( ! class_exists( 'Cherry_Abstract_Widget' ) ) {
 			 * Fires on widgget data reseting
 			 */
 			do_action( 'cherry_widget_reset_data' );
+		}
+
+		/**
+		 * Retrieve a string translation via WPML.
+		 *
+		 * @since  1.0.1
+		 * @param  string $id Widget setting ID.
+		 * @return string
+		 */
+		public function use_wpml_translate( $id ) {
+			return ! empty( $this->instance[ $id ] ) ? apply_filters( 'wpml_translate_single_string', $this->instance[ $id ], 'Widgets', "{$this->widget_name} - {$id}" ) : '';
 		}
 	}
 
