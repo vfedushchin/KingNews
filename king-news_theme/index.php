@@ -24,7 +24,12 @@ if ( have_posts() ) :
 
 
 	<!-- title -->
-	<h2 class="title-line"><?php esc_html_e( 'Latest news', 'king_news' ); ?></h2>
+	<?php
+		$blog_title_txt = get_theme_mod( 'blog_title', 'Blog' );
+		if ( "" !== $blog_title_txt) {
+			echo '<h2 class="title-line">' . __( $blog_title_txt, 'king_news' ) . '</h2>';
+		}
+	?>
 
 	<div <?php king_news_posts_list_class(); ?>>
 

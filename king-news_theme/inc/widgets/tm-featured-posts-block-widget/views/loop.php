@@ -36,50 +36,46 @@
 				array(
 					'for_human'   => true,
 					'date_format' => 'H:i:s',
-					'format'      => '<span class="tm_fpblock__item__date"><i class="material-icons dp18">access_time</i> %2$s</span>',
+					'format'      => '<a class="tm_fpblock__item__date" href="%1$s"><i class="material-icons dp18">access_time</i> %2$s</a>',
 				)
 			); ?>
 		<?php endif; ?>
 
-		<?php echo '<div class="tm_fpblock__item__main">' ?>
+		<?php if ( 'true' === $this->instance['checkboxes']['comments_count'] ) : ?>
+			<?php print $this->post_comments_count(
+				array(
+					'before'       => '<div class="tm_fpblock__item__comments_count">',
+					'after'        => '</div>',
+					'has_comments' => '<a href="%1$s">%2$s</a>',
+					'no_comments'  => '<span>%2$s</span>',
+				)
+			); ?>
+		<?php endif; ?>
 
-			<?php if ( 'true' === $this->instance['checkboxes']['comments_count'] ) : ?>
-				<?php print $this->post_comments_count(
-					array(
-						'before'       => '<div class="tm_fpblock__item__comments_count">',
-						'after'        => '</div>',
-						'has_comments' => '<a href="%1$s">%2$s</a>',
-						'no_comments'  => '<span>%2$s</span>',
-					)
-				); ?>
-			<?php endif; ?>
+		<?php if ( 'true' === $this->instance['checkboxes']['author'] ) : ?>
+			<?php print $this->post_author(
+				array(
+					'before'  => '<div class="tm_fpblock__item__author">',
+					'after'   => '</div>',
+					'format' => '<a href="%1$s">%2$s</a>',
+				)
+			); ?>
+		<?php endif; ?>
 
-			<?php if ( 'true' === $this->instance['checkboxes']['author'] ) : ?>
-				<?php print $this->post_author(
-					array(
-						'before'  => '<div class="tm_fpblock__item__author">',
-						'after'   => '</div>',
-						'format' => '<a href="%1$s">%2$s</a>',
-					)
-				); ?>
-			<?php endif; ?>
+		<?php if ( 'true' === $this->instance['checkboxes']['excerpt'] ) : ?>
+			<div class="tm_fpblock__item__content">
+				<?php wp_trim_words( the_excerpt(), $this->instance['excerpt_length'] || 55 ); ?>
+			</div>
+		<?php endif; ?>
 
-			<?php if ( 'true' === $this->instance['checkboxes']['excerpt'] ) : ?>
-				<div class="tm_fpblock__item__content">
-					<?php wp_trim_words( the_excerpt(), $this->instance['excerpt_length'] || 15 ); ?>
-				</div>
-			<?php endif; ?>
-
-			<?php if ( 'true' === $this->instance['checkboxes']['tags'] ) : ?>
-				<?php print $this->post_tags(
-					array(
-						'before' => '<div class="tm_fpblock__item__tags">',
-						'after'  => '</div>',
-						'format' => '<a href="%1$s" class="tm_fpblock__item__tag">%2$s</a>',
-					)
-				); ?>
-			<?php endif; ?>
-
-			<?php echo '</div>' ?>
+		<?php if ( 'true' === $this->instance['checkboxes']['tags'] ) : ?>
+			<?php print $this->post_tags(
+				array(
+					'before' => '<div class="tm_fpblock__item__tags">',
+					'after'  => '</div>',
+					'format' => '<a href="%1$s" class="tm_fpblock__item__tag">%2$s</a>',
+				)
+			); ?>
+		<?php endif; ?>
 	</div>
 </div>

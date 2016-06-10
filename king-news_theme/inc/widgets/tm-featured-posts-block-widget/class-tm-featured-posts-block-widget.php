@@ -23,7 +23,7 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 		 * @var array
 		 */
 		public $image_sizes = array(
-			'large'             => '_tm-thumb-860-662',
+			'large'             => 'large',
 			'large_2x'          => 'large',
 			'small'             => 'large',
 			'small_2x'          => 'large',
@@ -42,7 +42,7 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 		 *
 		 * @var int
 		 */
-		private $_excerpt_length = 15;
+		private $_excerpt_length = 55;
 
 		/**
 		 * Get excerpt length
@@ -64,17 +64,22 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 			$this->widget_id          = 'widget-featured-posts-block';
 			$this->widget_cssclass    = 'widget-featured-posts-block';
 
+			$layouts = $this->get_layouts();
+			$layout_options = array();
+
+			foreach( $layouts as $layout_id => $layout_label ) {
+				$layout_options[ $layout_id ] = array(
+					'label' => $layout_label,
+					'img_src' => KING_NEWS_THEME_URI . '/assets/images/admin/widgets/featured-posts-block/featured-posts-block-' . $layout_id . '.svg'
+				);
+			}
+
 			$this->settings = array(
 				'layout'         => array(
-					'type'             => 'select',
-					'multiple'         => false,
+					'type'             => 'radio',
 					'value'            => $this->_default_layout,
-					'options'          => false,
-					'options_callback' => array(
-						$this,
-						'get_layouts',
-					),
 					'label'            => esc_html__( 'Layout', '__tm' ),
+					'options'          => $layout_options
 				),
 				'posts_ids' => array(
 					'type'      => 'text',
@@ -82,7 +87,8 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 					'label'     => esc_html__( 'Posts IDs (Optional)', '__tm' ),
 				),
 				'checkboxes'     => array(
-					'type'    => 'checkbox',
+					'type'  => 'checkbox',
+					'label' => esc_html__( 'Post Meta', '__tm' ),
 					'value'   => array(
 						'title'          => 'false',
 						'excerpt'        => 'false',
@@ -104,9 +110,8 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 				),
 				'excerpt_length' => array(
 					'type'      => 'stepper',
-					'value'     => 15,
+					'value'     => 55,
 					'min_value' => 1,
-					'max_value' => 25,
 					'label'     => esc_html__( 'Excerpt length', '__tm' ),
 				),
 			);
@@ -259,7 +264,7 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 			if ( isset( $this->instance['posts_ids'] ) &&
 					 ! empty( $this->instance['posts_ids'] ) ) {
 		  	$query['include'] = $this->instance['posts_ids'];
-				$ids = explode( ",", $this->instance['posts_ids'] );
+				$ids = array_slice( explode( ",", $this->instance['posts_ids'] ), 0, $posts_limit + 1 );
 			}
 
 			// Retrieve posts
@@ -638,9 +643,7 @@ if ( ! class_exists( '__Tm_Featured_Posts_Block_Widget' ) ) {
 				$date_format = $args['date_format'];
 			}
 
-			if ( true === isset( $args['for_human'] ) &&
-				false === empty( $args['for_human'] )
-			) {
+			if ( true === isset( $args['for_human'] ) ) {
 				$for_human = !( !$args['for_human'] );
 			}
 

@@ -10,7 +10,7 @@
 		<div class="entry-meta">
 			<div class="meta-inner">
 				<span class="post__date">
-					<?php 
+					<?php
 						king_news_meta_date( 'loop', array(
 							'before' => '<i class="material-icons">access_time</i>',
 						) );
@@ -21,7 +21,7 @@
 					king_news_meta_comments( 'loop', array(
 						'before' => '<i class="material-icons">chat_bubble_outline</i>',
 						'after' => '',
-						'zero'   => esc_html__( 'Leave a comment', '__tm' ),
+						'zero'   => esc_html__( 'Leave a comment', 'king_news' ),
 						'one'    => '1 comment',
 						'plural' => '% comments',
 					) );

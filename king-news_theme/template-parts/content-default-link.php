@@ -57,7 +57,7 @@
 							king_news_meta_comments( 'loop', array(
 								'before' => '<i class="material-icons">chat_bubble_outline</i>',
 								'after' => '',
-								'zero'   => esc_html__( 'Leave a comment', '__tm' ),
+								'zero'   => esc_html__( 'Leave a comment', 'king_news' ),
 								'one'    => '1 comment',
 								'plural' => '% comments',
 							) );
@@ -73,7 +73,7 @@
 
 			<?php endif; ?>
 
-		
+
 		<footer class="entry-footer">
 			<?php king_news_read_more(); ?>
 			<?php king_news_share_buttons( 'loop' ); ?>

@@ -2,278 +2,338 @@
 /**
  * Instagram widget.
  *
- * @package king_news
+ * @package KING_NEWS
  */
 
-class KING_NEWS_Instagram_Widget extends Cherry_Abstract_Widget {
+if ( ! class_exists( 'KING_NEWS_Instagram_Widget' ) ) {
 
-	/**
-	 * Constructor.
-	 */
-	public function __construct() {
-		$this->widget_cssclass    = 'widget-instagram';
-		$this->widget_description = esc_html__( 'Display a list of photos from Instagram network.', 'king_news' );
-		$this->widget_id          = 'king_news_widget_instagram';
-		$this->widget_name        = esc_html__( 'Instagram', 'king_news' );
-		$this->settings           = array(
-			'title'  => array(
-				'type'  => 'text',
-				'value' => esc_html__( 'Instagram', 'king_news' ),
-				'label' => esc_html__( 'Title', 'king_news' ),
-			),
-			'client_id' => array(
-				'type'  => 'text',
-				'value' => '',
-				'label' => esc_html__( 'Client ID', 'king_news' ),
-			),
-			'tag' => array(
-				'type'  => 'text',
-				'value' => '',
-				'label' => esc_html__( 'Hashtag (enter without `#` symbol)', 'king_news' ),
-			),
-			'image_counter' => array(
-				'type'       => 'stepper',
-				'value'      => '6',
-				'max_value'  => '12',
-				'min_value'  => '1',
-				'step_value' => '1',
-				'label'      => esc_html__( 'Number of photos', 'king_news' ),
-			),
-			'display_caption' => array(
-				'type'  => 'checkbox',
-				'value' => array(
-					'display_caption_check' => 'false',
+	class KING_NEWS_Instagram_Widget extends Cherry_Abstract_Widget {
+
+		/**
+		 * Instagram API server.
+		 *
+		 * @since 1.0.1
+		 * @var string
+		 */
+		private $service_url = 'https://www.instagram.com/';<span class=""></span>
+
+		/**
+		 * Constructor.
+		 *
+		 * @since 1.0.0
+		 * @since 1.0.1 Removed `client_id` option.
+		 */
+		public function __construct() {
+			$this->widget_cssclass    = 'widget-instagram';
+			$this->widget_description = esc_html__( 'Display a list of photos from Instagram network.', 'king_news' );
+			$this->widget_id          = 'king_news_widget_instagram';
+			$this->widget_name        = esc_html__( 'Instagram', 'king_news' );
+			$this->settings           = array(
+				'title'  => array(
+					'type'  => 'text',
+					'value' => esc_html__( 'Instagram', 'king_news' ),
+					'label' => esc_html__( 'Title', 'king_news' ),
 				),
-				'options' => array(
-					'display_caption_check' => esc_html__( 'Caption', 'king_news' ),
+				'tag' => array(
+					'type'  => 'text',
+					'value' => '',
+					'label' => esc_html__( 'Hashtag (enter without `#` symbol)', 'king_news' ),
 				),
-			),
-			'display_date' => array(
-				'type'  => 'checkbox',
-				'value' => array(
-					'display_date_check' => 'false',
+				'image_counter' => array(
+					'type'       => 'stepper',
+					'value'      => '6',
+					'max_value'  => '12',
+					'min_value'  => '1',
+					'step_value' => '1',
+					'label'      => esc_html__( 'Number of photos', 'king_news' ),
 				),
-				'options' => array(
-					'display_date_check' => esc_html__( 'Date', 'king_news' ),
+				'display_caption' => array(
+					'type'  => 'checkbox',
+					'value' => array(
+						'display_caption_check' => 'false',
+					),
+					'options' => array(
+						'display_caption_check' => esc_html__( 'Caption', 'king_news' ),
+					),
 				),
-			),
-		);
+				'display_date' => array(
+					'type'  => 'checkbox',
+					'value' => array(
+						'display_date_check' => 'false',
+					),
+					'options' => array(
+						'display_date_check' => esc_html__( 'Date', 'king_news' ),
+					),
+				),
+			);
 
-		add_action( 'cherry_widget_after_update', array( $this, 'delete_cache' ) );
-		parent::__construct();
-	}
-
-	/**
-	 * widget function.
-	 *
-	 * @see WP_Widget
-	 *
-	 * @param array $args
-	 * @param array $instance
-	 */
-	public function widget( $args, $instance ) {
-
-		if ( empty( $instance['client_id'] ) ) {
-			return print $args['before_widget'] . __( 'Please, enter your Instagram CLIENT ID.', 'king_news' ) . $args['after_widget'];
+			add_action( 'cherry_widget_after_update', array( $this, 'delete_cache' ) );
+			parent::__construct();
 		}
 
-		if ( empty( $instance['tag'] ) ) {
-			return print $args['before_widget'] . __( 'Please, enter #hashtag.', 'king_news' ) . $args['after_widget'];
-		}
+		/**
+		 * Widget function.
+		 *
+		 * @see WP_Widget
+		 * @since 1.0.0
+		 * @param array $args
+		 * @param array $instance
+		 */
+		public function widget( $args, $instance ) {
 
-		if ( $this->get_cached_widget( $args ) ) {
-			return;
-		}
-
-		ob_start();
-
-		$this->setup_widget_data( $args, $instance );
-		$this->widget_start( $args, $instance );
-
-		$client_id     = esc_attr( $instance['client_id'] );
-		$tag           = esc_attr( $instance['tag'] );
-		$image_counter = absint( $instance['image_counter'] );
-
-		$config = array();
-
-		$date_enabled    = ( ! empty( $instance['display_date'] ) )    ? $instance['display_date'] : false;
-		$caption_enabled = ( ! empty( $instance['display_caption'] ) ) ? $instance['display_caption'] : false;
-
-		// Date.
-		if ( is_array( $date_enabled ) && 'true' === $date_enabled['display_date_check'] ) {
-			$date_enabled = true;
-		} else {
-			$date_enabled = false;
-		}
-
-		if ( $date_enabled ) {
-			$config[] = 'date';
-		}
-
-		// Caption.
-		if ( is_array( $caption_enabled ) && 'true' === $caption_enabled['display_caption_check'] ) {
-			$caption_enabled = true;
-		} else {
-			$caption_enabled = false;
-		}
-
-		if ( $caption_enabled ) {
-			$config[] = 'caption';
-		}
-
-		$photos = $this->get_photos( $tag, $client_id, $image_counter, $config );
-
-		if ( ! $photos ) {
-			return print $args['before_widget'] . __( 'No photos. Maybe you entered a invalid CLIENT ID or hashtag.', 'king_news' ) . $args['after_widget'];
-		}
-
-		$template = locate_template( 'inc/widgets/tm-instagram-widget/views/instagram.php' );
-
-		$date_format = get_option( 'date_format' );
-
-		printf( '<div class="%s">',
-			join( ' ', apply_filters( 'king_news_instagram_widget_wrapper_class', array( 'instagram__items' ) ) )
-		);
-
-		foreach ( (array) $photos as $photo ) {
-
-			$image   = $this->get_image( $photo );
-			$caption = $this->get_caption( $photo );
-			$date    = $this->get_date( $photo, $date_format );
-
-			include $template;
-		}
-
-		echo '</div>';
-
-		$this->widget_end( $args );
-		$this->reset_widget_data();
-		wp_reset_postdata();
-
-		echo $this->cache_widget( $args, ob_get_clean() );
-	}
-
-	/**
-	 * Retrieve a photos.
-	 *
-	 * @since  1.0.0
-	 * @param  string $data        Hashtag.
-	 * @param  string $client_id   Instagram CLIENT ID.
-	 * @param  int    $img_counter Number of images.
-	 * @param  array  $config      Set of configuration.
-	 * @return array
-	 */
-	public function get_photos( $data, $client_id, $img_counter, $config ) {
-		$cached = get_transient( 'king_news_instagram_photos' );
-
-		if ( false !== $cached ) {
-			return $cached;
-		}
-
-		$old_url = 'https://api.instagram.com/v1/tags/' . $data . '/media/recent/';
-
-		$url = add_query_arg(
-			array( 'client_id' => esc_attr( $client_id ) ),
-			$old_url
-		);
-
-		$response = wp_remote_get( $url );
-
-		if ( is_wp_error( $response ) || empty( $response ) || '200' != $response ['response']['code'] ) {
-			return false;
-		}
-
-		$result  = json_decode( wp_remote_retrieve_body( $response ), true );
-		$counter = 1;
-		$photos  = array();
-
-		foreach ( $result['data'] as $photo ) {
-
-			if ( $counter > $img_counter ) {
-				break;
+			if ( $this->get_cached_widget( $args ) ) {
+				return;
 			}
 
-			if ( 'image' != $photo['type'] ) {
-				continue;
+			if ( empty( $instance['tag'] ) ) {
+				return print $args['before_widget'] . esc_html__( 'Please, enter #hashtag.', 'king_news' ) . $args['after_widget'];
 			}
 
-			$_photo          = array();
-			$_photo['link']  = $photo['link'];
-			$_photo['image'] = $photo['images']['thumbnail']['url'];
+			ob_start();
 
-			if ( in_array( 'date', $config ) ) {
-				$_photo['date'] = sanitize_text_field( $photo['created_time'] );
+			$this->setup_widget_data( $args, $instance );
+			$this->widget_start( $args, $instance );
+
+			$config        = array();
+			$tag           = esc_attr( $instance['tag'] );
+			$image_counter = absint( $instance['image_counter'] );
+			$date_format   = get_option( 'date_format' );
+
+			$date_enabled    = ( ! empty( $instance['display_date'] ) )    ? $instance['display_date'] : false;
+			$caption_enabled = ( ! empty( $instance['display_caption'] ) ) ? $instance['display_caption'] : false;
+
+			// Date.
+			if ( is_array( $date_enabled ) && 'true' === $date_enabled['display_date_check'] ) {
+				$date_enabled = true;
+			} else {
+				$date_enabled = false;
 			}
 
-			if ( in_array( 'caption', $config ) ) {
-				// $_photo['caption'] = wp_trim_words( $photo['caption']['text'], 3 );
-				$caption           = strip_tags( $photo['caption']['text'] );
-				$_photo['caption'] = substr(
-					$caption,
-					0,
-					apply_filters( 'king_news_instagram_widget_caption_length', 10 )
-				);
+			if ( $date_enabled ) {
+				$config[] = 'date';
 			}
 
-			array_push( $photos, $_photo );
-			$counter++;
+			// Caption.
+			if ( is_array( $caption_enabled ) && 'true' === $caption_enabled['display_caption_check'] ) {
+				$caption_enabled = true;
+			} else {
+				$caption_enabled = false;
+			}
+
+			if ( $caption_enabled ) {
+				$config[] = 'caption';
+			}
+
+			$photos = $this->get_photos( $tag, $image_counter, $config );
+
+			if ( ! $photos ) {
+				return print $args['before_widget'] . esc_html__( 'No photos. Maybe you entered a invalid hashtag.', 'king_news' ) . $args['after_widget'];
+			}
+
+			$template = locate_template( 'inc/widgets/tm-instagram-widget/views/instagram.php', false, false );
+
+			printf( '<div class="%s">',
+				join( ' ', apply_filters( 'king_news_instagram_widget_wrapper_class', array( 'instagram__items' ) ) )
+			);
+
+			foreach ( (array) $photos as $photo ) {
+				$image   = $this->get_image( $photo );
+				$caption = $this->get_caption( $photo );
+				$date    = $this->get_date( $photo, $date_format );
+
+				include $template;
+			}
+
+			echo '</div>';
+
+			$this->widget_end( $args );
+			$this->reset_widget_data();
+
+			echo $this->cache_widget( $args, ob_get_clean() );
 		}
 
-		set_transient( 'king_news_instagram_photos', $photos, HOUR_IN_SECONDS );
+		/**
+		 * Retrieve a photos.
+		 *
+		 * @since  1.0.0
+		 * @since  1.0.1  Removed `$clint_id` param. Changed Instagram URL to retrieve.
+		 * @param  string $data        Hashtag.
+		 * @param  int    $img_counter Number of images.
+		 * @param  array  $config      Set of configuration.
+		 * @return array
+		 */
+		public function get_photos( $data, $img_counter, $config ) {
+			$transient_key = $this->get_transient_key(
+				array( 'image_counter' => $img_counter, 'tag' => $data )
+			);
 
-		return $photos;
-	}
+			$cached = get_transient( $transient_key );
 
-	/**
-	 * Retrieve a HTML tag with date.
-	 *
-	 * @since  1.0.0
-	 * @param  array  $photo  Item photo data.
-	 * @param  string $format Date format.
-	 * @return string
-	 */
-	public function get_date( $photo, $format ) {
+			if ( false !== $cached ) {
+				return $cached;
+			}
 
-		if ( empty( $photo['date'] ) ) {
-			return;
+			$url = add_query_arg(
+				array( '__a' => 1 ),
+				sprintf( $this->get_tags_url(), $data )
+			);
+			$response = wp_remote_get( $url );
+
+			if ( is_wp_error( $response ) || empty( $response ) || '200' != $response ['response']['code'] ) {
+				return false;
+			}
+
+			$result = json_decode( wp_remote_retrieve_body( $response ), true );
+
+			if ( ! is_array( $result ) ) {
+				return false;
+			}
+
+			if ( empty( $result['tag'] ) ) {
+				return false;
+			}
+
+			/**
+			 * Filter a order param for search photos by tag - `top_posts` or `media` (most recent).
+			 *
+			 * @since 1.0.1
+			 * @var string
+			 */
+			$order = apply_filters( 'king_news_instagram_widget_order', 'media' );
+
+			if ( empty( $result['tag'][ $order ]['nodes'] ) ) {
+				return false;
+			}
+
+			$nodes   = $result['tag'][ $order ]['nodes'];
+			$counter = 1;
+			$photos  = array();
+
+			foreach ( $nodes as $photo ) {
+
+				if ( $counter > $img_counter ) {
+					break;
+				}
+
+				$_photo          = array();
+				$_photo['link']  = $photo['code'];
+				$_photo['image'] = $photo['thumbnail_src'];
+
+				if ( in_array( 'date', $config ) ) {
+					$_photo['date'] = sanitize_text_field( $photo['date'] );
+				}
+
+				if ( in_array( 'caption', $config ) ) {
+					$_photo['caption'] = wp_html_excerpt(
+						$photo['caption'],
+						apply_filters( 'king_news_instagram_widget_caption_length', 10 ),
+						apply_filters( 'king_news_instagram_widget_caption_more', '&hellip;' )
+					);
+				}
+
+				array_push( $photos, $_photo );
+				$counter++;
+			}
+
+			set_transient( $transient_key, $photos, HOUR_IN_SECONDS );
+
+			return $photos;
 		}
 
-		return sprintf( '<time class="instagram__date" datetime="%s">%s</time>', date( 'Y-m-d\TH:i:sP', $photo['date'] ), date( $format, $photo['date'] ) );
+		/**
+		 * Get transient key to cache photos by key.
+		 *
+		 * @since  1.0.0
+		 * @return string
+		 */
+		public function get_transient_key( $instance = null ) {
+
+			if ( ! isset( $instance['image_counter'] ) || ! isset( $instance['tag'] ) ) {
+				return '';
+			}
+
+			return md5( $instance['tag'] . $instance['image_counter'] );
+		}
+
+		/**
+		 * Retrieve a HTML tag with date.
+		 *
+		 * @since  1.0.0
+		 * @param  array  $photo  Item photo data.
+		 * @param  string $format Date format.
+		 * @return string
+		 */
+		public function get_date( $photo, $format ) {
+
+			if ( empty( $photo['date'] ) ) {
+				return;
+			}
+
+			return sprintf( '<time class="instagram__date" datetime="%s">%s</time>', date( 'Y-m-d\TH:i:sP', $photo['date'] ), date( $format, $photo['date'] ) );
+		}
+
+		/**
+		 * Retrieve a caption.
+		 *
+		 * @since  1.0.0
+		 * @param  array  $photo Item photo data.
+		 * @return string
+		 */
+		public function get_caption( $photo ) {
+			return ! empty( $photo['caption'] ) ? $photo['caption'] : '';
+		}
+
+		/**
+		 * Retrieve a HTML link with image.
+		 *
+		 * @since  1.0.0
+		 * @since  1.0.1  Changed link `href` attribute.
+		 * @param  array  $photo Item photo data.
+		 * @return string
+		 */
+		public function get_image( $photo ) {
+			$link = sprintf( $this->get_post_url(), $photo['link'] );
+
+			// Replace auto-generated photo size.
+			$width  = 150;
+			$height = 150;
+			$image  = str_replace( '640x640', "{$width}x{$height}", $photo['image'] );
+
+			return sprintf( '<a class="instagram__link" href="%s" target="_blank" rel="nofollow"><img class="instagram__img" src="%s" alt="" width="%s" height="%s"><span class="instagram__cover"></span></a>', esc_url( $link ), esc_url( $image ), $width, $height );
+		}
+
+		/**
+		 * Retrieve a URL for tags.
+		 *
+		 * @since  1.0.1
+		 * @return string
+		 */
+		public function get_tags_url() {
+			return apply_filters( 'king_news_instagram_widget_get_tags_url', $this->service_url . 'explore/tags/%s/' );
+		}
+
+		/**
+		 * Retrieve a URL for post.
+		 *
+		 * @since  1.0.1
+		 * @return string
+		 */
+		public function get_post_url() {
+			return apply_filters( 'king_news_instagram_widget_get_post_url', $this->service_url . 'p/%s/' );
+		}
+
+		/**
+		 * Clear cache.
+		 *
+		 * @since 1.0.0
+		 */
+		public function delete_cache( $instance ) {
+			delete_transient( $this->get_transient_key( $instance ) );
+		}
 	}
 
-	/**
-	 * Retrieve a caption
-	 *
-	 * @since  1.0.0
-	 * @param  array  $photo Item photo data.
-	 * @return string
-	 */
-	public function get_caption( $photo ) {
-		return ! empty( $photo['caption'] ) ? $photo['caption'] : '';
+	add_action( 'widgets_init', 'king_news_register_instagram_widget' );
+	function king_news_register_instagram_widget() {
+		register_widget( 'KING_NEWS_Instagram_Widget' );
 	}
-
-	/**
-	 * Retrieve a HTML link with image.
-	 *
-	 * @since  1.0.0
-	 * @param  array  $photo Item photo data.
-	 * @return string
-	 */
-	public function get_image( $photo ) {
-		return sprintf( '<a class="instagram__link" href="%s" target="_blank" rel="nofollow"><img class="instagram__img" src="%s" alt=""><span class="instagram__cover"></span></a>', esc_url( $photo['link'] ), esc_url( $photo['image'] ) );
-	}
-
-	/**
-	 * Clear cache.
-	 *
-	 * @since 1.0.0
-	 */
-	public function delete_cache() {
-		delete_transient( 'king_news_instagram_photos' );
-	}
-}
-
-add_action( 'widgets_init', 'king_news_register_instagram_widget' );
-function king_news_register_instagram_widget() {
-	register_widget( 'KING_NEWS_Instagram_Widget' );
 }
