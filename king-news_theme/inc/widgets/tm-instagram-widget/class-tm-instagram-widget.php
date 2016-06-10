@@ -15,7 +15,7 @@ if ( ! class_exists( 'KING_NEWS_Instagram_Widget' ) ) {
 		 * @since 1.0.1
 		 * @var string
 		 */
-		private $service_url = 'https://www.instagram.com/';<span class=""></span>
+		private $service_url = 'https://www.instagram.com/';
 
 		/**
 		 * Constructor.
